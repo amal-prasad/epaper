@@ -1,0 +1,156 @@
+{
+  "_readme": "launch=true fonts decide the Phase 0 gate. role: text | text-serif | headline | display | handwritten. All fonts are Google Fonts under the SIL OFL; confirm each LICENSE in public/fonts/licenses/ before shipping. Add a font = add a row, then: node add-fonts.mjs",
+  "fonts": [
+    {
+      "name": "Noto Sans Devanagari",
+      "pkg": "noto-sans-devanagari",
+      "role": "text",
+      "launch": true
+    },
+    {
+      "name": "Noto Serif Devanagari",
+      "pkg": "noto-serif-devanagari",
+      "role": "text-serif",
+      "launch": true
+    },
+    {
+      "name": "Halant",
+      "pkg": "halant",
+      "role": "text-serif"
+    },
+    {
+      "name": "Sarala",
+      "pkg": "sarala",
+      "role": "text"
+    },
+    {
+      "name": "Hind",
+      "pkg": "hind",
+      "role": "text"
+    },
+    {
+      "name": "Martel",
+      "pkg": "martel",
+      "role": "text-serif"
+    },
+    {
+      "name": "Khand",
+      "pkg": "khand",
+      "role": "headline",
+      "launch": true
+    },
+    {
+      "name": "Yantramanav",
+      "pkg": "yantramanav",
+      "role": "text"
+    },
+    {
+      "name": "Laila",
+      "pkg": "laila",
+      "role": "text-serif"
+    },
+    {
+      "name": "Eczar",
+      "pkg": "eczar",
+      "role": "headline",
+      "launch": true
+    },
+    {
+      "name": "Karma",
+      "pkg": "karma",
+      "role": "text-serif"
+    },
+    {
+      "name": "Palanquin",
+      "pkg": "palanquin",
+      "role": "text"
+    },
+    {
+      "name": "Biryani",
+      "pkg": "biryani",
+      "role": "text"
+    },
+    {
+      "name": "Amiko",
+      "pkg": "amiko",
+      "role": "text"
+    },
+    {
+      "name": "Cambay",
+      "pkg": "cambay",
+      "role": "text"
+    },
+    {
+      "name": "Glegoo",
+      "pkg": "glegoo",
+      "role": "text-serif"
+    },
+    {
+      "name": "Sura",
+      "pkg": "sura",
+      "role": "text-serif"
+    },
+    {
+      "name": "Jaldi",
+      "pkg": "jaldi",
+      "role": "text"
+    },
+    {
+      "name": "Arya",
+      "pkg": "arya",
+      "role": "headline"
+    },
+    {
+      "name": "Vesper Libre",
+      "pkg": "vesper-libre",
+      "role": "text-serif"
+    },
+    {
+      "name": "Pragati Narrow",
+      "pkg": "pragati-narrow",
+      "role": "text"
+    },
+    {
+      "name": "Rajdhani",
+      "pkg": "rajdhani",
+      "role": "headline"
+    },
+    {
+      "name": "Teko",
+      "pkg": "teko",
+      "role": "display"
+    },
+    {
+      "name": "Rozha One",
+      "pkg": "rozha-one",
+      "role": "display",
+      "launch": true
+    },
+    {
+      "name": "Yatra One",
+      "pkg": "yatra-one",
+      "role": "display"
+    },
+    {
+      "name": "Kalam",
+      "pkg": "kalam",
+      "role": "handwritten",
+      "launch": true
+    },
+    {
+      "name": "Mukta",
+      "pkg": "mukta",
+      "role": "text"
+    },
+    {
+      "name": "Baloo 2",
+      "pkg": "baloo-2",
+      "role": "text"
+    },
+    {
+      "name": "Tiro Devanagari Hindi",
+      "pkg": "tiro-devanagari-hindi",
+      "role": "text-serif"
+    }
+  ]
+}

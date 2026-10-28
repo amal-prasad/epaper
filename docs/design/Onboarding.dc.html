@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>स्टूडियो — पहली बार (5 स्क्रीन)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5FD6}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #B45309;outline-offset:2px}
+</style>
+</helmet>
+<div style="width: 2230px; height: 960px; box-sizing: border-box; padding: 40px 60px; background: #E9E2D2; font-family: 'Noto Sans Devanagari', sans-serif; color: #1C1B1A; display: flex; gap: 40px; align-items: flex-start">
+
+<!-- ============ 1: phone number ============ -->
+<div style="width: 390px; flex: 0 0 390px">
+<div style="font-weight: 700; font-size: 18px; margin-bottom: 4px">1 · मोबाइल नंबर</div>
+<div style="font-size: 15px; color: #3B3A36; margin-bottom: 14px; min-height: 46px; line-height: 1.5">पासवर्ड नहीं। सिर्फ़ नंबर और OTP।</div>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAF6EE; border: 1px solid #CFC6B2; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; padding: 28px 24px; gap: 20px; font-size: 16px; line-height: 1.6">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #1F5FD6; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px" aria-hidden="true">स्</div>
+<div style="font-weight: 700; font-size: 20px">स्टूडियो</div>
+</div>
+<div style="margin-top: 24px">
+<h1 style="margin: 0; font-size: 30px; line-height: 1.3; font-weight: 700">अख़बार बनाइए, आसान तरीके से</h1>
+<p style="margin: 10px 0 0 0; font-size: 17px; color: #3B3A36">अपने रिपोर्टरों की खबरें चिपकाइए। पन्ने अपने आप बनेंगे, आप सिर्फ़ मंज़ूर करें।</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px">
+<label for="ph" style="font-weight: 600; font-size: 16px">आपका मोबाइल नंबर</label>
+<div style="display: flex; gap: 8px">
+<div style="min-width: 64px; height: 56px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid #8A8577; border-radius: 12px; background: #F3EDE0; font-weight: 600">+91</div>
+<input id="ph" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10 अंकों का नंबर" style="flex: 1 1 auto; min-width: 0; height: 56px; box-sizing: border-box; padding: 0 14px; border: 2px solid #1F5FD6; border-radius: 12px; background: #FFFFFF; color: #1C1B1A; font-size: 20px; letter-spacing: 1px">
+</div>
+<div style="font-size: 14px; color: #5A554B">हम OTP भेजेंगे। पासवर्ड याद रखने की ज़रूरत नहीं।</div>
+</div>
+<button type="button" data-ux="primary" style="width: 100%; min-height: 56px; border: 0; border-radius: 12px; background: #1F5FD6; color: #FFFFFF; font-weight: 700; font-size: 18px">OTP भेजें</button>
+<div style="text-align: center; font-size: 15px; color: #3B3A36">पहले 4 अंक मुफ़्त · कार्ड नहीं चाहिए</div>
+<a href="#" data-ux="help" style="position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px; background: #146C43; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 4px 12px rgba(28,27,26,.28)">
+<svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 5h14v10H9l-4 3.5V15H4z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>WhatsApp मदद</a>
+</div>
+</div>
+
+<!-- ============ 2: OTP ============ -->
+<div style="width: 390px; flex: 0 0 390px">
+<div style="font-weight: 700; font-size: 18px; margin-bottom: 4px">2 · OTP</div>
+<div style="font-size: 15px; color: #3B3A36; margin-bottom: 14px; min-height: 46px; line-height: 1.5">SMS से अपने आप भरने दें, या खुद डालें।</div>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAF6EE; border: 1px solid #CFC6B2; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; padding: 16px 24px 28px 24px; gap: 20px; font-size: 16px; line-height: 1.6">
+<button type="button" aria-label="वापस" style="width: 48px; height: 48px; margin-left: -12px; border: 0; background: transparent"><svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="#1C1B1A" stroke-width="2"></path></svg></button>
+<div>
+<h1 style="margin: 0; font-size: 30px; line-height: 1.3; font-weight: 700">OTP डालिए</h1>
+<p style="margin: 10px 0 0 0; font-size: 17px; color: #3B3A36">+91 XXXXX XXXXX पर 6 अंकों का OTP भेजा गया है।</p>
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="font-weight: 600; margin-bottom: 8px; padding: 0">6 अंकों का OTP</legend>
+<div style="display: flex; gap: 8px">
+<input type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="OTP अंक 1" style="width: 48px; height: 60px; box-sizing: border-box; text-align: center; border: 2px solid #1F5FD6; border-radius: 10px; background: #FFFFFF; font-size: 24px; font-weight: 700">
+<input type="text" inputmode="numeric" maxlength="1" aria-label="OTP अंक 2" style="width: 48px; height: 60px; box-sizing: border-box; text-align: center; border: 2px solid #8A8577; border-radius: 10px; background: #FFFFFF; font-size: 24px; font-weight: 700">
+<input type="text" inputmode="numeric" maxlength="1" aria-label="OTP अंक 3" style="width: 48px; height: 60px; box-sizing: border-box; text-align: center; border: 2px solid #8A8577; border-radius: 10px; background: #FFFFFF; font-size: 24px; font-weight: 700">
+<input type="text" inputmode="numeric" maxlength="1" aria-label="OTP अंक 4" style="width: 48px; height: 60px; box-sizing: border-box; text-align: center; border: 2px solid #8A8577; border-radius: 10px; background: #FFFFFF; font-size: 24px; font-weight: 700">
+<input type="text" inputmode="numeric" maxlength="1" aria-label="OTP अंक 5" style="width: 48px; height: 60px; box-sizing: border-box; text-align: center; border: 2px solid #8A8577; border-radius: 10px; background: #FFFFFF; font-size: 24px; font-weight: 700">
+<input type="text" inputmode="numeric" maxlength="1" aria-label="OTP अंक 6" style="width: 48px; height: 60px; box-sizing: border-box; text-align: center; border: 2px solid #8A8577; border-radius: 10px; background: #FFFFFF; font-size: 24px; font-weight: 700">
+</div>
+</fieldset>
+<button type="button" data-ux="primary" style="width: 100%; min-height: 56px; border: 0; border-radius: 12px; background: #1F5FD6; color: #FFFFFF; font-weight: 700; font-size: 18px">आगे बढ़ें</button>
+<div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start">
+<div style="font-size: 15px; color: #5A554B; min-height: 44px; display: flex; align-items: center">30 सेकंड बाद फिर से भेज सकेंगे</div>
+<button type="button" style="min-height: 44px; padding: 0; border: 0; background: transparent; color: #174AA8; font-weight: 600; font-size: 16px; text-decoration: underline">नंबर बदलें</button>
+</div>
+<a href="#" data-ux="help" style="position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px; background: #146C43; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 4px 12px rgba(28,27,26,.28)">
+<svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 5h14v10H9l-4 3.5V15H4z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>WhatsApp मदद</a>
+</div>
+</div>
+
+<!-- ============ 3: paper details ============ -->
+<div style="width: 390px; flex: 0 0 390px">
+<div style="font-weight: 700; font-size: 18px; margin-bottom: 4px">3 · आपका अख़बार</div>
+<div style="font-size: 15px; color: #3B3A36; margin-bottom: 14px; min-height: 46px; line-height: 1.5">सिर्फ़ दो सवाल। बाकी सब बाद में सेटिंग में बदला जा सकता है।</div>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAF6EE; border: 1px solid #CFC6B2; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; padding: 16px 24px 28px 24px; gap: 16px; font-size: 16px; line-height: 1.6">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<button type="button" aria-label="वापस" style="width: 48px; height: 48px; margin-left: -12px; border: 0; background: transparent"><svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="#1C1B1A" stroke-width="2"></path></svg></button>
+<div style="font-size: 14px; color: #3B3A36; font-weight: 600">3 में से 1</div>
+</div>
+<h1 style="margin: 0; font-size: 28px; line-height: 1.3; font-weight: 700">आपका अख़बार</h1>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="pn" style="font-weight: 600">अख़बार का नाम</label>
+<input id="pn" type="text" value="जनशक्ति उजाला" style="height: 56px; box-sizing: border-box; padding: 0 14px; border: 2px solid #8A8577; border-radius: 12px; background: #FFFFFF; color: #1C1B1A; font-size: 18px">
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="font-weight: 600; padding: 0; margin-bottom: 8px">कैसा अख़बार है?</legend>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; box-sizing: border-box; padding: 10px 16px; border: 2px solid #1F5FD6; border-radius: 14px; background: #EEF4FE">
+<input type="radio" name="kind" checked style="width: 24px; height: 24px; accent-color: #1F5FD6">
+<span><span style="display: block; font-weight: 700; font-size: 17px">साप्ताहिक</span><span style="display: block; font-size: 14px; color: #3B3A36">हफ़्ते में एक बार छपता है</span></span>
+</label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; box-sizing: border-box; padding: 10px 16px; border: 2px solid #CFC6B2; border-radius: 14px; background: #FFFFFF">
+<input type="radio" name="kind" style="width: 24px; height: 24px; accent-color: #1F5FD6">
+<span><span style="display: block; font-weight: 700; font-size: 17px">दैनिक</span><span style="display: block; font-size: 14px; color: #3B3A36">रोज़ छपता है</span></span>
+</label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; box-sizing: border-box; padding: 10px 16px; border: 2px solid #CFC6B2; border-radius: 14px; background: #FFFFFF">
+<input type="radio" name="kind" style="width: 24px; height: 24px; accent-color: #1F5FD6">
+<span><span style="display: block; font-weight: 700; font-size: 17px">विद्यालय पत्रिका</span><span style="display: block; font-size: 14px; color: #3B3A36">साल में एक या दो बार</span></span>
+</label>
+</fieldset>
+<button type="button" data-ux="primary" style="width: 100%; min-height: 56px; margin-top: 8px; border: 0; border-radius: 12px; background: #1F5FD6; color: #FFFFFF; font-weight: 700; font-size: 18px">आगे</button>
+<a href="#" data-ux="help" style="position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px; background: #146C43; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 4px 12px rgba(28,27,26,.28)">
+<svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 5h14v10H9l-4 3.5V15H4z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>WhatsApp मदद</a>
+</div>
+</div>
+
+<!-- ============ 4: masthead ============ -->
+<div style="width: 390px; flex: 0 0 390px">
+<div style="font-weight: 700; font-size: 18px; margin-bottom: 4px">4 · शीर्षक पट्टी</div>
+<div style="font-size: 15px; color: #3B3A36; margin-bottom: 14px; min-height: 46px; line-height: 1.5">अपनी फ़ाइल दें या नमूना चुनें। बाद में बदल सकते हैं।</div>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAF6EE; border: 1px solid #CFC6B2; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; padding: 16px 24px 28px 24px; gap: 14px; font-size: 16px; line-height: 1.6">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<button type="button" aria-label="वापस" style="width: 48px; height: 48px; margin-left: -12px; border: 0; background: transparent"><svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="#1C1B1A" stroke-width="2"></path></svg></button>
+<div style="font-size: 14px; color: #3B3A36; font-weight: 600">3 में से 2</div>
+</div>
+<div>
+<h1 style="margin: 0; font-size: 26px; line-height: 1.3; font-weight: 700">शीर्षक पट्टी</h1>
+<div style="font-size: 15px; color: #3B3A36">अख़बार के ऊपर का नाम वाला हिस्सा</div>
+</div>
+<div role="img" aria-label="चुनी हुई शीर्षक पट्टी का पूर्वावलोकन: जनशक्ति उजाला" style="background: #FFFFFF; border: 1px solid #CFC6B2; border-radius: 10px; padding: 14px 10px; text-align: center">
+<div style="font-size: 32px; font-weight: 700; line-height: 1.2; color: #8E1B1B">जनशक्ति उजाला</div>
+<div style="font-size: 13px; color: #3B3A36; margin-top: 2px">जनता की आवाज़, सत्य का उजाला</div>
+</div>
+<button type="button" style="min-height: 52px; border: 2px solid #1F5FD6; border-radius: 12px; background: #FFFFFF; color: #174AA8; font-weight: 700; font-size: 17px">अपनी फ़ाइल अपलोड करें</button>
+<div style="font-size: 14px; color: #5A554B; margin-top: -6px">JPG, PNG या PDF</div>
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="font-weight: 600; padding: 0; margin-bottom: 8px">या हमारे नमूने से चुनें</legend>
+<label style="display: flex; align-items: center; gap: 12px; min-height: 56px; box-sizing: border-box; padding: 8px 14px; border: 2px solid #1F5FD6; border-radius: 12px; background: #EEF4FE">
+<input type="radio" name="m" checked style="width: 24px; height: 24px; accent-color: #1F5FD6">
+<span style="font-size: 22px; font-weight: 700; color: #8E1B1B">जनशक्ति उजाला</span><span style="font-size: 13px; color: #3B3A36; margin-left: auto">नमूना 1</span>
+</label>
+<label style="display: flex; align-items: center; gap: 12px; min-height: 56px; box-sizing: border-box; padding: 8px 14px; border: 2px solid #CFC6B2; border-radius: 12px; background: #FFFFFF">
+<input type="radio" name="m" style="width: 24px; height: 24px; accent-color: #1F5FD6">
+<span style="font-size: 22px; font-weight: 700; color: #123B73">जनशक्ति उजाला</span><span style="font-size: 13px; color: #3B3A36; margin-left: auto">नमूना 2</span>
+</label>
+<label style="display: flex; align-items: center; gap: 12px; min-height: 56px; box-sizing: border-box; padding: 8px 14px; border: 2px solid #CFC6B2; border-radius: 12px; background: #FFFFFF">
+<input type="radio" name="m" style="width: 24px; height: 24px; accent-color: #1F5FD6">
+<span style="font-size: 22px; font-weight: 700; color: #1C1B1A">जनशक्ति उजाला</span><span style="font-size: 13px; color: #3B3A36; margin-left: auto">नमूना 3</span>
+</label>
+</fieldset>
+<button type="button" data-ux="primary" style="width: 100%; min-height: 56px; margin-top: 6px; border: 0; border-radius: 12px; background: #1F5FD6; color: #FFFFFF; font-weight: 700; font-size: 18px">पहला पन्ना देखें</button>
+<a href="#" data-ux="help" style="position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px; background: #146C43; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 4px 12px rgba(28,27,26,.28)">
+<svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 5h14v10H9l-4 3.5V15H4z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>WhatsApp मदद</a>
+</div>
+</div>
+
+<!-- ============ 5: first page ============ -->
+<div style="width: 390px; flex: 0 0 390px">
+<div style="font-weight: 700; font-size: 18px; margin-bottom: 4px">5 · आपका पहला पन्ना</div>
+<div style="font-size: 15px; color: #3B3A36; margin-bottom: 14px; min-height: 46px; line-height: 1.5">खाली पन्ना नहीं। भरा हुआ नमूना, जिसे बदलकर सीखें।</div>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAF6EE; border: 1px solid #CFC6B2; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; padding: 16px 24px 0 24px; gap: 12px; font-size: 16px; line-height: 1.6">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h1 style="margin: 0; font-size: 22px; line-height: 1.3; font-weight: 700">देखिए, आपका पहला पन्ना</h1>
+<span style="flex: 0 0 auto; padding: 3px 12px; border-radius: 999px; background: #FFF3DC; color: #6B3A00; font-size: 14px; font-weight: 700; border: 1px solid #F0D9A8">नमूना</span>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #CFC6B2; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 8px rgba(28,27,26,.10)">
+<div style="text-align: center; border-bottom: 2px solid #1C1B1A; padding-bottom: 4px">
+<div style="font-size: 24px; font-weight: 700; line-height: 1.2; color: #8E1B1B">जनशक्ति उजाला</div>
+<div style="font-size: 12px; color: #3B3A36">इंदौर, 28 अक्टूबर – 3 नवंबर 2026</div>
+</div>
+<div style="outline: 3px solid #1F5FD6; outline-offset: 2px; border-radius: 4px; padding: 2px 4px">
+<div style="font-size: 12px; font-weight: 700; color: #8E1B1B">राष्ट्रीय चिंता</div>
+<div style="font-size: 20px; font-weight: 700; line-height: 1.3">सड़क हादसों पर लगाम कब, ज़िम्मेदारी किसकी?</div>
+</div>
+<div style="display: flex; gap: 8px">
+<div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 5px" aria-hidden="true">
+<div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; width: 60%; background: #8A8577; border-radius: 2px"></div>
+<div style="height: 76px; margin-top: 4px; border-radius: 4px; background: repeating-linear-gradient(45deg, #D9D2C0, #D9D2C0 6px, #EFE9DA 6px, #EFE9DA 12px); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #3B3A36">फोटो</div>
+</div>
+<div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 5px" aria-hidden="true">
+<div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; width: 40%; background: #8A8577; border-radius: 2px"></div>
+</div>
+<div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 8px">
+<div style="padding: 6px 8px; border-radius: 6px; background: #FFE9A8; border: 1px solid #E6C766">
+<div style="font-size: 12px; font-weight: 700; color: #6B3A00">संक्षेप में</div>
+<div style="display: flex; flex-direction: column; gap: 4px; margin-top: 4px" aria-hidden="true"><div style="height: 4px; background: #8A6A1E; border-radius: 2px"></div><div style="height: 4px; background: #8A6A1E; border-radius: 2px"></div><div style="height: 4px; width: 70%; background: #8A6A1E; border-radius: 2px"></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 5px" aria-hidden="true">
+<div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; background: #8A8577; border-radius: 2px"></div><div style="height: 5px; width: 50%; background: #8A8577; border-radius: 2px"></div>
+</div>
+</div>
+</div>
+</div>
+
+<button type="button" style="align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: transparent; color: #174AA8; font-weight: 600; font-size: 15px; text-decoration: underline">नमूना खबरें एक बार में हटाएँ</button>
+
+<section aria-label="सीखने का पहला कदम" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-top: 1px solid #CFC6B2; border-radius: 22px 22px 0 0; padding: 18px 24px 22px 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 -4px 14px rgba(28,27,26,.10)">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<div style="font-size: 14px; font-weight: 700; color: #174AA8">सीखिए · 1 / 5</div>
+<div role="img" aria-label="5 में से पहला कदम" style="display: flex; gap: 6px"><span style="width: 18px; height: 8px; border-radius: 4px; background: #1F5FD6"></span><span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC6B2"></span><span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC6B2"></span><span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC6B2"></span><span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC6B2"></span></div>
+</div>
+<div style="font-size: 18px; font-weight: 700; line-height: 1.4">नीले घेरे वाली हेडलाइन को दबाइए और अपनी खबर का शीर्षक लिखिए।</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 4px">
+<button type="button" style="min-height: 48px; padding: 0 12px; border: 0; background: transparent; color: #3B3A36; font-weight: 600; font-size: 16px; text-decoration: underline">छोड़ें</button>
+<button type="button" data-ux="primary" style="min-height: 52px; min-width: 140px; padding: 0 24px; border: 0; border-radius: 12px; background: #1F5FD6; color: #FFFFFF; font-weight: 700; font-size: 18px">आगे</button>
+</div>
+</section>
+<a href="#" data-ux="help" style="position: absolute; right: 16px; bottom: 196px; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px; background: #146C43; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; box-shadow: 0 4px 12px rgba(28,27,26,.28)">
+<svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 5h14v10H9l-4 3.5V15H4z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path></svg>WhatsApp मदद</a>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2230,"height":960}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

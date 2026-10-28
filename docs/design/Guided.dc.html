@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>पत्रिका स्टूडियो — आसान मोड</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Rozha+One&amp;family=Tiro+Devanagari+Hindi&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F5F2}
+a{color:#1F5FD6}a:hover{color:#174AA8}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}
+.big{min-height:52px;padding:0 1.1em;border-radius:12px;font-weight:600}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:68px;padding:12px;border:1px solid #C9CED6;border-radius:12px;background:#FFFFFF;text-align:left;color:#16181D}
+.cb{min-height:44px;padding:0 0.8em;border:0;border-radius:8px;background:#2A2F37;color:#FFFFFF;white-space:nowrap}
+.ok{color:#146C43;font-weight:700}
+.warn{color:#8A4B00;font-weight:700}
+.para{margin:0 0 7px 0}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1080px; display: flex; flex-direction: column; font-family: 'Noto Sans Devanagari', sans-serif; color: #16181D; font-size: {{basePx}}px; background: #F6F5F2">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 24px; background: #FFFFFF; border-bottom: 1px solid #E3E1DB">
+<div style="font-weight: 700; font-size: 1.1em">पत्रिका स्टूडियो</div>
+<div style="color: #3B414B; font-size: 0.9em">जनशक्ति उजाला · अंक 8 · पृष्ठ 1</div>
+<div style="flex: 1 1 20px"></div>
+<div role="group" aria-label="अक्षर का आकार" style="display: inline-flex; border: 1px solid #C9CED6; border-radius: 999px; overflow: hidden">
+<sc-for list="{{sizes}}" as="z" hint-placeholder-count="3">
+<sc-if value="{{z.active}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" aria-label="{{z.aria}}" onClick="{{z.pick}}" style="min-width: 48px; min-height: 44px; border: 0; background: #16181D; color: #FFFFFF; font-weight: 700">{{z.label}}</button>
+</sc-if>
+<sc-if value="{{z.idle}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" aria-label="{{z.aria}}" onClick="{{z.pick}}" style="min-width: 48px; min-height: 44px; border: 0; background: #FFFFFF; color: #16181D">{{z.label}}</button>
+</sc-if>
+</sc-for>
+</div>
+<button type="button" style="min-height: 44px; padding: 0 1em; border: 1px solid #C9CED6; border-radius: 999px; background: #FFFFFF; color: #16181D">मदद</button>
+<a href="Studio.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 1em; border: 1px solid #C9CED6; border-radius: 999px; color: #16181D; text-decoration: none">प्रो मोड →</a>
+</header>
+
+<nav aria-label="अख़बार बनाने के कदम" style="background: #FFFFFF; border-bottom: 1px solid #E3E1DB; padding: 12px 24px; overflow-x: auto">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; min-width: 1080px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="7">
+<li style="flex: 1 1 0">
+<sc-if value="{{st.current}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-current="step" onClick="{{st.go}}" style="width: 100%; display: flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 10px; border: 2px solid #1F5FD6; border-radius: 12px; background: #E8EFFC; text-align: left; color: #16181D"><span style="width: 28px; height: 28px; flex: 0 0 28px; border-radius: 50%; background: #1F5FD6; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 700">{{st.n}}</span><span style="font-weight: 700; font-size: 0.9em; line-height: 1.25">{{st.label}}</span></button>
+</sc-if>
+<sc-if value="{{st.done}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{st.go}}" style="width: 100%; display: flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 10px; border: 1px solid #9BD3B4; border-radius: 12px; background: #F0FAF4; text-align: left; color: #16181D"><span style="width: 28px; height: 28px; flex: 0 0 28px; border-radius: 50%; background: #146C43; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3 3 7-7" fill="none" stroke="#FFFFFF" stroke-width="2.2"></path></svg></span><span style="font-size: 0.9em; line-height: 1.25">{{st.label}}</span></button>
+</sc-if>
+<sc-if value="{{st.todo}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{st.go}}" style="width: 100%; display: flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 10px; border: 1px solid #D9DDE3; border-radius: 12px; background: #FFFFFF; text-align: left; color: #3B414B"><span style="width: 28px; height: 28px; flex: 0 0 28px; border-radius: 50%; border: 2px solid #9AA1AC; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box">{{st.n}}</span><span style="font-size: 0.9em; line-height: 1.25">{{st.label}}</span></button>
+</sc-if>
+</li>
+</sc-for>
+</ol>
+</nav>
+
+<div style="flex: 1 1 auto; display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; align-items: flex-start; justify-content: center">
+
+<main aria-label="पृष्ठ" style="flex: 1 1 560px; max-width: 700px; min-width: 0">
+
+<div role="toolbar" aria-label="{{barAria}}" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 56px; padding: 6px 8px; margin-bottom: 12px; background: #16181D; color: #FFFFFF; border-radius: 12px">
+<span style="font-weight: 600; padding: 0 8px; font-size: 0.9em">{{barTitle}}</span>
+<div style="flex: 1 1 4px"></div>
+<sc-if value="{{kindArticle}}" hint-placeholder-val="{{true}}">
+<button type="button" class="cb" onClick="{{colsDown}}" aria-label="कॉलम घटाएँ">कॉलम −</button>
+<span style="min-width: 64px; text-align: center; font-weight: 700">{{selCols}} कॉलम</span>
+<button type="button" class="cb" onClick="{{colsUp}}" aria-label="कॉलम बढ़ाएँ">कॉलम +</button>
+<button type="button" class="cb" onClick="{{addBox}}">+ हाइलाइट बॉक्स</button>
+<button type="button" class="cb" onClick="{{addQuote}}">+ कोट</button>
+<button type="button" class="cb" onClick="{{addSub}}">+ उपशीर्षक</button>
+<button type="button" class="cb" onClick="{{addPhoto}}">+ फोटो</button>
+</sc-if>
+<sc-if value="{{kindPhoto}}" hint-placeholder-val="{{false}}">
+<button type="button" class="cb" onClick="{{colLeft}}" aria-label="पिछले कॉलम में ले जाएँ">← कॉलम</button>
+<button type="button" class="cb" onClick="{{colRight}}" aria-label="अगले कॉलम में ले जाएँ">कॉलम →</button>
+<button type="button" class="cb" onClick="{{moveUp}}">↑ ऊपर</button>
+<button type="button" class="cb" onClick="{{moveDown}}">↓ नीचे</button>
+<button type="button" class="cb" onClick="{{toggleSide}}">टेक्स्ट {{wrapSide}}</button>
+<span role="group" aria-label="आकार बदलें" style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; padding-left: 6px; border-left: 1px solid #3A3F48">
+<button type="button" class="cb" onClick="{{wDown}}" aria-label="चौड़ाई घटाएँ">↔ −</button>
+<button type="button" class="cb" onClick="{{wUp}}" aria-label="चौड़ाई बढ़ाएँ">↔ +</button>
+<button type="button" class="cb" onClick="{{hDown}}" aria-label="ऊँचाई घटाएँ">↕ −</button>
+<button type="button" class="cb" onClick="{{hUp}}" aria-label="ऊँचाई बढ़ाएँ">↕ +</button>
+<span style="font-size: 0.8em; color: #C9CED6; padding: 0 4px; white-space: nowrap">{{sizeLabel}}</span>
+</span>
+<span role="group" aria-label="फोटो के ऊपर लगाएँ" style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; padding-left: 6px; border-left: 1px solid #3A3F48">
+<span style="font-size: 0.8em; color: #C9CED6; padding: 0 2px">ऊपर लगाएँ:</span>
+<button type="button" class="cb" onClick="{{addSticker}}">स्टिकर</button>
+<button type="button" class="cb" onClick="{{addTag}}">पेज टैग</button>
+<button type="button" class="cb" onClick="{{addVideo}}">▶ वीडियो</button>
+<button type="button" class="cb" onClick="{{addInset}}">गोल इनसेट</button>
+<button type="button" class="cb" onClick="{{addLabel}}">फोटो पर लिखें</button>
+<button type="button" class="cb" onClick="{{clearOverlays}}" style="color: #FFB4A8">ऊपर से हटाएँ</button>
+</span>
+<button type="button" class="cb" onClick="{{moveOther}}">दूसरी खबर में</button>
+<button type="button" class="cb" onClick="{{remove}}" style="color: #FFB4A8">हटाएँ</button>
+</sc-if>
+<sc-if value="{{kindBlock}}" hint-placeholder-val="{{false}}">
+<button type="button" class="cb" onClick="{{colLeft}}" aria-label="पिछले कॉलम में ले जाएँ">← कॉलम</button>
+<button type="button" class="cb" onClick="{{colRight}}" aria-label="अगले कॉलम में ले जाएँ">कॉलम →</button>
+<button type="button" class="cb" onClick="{{moveUp}}">↑ ऊपर</button>
+<button type="button" class="cb" onClick="{{moveDown}}">↓ नीचे</button>
+<sc-if value="{{isResizable}}" hint-placeholder-val="{{false}}">
+<span role="group" aria-label="आकार बदलें" style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; padding-left: 6px; border-left: 1px solid #3A3F48">
+<button type="button" class="cb" onClick="{{wDown}}" aria-label="चौड़ाई घटाएँ">↔ −</button>
+<button type="button" class="cb" onClick="{{wUp}}" aria-label="चौड़ाई बढ़ाएँ">↔ +</button>
+<button type="button" class="cb" onClick="{{hDown}}" aria-label="ऊँचाई घटाएँ">↕ −</button>
+<button type="button" class="cb" onClick="{{hUp}}" aria-label="ऊँचाई बढ़ाएँ">↕ +</button>
+<span style="font-size: 0.8em; color: #C9CED6; padding: 0 4px; white-space: nowrap">{{sizeLabel}}</span>
+</span>
+</sc-if>
+<sc-if value="{{isBoxSel}}" hint-placeholder-val="{{false}}">
+<button type="button" class="cb" onClick="{{cycleColor}}">रंग बदलें</button>
+</sc-if>
+<button type="button" class="cb" onClick="{{moveOther}}">दूसरी खबर में</button>
+<button type="button" class="cb" onClick="{{remove}}" style="color: #FFB4A8">हटाएँ</button>
+</sc-if>
+</div>
+
+<div style="background: {{pageBg}}; padding: 20px 22px; box-shadow: 0 1px 3px rgba(22,24,29,0.1), 0 8px 24px rgba(22,24,29,0.06)">
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) 150px; gap: 10px; align-items: end; margin-top: 22px">
+<div role="img" aria-label="बायाँ कान: खेल प्रोमो, कटआउट डिब्बे से बाहर निकलता हुआ" style="position: relative; height: 66px; background: #FFD84D; border-radius: 4px; padding: 6px 6px 6px 66px; box-sizing: border-box; font-size: 11px; font-weight: 700; line-height: 1.3">
+<span aria-hidden="true" style="position: absolute; left: 6px; bottom: 0; width: 54px; height: 92px; background: #7C838F; border-radius: 27px 27px 3px 3px"></span>
+इंदौर ने जीता फ़ाइनल<br><span style="display: inline-block; margin-top: 4px; background: #B42318; color: #FFFFFF; padding: 1px 6px">पेज 7 →</span>
+</div>
+<div style="text-align: center; font-family: 'Tiro Devanagari Hindi', serif; font-size: 40px; line-height: 1.1">जनशक्ति उजाला</div>
+<div role="img" aria-label="दायाँ कान: शहर प्रोमो, कटआउट डिब्बे से बाहर निकलता हुआ" style="position: relative; height: 66px; background: #FDE2D2; border-radius: 4px; padding: 6px 66px 6px 6px; box-sizing: border-box; font-size: 11px; font-weight: 700; line-height: 1.3; text-align: right">
+<span aria-hidden="true" style="position: absolute; right: 6px; bottom: 0; width: 54px; height: 92px; background: #9AA1AC; border-radius: 27px 27px 3px 3px"></span>
+दिवाली मेला कल से<br><span style="display: inline-block; margin-top: 4px; background: #1E3A8A; color: #FFFFFF; padding: 1px 6px">पेज 3 →</span>
+</div>
+</div>
+<div style="height: 3px; background: #1E3A8A; margin: 8px 0 12px 0"></div>
+
+<sc-for list="{{articles}}" as="ar" hint-placeholder-count="2">
+<section style="border: {{ar.border}}; border-radius: 6px; padding: 10px; margin-bottom: 12px; background: #FFFFFF">
+<div style="font-size: 11px; font-weight: 700; color: #B42318">{{ar.kicker}}</div>
+<button type="button" onClick="{{ar.select}}" aria-pressed="{{ar.sel}}" style="display: block; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; font-family: 'Rozha One', serif; font-size: {{ar.hsize}}px; line-height: 1.2; color: #16181D; margin: 2px 0 8px 0">{{ar.title}}</button>
+<div style="display: grid; grid-template-columns: repeat({{ar.cols}}, minmax(0, 1fr)); font-size: 11.5px; line-height: 1.62; text-align: justify">
+<sc-for list="{{ar.columns}}" as="col" hint-placeholder-count="3">
+<div style="min-width: 0; padding: {{col.pad}}; border-left: {{col.rule}}; display: flow-root">
+<sc-if value="{{col.showLabel}}" hint-placeholder-val="{{false}}">
+<div aria-hidden="true" style="font-size: 9.5px; color: #174AA8; font-family: 'Noto Sans Devanagari', sans-serif; margin-bottom: 2px">कॉलम {{col.n}}</div>
+</sc-if>
+<sc-for list="{{col.items}}" as="b" hint-placeholder-count="2">
+<sc-if value="{{b.isP}}" hint-placeholder-val="{{true}}">
+<p class="para">{{b.text}}</p>
+</sc-if>
+<sc-if value="{{b.isSub}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{b.select}}" style="display: block; width: 100%; padding: 2px 0; margin: 2px 0 4px 0; border: 0; background: transparent; text-align: left; font-weight: 700; font-size: 12.5px; color: #16181D; break-after: avoid; outline: {{b.outline}}; outline-offset: 2px">{{b.text}}</button>
+</sc-if>
+<sc-if value="{{b.isPhoto}}" hint-placeholder-val="{{false}}">
+<div role="group" aria-label="फोटो: {{b.text}}" style="{{b.photoStyle}}; position: relative; outline: {{b.outline}}; outline-offset: 3px">
+<div style="position: relative">
+<button type="button" onClick="{{b.select}}" aria-label="फोटो चुनें: {{b.text}}" style="display: block; width: 100%; height: {{b.h}}px; padding: 0; border: 0; background: #C9CED6"></button>
+<sc-for list="{{b.overlays}}" as="o" hint-placeholder-count="0">
+<button type="button" onClick="{{o.move}}" aria-label="{{o.aria}}" style="position: absolute; {{o.pos}}; padding: 0; border: 0; background: transparent; line-height: 1"><span style="{{o.style}};">{{o.text}}</span></button>
+</sc-for>
+</div>
+<span style="display: block; font-size: 9.5px; line-height: 1.35; color: #3B414B; margin-top: 3px">{{b.text}}</span>
+<sc-if value="{{b.isSel}}" hint-placeholder-val="{{false}}">
+<span aria-hidden="true" onPointerDown="{{b.rStart}}" onPointerMove="{{b.rMove}}" onPointerUp="{{b.rEnd}}" onPointerCancel="{{b.rEnd}}" style="position: absolute; right: -9px; bottom: -9px; width: 16px; height: 16px; background: #FFFFFF; border: 2px solid #1F5FD6; border-radius: 3px; cursor: nwse-resize; touch-action: none"></span>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{b.isQuote}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{b.select}}" style="display: block; position: relative; box-sizing: border-box; width: {{b.wCss}}; max-width: 100%; min-height: {{b.minH}}; margin: 6px auto 10px auto; padding: 8px 4px; border: 0; border-top: 2px solid #16181D; border-bottom: 2px solid #16181D; background: transparent; text-align: center; break-inside: avoid; outline: {{b.outline}}; outline-offset: 3px">
+<span style="display: block; font-family: 'Tiro Devanagari Hindi', serif; font-size: 16px; line-height: 1.35; color: #16181D">“{{b.text}}”</span>
+<span style="display: block; font-size: 10px; color: #3B414B; margin-top: 2px">{{b.who}}</span>
+<sc-if value="{{b.isSel}}" hint-placeholder-val="{{false}}">
+<span aria-hidden="true" onPointerDown="{{b.rStart}}" onPointerMove="{{b.rMove}}" onPointerUp="{{b.rEnd}}" onPointerCancel="{{b.rEnd}}" style="position: absolute; right: -9px; bottom: -9px; width: 16px; height: 16px; background: #FFFFFF; border: 2px solid #1F5FD6; border-radius: 3px; cursor: nwse-resize; touch-action: none"></span>
+</sc-if>
+</button>
+</sc-if>
+<sc-if value="{{b.isBox}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{b.select}}" style="display: block; position: relative; width: {{b.wPx}}px; max-width: 100%; margin: 6px 0 10px 0; padding: 8px 10px; border: 0; border-top: 3px solid {{b.accent}}; background: {{b.tint}}; text-align: left; break-inside: avoid; outline: {{b.outline}}; outline-offset: 3px; height: {{b.hPx}}px; overflow: hidden">
+<span style="display: block; font-size: 12.5px; font-weight: 700; color: {{b.accent}}">{{b.title}}</span>
+<span style="display: block; font-size: 11px; line-height: 1.55; color: #16181D; white-space: pre-line">{{b.text}}</span>
+<sc-if value="{{b.isSel}}" hint-placeholder-val="{{false}}">
+<span aria-hidden="true" onPointerDown="{{b.rStart}}" onPointerMove="{{b.rMove}}" onPointerUp="{{b.rEnd}}" onPointerCancel="{{b.rEnd}}" style="position: absolute; right: 2px; bottom: 2px; width: 16px; height: 16px; background: #FFFFFF; border: 2px solid #1F5FD6; border-radius: 3px; cursor: nwse-resize; touch-action: none"></span>
+</sc-if>
+</button>
+</sc-if>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-for>
+
+<div style="height: 70px; border: 1.5px dashed #9AA1AC; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5B6270">विज्ञापन · 5 कॉलम × 6 सेमी</div>
+</div>
+<div role="status" aria-live="polite" style="margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E3E1DB; font-size: 0.85em; color: #16181D">{{msg}}</div>
+</main>
+
+<aside aria-label="इस कदम में" style="flex: 1 1 320px; max-width: 400px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 16px; padding: 20px; box-sizing: border-box">
+<div style="font-size: 0.8em; color: #5B6270">कदम {{step}} / 7</div>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">कैसा अख़बार बनाना है?</h2>
+<p style="margin: 0 0 14px 0; color: #3B414B; line-height: 1.6">आपका मास्टहेड, रंग और फ़ॉन्ट पहले से सेव हैं। बस ढाँचा चुनें।</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" class="tile" aria-pressed="true" style="border: 2px solid #1F5FD6; background: #E8EFFC"><b>साप्ताहिक · 8 पृष्ठ</b><span style="font-size: 0.85em; color: #3B414B">5 कॉलम · पिछले अंक जैसा</span></button>
+<button type="button" class="tile"><b>दैनिक · 12 पृष्ठ</b><span style="font-size: 0.85em; color: #3B414B">3 संस्करण</span></button>
+<button type="button" class="tile"><b>विशेषांक · दीपावली</b><span style="font-size: 0.85em; color: #3B414B">शुभकामना पृष्ठ के साथ</span></button>
+<button type="button" class="tile"><b>स्कूल पत्रिका · A4</b><span style="font-size: 0.85em; color: #3B414B">प्राचार्य संदेश, कविता, कला</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">पृष्ठभूमि और रंग</h2>
+<p style="margin: 0 0 14px 0; color: #3B414B; line-height: 1.6">पूरे पृष्ठ का रंग या पैटर्न चुनें। खबरों के पीछे सफ़ेद अपने आप रहेगा।</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{bgs}}" as="g" hint-placeholder-count="4">
+<button type="button" onClick="{{g.pick}}" aria-pressed="{{g.active}}" style="display: flex; flex-direction: column; gap: 6px; padding: 8px; border: {{g.border}}; border-radius: 12px; background: #FFFFFF; text-align: left"><span style="display: block; height: 48px; border-radius: 6px; background: {{g.css}}; border: 1px solid #E3E6EA"></span><span style="font-size: 0.85em">{{g.name}}</span></button>
+</sc-for>
+</div>
+<button type="button" class="tile" style="margin-top: 8px; width: 100%"><b>अपनी फ़ोटो अपलोड करें</b><span style="font-size: 0.85em; color: #3B414B">JPG या PNG · प्रिंट के लिए 300 dpi</span></button>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">खबरें भरें</h2>
+<p style="margin: 0 0 14px 0; color: #3B414B; line-height: 1.6">हेडलाइन दबाकर खबर चुनें, फिर टेक्स्ट डालें।</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" class="tile"><b>WhatsApp से खबर लें</b><span style="font-size: 0.85em; color: #3B414B">रिपोर्टर का भेजा टेक्स्ट और फोटो</span></button>
+<button type="button" class="tile"><b>टाइप या पेस्ट करें</b><span style="font-size: 0.85em; color: #3B414B">Kruti Dev टेक्स्ट अपने आप ठीक होगा</span></button>
+<button type="button" class="tile"><b>+ नई खबर जोड़ें</b><span style="font-size: 0.85em; color: #3B414B">पृष्ठ पर जगह अपने आप बनेगी</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{s4}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">खबर सजाएँ</h2>
+<p style="margin: 0 0 12px 0; color: #3B414B; line-height: 1.6">चुनी हुई खबर: <b>{{selTitle}}</b>। जो जोड़ेंगे, वह चुनी हुई जगह के ठीक बाद आएगा।</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px">
+<button type="button" class="big" onClick="{{colsDown}}" aria-label="कॉलम घटाएँ" style="border: 1px solid #C9CED6; background: #FFFFFF; color: #16181D; padding: 0 1em">−</button>
+<div style="flex: 1 1 auto; text-align: center; font-weight: 700">{{selCols}} कॉलम</div>
+<button type="button" class="big" onClick="{{colsUp}}" aria-label="कॉलम बढ़ाएँ" style="border: 1px solid #C9CED6; background: #FFFFFF; color: #16181D; padding: 0 1em">+</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" class="tile" onClick="{{addBox}}"><b>हाइलाइट बॉक्स</b><span style="font-size: 0.8em; color: #3B414B">ज़रूरी बातें रंग में</span></button>
+<button type="button" class="tile" onClick="{{addQuote}}"><b>कोट</b><span style="font-size: 0.8em; color: #3B414B">किसी का कहा बड़े अक्षरों में</span></button>
+<button type="button" class="tile" onClick="{{addSub}}"><b>उपशीर्षक</b><span style="font-size: 0.8em; color: #3B414B">लंबी खबर को हिस्सों में बाँटें</span></button>
+<button type="button" class="tile" onClick="{{addPhoto}}"><b>फोटो</b><span style="font-size: 0.8em; color: #3B414B">टेक्स्ट उसके चारों ओर</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{s5}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">फोटो और एसेट</h2>
+<p style="margin: 0 0 12px 0; color: #3B414B; line-height: 1.6">फोटो किसी भी खबर के किसी भी कॉलम में। फोटो दबाएँ, फिर ऊपर की काली पट्टी से “← कॉलम / कॉलम →” से दूसरे कॉलम में, ↑ ↓ से ऊपर-नीचे, या दूसरी खबर में ले जाएँ। आकार बदलने के लिए कोने का नीला चौकोर खींचें या ↔ ↕ बटन दबाएँ। फोटो के ऊपर स्टिकर, पेज टैग, ▶ वीडियो बटन, गोल इनसेट फोटो या लिखा हुआ टेक्स्ट भी लगा सकते हैं।</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" class="tile" onClick="{{addPhoto}}"><b>+ फोटो</b><span style="font-size: 0.8em; color: #3B414B">चुनी खबर में</span></button>
+<button type="button" class="tile"><b>स्टिकर</b><span style="font-size: 0.8em; color: #3B414B">फोटो के ऊपर</span></button>
+<button type="button" class="tile"><b>कटआउट</b><span style="font-size: 0.8em; color: #3B414B">गोल किनारे पर टेक्स्ट</span></button>
+<button type="button" class="tile"><b>और देखें</b><span style="font-size: 0.8em; color: #3B414B">46 एसेट</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{s6}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">विज्ञापन और बधाई</h2>
+<p style="margin: 0 0 14px 0; color: #3B414B; line-height: 1.6">खाली जगह बेचें। बुकिंग लिंक WhatsApp पर भेजें, ग्राहक फोटो और नाम खुद भरेगा।</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div class="tile"><b>शुभकामना ग्रिड</b><span style="font-size: 0.85em; color: #3B414B">6 में से 4 खाने बिके</span></div>
+<div class="tile"><b>5 कॉलम × 6 सेमी</b><span style="font-size: 0.85em; color: #8A4B00">खाली — [दर] में उपलब्ध</span></div>
+<button type="button" class="big" style="border: 0; background: #146C43; color: #FFFFFF">बुकिंग लिंक WhatsApp पर भेजें</button>
+</div>
+</sc-if>
+
+<sc-if value="{{s7}}" hint-placeholder-val="{{false}}">
+<h2 style="margin: 4px 0 6px 0; font-size: 1.35em">जाँचें और भेजें</h2>
+<ul style="list-style: none; margin: 0 0 14px 0; padding: 0; display: flex; flex-direction: column; gap: 8px; line-height: 1.5">
+<li><span class="ok">✓ ठीक</span> — सभी खबरें पृष्ठ में फिट</li>
+<li><span class="ok">✓ ठीक</span> — तारीख, अंक और प्रिंटर लाइन सही</li>
+<li><span class="warn">! ध्यान</span> — एक फोटो प्रिंट में धुंधली होगी <button type="button" style="min-height: 36px; margin-left: 4px; padding: 0 10px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF">बदलें</button></li>
+</ul>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button type="button" class="big" style="border: 0; background: #146C43; color: #FFFFFF">ई-पेपर WhatsApp पर भेजें</button>
+<button type="button" class="big" style="border: 1px solid #16181D; background: #FFFFFF; color: #16181D">प्रेस PDF डाउनलोड करें</button>
+</div>
+</sc-if>
+</aside>
+</div>
+
+<footer style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 24px; background: #FFFFFF; border-top: 1px solid #E3E1DB">
+<button type="button" class="big" onClick="{{prev}}" style="border: 1px solid #C9CED6; background: #FFFFFF; color: #16181D">← पिछला</button>
+<div style="flex: 1 1 auto; display: flex; align-items: center; gap: 10px; min-width: 160px">
+<div style="flex: 1 1 auto; height: 8px; border-radius: 4px; background: #E3E6EA"><div style="width: {{progress}}%; height: 8px; border-radius: 4px; background: #1F5FD6"></div></div>
+<span style="font-size: 0.85em; color: #3B414B">{{progress}}% तैयार</span>
+</div>
+<button type="button" class="big" onClick="{{next}}" style="border: 0; background: #1F5FD6; color: #FFFFFF">{{nextLabel}}</button>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const step = s.step ?? 4;
+    const size = s.size ?? 0;
+    const bgIdx = s.bg ?? 0;
+    const defaults = {
+      a1: {
+        kicker: 'राष्ट्रीय चिंता | सड़क सुरक्षा',
+        title: 'सड़क हादसों पर लगाम कब, ज़िम्मेदारी किसकी?',
+        cols: 3,
+        blocks: [
+          { t: 'p', text: 'देश में लगातार सामने आ रहे सड़क हादसे अब राष्ट्रीय चिंता का विषय बन चुके हैं। बीते महीने कई ज़िलों में बड़े हादसे हुए।' },
+          { t: 'p', text: 'भीड़ वाले धार्मिक स्थलों के पास तेज़ रफ़्तार वाहनों ने लोगों को चपेट में लिया। हर घटना के बाद जाँच के आदेश होते हैं, पर हालात नहीं बदलते।' },
+          { t: 'p', text: 'विशेषज्ञ प्रतिबंधित मार्गों पर भारी वाहनों के प्रवेश को सबसे बड़ा कारण मानते हैं। रात में निगरानी की कमी भी हादसे बढ़ाती है।' },
+          { t: 'p', text: 'भीड़ वाले इलाकों में अस्थायी बैरिकेडिंग, सीसीटीवी और चालकों के लिए विश्राम नियम सख़्ती से लागू होने चाहिए।' },
+          { t: 'p', text: 'नागरिकों की भूमिका भी कम नहीं। हेलमेट, सीट बेल्ट और मोबाइल से दूरी जैसे छोटे कदम कई जानें बचा सकते हैं।' },
+          { t: 'p', text: 'प्रशासन ने कहा है कि अगले सप्ताह से शहर के प्रमुख चौराहों पर विशेष अभियान चलेगा।' },
+          { t: 'photo', text: 'घटनास्थल पर जुटी भीड़ (फोटो: संवाददाता)', side: 'right', w: 128, h: 92, col: 0, pos: 1, overlays: [{ k: 'video', c: 3 }, { k: 'sticker', c: 0 }] },
+          { t: 'quote', text: 'हर मोड़ पर नियम हों, तभी सड़क सुरक्षित होगी।', who: '— यातायात विशेषज्ञ, इंदौर', col: 1, pos: 1 },
+          { t: 'box', title: 'संक्षेप में', text: '• 15 मौतें, 29 घायल\n• 3 दिन में जाँच रिपोर्ट\n• चौराहों पर अभियान', color: 0, w: 176, h: 121, col: 2, pos: 0 }
+        ]
+      },
+      a2: {
+        kicker: 'राजनीति',
+        title: 'दिग्विजय के सवाल पर सिंधिया का पलटवार',
+        cols: 2,
+        blocks: [
+          { t: 'p', text: 'इंदौर के डेली कॉलेज में हुए आयोजन को लेकर दोनों नेताओं के बीच बयानबाज़ी तेज़ हो गई है। एक पक्ष ने आयोजन की अनुमति पर सवाल उठाए।' },
+          { t: 'p', text: 'दूसरे पक्ष ने इसे राजनीति से प्रेरित बताया। कॉलेज प्रबंधन ने कहा कि सभी नियमों का पालन किया गया था।' },
+          { t: 'p', text: 'प्रबंधन ने यह भी कहा कि आगे भी शैक्षणिक परिसर को राजनीति से दूर रखा जाएगा।' }
+        ]
+      }
+    };
+    const arts = s.arts ?? defaults;
+    const sel = s.sel ?? { art: 'a1', idx: -1 };
+    const msg = s.msg ?? 'हेडलाइन दबाकर खबर चुनें, या खबर के अंदर फोटो, बॉक्स या कोट दबाएँ।';
+    const cur = arts[sel.art];
+    const curBlock = sel.idx >= 0 ? cur.blocks[sel.idx] : null;
+    const kindNames = { photo: 'फोटो', box: 'हाइलाइट बॉक्स', quote: 'कोट', sub: 'उपशीर्षक' };
+    const tints = [
+      { tint: '#FDF1E7', accent: '#9A3412' },
+      { tint: '#E8EFFC', accent: '#1E3A8A' },
+      { tint: '#E7F5EC', accent: '#14532D' }
+    ];
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    const parasPerCol = (a) => {
+      const paras = a.blocks.filter((b) => b.t === 'p').length;
+      const counts = [];
+      for (let c = 0; c < a.cols; c += 1) counts.push(0);
+      for (let k = 0; k < paras; k += 1) {
+        const c = Math.min(a.cols - 1, Math.floor((k * a.cols) / Math.max(paras, 1)));
+        counts[c] = counts[c] + 1;
+      }
+      return counts;
+    };
+    const colWidth = (a) => Math.floor(634 / a.cols) - 14;
+    const sizeOf = (a, b) => {
+      const cw = colWidth(a);
+      if (b.t === 'photo') return { w: clamp(b.w ?? 128, 60, cw), h: clamp(b.h ?? 92, 40, 300), minH: 40 };
+      if (b.t === 'box') return { w: clamp(b.w ?? 176, 80, cw), h: clamp(b.h ?? 121, 60, 300), minH: 60 };
+      return { w: clamp(b.w ?? cw, 80, cw), h: clamp(b.h ?? 0, 0, 300), minH: 0 };
+    };
+    const toMm = (px) => Math.round(px * 0.4);
+    const effCol = (a, b) => clamp(b.col ?? 0, 0, a.cols - 1);
+    const effPos = (a, b) => clamp(b.pos ?? 0, 0, parasPerCol(a).at(effCol(a, b)));
+    const withArt = (key, a, nextSel, text) => {
+      const next = Object.assign({}, arts);
+      next[key] = a;
+      this.setState({ arts: next, sel: nextSel, msg: text });
+    };
+    const insert = (block, label) => {
+      const base = curBlock && curBlock.t !== 'p' ? { col: effCol(cur, curBlock), pos: effPos(cur, curBlock) + 1 } : { col: 0, pos: 1 };
+      const blocks = cur.blocks.concat([Object.assign({}, block, base)]);
+      withArt(sel.art, Object.assign({}, cur, { blocks: blocks }), { art: sel.art, idx: blocks.length - 1 }, label + ' कॉलम ' + (base.col + 1) + ' में जोड़ा गया। ऊपर की पट्टी से इसे दूसरे कॉलम में या ऊपर-नीचे ले जाएँ।');
+    };
+    const setCols = (d) => {
+      const n = clamp(cur.cols + d, 1, 4);
+      withArt(sel.art, Object.assign({}, cur, { cols: n }), sel, 'अब यह खबर ' + n + ' कॉलम में है। फोटो और बॉक्स अपने कॉलम में बने रहेंगे।');
+    };
+    const patchBlock = (patch, text) => {
+      const blocks = cur.blocks.map((b, i) => (i === sel.idx ? Object.assign({}, b, patch) : b));
+      withArt(sel.art, Object.assign({}, cur, { blocks: blocks }), sel, text);
+    };
+    const colMove = (d) => {
+      if (!curBlock || curBlock.t === 'p') return;
+      const from = effCol(cur, curBlock);
+      const to = clamp(from + d, 0, cur.cols - 1);
+      if (to === from) {
+        this.setState({ msg: d < 0 ? 'यह पहला कॉलम है।' : 'यह आख़िरी कॉलम है। ज़्यादा कॉलम चाहिए तो खबर चुनकर “कॉलम +” दबाएँ।' });
+        return;
+      }
+      const pos = clamp(effPos(cur, curBlock), 0, parasPerCol(cur).at(to));
+      patchBlock({ col: to, pos: pos }, kindNames[curBlock.t] + ' अब कॉलम ' + (to + 1) + ' में है।');
+    };
+    const posMove = (d) => {
+      if (!curBlock || curBlock.t === 'p') return;
+      const col = effCol(cur, curBlock);
+      const max = parasPerCol(cur).at(col);
+      const from = effPos(cur, curBlock);
+      const to = clamp(from + d, 0, max);
+      if (to === from) {
+        const nextCol = clamp(col + d, 0, cur.cols - 1);
+        if (nextCol !== col) {
+          patchBlock({ col: nextCol, pos: d < 0 ? parasPerCol(cur).at(nextCol) : 0 }, kindNames[curBlock.t] + ' कॉलम ' + (nextCol + 1) + ' में चला गया।');
+        } else {
+          this.setState({ msg: d < 0 ? 'यह खबर में सबसे ऊपर है।' : 'यह खबर में सबसे नीचे है।' });
+        }
+        return;
+      }
+      patchBlock({ pos: to }, kindNames[curBlock.t] + (d < 0 ? ' ऊपर' : ' नीचे') + ' खिसकाया गया।');
+    };
+    const moveOther = () => {
+      if (!curBlock || curBlock.t === 'p') return;
+      const otherKey = sel.art === 'a1' ? 'a2' : 'a1';
+      const other = arts[otherKey];
+      const moved = Object.assign({}, curBlock, { col: 0, pos: 1 });
+      const from = cur.blocks.filter((x, i) => i !== sel.idx);
+      const to = other.blocks.concat([moved]);
+      const next = Object.assign({}, arts);
+      next[sel.art] = Object.assign({}, cur, { blocks: from });
+      next[otherKey] = Object.assign({}, other, { blocks: to });
+      this.setState({ arts: next, sel: { art: otherKey, idx: to.length - 1 }, msg: kindNames[curBlock.t] + ' को “' + other.title + '” के कॉलम 1 में ले जाया गया।' });
+    };
+    const remove = () => {
+      if (!curBlock || curBlock.t === 'p') return;
+      const blocks = cur.blocks.filter((x, i) => i !== sel.idx);
+      withArt(sel.art, Object.assign({}, cur, { blocks: blocks }), { art: sel.art, idx: -1 }, kindNames[curBlock.t] + ' हटाया गया। Ctrl Z से वापस लाएँ।');
+    };
+    const resizeBy = (dw, dh) => {
+      if (!curBlock || (curBlock.t !== 'photo' && curBlock.t !== 'box' && curBlock.t !== 'quote')) return;
+      const now = sizeOf(cur, curBlock);
+      const cw = colWidth(cur);
+      const w = clamp(now.w + dw, curBlock.t === 'photo' ? 60 : 80, cw);
+      const h = clamp(now.h + dh, now.minH, 300);
+      patchBlock({ w: w, h: h }, kindNames[curBlock.t] + ' का आकार: ' + toMm(w) + ' × ' + (h ? toMm(h) : 'अपने आप') + ' मिमी' + (w >= cw ? ' (पूरा कॉलम)' : ''));
+    };
+    const corners = ['top: 6px; left: 6px', 'top: 6px; right: 6px', 'bottom: 6px; right: 6px', 'bottom: 6px; left: 6px'];
+    const cornerNames = ['ऊपर-बाएँ', 'ऊपर-दाएँ', 'नीचे-दाएँ', 'नीचे-बाएँ'];
+    const ovDefs = {
+      sticker: { name: 'स्टिकर', text: 'ताज़ा', style: 'display:inline-block;background:#B42318;color:#FFFFFF;font-weight:700;font-size:11px;padding:3px 10px;border-radius:999px;transform:rotate(-5deg)' },
+      tag: { name: 'पेज टैग', text: 'पेज 7 →', style: 'display:inline-block;background:#B42318;color:#FFFFFF;font-weight:700;font-size:11px;padding:3px 8px' },
+      video: { name: 'वीडियो बटन', text: '▶', style: 'display:inline-flex;width:32px;height:32px;border-radius:50%;background:#FFFFFF;color:#B42318;align-items:center;justify-content:center;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,0.35)' },
+      inset: { name: 'गोल इनसेट फोटो', text: '', style: 'display:block;width:42px;height:42px;border-radius:50%;background:#7C838F;border:3px solid #FFFFFF;box-shadow:0 1px 4px rgba(0,0,0,0.3)' },
+      label: { name: 'फोटो पर लिखा', text: 'लाइव: घटनास्थल से', style: 'display:block;background:rgba(22,24,29,0.85);color:#FFFFFF;font-size:10px;font-weight:600;padding:3px 6px' }
+    };
+    const addOverlay = (k) => {
+      if (!curBlock || curBlock.t !== 'photo') return;
+      const list = curBlock.overlays ?? [];
+      const used = list.map((o) => o.c);
+      let c = 0;
+      while (used.indexOf(c) >= 0 && c < 3) c += 1;
+      patchBlock({ overlays: list.concat([{ k: k, c: c }]) }, ovDefs[k].name + ' फोटो के ऊपर (' + cornerNames[c] + ') लगाया गया। उसे दबाएँ तो कोना बदलेगा।');
+    };
+    const patchAt = (key, i, patch, text) => {
+      const a = arts[key];
+      const blocks = a.blocks.map((b, j) => (j === i ? Object.assign({}, b, patch) : b));
+      const next = Object.assign({}, arts);
+      next[key] = Object.assign({}, a, { blocks: blocks });
+      this.setState({ arts: next, sel: { art: key, idx: i }, msg: text });
+    };
+    const renderBlock = (key, a, b, i) => {
+      const isSel = sel.art === key && sel.idx === i;
+      const ovList = b.overlays ?? [];
+      const overlays = ovList.map((o, n) => {
+        const d = ovDefs[o.k] ?? ovDefs.sticker;
+        return {
+          text: d.text,
+          style: d.style,
+          pos: corners[o.c % 4],
+          aria: d.name + ', ' + cornerNames[o.c % 4] + ' कोने में। दबाकर कोना बदलें',
+          move: () => {
+            const nc = (o.c + 1) % 4;
+            const nextList = ovList.map((x, m) => (m === n ? Object.assign({}, x, { c: nc }) : x));
+            patchAt(key, i, { overlays: nextList }, d.name + ' अब ' + cornerNames[nc] + ' कोने में।');
+          }
+        };
+      });
+      const side = b.side ?? 'right';
+      const sz = sizeOf(a, b);
+      const cw = colWidth(a);
+      const full = sz.w >= cw - 4;
+      const tone = tints[(b.color ?? 0) % tints.length];
+      return {
+        isP: b.t === 'p',
+        isSub: b.t === 'sub',
+        isPhoto: b.t === 'photo',
+        isQuote: b.t === 'quote',
+        isBox: b.t === 'box',
+        text: b.text,
+        who: b.who ?? '',
+        title: b.title ?? '',
+        h: sz.h,
+        wPx: sz.w - 20,
+        hPx: sz.h,
+        wCss: full ? '100%' : sz.w + 'px',
+        minH: sz.h ? sz.h + 'px' : 'auto',
+        photoStyle: full ? 'display:block;width:100%;margin:4px 0 8px 0' : 'display:block;float:' + side + ';width:' + sz.w + 'px;margin:' + (side === 'right' ? '3px 0 6px 8px' : '3px 8px 6px 0'),
+        tint: tone.tint,
+        accent: tone.accent,
+        isSel: isSel,
+        overlays: overlays,
+        outline: isSel ? '3px solid #1F5FD6' : '0 solid transparent',
+        rStart: (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+          this._rs = { x: e.clientX, y: e.clientY, w: sz.w, h: sz.h, art: key, idx: i };
+        },
+        rMove: (e) => {
+          const r = this._rs;
+          if (!r) return;
+          const st = this.state || {};
+          const all = st.arts ?? defaults;
+          const art = all[r.art];
+          const blk = art.blocks[r.idx];
+          const lim = sizeOf(art, blk);
+          const w = clamp(Math.round(r.w + e.clientX - r.x), blk.t === 'photo' ? 60 : 80, colWidth(art));
+          const h = clamp(Math.round(r.h + e.clientY - r.y), lim.minH, 300);
+          const blocks = art.blocks.map((x, j) => (j === r.idx ? Object.assign({}, x, { w: w, h: h }) : x));
+          const next = Object.assign({}, all);
+          next[r.art] = Object.assign({}, art, { blocks: blocks });
+          this.setState({ arts: next, msg: kindNames[blk.t] + ': ' + toMm(w) + ' × ' + (h ? toMm(h) : 'अपने आप') + ' मिमी' });
+        },
+        rEnd: (e) => {
+          if (!this._rs) return;
+          this._rs = null;
+          e.stopPropagation();
+        },
+        select: () => this.setState({ sel: { art: key, idx: i }, msg: kindNames[b.t] + ' चुना गया (कॉलम ' + (effCol(a, b) + 1) + ')। ऊपर की काली पट्टी से इसे दूसरे कॉलम में ले जा सकते हैं।' })
+      };
+    };
+    const articles = ['a1', 'a2'].map((key) => {
+      const a = arts[key];
+      const isSelArt = sel.art === key;
+      const counts = parasPerCol(a);
+      const paras = [];
+      const objects = [];
+      a.blocks.forEach((b, i) => {
+        if (b.t === 'p') paras.push({ b: b, i: i });
+        else objects.push({ b: b, i: i });
+      });
+      let k = 0;
+      const columns = counts.map((n, c) => {
+        const mine = paras.slice(k, k + n);
+        k += n;
+        const objs = objects.filter((o) => effCol(a, o.b) === c);
+        const items = [];
+        for (let j = 0; j <= mine.length; j += 1) {
+          objs.filter((o) => effPos(a, o.b) === j).forEach((o) => items.push(renderBlock(key, a, o.b, o.i)));
+          if (j < mine.length) items.push(renderBlock(key, a, mine.at(j).b, mine.at(j).i));
+        }
+        return {
+          n: c + 1,
+          items: items,
+          pad: c === 0 ? '0 7px 0 0' : '0 7px 0 7px',
+          rule: c === 0 ? '0 solid transparent' : '1px solid #E3E6EA',
+          showLabel: isSelArt
+        };
+      });
+      return {
+        kicker: a.kicker,
+        title: a.title,
+        cols: a.cols,
+        columns: columns,
+        hsize: key === 'a1' ? 26 : 20,
+        sel: isSelArt && sel.idx < 0,
+        border: isSelArt && sel.idx < 0 ? '3px solid #1F5FD6' : '1px dashed #D9DDE3',
+        select: () => this.setState({ sel: { art: key, idx: -1 }, msg: '“' + a.title + '” चुनी गई। अब कॉलम बदलें या बॉक्स, कोट, फोटो जोड़ें।' })
+      };
+    });
+    const labels = ['ढाँचा चुनें', 'पृष्ठभूमि व रंग', 'खबरें भरें', 'खबर सजाएँ', 'फोटो व एसेट', 'विज्ञापन', 'जाँचें व भेजें'];
+    const steps = labels.map((label, i) => ({
+      n: i + 1,
+      label: label,
+      current: i + 1 === step,
+      done: i + 1 < step,
+      todo: i + 1 > step,
+      go: () => this.setState({ step: i + 1 })
+    }));
+    const sizeDefs = [{ label: 'अ', aria: 'सामान्य अक्षर' }, { label: 'अ+', aria: 'बड़े अक्षर' }, { label: 'अ++', aria: 'और बड़े अक्षर' }];
+    const sizes = sizeDefs.map((d, i) => ({ label: d.label, aria: d.aria, active: i === size, idle: i !== size, pick: () => this.setState({ size: i }) }));
+    const bgDefs = [
+      { name: 'सफ़ेद', css: '#FFFFFF' },
+      { name: 'अख़बारी कागज़', css: '#F4EFE4' },
+      { name: 'हल्का पीला', css: '#FFF7DB' },
+      { name: 'तिरंगा पट्टी', css: 'linear-gradient(#FF9933 0, #FF9933 4%, #FFFFFF 4%, #FFFFFF 96%, #138808 96%, #138808 100%)' }
+    ];
+    const bgs = bgDefs.map((g, i) => ({ name: g.name, css: g.css, active: i === bgIdx, border: i === bgIdx ? '2px solid #1F5FD6' : '1px solid #C9CED6', pick: () => this.setState({ bg: i, msg: 'पृष्ठभूमि: ' + g.name }) }));
+    const kind = curBlock && curBlock.t !== 'p' ? curBlock.t : 'article';
+    const kindArticle = kind === 'article';
+    const kindPhoto = kind === 'photo';
+    const kindBlock = !kindArticle && !kindPhoto;
+    const nextSize = { s: 'm', m: 'l', l: 's' };
+    const where = curBlock && curBlock.t !== 'p' ? ' · कॉलम ' + (effCol(cur, curBlock) + 1) + ' / ' + cur.cols : '';
+    return {
+      basePx: [16, 18, 20][size],
+      sizes: sizes,
+      steps: steps,
+      step: step,
+      s1: step === 1, s2: step === 2, s3: step === 3, s4: step === 4, s5: step === 5, s6: step === 6, s7: step === 7,
+      bgs: bgs,
+      pageBg: bgDefs[bgIdx].css,
+      articles: articles,
+      kindArticle: kindArticle,
+      kindPhoto: kindPhoto,
+      kindBlock: kindBlock,
+      isBoxSel: kind === 'box',
+      barTitle: kindArticle ? 'टेक्स्ट · ' + cur.title.slice(0, 18) + '…' : kindNames[kind] + where,
+      barAria: kindArticle ? 'खबर के विकल्प' : kindNames[kind] + ' के विकल्प',
+      selTitle: cur.title,
+      selCols: cur.cols,
+      isResizable: kind === 'photo' || kind === 'box' || kind === 'quote',
+      sizeLabel: curBlock && curBlock.t !== 'p' && curBlock.t !== 'sub' ? toMm(sizeOf(cur, curBlock).w) + ' × ' + (sizeOf(cur, curBlock).h ? toMm(sizeOf(cur, curBlock).h) : 'अपने आप') + ' मिमी' : '',
+      wDown: () => resizeBy(-16, 0),
+      wUp: () => resizeBy(16, 0),
+      hDown: () => resizeBy(0, -12),
+      hUp: () => resizeBy(0, 12),
+      wrapSide: curBlock && curBlock.side === 'left' ? 'दाईं ओर' : 'बाईं ओर',
+      colsDown: () => setCols(-1),
+      colsUp: () => setCols(1),
+      addBox: () => insert({ t: 'box', title: 'ध्यान दें', text: '• [ज़रूरी बात 1]\n• [ज़रूरी बात 2]', color: 1, w: 176, h: 100 }, 'हाइलाइट बॉक्स'),
+      addQuote: () => insert({ t: 'quote', text: '[यहाँ कहा गया वाक्य लिखें]', who: '— [नाम, पद]' }, 'कोट'),
+      addSub: () => insert({ t: 'sub', text: '[उपशीर्षक]' }, 'उपशीर्षक'),
+      addPhoto: () => insert({ t: 'photo', text: '[कैप्शन] (फोटो: [नाम])', side: 'left', w: 92, h: 66 }, 'फोटो'),
+      addSticker: () => addOverlay('sticker'),
+      addTag: () => addOverlay('tag'),
+      addVideo: () => addOverlay('video'),
+      addInset: () => addOverlay('inset'),
+      addLabel: () => addOverlay('label'),
+      clearOverlays: () => patchBlock({ overlays: [] }, 'फोटो के ऊपर की सारी चीज़ें हटाई गईं।'),
+      toggleSide: () => patchBlock({ side: curBlock && curBlock.side === 'left' ? 'right' : 'left' }, 'फोटो की तरफ़ बदली, टेक्स्ट दूसरी ओर लिपटा।'),
+      cycleColor: () => patchBlock({ color: ((curBlock && curBlock.color) || 0) + 1 }, 'बॉक्स का रंग बदला।'),
+      colLeft: () => colMove(-1),
+      colRight: () => colMove(1),
+      moveUp: () => posMove(-1),
+      moveDown: () => posMove(1),
+      moveOther: moveOther,
+      remove: remove,
+      msg: msg,
+      progress: Math.round(((step - 1) / 6) * 100),
+      prev: () => this.setState({ step: Math.max(1, step - 1) }),
+      next: () => this.setState({ step: Math.min(7, step + 1) }),
+      nextLabel: step < 7 ? 'अगला: ' + labels[step] + ' →' : 'हो गया ✓'
+    };
+  }
+}
+</script>
+</body>
+</html>

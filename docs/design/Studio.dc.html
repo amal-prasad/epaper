@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>पत्रिका स्टूडियो — प्रो मोड</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Rozha+One&amp;family=Tiro+Devanagari+Hindi&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9EBEF}
+a{color:#1F5FD6}a:hover{color:#174AA8}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}
+.tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:56px;min-height:48px;padding:4px 8px;border:1px solid transparent;border-radius:8px;background:transparent;color:#16181D;font-size:11px}
+.tb:hover{background:#EEF0F3}
+.sep{width:1px;align-self:stretch;background:#D9DDE3;margin:4px 6px}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid #C9CED6;border-radius:999px;background:#FFFFFF;color:#16181D;font-size:12px}
+.ph{font-size:12px;font-weight:600;color:#3B414B;margin:0 0 8px 0}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 980px; display: flex; flex-direction: column; font-family: 'Noto Sans Devanagari', 'IBM Plex Sans', sans-serif; color: #16181D; font-size: 14px; background: #E9EBEF">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 8px 16px; background: #FFFFFF; border-bottom: 1px solid #D9DDE3">
+<div style="font-weight: 700; font-size: 16px">पत्रिका स्टूडियो</div>
+<div style="color: #3B414B; font-size: 13px">जनशक्ति उजाला › अंक 8 › पृष्ठ 1</div>
+<div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #146C43"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3 3 7-7" fill="none" stroke="#146C43" stroke-width="2"></path></svg>सहेजा गया</div>
+<div style="flex: 1 1 20px"></div>
+<nav aria-label="मोड" style="display: inline-flex; border: 1px solid #C9CED6; border-radius: 999px; overflow: hidden">
+<a href="Guided.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; color: #16181D; text-decoration: none; font-size: 13px">आसान मोड</a>
+<span aria-current="page" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 600">प्रो मोड</span>
+</nav>
+<button type="button" class="chip">हिंदी | EN</button>
+<button type="button" class="chip">पूर्वावलोकन</button>
+<button type="button" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: #1F5FD6; color: #FFFFFF; font-weight: 600">प्रकाशित करें</button>
+</header>
+
+<div role="toolbar" aria-label="टूल" style="display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding: 4px 12px; background: #FFFFFF; border-bottom: 1px solid #D9DDE3">
+<button type="button" class="tb" aria-pressed="true" style="background: #E8EFFC; border-color: #1F5FD6"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 2l10 7-5 1-2 5z" fill="none" stroke="#16181D" stroke-width="1.6"></path></svg>चुनें · V</button>
+<button type="button" class="tb"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 4h12M9 4v11" stroke="#16181D" stroke-width="1.8"></path></svg>टेक्स्ट · T</button>
+<button type="button" class="tb"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="2" y="3" width="14" height="12" rx="2" fill="none" stroke="#16181D" stroke-width="1.6"></rect><path d="M3 13l4-4 3 3 2-2 3 3" fill="none" stroke="#16181D" stroke-width="1.6"></path></svg>फोटो · P</button>
+<button type="button" class="tb"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="3" y="3" width="12" height="12" fill="#FDF1E7" stroke="#16181D" stroke-width="1.6"></rect></svg>बॉक्स · B</button>
+<button type="button" class="tb"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h14" stroke="#16181D" stroke-width="2"></path></svg>रेखा · L</button>
+<span class="sep" aria-hidden="true"></span>
+<button type="button" class="tb" aria-label="बाएँ संरेखित करें"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 2v14M5 5h9M5 11h6" stroke="#16181D" stroke-width="1.8"></path></svg>बाएँ</button>
+<button type="button" class="tb" aria-label="बीच में संरेखित करें"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v14M4 5h10M6 11h6" stroke="#16181D" stroke-width="1.8"></path></svg>बीच</button>
+<button type="button" class="tb" aria-label="दाएँ संरेखित करें"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M15 2v14M4 5h9M7 11h6" stroke="#16181D" stroke-width="1.8"></path></svg>दाएँ</button>
+<button type="button" class="tb" aria-label="बराबर दूरी पर बाँटें"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="2" y="5" width="3" height="8" fill="#16181D"></rect><rect x="7.5" y="5" width="3" height="8" fill="#16181D"></rect><rect x="13" y="5" width="3" height="8" fill="#16181D"></rect></svg>बराबर</button>
+<span class="sep" aria-hidden="true"></span>
+<button type="button" class="tb" aria-label="ज़ूम घटाएँ"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10" stroke="#16181D" stroke-width="2"></path></svg>छोटा</button>
+<span style="min-width: 52px; text-align: center; font-size: 13px; font-family: 'IBM Plex Sans', sans-serif">100%</span>
+<button type="button" class="tb" aria-label="ज़ूम बढ़ाएँ"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M9 4v10" stroke="#16181D" stroke-width="2"></path></svg>बड़ा</button>
+<button type="button" class="tb">पूरा पृष्ठ</button>
+<span class="sep" aria-hidden="true"></span>
+<label class="chip" style="cursor: pointer"><input type="checkbox" checked style="width: 18px; height: 18px"> कॉलम पर चिपके</label>
+<label class="chip" style="cursor: pointer"><input type="checkbox" checked style="width: 18px; height: 18px"> रूलर व गाइड</label>
+<div style="flex: 1 1 10px"></div>
+<button type="button" class="tb" aria-label="पूर्ववत करें"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M6 4L2 8l4 4M2 8h9a5 5 0 010 10" fill="none" stroke="#16181D" stroke-width="1.6"></path></svg>वापस · Ctrl Z</button>
+<button type="button" class="tb" aria-label="फिर से करें"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M12 4l4 4-4 4M16 8H7a5 5 0 000 10" fill="none" stroke="#16181D" stroke-width="1.6"></path></svg>आगे · Ctrl Y</button>
+</div>
+
+<div style="flex: 1 1 auto; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<aside aria-label="एसेट और परतें" style="flex: 1 1 260px; max-width: 300px; min-width: 0; background: #FFFFFF; border-right: 1px solid #D9DDE3; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<section>
+<h2 class="ph">1. एसेट चुनें</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{tray}}" as="t" hint-placeholder-count="6">
+<sc-if value="{{t.active}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" onClick="{{t.pick}}" style="min-height: 48px; padding: 6px 8px; border: 2px solid #1F5FD6; border-radius: 8px; background: #E8EFFC; color: #174AA8; font-size: 12px; font-weight: 600; text-align: left">{{t.name}}</button>
+</sc-if>
+<sc-if value="{{t.idle}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" onClick="{{t.pick}}" style="min-height: 48px; padding: 6px 8px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF; color: #16181D; font-size: 12px; text-align: left">{{t.name}}</button>
+</sc-if>
+</sc-for>
+</div>
+<p style="margin: 8px 0 0 0; font-size: 12px; line-height: 1.5; color: #3B414B">2. फिर पृष्ठ पर नीला “यहाँ रखें” दबाएँ — फोटो के ऊपर, बॉक्स के अंदर या पृष्ठ पर। माउस से खींचना भी चलेगा।</p>
+</section>
+
+<section>
+<h2 class="ph">परतें (ऊपर वाली आगे)</h2>
+<ul role="tree" aria-label="परतें" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{layers}}" as="l" hint-placeholder-count="5">
+<li role="treeitem" aria-level="{{l.level}}" aria-selected="{{l.sel}}" style="display: flex; align-items: center; gap: 4px; padding-left: {{l.indent}}px; border-radius: 6px; background: {{l.bg}}">
+<button type="button" onClick="{{l.select}}" style="flex: 1 1 auto; min-height: 36px; padding: 0 6px; border: 0; background: transparent; text-align: left; font-size: 13px; color: #16181D">{{l.icon}} {{l.name}}</button>
+<sc-if value="{{l.canOut}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{l.out}}" aria-label="बाहर निकालें" style="min-height: 32px; padding: 0 6px; border: 1px solid #C9CED6; border-radius: 6px; background: #FFFFFF; font-size: 11px">बाहर</button>
+</sc-if>
+<sc-if value="{{l.canDel}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{l.del}}" aria-label="हटाएँ" style="width: 32px; min-height: 32px; border: 1px solid #C9CED6; border-radius: 6px; background: #FFFFFF; font-size: 13px">×</button>
+</sc-if>
+</li>
+</sc-for>
+</ul>
+</section>
+</aside>
+
+<main aria-label="पृष्ठ कैनवास" style="flex: 999 1 560px; min-width: 0; display: grid; grid-template-columns: 26px minmax(0, 1fr); grid-template-rows: 26px minmax(0, 1fr); background: #E9EBEF">
+<button type="button" aria-label="माप की इकाई: मिलीमीटर" style="border: 0; border-right: 1px solid #C9CED6; border-bottom: 1px solid #C9CED6; background: #F7F8FA; font-size: 9px; padding: 0">मिमी</button>
+<div aria-hidden="true" style="position: relative; overflow: hidden; background-color: #F7F8FA; border-bottom: 1px solid #C9CED6; background-image: repeating-linear-gradient(90deg, #9AA1AC 0, #9AA1AC 1px, transparent 1px, transparent 11.07px); background-size: 100% 6px; background-repeat: no-repeat; background-position: 24px 100%">
+<sc-for list="{{rulerX}}" as="r" hint-placeholder-count="14">
+<div style="position: absolute; left: {{r.pos}}px; bottom: 0; height: 14px; border-left: 1px solid #5B6270; padding-left: 2px; font-size: 9px; font-family: 'IBM Plex Sans', sans-serif; color: #3B414B">{{r.mm}}</div>
+</sc-for>
+<div style="position: absolute; left: {{guideX}}px; top: 0; bottom: 0; width: 0; border-left: 2px solid #0891B2"></div>
+</div>
+<div aria-hidden="true" style="position: relative; overflow: hidden; background-color: #F7F8FA; border-right: 1px solid #C9CED6; background-image: repeating-linear-gradient(180deg, #9AA1AC 0, #9AA1AC 1px, transparent 1px, transparent 11.07px); background-size: 6px 100%; background-repeat: no-repeat; background-position: 100% 24px">
+<sc-for list="{{rulerY}}" as="r" hint-placeholder-count="16">
+<div style="position: absolute; top: {{r.pos}}px; right: 0; width: 14px; border-top: 1px solid #5B6270; font-size: 9px; font-family: 'IBM Plex Sans', sans-serif; color: #3B414B; writing-mode: vertical-rl; padding-top: 2px">{{r.mm}}</div>
+</sc-for>
+</div>
+
+<div style="position: relative; overflow: auto; padding: 24px">
+<div style="position: relative; width: 620px; min-height: 700px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(22,24,29,0.12), 0 8px 24px rgba(22,24,29,0.08); padding: 22px 24px; box-sizing: border-box">
+<div aria-hidden="true" style="position: absolute; top: 0; bottom: 0; left: 24px; right: 24px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 10px; pointer-events: none">
+<div style="background: rgba(236,72,153,0.05); border-left: 1px solid rgba(236,72,153,0.25); border-right: 1px solid rgba(236,72,153,0.25)"></div>
+<div style="background: rgba(236,72,153,0.05); border-left: 1px solid rgba(236,72,153,0.25); border-right: 1px solid rgba(236,72,153,0.25)"></div>
+<div style="background: rgba(236,72,153,0.05); border-left: 1px solid rgba(236,72,153,0.25); border-right: 1px solid rgba(236,72,153,0.25)"></div>
+<div style="background: rgba(236,72,153,0.05); border-left: 1px solid rgba(236,72,153,0.25); border-right: 1px solid rgba(236,72,153,0.25)"></div>
+<div style="background: rgba(236,72,153,0.05); border-left: 1px solid rgba(236,72,153,0.25); border-right: 1px solid rgba(236,72,153,0.25)"></div>
+</div>
+<div aria-hidden="true" style="position: absolute; left: {{guideXPage}}px; top: 0; bottom: 0; border-left: 1px dashed #0891B2; pointer-events: none"></div>
+<div aria-hidden="true" style="position: absolute; left: {{guideXPage}}px; top: 6px; margin-left: 4px; padding: 1px 6px; background: #0891B2; color: #FFFFFF; font-size: 10px; font-family: 'IBM Plex Sans', sans-serif">गाइड {{guideMm}} मिमी</div>
+
+<div style="position: relative; text-align: center; font-family: 'Tiro Devanagari Hindi', serif; font-size: 40px; line-height: 1.1">जनशक्ति उजाला</div>
+<div style="position: relative; height: 3px; background: #1E3A8A; margin: 6px 0 12px 0"></div>
+<div style="position: relative; font-size: 12px; font-weight: 700; color: #B42318">राष्ट्रीय चिंता | सड़क सुरक्षा</div>
+<div style="position: relative; font-family: 'Rozha One', serif; font-size: 28px; line-height: 1.2; margin-bottom: 10px">सड़क हादसों पर लगाम कब?</div>
+
+<div style="position: relative; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 14px">
+<div style="font-size: 11px; line-height: 1.6; text-align: justify">देश में लगातार सामने आ रहे सड़क हादसे अब राष्ट्रीय चिंता का विषय बन चुके हैं। भीड़ वाले स्थलों के पास तेज़ रफ़्तार वाहनों ने लोगों को चपेट में लिया। हर घटना के बाद जाँच के आदेश होते हैं, पर सड़क पर हालात नहीं बदलते। विशेषज्ञ प्रतिबंधित मार्गों पर भारी वाहनों के प्रवेश को सबसे बड़ा कारण मानते हैं।</div>
+
+<div style="position: relative; height: 230px; background: #C9CED6; outline: {{photoOutline}}; outline-offset: 3px">
+<div style="position: absolute; top: 8px; left: 8px; font-size: 11px; color: #3B414B">फोटो</div>
+<div style="position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end">
+<sc-for list="{{photoKids}}" as="k" hint-placeholder-count="1">
+<button type="button" onClick="{{k.select}}" aria-label="{{k.name}}" style="border: 0; padding: 0; background: transparent"><span style="{{k.style}};">{{k.text}}</span></button>
+</sc-for>
+</div>
+<sc-if value="{{pending}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{dropPhoto}}" style="position: absolute; top: 8px; right: 8px; min-height: 40px; padding: 0 12px; border: 2px dashed #FFFFFF; border-radius: 8px; background: #1F5FD6; color: #FFFFFF; font-size: 12px; font-weight: 600">यहाँ रखें: फोटो के ऊपर</button>
+</sc-if>
+</div>
+</div>
+
+<div style="position: relative; margin-top: 14px; background: #FDF1E7; border-top: 3px solid #C2410C; padding: 10px 12px; outline: {{boxOutline}}; outline-offset: 3px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<div style="font-size: 14px; font-weight: 700; color: #9A3412">संक्षेप में</div>
+<div style="flex: 1 1 auto"></div>
+<sc-if value="{{pending}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{dropBox}}" style="min-height: 40px; padding: 0 12px; border: 2px dashed #FFFFFF; border-radius: 8px; background: #1F5FD6; color: #FFFFFF; font-size: 12px; font-weight: 600">यहाँ रखें: बॉक्स के अंदर</button>
+</sc-if>
+</div>
+<div style="font-size: 11px; line-height: 1.55; margin-top: 4px">• 175 कार्यों की हर माह समीक्षा · • मार्च 2027 तक घाट पूरे</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px">
+<sc-for list="{{boxKids}}" as="k" hint-placeholder-count="0">
+<button type="button" onClick="{{k.select}}" aria-label="{{k.name}}" style="border: 0; padding: 0; background: transparent"><span style="{{k.style}};">{{k.text}}</span></button>
+</sc-for>
+</div>
+</div>
+
+<div style="position: relative; margin-top: 14px; min-height: 70px; border: 1.5px dashed #B9BFC8; padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="font-size: 11px; color: #5B6270">पृष्ठ पर खाली जगह</span>
+<sc-for list="{{pageKids}}" as="k" hint-placeholder-count="0">
+<button type="button" onClick="{{k.select}}" aria-label="{{k.name}}" style="border: 0; padding: 0; background: transparent"><span style="{{k.style}};">{{k.text}}</span></button>
+</sc-for>
+<sc-if value="{{pending}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{dropPage}}" style="min-height: 40px; padding: 0 12px; border: 2px dashed #FFFFFF; border-radius: 8px; background: #1F5FD6; color: #FFFFFF; font-size: 12px; font-weight: 600">यहाँ रखें: पृष्ठ पर</button>
+</sc-if>
+</div>
+</div>
+</div>
+</main>
+
+<aside aria-label="गुण" style="flex: 1 1 260px; max-width: 300px; min-width: 0; background: #FFFFFF; border-left: 1px solid #D9DDE3; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<div>
+<div style="font-size: 12px; color: #5B6270">चुना हुआ</div>
+<div style="font-size: 16px; font-weight: 600">{{selName}}</div>
+<div style="font-size: 12px; color: #3B414B; margin-top: 2px">किसके अंदर: {{selParent}}</div>
+</div>
+
+<sc-if value="{{selMovable}}" hint-placeholder-val="{{true}}">
+<section>
+<h2 class="ph">इसे कहाँ रखें (बिना खींचे)</h2>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<button type="button" onClick="{{moveToPhoto}}" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF; text-align: left; padding: 0 12px">फोटो के ऊपर</button>
+<button type="button" onClick="{{moveToBox}}" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF; text-align: left; padding: 0 12px">रंगीन बॉक्स के अंदर</button>
+<button type="button" onClick="{{moveToPage}}" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF; text-align: left; padding: 0 12px">पृष्ठ पर अलग से</button>
+</div>
+</section>
+</sc-if>
+
+<section>
+<h2 class="ph">खिसकाएँ (1 मिमी · Shift से 5 मिमी)</h2>
+<div style="display: grid; grid-template-columns: repeat(3, 44px); gap: 4px; justify-content: start">
+<span></span><button type="button" aria-label="ऊपर खिसकाएँ" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF">↑</button><span></span>
+<button type="button" aria-label="बाएँ खिसकाएँ" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF">←</button><button type="button" aria-label="नीचे खिसकाएँ" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF">↓</button><button type="button" aria-label="दाएँ खिसकाएँ" style="min-height: 44px; border: 1px solid #C9CED6; border-radius: 8px; background: #FFFFFF">→</button>
+</div>
+</section>
+
+<section>
+<h2 class="ph">आकार और स्थान</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #3B414B">X (मिमी)<input type="text" value="104" style="height: 38px; padding: 0 10px; border: 1px solid #9AA1AC; border-radius: 6px"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #3B414B">Y (मिमी)<input type="text" value="62" style="height: 38px; padding: 0 10px; border: 1px solid #9AA1AC; border-radius: 6px"></label>
+</div>
+</section>
+
+<details style="border-top: 1px solid #E3E6EA; padding-top: 10px">
+<summary style="min-height: 36px; cursor: pointer; font-size: 13px; font-weight: 600">और विकल्प (रैप, मार्जिन, पारदर्शिता)</summary>
+<p style="font-size: 12px; color: #3B414B; line-height: 1.5; margin: 6px 0 0 0">कम इस्तेमाल होने वाले विकल्प यहाँ छिपे रहते हैं ताकि पैनल साफ़ दिखे।</p>
+</details>
+
+<div role="status" aria-live="polite" style="margin-top: auto; padding: 10px 12px; border-radius: 8px; background: #EEF0F3; font-size: 12px; line-height: 1.5; color: #16181D">{{msg}}</div>
+</aside>
+</div>
+
+<footer style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 6px 16px; background: #FFFFFF; border-top: 1px solid #D9DDE3; font-size: 12px; color: #3B414B">
+<span style="font-family: 'IBM Plex Sans', sans-serif">X 104 · Y 62 मिमी</span>
+<span>5 कॉलम · गटर 4 मिमी</span>
+<span style="display: inline-flex; align-items: center; gap: 4px; color: #146C43"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6l3 3 5-6" fill="none" stroke="#146C43" stroke-width="2"></path></svg>सारा टेक्स्ट पढ़ने योग्य (कॉन्ट्रास्ट ठीक)</span>
+<div style="flex: 1 1 10px"></div>
+<button type="button" class="chip">अक्षर बड़े: A+</button>
+<button type="button" class="chip">हाई कॉन्ट्रास्ट</button>
+<button type="button" class="chip">कीबोर्ड शॉर्टकट (?)</button>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const items = s.items ?? [
+      { id: 'photo', name: 'फोटो – सड़क हादसा', parent: 'page', kind: 'photo' },
+      { id: 'box', name: 'रंगीन बॉक्स – संक्षेप में', parent: 'page', kind: 'box' },
+      { id: 's1', name: 'स्टिकर “ताज़ा”', parent: 'photo', kind: 'sticker', text: 'ताज़ा' }
+    ];
+    const selected = s.selected ?? 's1';
+    const pending = s.pending ?? null;
+    const counter = s.counter ?? 1;
+    const msg = s.msg ?? 'बाईं ओर से कोई एसेट चुनें, फिर नीला “यहाँ रखें” दबाएँ।';
+    const trayDefs = [
+      { id: 'sticker', name: 'स्टिकर “ताज़ा”', text: 'ताज़ा' },
+      { id: 'caption', name: 'कैप्शन पट्टी', text: 'घटनास्थल पर भीड़ · फोटो: संवाददाता' },
+      { id: 'stat', name: 'बड़ा आँकड़ा', text: '29 घायल' },
+      { id: 'logo', name: 'सिग / बग', text: 'सड़क सुरक्षा' },
+      { id: 'qr', name: 'QR कोड', text: 'QR' },
+      { id: 'mug', name: 'मग शॉट', text: '' }
+    ];
+    const styles = {
+      sticker: 'display:inline-block;background:#B42318;color:#FFFFFF;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;transform:rotate(-5deg)',
+      caption: 'display:block;background:rgba(22,24,29,0.85);color:#FFFFFF;font-size:11px;padding:4px 8px',
+      stat: 'display:inline-block;background:#FFFFFF;color:#1E3A8A;font-family:Rozha One,serif;font-size:22px;line-height:1.1;padding:2px 8px;border:2px solid #1E3A8A',
+      logo: 'display:inline-block;background:#16181D;color:#FFFFFF;font-size:11px;font-weight:700;padding:3px 8px',
+      qr: 'display:inline-block;width:42px;height:42px;background-color:#FFFFFF;background-image:linear-gradient(90deg,#16181D 50%,transparent 50%),linear-gradient(#16181D 50%,transparent 50%);background-size:8px 8px;border:3px solid #FFFFFF;font-size:0',
+      mug: 'display:inline-block;width:44px;height:44px;border-radius:50%;background:#7C838F;border:2px solid #FFFFFF;font-size:0'
+    };
+    const placeNames = { page: 'पृष्ठ', photo: 'फोटो', box: 'रंगीन बॉक्स' };
+    const byId = (id) => items.find((i) => i.id === id);
+    const place = (target) => {
+      const def = trayDefs.find((d) => d.id === pending);
+      if (!def) return;
+      const id = 'n' + counter;
+      const next = items.concat([{ id: id, name: def.name, parent: target, kind: def.id, text: def.text }]);
+      this.setState({ items: next, pending: null, selected: id, counter: counter + 1, msg: def.name + ' को ' + placeNames[target] + (target === 'photo' ? ' के ऊपर' : target === 'box' ? ' के अंदर' : ' पर') + ' रखा गया।' });
+    };
+    const move = (target) => {
+      const it = byId(selected);
+      if (!it || it.id === 'photo' || it.id === 'box') return;
+      const next = items.map((i) => (i.id === selected ? Object.assign({}, i, { parent: target }) : i));
+      this.setState({ items: next, msg: it.name + ' अब ' + placeNames[target] + ' में है।' });
+    };
+    const kidOf = (parent) => items
+      .filter((i) => i.parent === parent && i.id !== 'photo' && i.id !== 'box')
+      .map((i) => ({
+        name: i.name,
+        text: i.text,
+        style: styles[i.kind] + (i.id === selected ? ';outline:3px solid #1F5FD6;outline-offset:3px' : ''),
+        select: () => this.setState({ selected: i.id, msg: i.name + ' चुना गया।' })
+      }));
+    const icons = { photo: '▣', box: '▢', sticker: '●', caption: '▬', stat: '#', logo: '◆', qr: '▦', mug: '◉' };
+    const layerRow = (i, level) => ({
+      name: i.name,
+      icon: icons[i.kind] ?? '•',
+      level: level,
+      indent: 4 + (level - 1) * 18,
+      sel: i.id === selected,
+      bg: i.id === selected ? '#E8EFFC' : 'transparent',
+      canOut: level === 3,
+      canDel: i.id !== 'photo' && i.id !== 'box',
+      select: () => this.setState({ selected: i.id, msg: i.name + ' चुना गया।' }),
+      out: () => this.setState({ items: items.map((x) => (x.id === i.id ? Object.assign({}, x, { parent: 'page' }) : x)), msg: i.name + ' को बाहर पृष्ठ पर निकाला गया।' }),
+      del: () => this.setState({ items: items.filter((x) => x.id !== i.id), selected: 'photo', msg: i.name + ' हटाया गया। Ctrl Z से वापस लाएँ।' })
+    });
+    const layers = [];
+    const loose = items.filter((i) => i.parent === 'page' && i.id !== 'photo' && i.id !== 'box');
+    loose.slice().reverse().forEach((i) => layers.push(layerRow(i, 2)));
+    ['box', 'photo'].forEach((cid) => {
+      const c = byId(cid);
+      if (!c) return;
+      layers.push(layerRow(c, 2));
+      items.filter((i) => i.parent === cid).slice().reverse().forEach((k) => layers.push(layerRow(k, 3)));
+    });
+    const tray = trayDefs.map((d) => ({
+      name: d.name,
+      active: pending === d.id,
+      idle: pending !== d.id,
+      pick: () => this.setState({ pending: pending === d.id ? null : d.id, msg: pending === d.id ? 'चयन हटाया।' : d.name + ' चुना। अब पृष्ठ पर नीला “यहाँ रखें” दबाएँ।' })
+    }));
+    const sel = byId(selected) ?? byId('photo');
+    const scale = 2.214;
+    const origin = 24;
+    const rulerX = [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280].map((mm) => ({ mm: mm, pos: Math.round(origin + mm * scale) }));
+    const rulerY = [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320].map((mm) => ({ mm: mm, pos: Math.round(origin + mm * scale) }));
+    const guideMm = 104;
+    return {
+      tray: tray,
+      layers: layers,
+      pending: pending !== null,
+      dropPhoto: () => place('photo'),
+      dropBox: () => place('box'),
+      dropPage: () => place('page'),
+      photoKids: kidOf('photo'),
+      boxKids: kidOf('box'),
+      pageKids: kidOf('page'),
+      photoOutline: selected === 'photo' ? '3px solid #1F5FD6' : '0 solid transparent',
+      boxOutline: selected === 'box' ? '3px solid #1F5FD6' : '0 solid transparent',
+      selName: sel ? sel.name : '—',
+      selParent: sel ? (placeNames[sel.parent] ?? '—') : '—',
+      selMovable: !!sel && sel.id !== 'photo' && sel.id !== 'box',
+      moveToPhoto: () => move('photo'),
+      moveToBox: () => move('box'),
+      moveToPage: () => move('page'),
+      msg: msg,
+      rulerX: rulerX,
+      rulerY: rulerY,
+      guideMm: guideMm,
+      guideX: Math.round(origin + guideMm * scale),
+      guideXPage: Math.round(guideMm * scale)
+    };
+  }
+}
+</script>
+</body>
+</html>

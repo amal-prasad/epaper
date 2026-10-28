@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>स्टूडियो — इस स्टेप की मदद (फ़ोन)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5FD6}
+button,textarea{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #B45309;outline-offset:2px}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAF6EE; font-family: 'Noto Sans Devanagari', sans-serif; color: #1C1B1A; font-size: 16px; line-height: 1.55; overflow: hidden">
+
+<!-- the screen behind: "खबरें भरें" step -->
+<div aria-hidden="true" style="display: flex; flex-direction: column; height: 100%">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #FFFFFF; border-bottom: 1px solid #E3DCCB">
+<div style="width: 44px; height: 44px"></div>
+<div style="font-weight: 700; font-size: 17px">खबरें भरें · 4 में से 2</div>
+</div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="font-weight: 700; font-size: 20px">खबर चिपकाइए या लिखिए</div>
+<div style="height: 120px; border: 2px solid #8A8577; border-radius: 12px; background: #FFFFFF; padding: 12px; color: #5A554B">यहाँ खबर चिपकाएँ…</div>
+<div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E3DCCB; font-weight: 600">सड़क हादसों पर लगाम कब, ज़िम्मेदारी किसकी?</div>
+</div>
+</div>
+
+<!-- scrim -->
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(28,27,26,.55)"></div>
+
+<!-- bottom sheet -->
+<section role="dialog" aria-modal="true" aria-labelledby="hs" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 24px 24px 0 0; padding: 10px 20px 20px 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 -6px 20px rgba(28,27,26,.22)">
+<div aria-hidden="true" style="align-self: center; width: 44px; height: 5px; border-radius: 3px; background: #CFC6B2"></div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
+<div>
+<h2 id="hs" style="margin: 0; font-size: 20px; line-height: 1.3; font-weight: 700">इस स्टेप की मदद</h2>
+<div style="font-size: 15px; color: #3B3A36">खबरें जोड़ना</div>
+</div>
+<button type="button" aria-label="बंद करें" style="width: 44px; height: 44px; margin: -6px -8px 0 0; border: 0; border-radius: 50%; background: #F3EDE0"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10 M14 4L4 14" fill="none" stroke="#1C1B1A" stroke-width="2"></path></svg></button>
+</div>
+
+<button type="button" aria-label="वीडियो देखें: खबर कैसे जोड़ें, 1 मिनट" style="position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 176px; padding: 0; border: 0; border-radius: 14px; background: #2A2926; overflow: hidden">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4l10 6-10 6z" fill="#1C1B1A"></path></svg></span>
+<span style="position: absolute; right: 10px; bottom: 10px; padding: 1px 8px; border-radius: 6px; background: #FFFFFF; color: #1C1B1A; font-size: 14px; font-weight: 600">1 मिनट</span>
+</button>
+
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<li style="display: flex; gap: 12px; align-items: flex-start">
+<span style="flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: #E8F0FD; color: #174AA8; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px" aria-hidden="true">1</span>
+<span style="font-size: 16px">खबर चिपकाइए। पुराने फ़ॉन्ट का टेक्स्ट हो तो सही हिंदी में बदलने का सुझाव आएगा।</span>
+</li>
+<li style="display: flex; gap: 12px; align-items: flex-start">
+<span style="flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: #E8F0FD; color: #174AA8; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px" aria-hidden="true">2</span>
+<span style="font-size: 16px">हर खबर के लिए "स्रोत और अनुमति" चुनिए। बिना इसके खबर पन्ने पर नहीं लगेगी।</span>
+</li>
+<li style="display: flex; gap: 12px; align-items: flex-start">
+<span style="flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: #E8F0FD; color: #174AA8; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px" aria-hidden="true">3</span>
+<span style="font-size: 16px">WhatsApp से आई खबरें इसी सूची में दिखेंगी।</span>
+</li>
+</ol>
+
+<div style="display: flex; flex-direction: column; gap: 6px; margin-top: 2px">
+<button type="button" data-ux="primary" style="width: 100%; min-height: 56px; border: 0; border-radius: 12px; background: #146C43; color: #FFFFFF; font-weight: 700; font-size: 18px">WhatsApp पर पूछें</button>
+<button type="button" style="width: 100%; min-height: 48px; border: 0; background: transparent; color: #3B3A36; font-weight: 600; font-size: 16px; text-decoration: underline">बंद करें</button>
+</div>
+<a href="#" data-ux="help" style="align-self: center; min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; color: #174AA8">सभी वीडियो और सरल शब्द देखें</a>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

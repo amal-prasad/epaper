@@ -1,0 +1,11 @@
+{
+  "baseUrl": "fixture",
+  "note": "baseUrl 'fixture' serves harness/ux/fixture over a local server. Phase 1: set baseUrl to the running dev server (e.g. http://localhost:3000) and list every Easy-mode route.",
+  "routes": [
+    { "name": "fixture-home", "path": "/index.html", "viewports": ["phone", "desktop"] }
+  ],
+  "viewports": {
+    "phone":   { "width": 360,  "height": 740, "minTarget": 44, "minBodyPx": 18 },
+    "desktop": { "width": 1280, "height": 800, "minTarget": 32, "minBodyPx": 16 }
+  }
+}

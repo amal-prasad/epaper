@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>कॉलम और फ़ॉन्ट</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&amp;family=Yatra+One&amp;family=Khand:wght@600&amp;family=Teko:wght@600&amp;family=Eczar:wght@700&amp;family=Tiro+Devanagari+Hindi&amp;family=Noto+Serif+Devanagari:wght@400;700&amp;family=Martel:wght@400;800&amp;family=Sahitya:wght@400;700&amp;family=Mukta:wght@400;700&amp;family=Hind:wght@400;600&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Kalam:wght@400;700&amp;family=Amita:wght@400;700&amp;family=Laila:wght@400;700&amp;family=Baloo+2:wght@500;700&amp;family=Kurale&amp;family=Modak&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EEF0F3}
+a{color:#1F5FD6}a:hover{color:#174AA8}
+button{font:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1060px; display: flex; flex-wrap: wrap; align-items: stretch; font-family: 'Noto Sans Devanagari', sans-serif; color: #16181D; font-size: 14px; background: #EEF0F3">
+
+<aside style="flex: 1 1 300px; max-width: 340px; min-width: 0; background: #FFFFFF; border-right: 1px solid #D9DDE3; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+<div>
+<div style="font-size: 12px; color: #5B6270">चयनित खबर</div>
+<h1 style="margin: 2px 0 0 0; font-size: 20px; font-weight: 700; line-height: 1.3">सड़क हादसों पर लगाम कब</h1>
+</div>
+
+<div>
+<div style="font-size: 12px; color: #3B414B; margin-bottom: 6px">खबर के अंदर कॉलम</div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid #C9CED6; border-radius: 8px; overflow: hidden">
+<sc-for list="{{colBtns}}" as="b" hint-placeholder-count="6">
+<sc-if value="{{b.active}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" onClick="{{b.pick}}" style="min-height: 44px; border: 0; background: #16181D; color: #FFFFFF; font-weight: 700">{{b.label}}</button>
+</sc-if>
+<sc-if value="{{b.idle}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" onClick="{{b.pick}}" style="min-height: 44px; border: 0; background: #FFFFFF; color: #16181D">{{b.label}}</button>
+</sc-if>
+</sc-for>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #3B414B">पृष्ठ पर चौड़ाई<input type="text" value="5 में से 3 कॉलम" style="height: 38px; padding: 0 10px; border: 1px solid #C9CED6; border-radius: 6px"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #3B414B">गटर (मिमी)<input type="text" value="4" style="height: 38px; padding: 0 10px; border: 1px solid #C9CED6; border-radius: 6px"></label>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<label style="display: flex; align-items: center; gap: 8px"><input type="checkbox" checked="{{rule}}" onChange="{{toggleRule}}" style="width: 18px; height: 18px"> कॉलम के बीच रेखा</label>
+<label style="display: flex; align-items: center; gap: 8px"><input type="checkbox" checked style="width: 18px; height: 18px"> हेडलाइन सभी कॉलम के ऊपर</label>
+<label style="display: flex; align-items: center; gap: 8px"><input type="checkbox" style="width: 18px; height: 18px"> पहला पैराग्राफ़ बड़ा (इंट्रो)</label>
+<label style="display: flex; align-items: center; gap: 8px"><input type="checkbox" style="width: 18px; height: 18px"> अलग चौड़ाई (बास्टर्ड माप)</label>
+</div>
+
+<div>
+<div style="font-size: 12px; color: #3B414B; margin-bottom: 6px">टेक्स्ट स्टाइल (पूरे अख़बार में एक जैसे)</div>
+<div style="display: flex; flex-direction: column; border: 1px solid #D9DDE3; border-radius: 8px; overflow: hidden; font-size: 13px">
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #E3E6EA"><span>किकर</span><span style="color: #5B6270">{{headName}} · 11 pt लाल</span></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #E3E6EA; background: #E8EFFC"><span style="font-weight: 600">हेडलाइन</span><span style="color: #174AA8">{{headName}} · 30 pt</span></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #E3E6EA"><span>डेक</span><span style="color: #5B6270">{{bodyName}} · 14 pt</span></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #E3E6EA"><span>बॉडी</span><span style="color: #5B6270">{{bodyName}} · 9.5 pt</span></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px"><span>कैप्शन</span><span style="color: #5B6270">Mukta · 8 pt</span></div>
+</div>
+</div>
+</aside>
+
+<main style="flex: 999 1 520px; min-width: 0; padding: 28px 24px; box-sizing: border-box">
+<div style="font-size: 12px; color: #3B414B; margin-bottom: 10px">प्रीव्यू · {{colsLabel}} · हेडलाइन: {{headName}} · बॉडी: {{bodyName}}</div>
+<article style="max-width: 680px; background: #FFFFFF; padding: 26px 28px; box-shadow: 0 1px 3px rgba(22,24,29,0.12), 0 8px 24px rgba(22,24,29,0.08)">
+<div style="font-family: {{headCss}}; font-size: 15px; color: #B42318">राष्ट्रीय चिंता | सड़क सुरक्षा</div>
+<h2 style="margin: 4px 0 6px 0; font-family: {{headCss}}; font-weight: {{headWeight}}; font-size: 34px; line-height: 1.2">सड़क हादसों पर लगाम कब, ज़िम्मेदारी किसकी?</h2>
+<div style="font-family: {{bodyCss}}; font-size: 16px; line-height: 1.5; color: #3B414B; margin-bottom: 10px">विशेषज्ञ बोले – प्रतिबंधित मार्ग, नशा और रात की निगरानी सबसे बड़े कारण</div>
+<div style="height: 1px; background: #16181D; margin-bottom: 12px"></div>
+<div style="column-count: {{cols}}; column-gap: 18px; column-rule: {{ruleCss}}; font-family: {{bodyCss}}; font-size: 13px; line-height: 1.65; text-align: justify">
+<p style="margin: 0 0 8px 0">देश में लगातार सामने आ रहे सड़क हादसे अब राष्ट्रीय चिंता का विषय बन चुके हैं। प्रदेश के कई ज़िलों में बीते महीने भीड़ वाले धार्मिक स्थलों के पास तेज़ रफ़्तार वाहनों ने लोगों को चपेट में लिया।</p>
+<p style="margin: 0 0 8px 0">हर घटना के बाद जाँच के आदेश होते हैं, पर सड़क पर हालात नहीं बदलते। यातायात विशेषज्ञों का कहना है कि प्रतिबंधित मार्गों पर भारी वाहनों का प्रवेश सबसे बड़ा कारण है।</p>
+<p style="margin: 0 0 8px 0">नशे में वाहन चलाना और रात में निगरानी की कमी भी हादसों को बढ़ाती है। भीड़ वाले इलाकों में अस्थायी बैरिकेडिंग, सीसीटीवी और चालकों के लिए विश्राम नियम सख़्ती से लागू होने चाहिए।</p>
+<p style="margin: 0 0 8px 0">नागरिकों की भूमिका भी कम नहीं। हेलमेट, सीट बेल्ट और मोबाइल से दूरी जैसे छोटे कदम कई जानें बचा सकते हैं।</p>
+<p style="margin: 0">प्रशासन ने कहा है कि अगले सप्ताह से शहर के प्रमुख चौराहों पर विशेष अभियान चलेगा और नियम तोड़ने वालों पर तुरंत कार्रवाई होगी।</p>
+</div>
+</article>
+<p style="max-width: 680px; font-size: 12px; color: #3B414B; line-height: 1.55; margin: 12px 0 0 0">बाईं ओर कॉलम संख्या या दाईं ओर कोई फ़ॉन्ट चुनें — प्रीव्यू तुरंत बदलता है। सभी फ़ॉन्ट खुले लाइसेंस वाले Google Fonts हैं, इसलिए PDF में बिना लाइसेंस शुल्क के जुड़ते हैं।</p>
+</main>
+
+<aside style="flex: 1 1 320px; max-width: 380px; min-width: 0; background: #FFFFFF; border-left: 1px solid #D9DDE3; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 18px">फ़ॉन्ट</h2>
+
+<div>
+<div style="font-size: 12px; font-weight: 600; color: #3B414B; margin-bottom: 6px">हेडलाइन के लिए</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{headFonts}}" as="f" hint-placeholder-count="6">
+<sc-if value="{{f.active}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" onClick="{{f.pick}}" style="display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 48px; padding: 6px 12px; border: 2px solid #1F5FD6; border-radius: 8px; background: #E8EFFC; text-align: left"><span style="font-family: {{f.css}}; font-weight: {{f.weight}}; font-size: 20px">{{f.sample}}</span><span style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 11px; color: #174AA8">{{f.name}}</span></button>
+</sc-if>
+<sc-if value="{{f.idle}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" onClick="{{f.pick}}" style="display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 48px; padding: 6px 12px; border: 1px solid #D9DDE3; border-radius: 8px; background: #FFFFFF; text-align: left"><span style="font-family: {{f.css}}; font-weight: {{f.weight}}; font-size: 20px">{{f.sample}}</span><span style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 11px; color: #5B6270">{{f.name}}</span></button>
+</sc-if>
+</sc-for>
+</div>
+</div>
+
+<div>
+<div style="font-size: 12px; font-weight: 600; color: #3B414B; margin-bottom: 6px">बॉडी टेक्स्ट के लिए</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{bodyFonts}}" as="f" hint-placeholder-count="6">
+<sc-if value="{{f.active}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" onClick="{{f.pick}}" style="display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px; border: 2px solid #1F5FD6; border-radius: 8px; background: #E8EFFC; text-align: left"><span style="font-family: {{f.css}}; font-size: 15px">{{f.sample}}</span><span style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 11px; color: #174AA8">{{f.name}}</span></button>
+</sc-if>
+<sc-if value="{{f.idle}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" onClick="{{f.pick}}" style="display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px; border: 1px solid #D9DDE3; border-radius: 8px; background: #FFFFFF; text-align: left"><span style="font-family: {{f.css}}; font-size: 15px">{{f.sample}}</span><span style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 11px; color: #5B6270">{{f.name}}</span></button>
+</sc-if>
+</sc-for>
+</div>
+</div>
+
+<div>
+<div style="font-size: 12px; font-weight: 600; color: #3B414B; margin-bottom: 6px">त्योहार, स्कूल, विज्ञापन</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{funFonts}}" as="f" hint-placeholder-count="6">
+<button type="button" onClick="{{f.pick}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 56px; padding: 6px 10px; border: 1px solid #D9DDE3; border-radius: 8px; background: #FFFFFF; text-align: left"><span style="font-family: {{f.css}}; font-weight: {{f.weight}}; font-size: 18px">{{f.sample}}</span><span style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 11px; color: #5B6270">{{f.name}}</span></button>
+</sc-for>
+</div>
+</div>
+
+<div style="border: 1px dashed #9AA1AC; border-radius: 8px; padding: 12px; font-size: 12px; line-height: 1.55; color: #3B414B">
+<div style="font-weight: 600; color: #16181D; margin-bottom: 2px">अपना फ़ॉन्ट (TTF / OTF)</div>
+Unicode फ़ॉन्ट सीधे चलेंगे। Kruti Dev, Chanakya जैसे पुराने फ़ॉन्ट में टाइप टेक्स्ट पेस्ट करते ही Unicode में बदलेगा।
+</div>
+</aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1060}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const cols = s.cols ?? 3;
+    const head = s.head ?? 'Rozha One';
+    const body = s.body ?? 'Noto Serif Devanagari';
+    const rule = s.rule ?? true;
+    const weights = { 'Khand': 600, 'Teko': 600, 'Eczar': 700, 'Martel': 800, 'Baloo 2': 700, 'Kalam': 700, 'Amita': 700, 'Laila': 700 };
+    const css = (name) => "'" + name + "', 'Noto Sans Devanagari', serif";
+    const make = (list, key, cur) => list.map((f) => ({
+      name: f.name,
+      sample: f.sample,
+      css: css(f.name),
+      weight: weights[f.name] ?? 400,
+      active: f.name === cur,
+      idle: f.name !== cur,
+      pick: () => this.setState({ [key]: f.name })
+    }));
+    const headFonts = make([
+      { name: 'Rozha One', sample: 'सड़क सुरक्षा' },
+      { name: 'Yatra One', sample: 'सड़क सुरक्षा' },
+      { name: 'Khand', sample: 'सड़क सुरक्षा' },
+      { name: 'Teko', sample: 'सड़क सुरक्षा' },
+      { name: 'Eczar', sample: 'सड़क सुरक्षा' },
+      { name: 'Tiro Devanagari Hindi', sample: 'सड़क सुरक्षा' }
+    ], 'head', head);
+    const bodyFonts = make([
+      { name: 'Noto Serif Devanagari', sample: 'देश में लगातार हादसे' },
+      { name: 'Martel', sample: 'देश में लगातार हादसे' },
+      { name: 'Sahitya', sample: 'देश में लगातार हादसे' },
+      { name: 'Mukta', sample: 'देश में लगातार हादसे' },
+      { name: 'Hind', sample: 'देश में लगातार हादसे' },
+      { name: 'Noto Sans Devanagari', sample: 'देश में लगातार हादसे' }
+    ], 'body', body);
+    const funFonts = make([
+      { name: 'Kalam', sample: 'शुभ दीपावली' },
+      { name: 'Amita', sample: 'शुभ दीपावली' },
+      { name: 'Laila', sample: 'शुभ दीपावली' },
+      { name: 'Baloo 2', sample: 'शुभ दीपावली' },
+      { name: 'Kurale', sample: 'शुभ दीपावली' },
+      { name: 'Modak', sample: 'शुभ दीपावली' }
+    ], 'head', head);
+    const colBtns = [1, 2, 3, 4, 5, 6].map((n) => ({
+      label: String(n),
+      active: n === cols,
+      idle: n !== cols,
+      pick: () => this.setState({ cols: n })
+    }));
+    return {
+      cols: cols,
+      colsLabel: cols + ' कॉलम',
+      colBtns: colBtns,
+      headFonts: headFonts,
+      bodyFonts: bodyFonts,
+      funFonts: funFonts,
+      headName: head,
+      bodyName: body,
+      headCss: css(head),
+      bodyCss: css(body),
+      headWeight: weights[head] ?? 400,
+      rule: rule,
+      ruleCss: rule ? '1px solid #C9CED6' : '0 solid transparent',
+      toggleRule: () => this.setState({ rule: !rule })
+    };
+  }
+}
+</script>
+</body>
+</html>

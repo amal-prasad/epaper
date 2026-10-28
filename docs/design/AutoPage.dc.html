@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>पत्रिका स्टूडियो — स्वतः अंक</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Rozha+One&amp;family=Tiro+Devanagari+Hindi&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F5F2}
+a{color:#1F5FD6}a:hover{color:#174AA8}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}
+.pill{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border:1px solid #C9CED6;border-radius:999px;background:#FFFFFF;color:#16181D;font-size:13px}
+.h3{margin:0 0 10px 0;font-size:15px;font-weight:700}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1000px; display: flex; flex-direction: column; font-family: 'Noto Sans Devanagari', sans-serif; color: #16181D; font-size: 14px; background: #F6F5F2">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 24px; background: #FFFFFF; border-bottom: 1px solid #E3E1DB">
+<div style="font-weight: 700; font-size: 17px">स्वतः अंक</div>
+<div style="color: #3B414B; font-size: 13px">जनशक्ति उजाला · अंक 8 · 28 अक्टूबर</div>
+<div style="flex: 1 1 20px"></div>
+<span class="pill">साप्ताहिक · 8 पृष्ठ</span>
+<span class="pill">इंदौर संस्करण</span>
+<button type="button" onClick="{{regen}}" style="min-height: 44px; padding: 0 16px; border: 1px solid #16181D; border-radius: 10px; background: #FFFFFF; font-weight: 600">बाकी फिर से बनाएँ</button>
+<a href="Guided.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 10px; background: #1F5FD6; color: #FFFFFF; text-decoration: none; font-weight: 600">आसान मोड में सजाएँ →</a>
+</header>
+
+<div style="flex: 1 1 auto; display: flex; flex-wrap: wrap; gap: 20px; padding: 20px 24px; align-items: flex-start">
+
+<aside aria-label="खबरों का इनबॉक्स" style="flex: 1 1 280px; max-width: 330px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 14px; padding: 16px; box-sizing: border-box">
+<h2 class="h3">1. आपकी खबरें</h2>
+<p style="margin: 0 0 12px 0; font-size: 12px; line-height: 1.55; color: #3B414B">सिर्फ़ आपके रिपोर्टरों की भेजी खबरें — WhatsApp, ऐप या ईमेल से। कहीं से कॉपी की गई सामग्री नहीं।</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{stories}}" as="st" hint-placeholder-count="5">
+<li style="border: 1px solid {{st.border}}; border-radius: 10px; padding: 10px; background: {{st.bg}}">
+<div style="display: flex; gap: 8px; align-items: flex-start">
+<input type="checkbox" checked="{{st.on}}" onChange="{{st.toggle}}" aria-label="{{st.aria}}" style="width: 20px; height: 20px; margin-top: 2px; flex: 0 0 20px">
+<div style="flex: 1 1 auto; min-width: 0">
+<div style="font-weight: 600; line-height: 1.35">{{st.title}}</div>
+<div style="font-size: 11.5px; color: #4A515C; margin-top: 2px">{{st.meta}}</div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px">
+<span style="font-size: 11px; padding: 2px 8px; border-radius: 999px; background: {{st.prioBg}}; color: {{st.prioFg}}">{{st.prio}}</span>
+<button type="button" onClick="{{st.lockToggle}}" aria-pressed="{{st.locked}}" style="min-height: 30px; padding: 0 10px; border: 1px solid #C9CED6; border-radius: 999px; background: {{st.lockBg}}; color: {{st.lockFg}}; font-size: 11px">{{st.lockLabel}}</button>
+</div>
+</li>
+</sc-for>
+</ul>
+<div style="margin-top: 12px; padding: 10px; border-radius: 10px; background: #F0FAF4; font-size: 12px; line-height: 1.5; color: #14532D">बुकिंग से आए 4 शुभकामना विज्ञापन और 1 सार्वजनिक सूचना अपने आप पृष्ठ 6 पर लगेंगे।</div>
+</aside>
+
+<main aria-label="पृष्ठ 1 के विकल्प" style="flex: 999 1 520px; min-width: 0">
+<h2 class="h3">2. पृष्ठ 1 के लिए 3 लेआउट — एक चुनें</h2>
+<div role="radiogroup" aria-label="लेआउट विकल्प" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px">
+<sc-for list="{{options}}" as="op" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{op.active}}" onClick="{{op.pick}}" style="flex: 1 1 150px; max-width: 190px; padding: 8px; border: {{op.border}}; border-radius: 12px; background: #FFFFFF; text-align: left">
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(8, 18px); gap: 3px; padding: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #E3E6EA">
+<sc-for list="{{op.blocks}}" as="bk" hint-placeholder-count="6">
+<div style="{{bk.area}}; {{bk.thumb}}"></div>
+</sc-for>
+</div>
+<div style="margin-top: 6px; font-weight: 700; font-size: 13px">{{op.name}}</div>
+<div style="font-size: 11.5px; color: #4A515C; line-height: 1.4">{{op.note}}</div>
+</button>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; padding: 18px; box-shadow: 0 1px 3px rgba(22,24,29,0.1), 0 8px 24px rgba(22,24,29,0.06); max-width: 640px">
+<div style="text-align: center; font-family: 'Tiro Devanagari Hindi', serif; font-size: 36px; line-height: 1.1">जनशक्ति उजाला</div>
+<div style="height: 3px; background: #1E3A8A; margin: 6px 0 10px 0"></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(8, 58px); gap: 8px">
+<sc-for list="{{preview}}" as="bk" hint-placeholder-count="6">
+<div style="{{bk.area}}; {{bk.big}}; position: relative; overflow: hidden; padding: 6px; box-sizing: border-box">
+<div style="font-size: {{bk.fs}}; font-weight: 700; line-height: 1.25; color: {{bk.fg}}; font-family: {{bk.ff}}">{{bk.label}}</div>
+<sc-if value="{{bk.locked}}" hint-placeholder-val="{{false}}">
+<span style="position: absolute; top: 4px; right: 4px; font-size: 10px; padding: 1px 6px; border-radius: 999px; background: #16181D; color: #FFFFFF">लॉक</span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</main>
+
+<aside aria-label="AI के बदलाव" style="flex: 1 1 300px; max-width: 360px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 14px; padding: 16px; box-sizing: border-box">
+<h2 class="h3">3. मशीन ने ये बदला — आप तय करें</h2>
+<p style="margin: 0 0 12px 0; font-size: 12px; line-height: 1.55; color: #3B414B">कुछ भी चुपचाप नहीं बदलता। हर बदलाव मंज़ूर करें या वापस लें।</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{changes}}" as="ch" hint-placeholder-count="5">
+<li style="border: 1px solid {{ch.border}}; border-radius: 10px; padding: 10px; background: {{ch.bg}}">
+<div style="font-weight: 600; font-size: 13px; line-height: 1.4">{{ch.title}}</div>
+<sc-if value="{{ch.hasDiff}}" hint-placeholder-val="{{false}}">
+<div style="margin-top: 6px; font-size: 12px; line-height: 1.5"><span style="text-decoration: line-through; color: #8C1D0F; background: #FDECEA">{{ch.before}}</span> <span style="color: #0F5132; background: #E7F5EC">{{ch.after}}</span></div>
+</sc-if>
+<div style="font-size: 11.5px; color: #4A515C; margin-top: 4px">{{ch.note}}</div>
+<div style="display: flex; gap: 6px; margin-top: 8px">
+<button type="button" onClick="{{ch.accept}}" aria-pressed="{{ch.isOk}}" style="flex: 1 1 0; min-height: 40px; border: 0; border-radius: 8px; background: {{ch.okBg}}; color: {{ch.okFg}}; font-weight: 600">{{ch.okLabel}}</button>
+<button type="button" onClick="{{ch.undo}}" aria-pressed="{{ch.isUndone}}" style="flex: 1 1 0; min-height: 40px; border: 1px solid #C9CED6; border-radius: 8px; background: {{ch.undoBg}}; color: #16181D">{{ch.undoLabel}}</button>
+</div>
+</li>
+</sc-for>
+</ul>
+<div role="status" aria-live="polite" style="margin-top: 12px; padding: 10px; border-radius: 10px; background: #EEF0F3; font-size: 12px">{{msg}}</div>
+</aside>
+</div>
+
+<footer aria-label="सभी पृष्ठ" style="padding: 12px 24px 18px 24px; background: #FFFFFF; border-top: 1px solid #E3E1DB">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<sc-for list="{{pages}}" as="pg" hint-placeholder-count="8">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px">
+<div style="width: 52px; height: 68px; border: {{pg.border}}; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">{{pg.n}}</div>
+<span style="font-size: 11px; color: {{pg.fg}}">{{pg.status}}</span>
+</div>
+</sc-for>
+<div style="flex: 1 1 20px"></div>
+<button type="button" style="min-height: 48px; padding: 0 18px; border: 0; border-radius: 10px; background: #146C43; color: #FFFFFF; font-weight: 700">सब ठीक — ई-पेपर और प्रेस PDF बनाएँ</button>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const opt = s.opt ?? 0;
+    const off = s.off ?? {};
+    const locks = s.locks ?? { s1: true };
+    const decisions = s.decisions ?? {};
+    const msg = s.msg ?? 'लेआउट चुनें। जो खबर जगह पर रखनी है उसे “इसी जगह रखें” करें, फिर “बाकी फिर से बनाएँ”।';
+    const storyDefs = [
+      { id: 's1', title: 'सड़क हादसों पर लगाम कब?', meta: 'WhatsApp · राजेश, इंदौर · 420 शब्द · 2 फोटो', prio: 'मुख्य खबर' },
+      { id: 's2', title: 'सिंधिया का पलटवार', meta: 'ऐप · ब्यूरो · 260 शब्द · 1 फोटो', prio: 'ज़रूरी' },
+      { id: 's3', title: 'सिंहस्थ: 175 कार्यों पर नज़र', meta: 'ईमेल · उज्जैन · 310 शब्द · 1 फोटो', prio: 'ज़रूरी' },
+      { id: 's4', title: 'नगर निगम बजट पास', meta: 'WhatsApp · Kruti Dev में टाइप · 180 शब्द', prio: 'सामान्य' },
+      { id: 's5', title: 'स्कूल खेल महोत्सव के नतीजे', meta: 'WhatsApp · प्रिया · 140 शब्द · 3 फोटो', prio: 'सामान्य' }
+    ];
+    const prioStyle = { 'मुख्य खबर': ['#1E3A8A', '#FFFFFF'], 'ज़रूरी': ['#FDF1E7', '#9A3412'], 'सामान्य': ['#EEF0F3', '#3B414B'] };
+    const stories = storyDefs.map((d) => {
+      const on = !off[d.id];
+      const locked = !!locks[d.id];
+      return {
+        title: d.title,
+        meta: d.meta,
+        prio: d.prio,
+        prioBg: prioStyle[d.prio][0],
+        prioFg: prioStyle[d.prio][1],
+        on: on,
+        locked: locked,
+        aria: d.title + ' को अंक में रखें',
+        border: locked ? '#1F5FD6' : '#E3E6EA',
+        bg: on ? '#FFFFFF' : '#F7F8FA',
+        lockLabel: locked ? 'इसी जगह रहेगी' : 'इसी जगह रखें',
+        lockBg: locked ? '#1F5FD6' : '#FFFFFF',
+        lockFg: locked ? '#FFFFFF' : '#16181D',
+        toggle: () => {
+          const next = Object.assign({}, off);
+          next[d.id] = on;
+          this.setState({ off: next, msg: on ? d.title + ' इस अंक से हटाई गई।' : d.title + ' अंक में जोड़ी गई।' });
+        },
+        lockToggle: () => {
+          const next = Object.assign({}, locks);
+          next[d.id] = !locked;
+          this.setState({ locks: next, msg: locked ? d.title + ' अब कहीं भी जा सकती है।' : d.title + ' अपनी जगह पर लॉक। दोबारा बनाने पर नहीं हिलेगी।' });
+        }
+      };
+    });
+    const kinds = {
+      head: { thumb: 'background:#16181D', big: 'background:#FFFFFF', fg: '#16181D', fs: '22px', ff: "'Rozha One', serif" },
+      text: { thumb: 'background:repeating-linear-gradient(#9AA1AC 0, #9AA1AC 2px, transparent 2px, transparent 5px)', big: 'background-color:#FFFFFF;background-image:repeating-linear-gradient(transparent 0, transparent 22px, #E3E6EA 22px, #E3E6EA 23px)', fg: '#3B414B', fs: '11px', ff: "'Noto Sans Devanagari', sans-serif" },
+      photo: { thumb: 'background:#C9CED6', big: 'background:#C9CED6', fg: '#3B414B', fs: '11px', ff: "'Noto Sans Devanagari', sans-serif" },
+      banner: { thumb: 'background:#3B414B', big: 'background:linear-gradient(180deg, #7C838F 0%, #2A2F37 100%)', fg: '#FFFFFF', fs: '24px', ff: "'Rozha One', serif" },
+      box: { thumb: 'background:#F6C9A6', big: 'background:#FDF1E7;border-top:3px solid #C2410C', fg: '#9A3412', fs: '13px', ff: "'Noto Sans Devanagari', sans-serif" },
+      quote: { thumb: 'border-top:2px solid #16181D;border-bottom:2px solid #16181D', big: 'border-top:2px solid #16181D;border-bottom:2px solid #16181D;background:#FFFFFF', fg: '#16181D', fs: '15px', ff: "'Tiro Devanagari Hindi', serif" },
+      ad: { thumb: 'border:1.5px dashed #9AA1AC', big: 'border:1.5px dashed #9AA1AC;background:#FFFFFF', fg: '#5B6270', fs: '11px', ff: "'Noto Sans Devanagari', sans-serif" }
+    };
+    const layouts = [
+      { name: 'A · क्लासिक', note: 'बड़ी हेडलाइन, फोटो दाईं ओर', blocks: [
+        { a: '1 / 1 / 2 / 6', k: 'head', label: 'सड़क हादसों पर लगाम कब, ज़िम्मेदारी किसकी?', story: 's1' },
+        { a: '2 / 1 / 5 / 4', k: 'text', label: 'मुख्य खबर · 3 कॉलम', story: 's1' },
+        { a: '2 / 4 / 5 / 6', k: 'photo', label: 'फोटो: घटनास्थल', story: 's1' },
+        { a: '5 / 1 / 8 / 3', k: 'text', label: 'सिंधिया का पलटवार', story: 's2' },
+        { a: '5 / 3 / 8 / 5', k: 'text', label: 'सिंहस्थ: 175 कार्य', story: 's3' },
+        { a: '5 / 5 / 8 / 6', k: 'box', label: 'संक्षेप में', story: 's4' },
+        { a: '8 / 1 / 9 / 6', k: 'ad', label: 'विज्ञापन · 5 × 6 सेमी' }
+      ] },
+      { name: 'B · फोटो बाएँ', note: 'लंबी फोटो, खबर दाईं ओर', blocks: [
+        { a: '1 / 1 / 6 / 3', k: 'photo', label: 'फोटो: घटनास्थल', story: 's1' },
+        { a: '1 / 3 / 2 / 6', k: 'head', label: 'सड़क हादसों पर लगाम कब?', story: 's1' },
+        { a: '2 / 3 / 6 / 6', k: 'text', label: 'मुख्य खबर · 3 कॉलम', story: 's1' },
+        { a: '6 / 1 / 8 / 4', k: 'text', label: 'सिंधिया का पलटवार', story: 's2' },
+        { a: '6 / 4 / 8 / 6', k: 'box', label: 'संक्षेप में', story: 's4' },
+        { a: '8 / 1 / 9 / 6', k: 'ad', label: 'विज्ञापन · 5 × 6 सेमी' }
+      ] },
+      { name: 'C · बड़ी फोटो', note: 'फोटो पर हेडलाइन, नीचे 3 खबरें', blocks: [
+        { a: '1 / 1 / 4 / 6', k: 'banner', label: 'सड़क हादसों पर लगाम कब?', story: 's1' },
+        { a: '4 / 1 / 8 / 3', k: 'text', label: 'सिंधिया का पलटवार', story: 's2' },
+        { a: '4 / 3 / 8 / 5', k: 'text', label: 'सिंहस्थ: 175 कार्य', story: 's3' },
+        { a: '4 / 5 / 6 / 6', k: 'quote', label: '“हर मोड़ पर नियम हों”', story: 's1' },
+        { a: '6 / 5 / 8 / 6', k: 'box', label: 'संक्षेप में', story: 's4' },
+        { a: '8 / 1 / 9 / 6', k: 'ad', label: 'विज्ञापन · 5 × 6 सेमी' }
+      ] }
+    ];
+    const visible = (b) => !b.story || !off[b.story];
+    const options = layouts.map((l, i) => ({
+      name: l.name,
+      note: l.note,
+      active: i === opt,
+      border: i === opt ? '3px solid #1F5FD6' : '1px solid #C9CED6',
+      pick: () => this.setState({ opt: i, msg: 'लेआउट ' + l.name + ' चुना गया। लॉक की गई खबरें अपनी जगह रहीं।' }),
+      blocks: l.blocks.filter(visible).map((b) => ({ area: 'grid-area: ' + b.a, thumb: kinds[b.k].thumb }))
+    }));
+    const preview = layouts[opt].blocks.filter(visible).map((b) => ({
+      area: 'grid-area: ' + b.a,
+      big: kinds[b.k].big,
+      fg: kinds[b.k].fg,
+      fs: kinds[b.k].fs,
+      ff: kinds[b.k].ff,
+      label: b.label,
+      locked: !!(b.story && locks[b.story] && (b.k === 'head' || b.k === 'banner'))
+    }));
+    const changeDefs = [
+      { id: 'c1', title: 'खबर 3 में 6 पंक्तियाँ ज़्यादा थीं', before: 'जिसमें अधिकारियों ने विस्तार से बताया कि', after: 'जिसमें बताया गया कि', note: '2 वाक्य छोटे किए · अर्थ वही' },
+      { id: 'c2', title: 'हेडलाइन 1 दो पंक्ति से एक में', before: 'सड़क हादसों पर आख़िर लगाम कब लगेगी', after: 'सड़क हादसों पर लगाम कब', note: 'अक्षर का आकार 2 pt घटाने से बेहतर' },
+      { id: 'c3', title: 'फोटो 2 क्रॉप किया', note: 'चेहरे बीच में रखे · 300 dpi बचा' },
+      { id: 'c4', title: 'खबर 4 Kruti Dev से Unicode में', note: '180 शब्द बदले · 0 गड़बड़ अक्षर' },
+      { id: 'c5', title: 'शुभकामना विज्ञापन पृष्ठ 6 पर', note: '4 बुकिंग · फोटो और नाम ग्राहक के भेजे' }
+    ];
+    const changes = changeDefs.map((c) => {
+      const d = decisions[c.id];
+      const set = (v, text) => {
+        const next = Object.assign({}, decisions);
+        next[c.id] = v;
+        this.setState({ decisions: next, msg: text });
+      };
+      return {
+        title: c.title,
+        note: c.note,
+        hasDiff: !!c.before,
+        before: c.before ?? '',
+        after: c.after ?? '',
+        isOk: d === 'ok',
+        isUndone: d === 'undo',
+        border: d === 'ok' ? '#9BD3B4' : d === 'undo' ? '#F0B8A8' : '#E3E6EA',
+        bg: d === 'ok' ? '#F0FAF4' : d === 'undo' ? '#FFF6F3' : '#FFFFFF',
+        okLabel: d === 'ok' ? '✓ मंज़ूर' : 'मंज़ूर करें',
+        okBg: d === 'ok' ? '#146C43' : '#1F5FD6',
+        okFg: '#FFFFFF',
+        undoLabel: d === 'undo' ? 'वापस लिया' : 'वापस लें',
+        undoBg: d === 'undo' ? '#FDECEA' : '#FFFFFF',
+        accept: () => set('ok', c.title + ' — मंज़ूर।'),
+        undo: () => set('undo', c.title + ' — वापस लिया, मूल रखा गया।')
+      };
+    });
+    const pending = changeDefs.filter((c) => !decisions[c.id]).length;
+    const pageStatus = [['तैयार', 1], ['तैयार', 1], ['जाँचें', 0], ['तैयार', 1], ['तैयार', 1], ['विज्ञापन', 2], ['तैयार', 1], ['जाँचें', 0]];
+    const pages = pageStatus.map((p, i) => ({
+      n: i + 1,
+      status: i === 0 ? (pending ? pending + ' बाकी' : 'तैयार') : p[0],
+      border: i === 0 ? '3px solid #1F5FD6' : '1px solid #C9CED6',
+      fg: (i === 0 ? pending : p[1] === 0) ? '#8A4B00' : '#146C43'
+    }));
+    return {
+      stories: stories,
+      options: options,
+      preview: preview,
+      changes: changes,
+      pages: pages,
+      msg: msg,
+      regen: () => this.setState({ opt: (opt + 1) % 3, msg: 'लॉक की गई खबरें छोड़कर बाकी पृष्ठ दोबारा बनाया गया।' })
+    };
+  }
+}
+</script>
+</body>
+</html>
