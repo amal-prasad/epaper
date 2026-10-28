@@ -64,358 +64,6 @@
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
-  font-family: 'Halant';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/halant-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Halant';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/halant-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Halant';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/halant-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Halant';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/halant-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Sarala';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/sarala-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Sarala';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/sarala-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Sarala';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/sarala-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Sarala';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/sarala-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Hind';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/hind-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Hind';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/hind-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Hind';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/hind-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Hind';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/hind-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Martel';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/martel-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Martel';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/martel-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Martel';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/martel-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Martel';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/martel-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Khand';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/khand-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Khand';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/khand-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Khand';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/khand-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Khand';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/khand-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Yantramanav';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/yantramanav-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Yantramanav';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/yantramanav-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Yantramanav';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/yantramanav-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Yantramanav';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/yantramanav-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Laila';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/laila-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Laila';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/laila-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Laila';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/laila-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Laila';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/laila-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Eczar';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/eczar-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Eczar';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/eczar-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Eczar';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/eczar-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Eczar';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/eczar-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Karma';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/karma-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Karma';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/karma-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Karma';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/karma-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Karma';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/karma-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Palanquin';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/palanquin-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Palanquin';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/palanquin-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Palanquin';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/palanquin-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Palanquin';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/palanquin-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Biryani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/biryani-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Biryani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/biryani-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Biryani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/biryani-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Biryani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/biryani-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
   font-family: 'Amiko';
   font-style: normal;
   font-display: swap;
@@ -448,387 +96,35 @@
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
-  font-family: 'Cambay';
+  font-family: 'Anek Devanagari';
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url(fonts/cambay-devanagari-400-normal.woff2) format('woff2');
+  src: url(fonts/anek-devanagari-devanagari-400-normal.woff2) format('woff2');
   unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
 }
 @font-face {
-  font-family: 'Cambay';
+  font-family: 'Anek Devanagari';
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url(fonts/cambay-latin-400-normal.woff2) format('woff2');
+  src: url(fonts/anek-devanagari-latin-400-normal.woff2) format('woff2');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
-  font-family: 'Cambay';
+  font-family: 'Anek Devanagari';
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url(fonts/cambay-devanagari-700-normal.woff2) format('woff2');
+  src: url(fonts/anek-devanagari-devanagari-700-normal.woff2) format('woff2');
   unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
 }
 @font-face {
-  font-family: 'Cambay';
+  font-family: 'Anek Devanagari';
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url(fonts/cambay-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Glegoo';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/glegoo-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Glegoo';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/glegoo-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Glegoo';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/glegoo-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Glegoo';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/glegoo-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Sura';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/sura-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Sura';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/sura-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Sura';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/sura-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Sura';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/sura-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Jaldi';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/jaldi-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Jaldi';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/jaldi-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Jaldi';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/jaldi-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Jaldi';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/jaldi-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Arya';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/arya-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Arya';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/arya-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Arya';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/arya-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Arya';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/arya-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Vesper Libre';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/vesper-libre-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Vesper Libre';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/vesper-libre-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Vesper Libre';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/vesper-libre-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Vesper Libre';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/vesper-libre-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Pragati Narrow';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/pragati-narrow-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Pragati Narrow';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/pragati-narrow-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Pragati Narrow';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/pragati-narrow-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Pragati Narrow';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/pragati-narrow-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Rajdhani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/rajdhani-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Rajdhani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/rajdhani-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Rajdhani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/rajdhani-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Rajdhani';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/rajdhani-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/teko-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/teko-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/teko-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/teko-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Rozha One';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/rozha-one-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Rozha One';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/rozha-one-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Yatra One';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/yatra-one-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Yatra One';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/yatra-one-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Kalam';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/kalam-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Kalam';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/kalam-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Kalam';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/kalam-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Kalam';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/kalam-latin-700-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Mukta';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/mukta-devanagari-400-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Mukta';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(fonts/mukta-latin-400-normal.woff2) format('woff2');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Mukta';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/mukta-devanagari-700-normal.woff2) format('woff2');
-  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
-}
-@font-face {
-  font-family: 'Mukta';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url(fonts/mukta-latin-700-normal.woff2) format('woff2');
+  src: url(fonts/anek-devanagari-latin-700-normal.woff2) format('woff2');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
@@ -864,6 +160,838 @@
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
+  font-family: 'Biryani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/biryani-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Biryani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/biryani-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Biryani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/biryani-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Biryani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/biryani-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Cambay';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/cambay-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Cambay';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/cambay-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Cambay';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/cambay-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Cambay';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/cambay-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/google-sans-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF4,U+1CF7-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B0A;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/google-sans-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/google-sans-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF4,U+1CF7-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B0A;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/google-sans-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Gotu';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/gotu-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Gotu';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/gotu-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/hind-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/hind-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/hind-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/hind-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/ibm-plex-sans-devanagari-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/ibm-plex-sans-devanagari-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/ibm-plex-sans-devanagari-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/ibm-plex-sans-devanagari-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Jaldi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/jaldi-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Jaldi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/jaldi-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Jaldi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/jaldi-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Jaldi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/jaldi-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Khula';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/khula-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Khula';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/khula-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Khula';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/khula-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Khula';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/khula-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Martel Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/martel-sans-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Martel Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/martel-sans-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Martel Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/martel-sans-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Martel Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/martel-sans-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/mukta-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/mukta-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/mukta-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/mukta-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Palanquin';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/palanquin-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Palanquin';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/palanquin-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Palanquin';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/palanquin-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Palanquin';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/palanquin-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Pragati Narrow';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/pragati-narrow-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Pragati Narrow';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/pragati-narrow-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Pragati Narrow';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/pragati-narrow-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Pragati Narrow';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/pragati-narrow-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sarala';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sarala-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sarala';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sarala-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sarala';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sarala-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sarala';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sarala-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Yantramanav';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/yantramanav-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Yantramanav';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/yantramanav-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Yantramanav';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/yantramanav-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Yantramanav';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/yantramanav-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Annapurna SIL';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/annapurna-sil-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Annapurna SIL';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/annapurna-sil-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Annapurna SIL';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/annapurna-sil-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Annapurna SIL';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/annapurna-sil-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Asar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/asar-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Asar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/asar-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Glegoo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/glegoo-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Glegoo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/glegoo-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Glegoo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/glegoo-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Glegoo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/glegoo-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Halant';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/halant-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Halant';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/halant-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Halant';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/halant-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Halant';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/halant-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/inknut-antiqua-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/inknut-antiqua-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/inknut-antiqua-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/inknut-antiqua-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Kadwa';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/kadwa-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Kadwa';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/kadwa-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Kadwa';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/kadwa-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Kadwa';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/kadwa-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Karma';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/karma-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Karma';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/karma-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Karma';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/karma-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Karma';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/karma-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Kurale';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/kurale-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Kurale';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/kurale-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Laila';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/laila-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Laila';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/laila-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Laila';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/laila-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Laila';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/laila-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/martel-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/martel-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/martel-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/martel-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Rhodium Libre';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/rhodium-libre-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Rhodium Libre';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/rhodium-libre-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sahitya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sahitya-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sahitya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sahitya-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sahitya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sahitya-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sahitya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sahitya-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sumana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sumana-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sumana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sumana-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sumana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sumana-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sumana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sumana-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sura';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sura-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sura';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sura-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sura';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sura-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sura';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sura-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
   font-family: 'Tiro Devanagari Hindi';
   font-style: normal;
   font-display: swap;
@@ -877,5 +1005,709 @@
   font-display: swap;
   font-weight: 400;
   src: url(fonts/tiro-devanagari-hindi-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Tiro Devanagari Marathi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/tiro-devanagari-marathi-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Tiro Devanagari Marathi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/tiro-devanagari-marathi-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Tiro Devanagari Sanskrit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/tiro-devanagari-sanskrit-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Tiro Devanagari Sanskrit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/tiro-devanagari-sanskrit-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Vesper Libre';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/vesper-libre-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Vesper Libre';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/vesper-libre-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Vesper Libre';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/vesper-libre-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Vesper Libre';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/vesper-libre-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Akshar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/akshar-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF4,U+1CF7-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B0A;
+}
+@font-face {
+  font-family: 'Akshar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/akshar-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Akshar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/akshar-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF4,U+1CF7-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B0A;
+}
+@font-face {
+  font-family: 'Akshar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/akshar-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Arya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/arya-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Arya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/arya-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Arya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/arya-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Arya';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/arya-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Eczar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/eczar-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Eczar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/eczar-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Eczar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/eczar-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Eczar';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/eczar-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Khand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/khand-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Khand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/khand-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Khand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/khand-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Khand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/khand-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Matangi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/matangi-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Matangi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/matangi-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Matangi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/matangi-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Matangi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/matangi-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Palanquin Dark';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/palanquin-dark-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Palanquin Dark';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/palanquin-dark-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Palanquin Dark';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/palanquin-dark-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Palanquin Dark';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/palanquin-dark-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/poppins-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/poppins-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/poppins-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/poppins-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/rajdhani-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/rajdhani-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/rajdhani-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/rajdhani-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sarpanch';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sarpanch-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sarpanch';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/sarpanch-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Sarpanch';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sarpanch-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Sarpanch';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/sarpanch-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Alkatra';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/alkatra-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Alkatra';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/alkatra-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Alkatra';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/alkatra-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Alkatra';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/alkatra-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Amita';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/amita-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Amita';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/amita-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Amita';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/amita-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Amita';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/amita-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Bakbak One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/bakbak-one-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Bakbak One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/bakbak-one-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Gajraj One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/gajraj-one-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Gajraj One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/gajraj-one-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Jaini';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/jaini-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Jaini';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/jaini-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Jaini Purva';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/jaini-purva-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Jaini Purva';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/jaini-purva-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Modak';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/modak-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Modak';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/modak-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Ranga';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/ranga-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Ranga';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/ranga-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Ranga';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/ranga-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Ranga';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/ranga-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Rozha One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/rozha-one-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Rozha One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/rozha-one-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Teko';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/teko-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Teko';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/teko-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Teko';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/teko-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Teko';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/teko-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Tillana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/tillana-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Tillana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/tillana-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Tillana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/tillana-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Tillana';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/tillana-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Yatra One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/yatra-one-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Yatra One';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/yatra-one-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Dekko';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/dekko-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Dekko';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/dekko-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Kalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/kalam-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Kalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/kalam-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Kalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/kalam-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Kalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/kalam-latin-700-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Playpen Sans Deva';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/playpen-sans-deva-devanagari-400-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Playpen Sans Deva';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/playpen-sans-deva-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Playpen Sans Deva';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/playpen-sans-deva-devanagari-700-normal.woff2) format('woff2');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face {
+  font-family: 'Playpen Sans Deva';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(fonts/playpen-sans-deva-latin-700-normal.woff2) format('woff2');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }

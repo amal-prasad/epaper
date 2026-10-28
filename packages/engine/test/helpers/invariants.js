@@ -59,9 +59,43 @@ export function assertReadingOrder(result, frames) {
   for (const l of result.lines) {
     if (prev) {
       const a = rank.get(prev.frameId), b = rank.get(l.frameId)
-      assert.ok(b > a || (b === a && l.y >= prev.y), `lines out of reading order near "${l.text}"`)
+      assert.ok(b > a || (b === a && (l.y > prev.y || (l.y === prev.y && l.x > prev.x))), `lines out of reading order near "${l.text}"`)
     }
     prev = l
+  }
+}
+
+// 7. No two lines overlap (a flow that stacks every line at the frame top passes 1-6 without this).
+export function assertNoOverlap(result, lineHeight, eps = 0.01) {
+  const L = result.lines
+  for (let i = 0; i < L.length; i++) for (let j = i + 1; j < L.length; j++) {
+    const a = L[i], b = L[j]
+    const hitX = a.x < b.x + b.w - eps && b.x < a.x + a.w - eps
+    const hitY = a.y < b.y + lineHeight - eps && b.y < a.y + lineHeight - eps
+    assert.ok(!(hitX && hitY), `lines "${a.text}" and "${b.text}" overlap`)
+  }
+}
+
+// 8. No premature overflow: text may go to the remainder only when the frames are really full.
+//    (A flow that returns { lines: [], remainder: story } passes 1-7 without this.)
+//    Sound for any line grid: in a full-width free band of height L, a greedy flow fits at least floor(L/lineHeight) - 1 lines.
+//    Frames narrower than the widest grapheme in the story are exempt.
+export function assertNoPrematureOverflow(story, result, { frames, obstacles = [], lineHeight, measure }, eps = 0.01) {
+  if (!(result.remainder ?? '').trim()) return
+  const widest = Math.max(0, ...[...SEG.segment(story)].map(g => measure(g.segment)))
+  for (const f of frames) {
+    if (f.w < widest - eps) continue
+    const blocked = obstacles.filter(o => { const m = o.margin ?? 0; return o.x - m < f.x + f.w && o.x + o.w + m > f.x })
+      .map(o => { const m = o.margin ?? 0; return [Math.max(f.y, o.y - m), Math.min(f.y + f.h, o.y + o.h + m)] }).filter(([a, b]) => b > a)
+      .sort((p, q) => p[0] - q[0])
+    const free = []; let y = f.y
+    for (const [a, b] of blocked) { if (a > y) free.push([y, a]); y = Math.max(y, b) }
+    if (f.y + f.h > y) free.push([y, f.y + f.h])
+    for (const [a, b] of free) {
+      const need = Math.max(0, Math.floor((b - a + eps) / lineHeight) - 1)
+      const got = result.lines.filter(l => l.frameId === f.id && l.y >= a - eps && l.y + lineHeight <= b + eps).length
+      assert.ok(got >= need, `frame ${f.id} has free space for ${need} lines at y ${a}-${b} but holds ${got}, while text went to the remainder`)
+    }
   }
 }
 
@@ -70,5 +104,7 @@ export function assertAll(story, result, { frames, obstacles = [], lineHeight, m
   assertInsideFrames(result, frames, lineHeight)
   assertClearOfObstacles(result, obstacles, lineHeight)
   assertReadingOrder(result, frames)
+  assertNoOverlap(result, lineHeight)
   if (measure) assertFits(result, measure)
+  if (measure) assertNoPrematureOverflow(story, result, { frames, obstacles, lineHeight, measure })
 }

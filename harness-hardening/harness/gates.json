@@ -1,0 +1,245 @@
+{
+  "gates": [
+    {
+      "id": "G0.parity",
+      "phase": 0,
+      "status": "active",
+      "title": "Line-break parity vs real DOM on real Hindi copy, launch fonts (fonts.json launch:true), percent",
+      "run": "npm --prefix spike run spike",
+      "metricFile": "spike/out/report.json",
+      "metricKey": "pct",
+      "op": ">=",
+      "threshold": 95,
+      "target": 99.5,
+      "slow": true,
+      "also": [
+        {
+          "key": "realParagraphs",
+          "op": ">=",
+          "threshold": 40,
+          "why": "measure on 40+ real Janshakti paragraphs, not invented text"
+        },
+        {
+          "key": "inventedParagraphs",
+          "op": "<=",
+          "threshold": 0,
+          "why": "delete spike/samples/news-sample.txt (invented text)"
+        }
+      ]
+    },
+    {
+      "id": "G0.guard",
+      "phase": 0,
+      "status": "active",
+      "title": "Repo guardrail tests failing (brand name, licences)",
+      "run": "node harness/run-tests.mjs",
+      "metricFile": "harness/results/tests.json",
+      "metricKey": "failed",
+      "op": "<=",
+      "threshold": 0
+    },
+    {
+      "id": "G0.flow",
+      "phase": 0,
+      "status": "active",
+      "title": "flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped",
+      "run": "node harness/run-tests.mjs",
+      "metricFile": "harness/results/tests.json",
+      "metricKey": "flowPassed",
+      "op": ">=",
+      "threshold": 17,
+      "also": [
+        {
+          "key": "flowSkipped",
+          "op": "<=",
+          "threshold": 0,
+          "why": "skipped flow tests do not count; flow.js must exist"
+        }
+      ]
+    },
+    {
+      "id": "G1.fillrate",
+      "phase": 1,
+      "status": "pending",
+      "title": "Stories auto-placed with no manual fix on 20-issue replay, percent",
+      "metricFile": "harness/results/G1.fillrate.json",
+      "metricKey": "pct",
+      "op": ">=",
+      "threshold": 70
+    },
+    {
+      "id": "G1.fitdrift",
+      "phase": 1,
+      "status": "pending",
+      "title": "Frames where fit meter differs from render, percent",
+      "metricFile": "harness/results/G1.fitdrift.json",
+      "metricKey": "pct",
+      "op": "<=",
+      "threshold": 2
+    },
+    {
+      "id": "G1.golden",
+      "phase": 1,
+      "status": "pending",
+      "title": "Golden pages with pixel diff over threshold (count)",
+      "metricFile": "harness/results/G1.golden.json",
+      "metricKey": "failed",
+      "op": "<=",
+      "threshold": 0
+    },
+    {
+      "id": "G1.time",
+      "phase": 1,
+      "status": "pending",
+      "title": "Minutes to build one real weekly (hand-measured)",
+      "metricFile": "harness/results/G1.time.json",
+      "metricKey": "minutes",
+      "op": "<=",
+      "threshold": 60
+    },
+    {
+      "id": "G1.dedupe",
+      "phase": 1,
+      "status": "pending",
+      "title": "Duplicate detection F1 on seeded Hindi pairs (target, revise after first run)",
+      "metricFile": "harness/results/G1.dedupe.json",
+      "metricKey": "f1",
+      "op": ">=",
+      "threshold": 0.9
+    },
+    {
+      "id": "G1.licence",
+      "phase": 1,
+      "status": "pending",
+      "title": "Approved stories with no licence (count)",
+      "metricFile": "harness/results/G1.licence.json",
+      "metricKey": "unlicensed",
+      "op": "<=",
+      "threshold": 0
+    },
+    {
+      "id": "G1.firstpage",
+      "phase": 1,
+      "status": "pending",
+      "title": "New users who see a filled first page within 5 minutes unaided, out of 5 (usability test)",
+      "metricFile": "harness/results/G1.firstpage.json",
+      "metricKey": "passed",
+      "op": ">=",
+      "threshold": 4
+    },
+    {
+      "id": "G1.usability",
+      "phase": 1,
+      "status": "pending",
+      "title": "Testers finishing tasks T2-T6 unaided, out of 5",
+      "metricFile": "harness/results/G1.usability.json",
+      "metricKey": "passed",
+      "op": ">=",
+      "threshold": 4
+    },
+    {
+      "id": "G1.sus",
+      "phase": 1,
+      "status": "pending",
+      "title": "Mean SUS score (target, revise after round 1)",
+      "metricFile": "harness/results/G1.sus.json",
+      "metricKey": "mean",
+      "op": ">=",
+      "threshold": 75
+    },
+    {
+      "id": "G1.a11y",
+      "phase": 1,
+      "status": "pending",
+      "title": "Serious/critical axe violations on Easy-mode routes (count) — run `npm run ux`",
+      "run": "node harness/ux/ux-lint.mjs",
+      "metricFile": "harness/results/G1.a11y.json",
+      "metricKey": "serious",
+      "op": "<=",
+      "threshold": 0,
+      "slow": true
+    },
+    {
+      "id": "G1.ux",
+      "phase": 1,
+      "status": "pending",
+      "title": "UX_SPEC §3 rule violations on Easy-mode routes (count)",
+      "run": "node harness/ux/ux-lint.mjs",
+      "metricFile": "harness/results/G1.ux.json",
+      "metricKey": "violations",
+      "op": "<=",
+      "threshold": 0,
+      "slow": true
+    },
+    {
+      "id": "G2.pdfx",
+      "phase": 2,
+      "status": "pending",
+      "title": "PDF/X validation errors (count)",
+      "metricFile": "harness/results/G2.pdfx.json",
+      "metricKey": "errors",
+      "op": "<=",
+      "threshold": 0
+    },
+    {
+      "id": "G2.preflight",
+      "phase": 2,
+      "status": "pending",
+      "title": "Seeded faults caught, out of 10",
+      "metricFile": "harness/results/G2.preflight.json",
+      "metricKey": "caught",
+      "op": ">=",
+      "threshold": 9
+    },
+    {
+      "id": "G2.proof",
+      "phase": 2,
+      "status": "pending",
+      "title": "Printer accepted a real proof (1 = yes)",
+      "metricFile": "harness/results/G2.proof.json",
+      "metricKey": "accepted",
+      "op": ">=",
+      "threshold": 1
+    },
+    {
+      "id": "G3.accept",
+      "phase": 3,
+      "status": "pending",
+      "title": "AI suggestions accepted in beta, percent",
+      "metricFile": "harness/results/G3.accept.json",
+      "metricKey": "pct",
+      "op": ">=",
+      "threshold": 50
+    },
+    {
+      "id": "G3.facts",
+      "phase": 3,
+      "status": "pending",
+      "title": "Dropped numbers or names in accepted trims (count)",
+      "metricFile": "harness/results/G3.facts.json",
+      "metricKey": "dropped",
+      "op": "<=",
+      "threshold": 0
+    },
+    {
+      "id": "G4.a11y",
+      "phase": 4,
+      "status": "pending",
+      "title": "Serious axe violations on editor routes (count)",
+      "metricFile": "harness/results/G4.a11y.json",
+      "metricKey": "serious",
+      "op": "<=",
+      "threshold": 0
+    },
+    {
+      "id": "GX.dragms",
+      "phase": 4,
+      "status": "pending",
+      "title": "Drag re-layout ms per frame, 3-column story",
+      "metricFile": "harness/results/GX.dragms.json",
+      "metricKey": "ms",
+      "op": "<=",
+      "threshold": 8
+    }
+  ]
+}

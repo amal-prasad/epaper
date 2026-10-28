@@ -26,18 +26,23 @@ echo "Put the Aaj Tak / Free Press reference screenshots and any past issues in 
 cd "$TARGET"
 [[ -d .git ]] || { git init -q && git add -A && git commit -qm "Kit: product prompt, phases, harness, Phase 0 spike" || true; }
 
+# npm ci when a lockfile is committed (reproducible), npm install otherwise
+inst() { if [[ -f package-lock.json ]]; then npm ci --no-audit --no-fund || npm install --no-audit --no-fund; else npm install --no-audit --no-fund; fi; }
+
 if (( INSTALL )); then
   echo "==> Installing root dependencies"
-  npm install --no-audit --no-fund
+  inst
   npx playwright install chromium
-  echo "==> Installing spike dependencies"
-  (cd spike && npm install --no-audit --no-fund && npx playwright install chromium)
-  echo "==> Running Phase 0 spike"
-  npm run spike
+  echo "==> Installing spike dependencies and fonts (Devanagari + Latin subsets)"
+  (cd spike && inst && node add-fonts.mjs)
+  echo "==> Unit tests"
+  npm test || echo "!! npm test failed: read the output above before doing anything else"
+  echo "==> Phase 0 spike (minutes)"
+  npm run spike || echo "!! spike failed: see the message above (usually missing fonts or samples)"
   echo "==> Harness (phase 0)"
   npm run harness -- --phase 0 || true
 else
-  echo "==> Skipped install. Next: cd $TARGET && npm install && (cd spike && npm install && npx playwright install chromium) && npm run harness -- --phase 0"
+  echo "==> Skipped install. Next: cd $TARGET && npm install && npx playwright install chromium && (cd spike && npm install && node add-fonts.mjs) && npm test && npm run harness -- --phase 0"
 fi
 
 cat <<MSG

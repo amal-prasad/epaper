@@ -1,7 +1,22 @@
 node_modules
 .next
 dist
-spike/out
 spike/public/bundle.js
 .env*
 !.env.example
+
+# Phase 0 deliverables live in spike/out; keep those, ignore the rest of the run output
+spike/out/*
+!spike/out/report.md
+!spike/out/report.json
+!spike/out/diagnosis.md
+!spike/out/flow.png
+
+# machine output that changes on every run (hand-measured results in harness/results ARE committed)
+harness/results/tests.json
+harness/results/G1.a11y.json
+harness/results/G1.ux.json
+
+# never commit an unlock, or local Claude settings
+.claude/ALLOW_PROTECTED_EDITS
+.claude/settings.local.json

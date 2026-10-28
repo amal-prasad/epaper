@@ -10,7 +10,28 @@
       "metricKey": "pct",
       "op": ">=",
       "threshold": 95,
-      "target": 99.5
+      "target": 99.5,
+      "slow": true,
+      "also": [
+        {
+          "key": "realParagraphs",
+          "op": ">=",
+          "threshold": 40,
+          "why": "measure on 40+ real Janshakti paragraphs, not invented text"
+        },
+        {
+          "key": "inventedParagraphs",
+          "op": "<=",
+          "threshold": 0,
+          "why": "delete spike/samples/news-sample.txt (invented text)"
+        },
+        {
+          "key": "longerThanDom",
+          "op": "<=",
+          "threshold": 0,
+          "why": "Pretext must never fit more on a line than the browser: that text would run past the column in print"
+        }
+      ]
     },
     {
       "id": "G0.guard",
@@ -26,13 +47,21 @@
     {
       "id": "G0.flow",
       "phase": 0,
-      "status": "pending",
-      "title": "flow() unit tests passing (count; needs >= 5 covering threading, obstacles, overflow)",
+      "status": "active",
+      "title": "flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped",
       "run": "node harness/run-tests.mjs",
       "metricFile": "harness/results/tests.json",
       "metricKey": "flowPassed",
       "op": ">=",
-      "threshold": 5
+      "threshold": 17,
+      "also": [
+        {
+          "key": "flowSkipped",
+          "op": "<=",
+          "threshold": 0,
+          "why": "skipped flow tests do not count; flow.js must exist"
+        }
+      ]
     },
     {
       "id": "G1.fillrate",
@@ -133,7 +162,8 @@
       "metricFile": "harness/results/G1.a11y.json",
       "metricKey": "serious",
       "op": "<=",
-      "threshold": 0
+      "threshold": 0,
+      "slow": true
     },
     {
       "id": "G1.ux",
@@ -144,7 +174,8 @@
       "metricFile": "harness/results/G1.ux.json",
       "metricKey": "violations",
       "op": "<=",
-      "threshold": 0
+      "threshold": 0,
+      "slow": true
     },
     {
       "id": "G2.pdfx",

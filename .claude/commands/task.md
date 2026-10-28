@@ -1,0 +1,15 @@
+---
+description: Build one small task with the test-first loop. Usage /task <what to build>
+argument-hint: <what to build, e.g. "Phase 0 task 5: flow.js">
+---
+Task: $ARGUMENTS
+
+Follow this loop exactly. Do not skip a step.
+
+1. Read `CLAUDE.md` and the phase file named in "Current phase". Restate the task in two sentences.
+2. Name the DONE command (a test file, or the gate ids in `harness/gates.json`). If none exists, write the failing test first and show it failing.
+3. Plan in at most 5 bullets. If the task is larger than about an hour of work, stop and propose how to split it.
+4. Implement. Do not change `harness/gates.json`, existing tests, test helpers or `.claude/` (rule 12; hooks and the judges lock will catch it anyway).
+5. Run `npm test` and `npm run harness -- --phase <current phase> --fast`. Paste the real output tables, not a summary. If `npm test` says a judge changed, stop: list what you changed in which judge file and why, and ask Amal to review and approve.
+6. If green: run `git diff --stat`, then commit locally with a message that names the task (do not push). If red: fix the code and repeat step 5. After 3 failed attempts, stop and explain what you tried and what the output says.
+7. Finish with: what changed, the gate numbers, and the next task.

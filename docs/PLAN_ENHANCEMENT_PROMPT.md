@@ -117,7 +117,7 @@ Write or update, in this order, and show a diff summary:
 2. `docs/ROADMAP.md` — calendar view, tracks, cut-lines.
 3. `docs/EXPERIMENTS.md` — the 14-day list with pass/fail criteria and an empty results column.
 4. `docs/phases/phase*.md` — edit scope, estimates and gates to match; keep each self-contained.
-5. `harness/gates.json` — add the new business and technical gates (status `pending` unless there is already a measurement).
+5. `harness/gates.json` — add the new business and technical gates (status `pending` unless there is already a measurement). This is a judge: `npm test` fails until Amal reviews the diff and runs `npm run approve`. Say so at the end of the plan; do not try to make the check pass yourself.
 6. `CLAUDE.md` — new decision-log entries D-009 onward; update "Current phase" and "Open questions".
 7. `docs/DESIGN_GAPS.md` — reorder by the new design backlog.
 8. Proposed (not applied) `.claude/agents/*.md`, `.claude/commands/*.md` and CI workflow, saved under `docs/proposed-automation/` for my review.

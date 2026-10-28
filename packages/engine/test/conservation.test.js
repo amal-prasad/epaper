@@ -49,3 +49,8 @@ test('fuzz: random frames and obstacles, 300 seeds', { skip }, () => {
     try { check(s, frames, obstacles) } catch (e) { e.message = `[fuzz seed ${seed}] ${e.message}`; throw e }
   }
 })
+test('a story that fits leaves no remainder', { skip }, () => {
+  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 200, h: 4000 }])
+  if ((r.remainder ?? '').trim()) throw new Error(`remainder should be empty, got ${r.remainder.length} characters`)
+  if (!r.lines.length) throw new Error('no lines placed')
+})

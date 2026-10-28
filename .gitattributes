@@ -1,2 +1,11 @@
+# LF everywhere, so bootstrap.sh runs in Git Bash and Windows and CI hash the judges identically.
 * text=auto eol=lf
 *.sh text eol=lf
+*.woff2 binary
+*.woff binary
+*.ttf binary
+*.otf binary
+*.png binary
+*.jpg binary
+*.pdf binary
+*.icc binary

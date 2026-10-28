@@ -1,0 +1,30 @@
+# Runs on every push and pull request. If a step fails for environment reasons, fix the workflow, never the test.
+# Needs the lockfiles (package-lock.json, spike/package-lock.json) and the real samples in spike/samples committed.
+name: ci
+on: [push, pull_request]
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: "package-lock.json\nspike/package-lock.json" }
+      - run: npm ci --no-audit --no-fund
+      - name: Unit tests, hook tests, judges lock
+        run: npm test
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: UX and accessibility lint
+        run: npm run ux
+      - name: Fonts
+        run: cd spike && npm ci --no-audit --no-fund && node add-fonts.mjs
+      - name: Phase 0 gates (parity on real copy, guardrails, flow)
+        run: npm run harness -- --phase 0
+      - name: Keep the parity report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: spike-report, path: "spike/out/report.*\nharness/results/", if-no-files-found: ignore }

@@ -3,9 +3,11 @@ import { prepareWithSegments, layoutWithLines, layoutNextLine, clearCache, setLo
 const SEG = new Intl.Segmenter('hi', { granularity: 'grapheme' })
 const trim = s => s.replace(/\s+$/u, '').replace(/^\s+/u, '')
 
-async function loadFont(family, size) {
-  await Promise.all([document.fonts.load(`${size}px "${family}"`, 'अआइक्षत्रज्ञश्र'), document.fonts.load(`${size}px "${family}"`, 'AQI 2026.,‘’—')])
+async function loadFont(family, size, weight = 400) {
+  const f = `${weight} ${size}px "${family}"`
+  await Promise.all([document.fonts.load(f, 'अआइक्षत्रज्ञश्र'), document.fonts.load(f, 'AQI 2026.,‘’—')])
 }
+const fontStr = (font, size, weight = 400) => `${weight} ${size}px "${font}"`
 
 // ---- DOM ground truth: read real browser line breaks off a painted paragraph
 function domLines(el) {
@@ -28,10 +30,10 @@ function domLines(el) {
   return out
 }
 
-function mkPara(text, font, size, lh, width, extraStyle = '') {
+function mkPara(text, font, size, lh, width, extraStyle = '', weight = 400) {
   const el = document.createElement('div')
   el.lang = 'hi'
-  el.style.cssText = `font:${size}px/${lh}px "${font}";width:${width}px;overflow-wrap:break-word;white-space:normal;${extraStyle}`
+  el.style.cssText = `font:${weight} ${size}px/${lh}px "${font}";width:${width}px;overflow-wrap:break-word;white-space:normal;${extraStyle}`
   el.textContent = text
   return el
 }
@@ -39,14 +41,14 @@ function mkPara(text, font, size, lh, width, extraStyle = '') {
 const stage = () => document.getElementById('stage')
 
 // ---- Test 1: fixed-width column, Pretext vs DOM
-window.runColumn = async ({ text, font, size, lh, width }) => {
-  await loadFont(font, size)
-  const el = mkPara(text, font, size, lh, width)
+window.runColumn = async ({ text, font, size, lh, width, weight = 400 }) => {
+  await loadFont(font, size, weight)
+  const el = mkPara(text, font, size, lh, width, '', weight)
   stage().appendChild(el)
   const dom = domLines(el)
   const domH = el.getBoundingClientRect().height
   el.remove()
-  const p = prepareWithSegments(text, `${size}px "${font}"`)
+  const p = prepareWithSegments(text, fontStr(font, size, weight))
   const r = layoutWithLines(p, width, lh)
   const pre = r.lines.map(l => trim(l.text))
   return cmp(dom, pre, domH, r.height)
@@ -54,18 +56,18 @@ window.runColumn = async ({ text, font, size, lh, width }) => {
 
 // ---- Test 2: obstacle (float) — variable width per line via layoutNextLine
 // Obstacle: box at top-left, obsW x obsH, with `gap` margin. DOM reference = real CSS float.
-window.runObstacle = async ({ text, font, size, lh, width, obsW, obsH, gap }) => {
-  await loadFont(font, size)
+window.runObstacle = async ({ text, font, size, lh, width, obsW, obsH, gap, weight = 400 }) => {
+  await loadFont(font, size, weight)
   const wrap = document.createElement('div')
   wrap.style.cssText = `width:${width}px;position:relative`
   const fl = document.createElement('div')
   fl.style.cssText = `float:left;width:${obsW}px;height:${obsH}px;margin:0 ${gap}px ${gap}px 0`
-  const para = mkPara(text, font, size, lh, width)
+  const para = mkPara(text, font, size, lh, width, '', weight)
   wrap.append(fl, para)
   stage().appendChild(wrap)
   const dom = domLines(para)
   wrap.remove()
-  const p = prepareWithSegments(text, `${size}px "${font}"`)
+  const p = prepareWithSegments(text, fontStr(font, size, weight))
   const pre = []
   let cursor = { segmentIndex: 0, graphemeIndex: 0 }, y = 0
   for (;;) {
@@ -112,12 +114,12 @@ function cmp(dom, pre, domH, preH) {
 }
 
 // ---- width probe: DOM span width vs canvas measureText for single words (the primitive Pretext depends on)
-window.runWords = async ({ words, font, size }) => {
-  await loadFont(font, size)
-  const ctx = document.createElement('canvas').getContext('2d'); ctx.font = `${size}px "${font}"`
+window.runWords = async ({ words, font, size, weight = 400 }) => {
+  await loadFont(font, size, weight)
+  const ctx = document.createElement('canvas').getContext('2d'); ctx.font = fontStr(font, size, weight)
   return words.map(w => {
     const sp = document.createElement('span'); sp.lang = 'hi'
-    sp.style.cssText = `font:${size}px "${font}";white-space:nowrap;position:absolute`; sp.textContent = w
+    sp.style.cssText = `font:${weight} ${size}px "${font}";white-space:nowrap;position:absolute`; sp.textContent = w
     document.body.appendChild(sp); const dw = sp.getBoundingClientRect().width; sp.remove()
     return Math.abs(ctx.measureText(w).width - dw) <= 0.05
   })

@@ -1,1 +1,57 @@
-{"passed":19,"failed":0,"flowPassed":0}
+{
+ "passed": 57,
+ "failed": 0,
+ "skipped": 12,
+ "todo": 0,
+ "cancelled": 0,
+ "flowPassed": 0,
+ "flowSkipped": 12,
+ "files": {
+  "harness/test/hooks.test.mjs": {
+   "tests": 18,
+   "pass": 18,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "harness/test/judges.test.mjs": {
+   "tests": 13,
+   "pass": 13,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/engine/test/conservation.test.js": {
+   "tests": 12,
+   "pass": 0,
+   "fail": 0,
+   "skipped": 12,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/engine/test/guardrails.test.js": {
+   "tests": 3,
+   "pass": 3,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/engine/test/invariants.test.js": {
+   "tests": 23,
+   "pass": 23,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  }
+ },
+ "ratchet": []
+}

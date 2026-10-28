@@ -169,7 +169,7 @@ The user is a Hindi-first owner who fears breaking things. So: start from a fill
 | 3 | Assist (AI, approval-based) | Suggestions (trim to fit, headline options, cutlines, photo crop) accepted >= 50% in beta; zero silent changes | 3 wks |
 | 4 | Studio (Pro) | Rulers, snapping, assets on assets, contour wrap, own fonts, background upload, keyboard-only and screen-reader pass | 6 wks |
 
-Every phase: update `CLAUDE.md` decision log, `docs/DATA_MODEL.md`, and `harness/gates.json` (flip gates from `pending` to `active`).
+Every phase: update `CLAUDE.md` decision log, `docs/DATA_MODEL.md`, and `harness/gates.json` (flip gates from `pending` to `active`; Amal approves the change with `npm run approve`).
 
 ---
 

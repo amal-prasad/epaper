@@ -1,7 +1,7 @@
 // Tests of the test helpers. If these pass, the helpers really do catch lost text, overlaps and bad undo.
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { assertConserved, assertInsideFrames, assertClearOfObstacles, assertFits, assertReadingOrder, assertDeterministic } from './helpers/invariants.js'
+import { assertConserved, assertInsideFrames, assertClearOfObstacles, assertFits, assertReadingOrder, assertDeterministic, assertNoOverlap, assertNoPrematureOverflow } from './helpers/invariants.js'
 import { fuzzUndo, int } from './helpers/fuzz.js'
 import { fakeWidth } from './helpers/fake-canvas.js'
 
@@ -59,3 +59,29 @@ test('undo fuzzer catches an op that mutates its input', () => {
   const mutating = [{ name: 'push', gen: () => ({}), apply: d => { d.items.push(1); return { doc: d, inverse: x => { x.items.pop(); return x } } } }]
   assert.throws(() => fuzzUndo({ makeDoc, ops: mutating, runs: 20 }), /mutated|did not restore/)
 })
+
+// ---- overlap and premature overflow (added 2026-10-28: a do-nothing flow() passed every check before these)
+test('overlap check passes on a correct result and catches lines stacked at the same y', () => {
+  assertNoOverlap(good, 21)
+  assert.throws(() => assertNoOverlap({ lines: [{ x: 0, y: 0, w: 100, text: 'a' }, { x: 0, y: 0, w: 100, text: 'b' }] }, 21), /overlap/)
+  assert.throws(() => assertNoOverlap({ lines: [{ x: 0, y: 0, w: 100, text: 'a' }, { x: 50, y: 10, w: 100, text: 'b' }] }, 21), /overlap/)
+  assertNoOverlap({ lines: [{ x: 0, y: 0, w: 40, text: 'a' }, { x: 60, y: 0, w: 40, text: 'b' }] }, 21)   // two sides of a photo
+})
+test('reading order wants left before right on the same row', () =>
+  assert.throws(() => assertReadingOrder({ lines: [{ frameId: 'a', x: 60, y: 0, text: '1' }, { frameId: 'a', x: 0, y: 0, text: '2' }] }, frames), /reading order/))
+const tall = [{ id: 't', x: 0, y: 0, w: 140, h: 420 }]
+const ctx = { frames: tall, lineHeight: 21, measure: fakeWidth }
+test('premature overflow: a flow that places nothing is caught', () =>
+  assert.throws(() => assertNoPrematureOverflow(story, { lines: [], remainder: story }, ctx), /free space/))
+test('premature overflow: nothing to check when everything fitted', () =>
+  assertNoPrematureOverflow(story, { lines: [{ frameId: 't', x: 0, y: 0, w: 140, text: story }], remainder: '' }, ctx))
+test('premature overflow: a full frame may overflow', () => {
+  const lines = Array.from({ length: 20 }, (_, i) => ({ frameId: 't', x: 0, y: i * 21, w: 140, text: 'क' }))
+  assertNoPrematureOverflow(story, { lines, remainder: 'ख' }, ctx)
+})
+test('premature overflow: space under a photo must be used', () => {
+  const o = [{ x: 0, y: 0, w: 140, h: 100, margin: 5 }]                       // full-width photo at the top
+  assert.throws(() => assertNoPrematureOverflow(story, { lines: [], remainder: story }, { ...ctx, obstacles: o }), /free space/)
+})
+test('premature overflow: frames narrower than one letter are exempt', () =>
+  assertNoPrematureOverflow(story, { lines: [], remainder: story }, { ...ctx, frames: [{ id: 'n', x: 0, y: 0, w: 3, h: 400 }] }))

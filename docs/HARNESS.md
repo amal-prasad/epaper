@@ -28,8 +28,13 @@ Output is a table with PASS / FAIL / PENDING / SKIP. Exit code is 1 if any activ
 ## Adding a gate
 
 1. Write the check so it writes JSON to `harness/results/<id>.json` (or to a path under `spike/out`).
-2. Add an entry to `gates.json` with `status: "active"`.
+2. Add an entry to `gates.json` with `status: "active"`. Optional fields: `slow: true` (skipped by `--fast`), `also: [{ key, op, threshold, why }]` (extra conditions on the same file, e.g. sample size).
 3. Say in `CLAUDE.md` what the gate protects.
+4. `npm test` now fails with "judge changed": Amal reviews and runs `npm run approve`.
+
+Hand-measured gates have no `run`. Their result must carry `measuredBy`, `date` and `build`; write it with `npm run record -- <id> <key>=<n> --by <name>`.
+
+Flags: `--fast` skips slow gates; `--done` (phase exit) fails on any pending or skipped gate. Gates with a `run` delete their old result before running. If any judge changed since Amal's last approval, the run prints the changes and exits 1. Details: `docs/TESTING.md`, "Who judges the judges".
 
 ## Planned gates
 
@@ -57,5 +62,5 @@ Output is a table with PASS / FAIL / PENDING / SKIP. Exit code is 1 if any activ
 
 - A gate measures one thing. If it fails, you can tell why.
 - Seed it with real data (Janshakti copy), not invented text.
-- Thresholds are written before the code is, and changed only with a decision-log entry.
+- Thresholds are written before the code is, and changed only with a decision-log entry and `npm run approve --loosen`.
 - Hand-measured gates must record who, when, and what build.
