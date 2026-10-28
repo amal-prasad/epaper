@@ -42,8 +42,9 @@ test('"additive" edits that switch tests off are blocked', () => {
   blocked(pre('Edit', { file_path: existingTest, old_string: "import test from 'node:test'", new_string: "import test from 'node:test'\nprocess.exit(0)" }), 'exit')
   blocked(pre('Edit', { file_path: existingTest, old_string: 'a', new_string: 'ab', replace_all: true }), 'replace_all')
 })
-test('MultiEdit is blocked if any edit is not additive', () => {
-  const good = { old_string: 'a', new_string: 'a b' }, bad = { old_string: 'x', new_string: 'y' }
+test('MultiEdit is blocked if any edit changes an approved line', () => {
+  // was { old_string: 'a', new_string: 'a b' }: that rewrites the first approved line containing "a", which is now blocked
+  const good = { old_string: 'assert.deepEqual(bad, [])', new_string: 'assert.deepEqual(bad, [])\n  assert.ok(1)' }, bad = { old_string: 'x', new_string: 'y' }
   allowed(pre('MultiEdit', { file_path: existingTest, edits: [good] }))
   blocked(pre('MultiEdit', { file_path: existingTest, edits: [good, bad] }))
 })
@@ -100,3 +101,45 @@ test('stop hook blocks twice while tests fail, then lets Claude explain, then st
 })
 test('stop hook does nothing in a project without the harness', () =>
   assert.equal(run('stop-check.mjs', { session_id: 'none' }, fs.mkdtempSync(path.join(os.tmpdir(), 'studio-empty-'))).status, 0))
+
+// Edits to tests are checked line by line against the approved lines in harness/judges.lock.json.
+const APPROVED = "test('approved', () => assert.ok(1))", MINE = "test('mine', () => assert.ok(2))"
+function lockedProject(lines, lock = { appendOnly: { 'packages/x/test/a.test.js': [APPROVED] } }) {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'studio-lock-'))
+  fs.mkdirSync(path.join(tmp, 'harness')); fs.mkdirSync(path.join(tmp, 'packages/x/test'), { recursive: true })
+  if (lock) fs.writeFileSync(path.join(tmp, 'harness/judges.lock.json'), JSON.stringify(lock))
+  fs.writeFileSync(path.join(tmp, 'packages/x/test/a.test.js'), lines.join('\n') + '\n')
+  return (old_string, new_string) => run('protect-gates.mjs', { tool_name: 'Edit', tool_input: { file_path: 'packages/x/test/a.test.js', old_string, new_string }, cwd: tmp }, tmp)
+}
+test('editing a line that is not approved is allowed', () => {
+  const edit = lockedProject([APPROVED, MINE])
+  allowed(edit('assert.ok(2)', 'assert.ok(3)'), 'change an unapproved line')
+  allowed(edit(`${APPROVED}\n${MINE}`, APPROVED), 'remove an unapproved line')
+})
+test('editing an approved line is blocked, even by a substring edit that only adds text', () => {
+  const edit = lockedProject([APPROVED, MINE])
+  blocked(edit('assert.ok(1)', 'assert.ok(5)'), 'change')
+  blocked(edit('ok(1)', 'ok(1 || true)'), 'additive substring inside an approved line')
+  blocked(edit(`${APPROVED}\n`, ''), 'delete')
+})
+test('removing a line whose content matches an approved line is blocked, even a duplicate', () => {
+  const edit = lockedProject([APPROVED, MINE, APPROVED])
+  blocked(edit(`${MINE}\n${APPROVED}`, MINE), 'second copy of an approved line')
+})
+test('without a readable judges lock every edit to an existing test is blocked (fail closed)', () => {
+  const edit = lockedProject([APPROVED, MINE], null)
+  blocked(edit(MINE, `${MINE}\ntest('more', () => {})`), 'additive')
+  blocked(edit('assert.ok(2)', 'assert.ok(3)'), 'change')
+})
+test('read-only inline code and reads of tests are allowed', () => {
+  for (const command of [`node -e "console.log(require('fs').readFileSync('packages/engine/test/guardrails.test.js','utf8'))"`,
+    `node --input-type=module -e "import { installFakeCanvas } from './packages/engine/test/helpers/fake-canvas.js'; installFakeCanvas()"`,
+    `node -e "console.log(require('./harness/gates.json').gates.length)"; grep -n flow harness/run.mjs; cat packages/engine/test/guardrails.test.js`,
+    'cat packages/engine/test/conservation.test.js', 'sed -n 1,20p packages/engine/test/helpers/invariants.js'])
+    allowed(pre('Bash', { command }), command)
+})
+test('shell appends and inline writes to test files are still blocked', () => {
+  for (const command of ["cat >> packages/engine/test/flow.cases.test.js <<'EOF'\ntest('x', () => {})\nEOF", 'echo "test()" >> packages/engine/test/guardrails.test.js',
+    `node -e "require('fs').appendFileSync('packages/engine/test/guardrails.test.js','x')"`, `python3 -c "import os; os.remove('packages/engine/test/a.test.js')"`])
+    blocked(pre('Bash', { command }), command)
+})
