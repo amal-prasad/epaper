@@ -1,7 +1,7 @@
 {
  "_readme": "Written by `npm run approve`. Do not edit by hand.",
  "approvedBy": "bened",
- "approvedAt": "2026-10-28T12:08:05.414Z",
+ "approvedAt": "2026-10-28T12:13:26.582Z",
  "exact": {
   "harness/run.mjs": "e8de19e81bb91906",
   "harness/run-tests.mjs": "7f22c5293de02b36",
@@ -14,10 +14,10 @@
   "spike/src/main.js": "e0a4a93300d77026",
   ".claude/agents/reviewer.md": "527a838a907486de",
   ".claude/commands/gate.md": "b4d867cd9527c36a",
-  ".claude/commands/task.md": "f5498e44612ea1fa",
+  ".claude/commands/task.md": "b295914bf9d1a4a6",
   ".claude/hooks/protect-gates.mjs": "a2b4b0a033c3e4e3",
   ".claude/hooks/stop-check.mjs": "2c8062590cc5ac0f",
-  ".claude/settings.json": "35f20e90b4d31318",
+  ".claude/settings.json": "9b9aa073530dbe80",
   "package.json#scripts": "65781a61e883ce35",
   "spike/package.json#scripts": "98f9c7be86bca505",
   "spike/fonts.json#launch": "51d2a4b8c8e15bbb",

@@ -57,5 +57,7 @@
     "claude-seo@agricidaniel-claude-seo": false,
     "atomic-agents@claude-plugins-official": false,
     "warp@claude-code-warp": false
-  }
+  },
+  "model": "sonnet",
+  "advisorModel": "opus"
 }
