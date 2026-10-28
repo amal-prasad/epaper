@@ -3,7 +3,7 @@
 import test from 'node:test'
 import fs from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { installFakeCanvas, fakeWidth } from './helpers/fake-canvas.js'
 import { assertAll, assertDeterministic, assertConserved } from './helpers/invariants.js'
 import { rng, int } from './helpers/fuzz.js'
@@ -13,7 +13,7 @@ const flowPath = path.join(here, '../src/flow.js')
 const have = fs.existsSync(flowPath)
 const skip = have ? false : 'flow.js not built yet (Phase 0 task 5)'
 installFakeCanvas()
-const flow = have ? (await import(flowPath)).flow : null
+const flow = have ? (await import(pathToFileURL(flowPath).href)).flow : null
 
 // real Hindi copy if present, else a small built-in sample
 const samplesDir = path.join(here, '../../../spike/samples')
