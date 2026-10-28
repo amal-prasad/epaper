@@ -52,6 +52,11 @@ Phase 0 — engine spike. See `docs/phases/phase0-engine.md`.
 - Hook `stop-check.mjs`: Claude cannot finish while `npm test` fails (two attempts, then it must explain).
 - If a hook or the lock blocks you, do not look for a workaround. Tell Amal what you wanted to change and why.
 
+## Plugins in this project
+- superpowers, caveman and ponytail are on. When a plugin skill or workflow disagrees with CLAUDE.md, `/task`, `/bug` or the hooks, CLAUDE.md and the hooks win.
+- caveman shortens your prose only: always paste real `npm test` and harness output in full, and write docs, decision-log rows and commit messages in normal sentences.
+- Do not use superpowers' git worktrees or parallel subagents to build; one task, one branch, committed only when green.
+
 ## Decision log
 | ID | Date | Decision | Why |
 |---|---|---|---|
