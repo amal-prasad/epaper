@@ -1,15 +1,12 @@
 # CLAUDE.md — project memory
 
-Read `docs/PRODUCT_PROMPT.md` for the full brief. This file is the short version plus the decision log. Append to the log; never rewrite it.
+Read `docs/PRODUCT_PROMPT.md` for the full brief. This file is the short version. The decision log lives in `docs/DECISIONS.md`: append to it, never rewrite it.
 
 ## Project
 Hindi page-layout Studio: build a printable newspaper / school magazine from the publisher's own stories, publish the same layout as an e-paper. First customer: Janshakti Ujala (Indore weekly). Working name "Studio" (not "Patrika").
 
-## Before building
-Run the plan review first: `docs/PLAN_ENHANCEMENT_PROMPT.md` (Claude Code plan mode, `opusplan`). Its approved output replaces the draft estimates in `docs/phases/`.
-
 ## Current phase
-Phase 0 — engine spike. See `docs/phases/phase0-engine.md`.
+Phase 0 — engine spike, trimmed by the plan review. See `docs/phases/phase0-engine.md`.
 
 ## Commands
 - `npm run harness` — run every active gate, print a table, exit 1 on failure
@@ -57,27 +54,11 @@ Phase 0 — engine spike. See `docs/phases/phase0-engine.md`.
 - caveman shortens your prose only: always paste real `npm test` and harness output in full, and write docs, decision-log rows and commit messages in normal sentences.
 - Do not use superpowers' git worktrees or parallel subagents to build; one task, one branch, committed only when green.
 
-## Decision log
-| ID | Date | Decision | Why |
-|---|---|---|---|
-| D-001 | 2026-10-28 | Engine first, then auto-page, designer last | Value is operator-hours saved; a blank-canvas editor competes with Canva/Affinity and loses |
-| D-002 | 2026-10-28 | Every editing op is also an auto-pager op | Prevents a UI that the machine cannot drive |
-| D-003 | 2026-10-28 | Pretext is a candidate, not a commitment; Phase 0 parity gate decides | Early library, no Indic claims; Mukta missed ~10% of breaks in the first run |
-| D-004 | 2026-10-28 | Export = engine lines drawn absolutely, Chromium PDF, Ghostscript CMYK/PDF-X | Chromium shapes Devanagari correctly; engine lines prevent re-breaking |
-| D-005 | 2026-10-28 | Own content only | Janshakti dropped GNews and Patrika RSS for ToS reasons |
-| D-006 | 2026-10-28 | Justify with word-space only | Letter-spacing breaks shirorekha |
-| D-007 | 2026-10-28 | Product name is a placeholder constant | "Patrika" is Rajasthan Patrika's name |
-| D-008 | 2026-10-28 | npm workspaces, TypeScript, Next.js 14, Supabase | Matches existing Janshakti stack |
-| D-009 | 2026-10-28 | Match XLR8's convenience, not its sourcing: v1 content = own stories + own-site import + lead radar (headlines/links) + dedupe + source/licence on every story. Pool and agency feeds are a later paid add-on after 3/5 buyers say yes and an agency quote works. No scraping, no AI rewrite of others' copy | GNews terms (checked 2026-10-28) grant no republication licence and ban resale of API access; Janshakti already dropped GNews/Patrika RSS |
-| D-010 | 2026-10-28 | Bundle Devanagari + Latin subsets of every font; launch body fonts Noto Sans and Noto Serif Devanagari; Pretext stays the candidate live engine | Devanagari-only subsets made digits and English fall back to system fonts that canvas and DOM measure differently; with Latin bundled the launch fonts reach 99.6% (docs/FONTS.md). Row reconstructed 2026-10-28 from docs/FONTS.md and phase0-engine.md, which cite it; correct it if the original said otherwise |
-| D-011 | 2026-10-28 | Harness hardening: G0.flow is active and counts the 12 conservation contract tests plus 5 own flow tests (>= 17, none skipped); G0.parity also needs >= 40 real paragraphs and no invented samples; new flow invariants (no overlapping lines, no premature overflow); every judge is fingerprinted in harness/judges.lock.json and changes wait for `npm run approve`; hand results need `npm run record` | A do-nothing flow() passed all conservation tests; G0.flow could never pass as defined and phase docs told Claude to edit a file the hook blocks; the parity gate could pass on invented text; hand results and the spike scorer could be changed without anyone noticing |
-
-## Open questions
-- Agency quotes (PTI, UNI, IANS, Hindusthan Samachar) and one hour with an Indian media/IP lawyer before any content add-on ships.
-- Page sizes and grid for Janshakti's printer (ask printer for spec sheet: trim size, bleed, ink limit, ICC profile).
-- Which body fonts pass the parity gate (Noto Sans / Noto Serif / Mukta)?
-- Reuse the `janshakti-epaper` reader or build a new one?
-
-- D-010 correction (2026-10-28): Mukta's earlier 88% parity was caused by Devanagari-only font files (digits and English fell back to system fonts). With Latin bundled it is about 99%. Tiro Devanagari Hindi (about 79%) and Vesper Libre (about 58%) fail for undiagnosed reasons and are not worth diagnosing now.
-- D-011 (2026-10-28): v1 font set. Body: Noto Sans Devanagari, Noto Serif Devanagari. Headline: Khand, Eczar. Display: Rozha One. Handwritten (school magazines): Kalam. Reserve (passed, not in v1 UI): Halant, Martel, Sarala, Hind, Teko, Arya. Preview-only (99.2-99.4%): Mukta, Baloo 2, Yatra One. Server-layout only: Tiro Devanagari Hindi, Vesper Libre. A font enters the UI only if it passes docs/FONTS.md (at least 99.5% on real copy, clean halant checks, Latin bundled). Bold weights are untested: test them before any bold headline ships.
-- Font and engine tuning is closed. Do not revisit fonts until a Phase 1 template needs one.
+## Docs
+Read on demand; these are plain paths, not imports.
+- `docs/DECISIONS.md` — decision log (append-only) and open questions
+- `docs/PLAN_REVIEW.md` — approved plan, red-team findings, assumptions, sources
+- `docs/ROADMAP.md` — 12-week calendar, hours budget, cut-lines, week-12 decision
+- `docs/EXPERIMENTS.md` — first 14 days, pass/fail, buyer script
+- `docs/phases/` — one file per phase (scope, tasks, gates)
+- Also: `docs/PRODUCT_PROMPT.md`, `docs/UX_SPEC.md`, `docs/TESTING.md`, `docs/FONTS.md`, `docs/DESIGN_GAPS.md`

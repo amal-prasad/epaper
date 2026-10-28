@@ -1,7 +1,7 @@
 {
  "_readme": "Written by `npm run approve`. Do not edit by hand.",
  "approvedBy": "bened",
- "approvedAt": "2026-10-28T12:13:26.582Z",
+ "approvedAt": "2026-10-28T13:11:36.595Z",
  "exact": {
   "harness/run.mjs": "e8de19e81bb91906",
   "harness/run-tests.mjs": "7f22c5293de02b36",
@@ -89,8 +89,36 @@
     ]
    },
    {
+    "id": "G0.headline",
+    "phase": 0,
+    "status": "pending",
+    "title": "Line-break parity on bold headline sizes (weight 700, 18-36 px), headline fonts, percent",
+    "metricFile": "spike/out/headline.json",
+    "metricKey": "pct",
+    "op": ">=",
+    "threshold": 99.5,
+    "also": [
+     {
+      "key": "longerThanDom",
+      "op": "<=",
+      "threshold": 0,
+      "why": "Pretext must never fit more on a line than the browser"
+     }
+    ]
+   },
+   {
+    "id": "G0.black",
+    "phase": 0,
+    "status": "pending",
+    "title": "Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)",
+    "metricFile": "harness/results/G0.black.json",
+    "metricKey": "kOnly",
+    "op": ">=",
+    "threshold": 1
+   },
+   {
     "id": "G1.fillrate",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "Stories auto-placed with no manual fix on 20-issue replay, percent",
     "metricFile": "harness/results/G1.fillrate.json",
@@ -119,8 +147,38 @@
     "threshold": 0
    },
    {
-    "id": "G1.time",
+    "id": "G1.autoplaced",
     "phase": 1,
+    "status": "pending",
+    "title": "Stories placed with no manual move, percent, median of last 4 produced issues (Janshakti included; hand-recorded)",
+    "metricFile": "harness/results/G1.autoplaced.json",
+    "metricKey": "pct",
+    "op": ">=",
+    "threshold": 60
+   },
+   {
+    "id": "B.minutes.w8",
+    "phase": 1,
+    "status": "pending",
+    "title": "Founder minutes per produced 8-page issue, median of last 4 produced issues, by end of week 8 (hand-recorded)",
+    "metricFile": "harness/results/B.minutes.json",
+    "metricKey": "median",
+    "op": "<=",
+    "threshold": 150
+   },
+   {
+    "id": "B.minutes.w12",
+    "phase": 2,
+    "status": "pending",
+    "title": "Founder minutes per produced 8-page issue, median of last 4 produced issues, by end of week 12 (hand-recorded)",
+    "metricFile": "harness/results/B.minutes.json",
+    "metricKey": "median",
+    "op": "<=",
+    "threshold": 90
+   },
+   {
+    "id": "G1.time",
+    "phase": 3,
     "status": "pending",
     "title": "Minutes to build one real weekly (hand-measured)",
     "metricFile": "harness/results/G1.time.json",
@@ -130,7 +188,7 @@
    },
    {
     "id": "G1.dedupe",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "Duplicate detection F1 on seeded Hindi pairs (target, revise after first run)",
     "metricFile": "harness/results/G1.dedupe.json",
@@ -140,7 +198,7 @@
    },
    {
     "id": "G1.licence",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "Approved stories with no licence (count)",
     "metricFile": "harness/results/G1.licence.json",
@@ -150,7 +208,7 @@
    },
    {
     "id": "G1.firstpage",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "New users who see a filled first page within 5 minutes unaided, out of 5 (usability test)",
     "metricFile": "harness/results/G1.firstpage.json",
@@ -160,7 +218,7 @@
    },
    {
     "id": "G1.usability",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "Testers finishing tasks T2-T6 unaided, out of 5",
     "metricFile": "harness/results/G1.usability.json",
@@ -170,7 +228,7 @@
    },
    {
     "id": "G1.sus",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "Mean SUS score (target, revise after round 1)",
     "metricFile": "harness/results/G1.sus.json",
@@ -180,7 +238,7 @@
    },
    {
     "id": "G1.a11y",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "Serious/critical axe violations on Easy-mode routes (count) — run `npm run ux`",
     "run": "node harness/ux/ux-lint.mjs",
@@ -192,7 +250,7 @@
    },
    {
     "id": "G1.ux",
-    "phase": 1,
+    "phase": 3,
     "status": "pending",
     "title": "UX_SPEC §3 rule violations on Easy-mode routes (count)",
     "run": "node harness/ux/ux-lint.mjs",
@@ -204,7 +262,7 @@
    },
    {
     "id": "G2.pdfx",
-    "phase": 2,
+    "phase": 1,
     "status": "pending",
     "title": "PDF/X validation errors (count)",
     "metricFile": "harness/results/G2.pdfx.json",
@@ -224,7 +282,7 @@
    },
    {
     "id": "G2.proof",
-    "phase": 2,
+    "phase": 1,
     "status": "pending",
     "title": "Printer accepted a real proof (1 = yes)",
     "metricFile": "harness/results/G2.proof.json",
@@ -233,8 +291,38 @@
     "threshold": 1
    },
    {
+    "id": "B.paid",
+    "phase": 2,
+    "status": "pending",
+    "title": "Reported, not a build gate: weeklies that have paid for an issue (hand-recorded; week-12 decision needs >= 3)",
+    "metricFile": "harness/results/B.paid.json",
+    "metricKey": "count",
+    "op": ">=",
+    "threshold": 3
+   },
+   {
+    "id": "B.retained",
+    "phase": 2,
+    "status": "pending",
+    "title": "Reported, not a build gate: customers with 4 consecutive paid issues (hand-recorded)",
+    "metricFile": "harness/results/B.retained.json",
+    "metricKey": "count",
+    "op": ">=",
+    "threshold": 1
+   },
+   {
+    "id": "B.support",
+    "phase": 2,
+    "status": "pending",
+    "title": "Reported, not a build gate: support minutes per issue, median of last 4 (hand-recorded; plan limit 30, confirm after the first month)",
+    "metricFile": "harness/results/B.support.json",
+    "metricKey": "median",
+    "op": "<=",
+    "threshold": 30
+   },
+   {
     "id": "G3.accept",
-    "phase": 3,
+    "phase": 4,
     "status": "pending",
     "title": "AI suggestions accepted in beta, percent",
     "metricFile": "harness/results/G3.accept.json",
@@ -244,7 +332,7 @@
    },
    {
     "id": "G3.facts",
-    "phase": 3,
+    "phase": 4,
     "status": "pending",
     "title": "Dropped numbers or names in accepted trims (count)",
     "metricFile": "harness/results/G3.facts.json",
@@ -254,7 +342,7 @@
    },
    {
     "id": "G4.a11y",
-    "phase": 4,
+    "phase": 5,
     "status": "pending",
     "title": "Serious axe violations on editor routes (count)",
     "metricFile": "harness/results/G4.a11y.json",
@@ -264,7 +352,7 @@
    },
    {
     "id": "GX.dragms",
-    "phase": 4,
+    "phase": 5,
     "status": "pending",
     "title": "Drag re-layout ms per frame, 3-column story",
     "metricFile": "harness/results/GX.dragms.json",

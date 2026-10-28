@@ -1,4 +1,6 @@
-# Phase 3 — Assist (AI, approval-based)
+# Phase 4 — Assist (AI, approval-based)
+
+Renumbered by the plan review (2026-10-28): this was Phase 3. It now comes after self-serve (`phase3-selfserve.md`). File name kept. Gate ids G3.* stay; their phase field in `harness/gates.json` is 4.
 
 Read `CLAUDE.md` and `docs/PRODUCT_PROMPT.md` first. Phases 1 and 2 must have passed.
 

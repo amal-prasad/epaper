@@ -1,4 +1,6 @@
-# Phase 4 — Studio (Pro mode)
+# Phase 5 — Studio (Pro mode)
+
+Renumbered by the plan review (2026-10-28): this was Phase 4. It now comes last. File name kept. Gate ids G4.* and GX.dragms stay; their phase field in `harness/gates.json` is 5.
 
 Read `CLAUDE.md` and `docs/PRODUCT_PROMPT.md` first. Spec: `docs/design/Studio.dc.html`, `docs/design/Main.dc.html`.
 
