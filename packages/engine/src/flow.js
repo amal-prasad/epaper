@@ -18,28 +18,40 @@ function gaps(x0, x1, y, lh, obstacles) {
   return out
 }
 
-// flow(story, frames:[{id,x,y,w,h}], obstacles:[{x,y,w,h,margin}], {font, lineHeight}) -> { lines:[{frameId,x,y,w,text}], remainder }
+// flow(story, frames:[{id,x,y,w,h}], obstacles:[{x,y,w,h,margin}], {font, lineHeight})
+//   -> { lines:[{frameId,x,y,w,text}], remainder, deadGaps:[{frame,x,y,width,height,reason:'below-min-gap'|'smaller-side'}] }
 export function flow(story, frames, obstacles = [], { font, lineHeight }) {
   const size = parseFloat(/([\d.]+)px/.exec(font)?.[1])
   if (!(size > 0)) throw new Error(`flow(): font "${font}" has no px size`)
   const p = prepareWithSegments(story, font)
   let cursor = { segmentIndex: 0, graphemeIndex: 0 }, done = false
   const lines = []
+  // Space beside obstacles left empty on purpose (D-025), one rectangle per run of rows in the same gap.
+  // `seq` = lines placed before the row: rows after the last line are dropped below if the story ran out.
+  const deadGaps = []
+  const dead = (f, [a, b], y, reason) => {
+    const run = deadGaps.findLast(d => d.frame === f.id && d.reason === reason && d.x === a && d.width === b - a && Math.abs(d.y + d.height - y) < EPS)
+    if (run) run.height += lineHeight
+    else deadGaps.push({ frame: f.id, x: a, y, width: b - a, height: lineHeight, reason, seq: lines.length })
+  }
   for (const f of frames) {
     for (let y = f.y; !done && y + lineHeight <= f.y + f.h + EPS; y += lineHeight) {
       // An obstacle splitting the line leaves two gaps: we use only the larger one (leftmost on a tie), never both.
-      const g = gaps(f.x, f.x + f.w, y, lineHeight, obstacles).reduce((best, s) => (s[1] - s[0] > best[1] - best[0] + EPS ? s : best), [0, 0])
+      const all = gaps(f.x, f.x + f.w, y, lineHeight, obstacles), g = all.reduce((best, s) => (s[1] - s[0] > best[1] - best[0] + EPS ? s : best), [0, 0])
       const w = g[1] - g[0]
-      if (w <= EPS || w < Math.min(MIN_GAP_EM * size, f.w) - EPS) continue
+      if (w <= EPS) continue
+      if (w < Math.min(MIN_GAP_EM * size, f.w) - EPS) { for (const s of all) dead(f, s, y, 'below-min-gap'); continue }
       // Pretext breaks a word that does not fit at a grapheme cluster boundary.
       const line = layoutNextLine(p, w, cursor)
       if (!line) { done = true; break }
       if (line.width > w + EPS) continue                                 // not even one grapheme fits: try the next line
       lines.push({ frameId: f.id, x: g[0], y, w, text: line.text })
+      for (const s of all) if (s !== g) dead(f, s, y, 'smaller-side')
       cursor = line.end
     }
   }
   let remainder = ''
   for (let line; (line = layoutNextLine(p, Infinity, cursor)); cursor = line.end) remainder += line.text
-  return { lines, remainder }
+  const ranOut = !remainder.trim()
+  return { lines, remainder, deadGaps: deadGaps.filter(d => !ranOut || d.seq < lines.length).map(({ seq, ...d }) => d) }
 }

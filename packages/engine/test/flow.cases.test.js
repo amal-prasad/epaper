@@ -123,3 +123,42 @@ test('a word too long for the frame is not split into a gap below the minimum: i
   assert.ok(inFrame(r2, 'b').some(l => l.text.trim() === word), 'the long word was split')
   assert.equal(r2.remainder.trim(), '')
 })
+
+// D-025: deadGaps reports space beside obstacles that flow() leaves empty on purpose. Placement must not change.
+const { placementCases, OPTS } = await import('./helpers/placement-cases.js')
+const { createHash } = await import('node:crypto')
+const col = { id: 'a', x: 0, y: 0, w: 220, h: 400 }
+
+test('deadGaps: a photo leaving a 55px gap gives one below-min-gap rectangle over exactly the rows beside it', () => {
+  const photo = { x: 0, y: 0, w: 220 - 55 - 4, h: 105, margin: 4 }    // blocks y 0-109: rows 0, 21, ... 105
+  const r = run(story, [col], [photo])
+  assert.deepEqual(r.deadGaps, [{ frame: 'a', x: 165, y: 0, width: 55, height: 6 * LH, reason: 'below-min-gap' }])
+})
+
+test('deadGaps: a photo mid-column with gaps on both sides gives one smaller-side rectangle', () => {
+  const photo = { x: 40, y: 63, w: 80, h: 84, margin: 6 }            // gaps 0-34 and 126-220; blocks y 57-153: rows 42 ... 147
+  const r = run(story, [{ ...col, h: 4000 }], [photo])
+  assert.deepEqual(r.deadGaps, [{ frame: 'a', x: 0, y: 42, width: 34, height: 6 * LH, reason: 'smaller-side' }])
+})
+
+test('deadGaps: a photo snapped to the column edge leaves none', () => {
+  assert.deepEqual(run(story, [col], [{ x: 0, y: 0, w: 100, h: 105, margin: 0 }]).deadGaps, [])
+  assert.deepEqual(run(story, [col], [{ x: 0, y: 84, w: 220, h: 105, margin: 4 }]).deadGaps, [])
+})
+
+test('deadGaps: rows left empty only because the story ran out are not reported', () => {
+  const photo = { x: 0, y: 210, w: 220 - 55 - 4, h: 63, margin: 4 }  // 55px gap well below the end of the short story
+  const short = run('अब तक बस', [col], [photo])
+  assert.equal(short.lines.length, 1)
+  assert.deepEqual(short.deadGaps, [])
+  assert.equal(run(story, [col], [photo]).deadGaps.length, 1, 'the same gap is reported when text continues past it')
+})
+
+test('placement (lines, remainder) is identical to flow() before deadGaps, on the existing cases', () => {
+  const want = JSON.parse(fs.readFileSync(path.join(here, 'fixtures/flow-placement.json'), 'utf8'))
+  for (const [name, s, frames, obstacles] of placementCases(story)) {
+    const { lines, remainder } = flow(s, frames, obstacles, OPTS)
+    const got = createHash('sha256').update(JSON.stringify({ lines, remainder })).digest('hex').slice(0, 16) + ` ${lines.length} lines`
+    assert.equal(got, want[name], `placement changed: ${name}`)
+  }
+})

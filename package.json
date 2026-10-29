@@ -12,6 +12,7 @@
   "scripts": {
     "harness": "node harness/run.mjs",
     "spike": "npm --prefix spike run spike",
+    "preview": "node scripts/preview.mjs",
     "test": "node harness/run-tests.mjs",
     "ux": "node harness/ux/ux-lint.mjs",
     "approve": "node harness/tools/approve-judges.mjs",

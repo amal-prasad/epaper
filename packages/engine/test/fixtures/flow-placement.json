@@ -1,0 +1,16 @@
+{
+ "_readme": "sha256 (first 16 hex) of JSON.stringify({ lines, remainder }) from flow() for helpers/placement-cases.js, written from flow.js on main at 7aa41ad (before deadGaps). A change here means placement changed.",
+ "one tall frame": "b436ba6484e3992d 23 lines",
+ "two columns": "0d8e3c8f8a595a8e 33 lines",
+ "photo spanning two columns": "e312612f26844005 33 lines",
+ "photo in the middle of a column": "6576e366ab48473b 24 lines",
+ "contract photo in the middle": "4d9f63af2a8ddc49 21 lines",
+ "overflow into a third frame": "dc89c2d39689708c 33 lines",
+ "empty frames": "5bd01cdaa62b1f57 33 lines",
+ "gap 1px below the minimum": "a066307460e03112 13 lines",
+ "gap 1px above the minimum": "3c6515f8cd5a79d4 19 lines",
+ "obstacle taller than the column": "9a28d1ff99466650 19 lines",
+ "story overflows one frame": "1f7bcb148876b0d1 5 lines",
+ "tall wall, long word": "fbddfc3f172246cf 3 lines",
+ "compound word beside a wall": "2382422ec379641e 5 lines"
+}
