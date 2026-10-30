@@ -1,4 +1,4 @@
-// Font coverage: every character in real copy (spike/samples) must be drawn by each launch font itself, never by a fallback.
+// Font coverage: every character in real copy (spike/samples, spike/headlines) must be drawn by each launch font itself, never by a fallback.
 // A character is covered by a family+weight only if some @font-face in spike/public/fonts.css has it in its unicode-range
 // AND that face's served .woff2 has it in its cmap. Each flagged character is then confirmed in Chromium (widths with two
 // different fallback stacks differ when the browser falls back).
@@ -54,7 +54,7 @@ const faces = [...fs.readFileSync(path.join(pub, 'fonts.css'), 'utf8').matchAll(
 })).filter(f => families.includes(f.family))
 for (const f of faces) f.cmap = cmapOf(f.file)
 
-const copy = fs.readdirSync(path.join(root, 'spike/samples')).filter(f => f.endsWith('.txt')).map(f => fs.readFileSync(path.join(root, 'spike/samples', f), 'utf8')).join('\n')
+const copy = ['spike/samples', 'spike/headlines'].flatMap(d => fs.readdirSync(path.join(root, d)).filter(f => f.endsWith('.txt')).map(f => fs.readFileSync(path.join(root, d, f), 'utf8'))).join('\n')
 const counts = new Map()
 for (const ch of copy) if (!/[\n\r\t]/.test(ch)) counts.set(ch, (counts.get(ch) || 0) + 1)
 // --extra "₹“”": characters to check that the copy does not contain yet (count 0)

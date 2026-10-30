@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Font coverage rerun</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1000px;color:#222;background:#f4f4f4}a{color:#05c}
+table{border-collapse:collapse;background:#fff;margin:8px 0 16px}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}</style></head>
+<body><p><a href="index.html">&larr; all demos</a> · first run: <a href="gate-decisions.html">gate decisions &sect;4</a></p>
+<h1>Font coverage, rerun with the real headlines</h1>
+<p class="w">Grid assumption not involved here. Assumed grid elsewhere: A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body (GG-007).</p>
+<p>Every character in the real copy is checked against each launch font, at both weights. A character counts as covered only if the font's own file has it (unicode-range and cmap). Flagged characters are confirmed in Chromium. Run with <code>node scripts/font-coverage.mjs</code>, 2026-10-30. The script now also reads <code>spike/headlines/</code>.</p>
+<table><tr><th>Check</th><th>Before (2026-10-29)</th><th>Now</th></tr>
+<tr><td>Copy</td><td>127 paragraphs</td><td>127 paragraphs + 200 headlines (53,899 characters)</td></tr>
+<tr><td>Distinct characters</td><td>92</td><td>112</td></tr>
+<tr><td>Missing from a launch font (Noto Sans and Noto Serif Devanagari, Khand, Eczar; 400 and 700)</td><td>0</td><td><b>0</b></td></tr>
+<tr><td>Punctuation and symbols in the copy</td><td>no ₹, %, curly quotes</td><td>, . - ( ) ; : ! ? … ‘ ’ % ₹, all covered</td></tr>
+<tr><td>Common news characters not yet in the copy (checked with <code>--extra</code>): “ ” – — ॐ ½ ° × • € $ £ @ # &amp; [ ] / ' " ॰ ZWJ ZWNJ</td><td>½ missing</td><td>½ missing in Noto Sans and Noto Serif Devanagari (the browser falls back). Khand and Eczar have all of them</td></tr></table>
+<p>Result: nothing in real copy falls back. The only gap is ½, which the copy has never used. If a story ever uses it, it prints in a fallback font (GG-008 stays open; rerun on new copy).</p>
+</body></html>
