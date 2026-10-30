@@ -2,7 +2,7 @@
 //
 // Gate runs:
 //   node run.mjs                       G0.parity, writes out/report.*: launch body fonts (launch:true, role text/text-serif), body sizes 12/14 px, weight 400
-//   node run.mjs --headline-gate       G0.headline, writes out/headline.*: launch headline fonts (launch:true, role headline), weight 700,
+//   node run.mjs --headline-gate       G0.headline, writes out/headline.*: launch fonts with role headline, text or text-serif (body fonts set subheads and kickers in bold), weight 700,
 //                                      18/24/30/36 px, 1-4 column widths of the assumed A3 grid, the real headlines in headlines/*.txt
 // Screening runs (write out/report-screen.* unless --out <name> is given, so they never overwrite the gate report):
 //   node run.mjs --all                 every installed font in fonts.json
@@ -67,7 +67,7 @@ const roles = list('--roles') || (headline && !val('--fonts') && !flag('--all') 
 let chosen
 if (val('--fonts')) { const want = list('--fonts'); chosen = cfg.filter(f => want.includes(f.name)); const unknown = want.filter(w => !cfg.some(f => f.name === w)); if (unknown.length) console.warn(`Not in fonts.json: ${unknown.join(', ')}`) }
 else if (flag('--all') || roles) chosen = cfg
-else if (headlineGate) chosen = cfg.filter(f => f.launch && f.role === 'headline')
+else if (headlineGate) chosen = cfg.filter(f => f.launch && ['headline', 'text', 'text-serif'].includes(f.role))
 else chosen = cfg.filter(f => f.launch && ['text', 'text-serif'].includes(f.role))   // display/handwritten launch fonts: no gate yet (GG-022)
 if (roles) chosen = chosen.filter(f => roles.includes(f.role))
 const skipped = chosen.filter(f => !installed.has(f.name)).map(f => f.name)

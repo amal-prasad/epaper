@@ -144,15 +144,18 @@ for (const [name, args] of Object.entries(routes)) {
   const each = (boxes, fn) => { for (const b of boxes) for (let y = Math.round(b.y * S); y < Math.round((b.y + b.h) * S); y++) for (let x = Math.round(b.x * S); x < Math.round((b.x + b.w) * S); x++) fn(y * w + x) }
   const r = {}
   for (const [k, boxes] of Object.entries(regions)) {
-    let inked = 0, cmyOnInk = 0, kOnly = 0
-    const tot = []
+    let inked = 0, cmyOnInk = 0, kOnly = 0, px = 0, solid = 0
+    const tot = [], ks = []
     each(boxes, i => {
       const c = plates.Cyan.ink[i], m = plates.Magenta.ink[i], yy = plates.Yellow.ink[i], kk = plates.Black.ink[i]
+      px++; if (kk >= 230) solid++; ks.push(kk)
       // on the tint, only the solid text strokes count (the 15% grey under them is checked as its own region)
       if (k === 'text on tint' ? kk >= 230 : c + m + yy + kk > 12) { inked++; if (c > 6 || m > 6 || yy > 6) cmyOnInk++; else kOnly++ }
       if (k === 'photo') tot.push((c + m + yy + kk) / 2.55)
     })
-    r[k] = { inkedPx: inked, kOnlyPct: inked ? +(100 * kOnly / inked).toFixed(2) : null }
+    // tone too, not just "on K": a route that turns the 15% tint solid black (wiping out its text) must not pass
+    ks.sort((a, b) => a - b)
+    r[k] = { inkedPx: inked, kOnlyPct: inked ? +(100 * kOnly / inked).toFixed(2) : null, kMedianPct: +(ks[ks.length >> 1] / 2.55).toFixed(1), solidKPct: +(100 * solid / px).toFixed(1) }
     if (k === 'photo') { tot.sort((a, b) => a - b); r[k] = { ...r[k], totalInkMaxPct: +tot.at(-1).toFixed(0), totalInkP99Pct: +tot[Math.floor(0.99 * (tot.length - 1))].toFixed(0), over260Pct: +(100 * tot.filter(v => v > 260).length / tot.length).toFixed(2) } }
   }
   // whole-page coverage per plate, Ghostscript's own count
@@ -174,7 +177,13 @@ for (const [name, args] of Object.entries(routes)) {
 fs.writeFileSync(path.join(root, 'spike/out/black.json'), JSON.stringify(result, null, 1))
 
 const rw = result.routes.rewrite.regions, ph = result.routes.cmyk.regions.photo
-const RECOMMENDATION = `<b>Recommendation (from the run on this page).</b> Colour pages: the <b>rewrite</b> route (neutral RGB to K-only CMYK, then Ghostscript CMYK). Black text, rules and grey tints are ${rw['body text'].kOnlyPct}% / ${rw['thick rule'].kOnlyPct}% / ${rw['tint box (15% grey)'].kOnlyPct}% on K only, and the red kicker, blue panel and photo keep their colour. Mono pages: the <b>gray</b> route. Do not use <b>blacktext</b>: it also turns the red kicker and the blue panel black (${result.routes.blacktext.regions['red kicker'].kOnlyPct}% and ${result.routes.blacktext.regions['blue panel'].kOnlyPct}% K only). The plain <b>cmyk</b> route puts black text on all four plates (${result.routes.cmyk.regions['body text'].kOnlyPct}% K only), so text blurs on any misregistration. <b>Open:</b> the photo reaches ${ph.totalInkMaxPct}% total ink (${ph.over260Pct}% of its area over 260%) with Ghostscript's default profile. Newsprint presses usually limit total ink to about 240&ndash;260%, so the conversion needs the printer's ICC profile (GG-013). The rewrite works on the colour operators Chromium writes today (${Object.values(result.chromiumBlack).reduce((a, b) => a + b, 0)} black operator(s) found); a Chromium update that writes colour another way would make it miss silently (GG-025). <b>Caveat:</b> all routes knock out (the colour under black text is cut away). On this page the tint is K only, so that is harmless here. Black text over a photo or colour panel would leave a white halo on any misregistration, and many newspaper presses overprint black instead. Ask the printer (GG-027).`
+const RECOMMENDATION = `<b>Recommendation (from the run on this page).</b> Colour pages: the <b>rewrite</b> route (neutral RGB to K-only CMYK, then Ghostscript CMYK). Black text, rules and grey tints are ${rw['body text'].kOnlyPct}% / ${rw['thick rule'].kOnlyPct}% / ${rw['tint box (15% grey)'].kOnlyPct}% on K only, and the red kicker, blue panel and photo keep their colour. Mono pages: the <b>gray</b> route. Do not use <b>blacktext</b>: it also turns the red kicker and the blue panel black (${result.routes.blacktext.regions['red kicker'].kOnlyPct}% and ${result.routes.blacktext.regions['blue panel'].kOnlyPct}% K only). The plain <b>cmyk</b> route puts black text on all four plates (${result.routes.cmyk.regions['body text'].kOnlyPct}% K only), so text blurs on any misregistration. <b>Open:</b> the photo reaches ${ph.totalInkMaxPct}% total ink (${ph.over260Pct}% of its area over 260%) with Ghostscript's default profile. Newsprint presses usually limit total ink to about 240&ndash;260%, so the conversion needs the printer's ICC profile (GG-013). The rewrite works on the colour operators Chromium writes today (${Object.values(result.chromiumBlack).reduce((a, b) => a + b, 0)} black operator(s) found); a Chromium update that writes colour another way would make it miss silently (GG-025). <b>Caveat:</b> all routes knock out (the colour under black text is cut away). On this page the tint is K only, so that is harmless here. Black text over a photo or colour panel would leave a white halo on any misregistration, and many newspaper presses overprint black instead. Ask the printer (GG-027).<br><b>Reviewer (rule 16, 2026-10-30): not OK as it stands.</b> Six conditions:<ul>
+<li>The regex rewrite edits the raw file and breaks its xref; Ghostscript repairs it silently. It must rewrite content streams with a real PDF tool and fail on any Ghostscript warning.</li>
+<li>Near-neutrals (#231f20), <code>g</code>, <code>scn</code>, shadings and transparency are missed. The export must fail if any non-CMYK neutral remains.</li>
+<li>Every export needs a plate check that also checks tone (the rows above).</li>
+<li>The printer's ICC profile, ink limit and overprint rule are still needed.</li>
+<li>Photo quality settings must be fixed and tested on a real 300 ppi photo.</li>
+<li>Output must be PDF/X with an output intent and bleed. A physical proof is also needed.</li></ul>`
 
 // demo page (CLAUDE.md rule 17): K-only table and the plates side by side
 // green = what that route should do: black/grey regions on K only; colour regions keep colour (gray route: mono, all K)
@@ -185,9 +194,12 @@ const cell = (v, want) => v === null ? `<td class="${want ? 'no' : 'ok'}">no sol
 const row = (label, f) => `<tr><td>${label}</td>${names.map(n => f(result.routes[n], n)).join('')}</tr>`
 const table = `<tr><th>Region: share of inked pixels on K only (green = right for that route)</th>${names.map(n => `<th>${n}</th>`).join('')}</tr>` +
   Object.keys(regions).map(k => row(k, (r, n) => cell(r.regions[k].kOnlyPct, !COLOUR.has(k) || n === 'gray'))).join('') +
+  // tone: the tint must stay about 15% K and its text must stay readable (solid K on less than half the box)
+  row('Tint tone: median K (want 12-18%)', r => { const v = r.regions['tint box (15% grey)'].kMedianPct; return `<td class="${v >= 12 && v <= 18 ? 'ok' : 'no'}">${v}%</td>` }) +
+  row('Text on tint readable: box area at solid K (want under 50%)', r => { const v = r.regions['text on tint'].solidKPct; return `<td class="${v < 50 ? 'ok' : 'no'}">${v}%</td>` }) +
   row('Photo total ink: max / 99th pct / share over 260%', r => `<td>${r.regions.photo.totalInkMaxPct}% / ${r.regions.photo.totalInkP99Pct}% / ${r.regions.photo.over260Pct}%</td>`) +
   row('Fonts embedded / subset', r => `<td>${r.fonts - r.notEmbedded}/${r.fonts}, ${r.fonts - r.notSubset}/${r.fonts}</td>`) +
-  row('Ghostscript inkcov, whole page, % (C M Y K)', r => `<td>${['C', 'M', 'Y', 'K'].map(c => (100 * r.inkcov[c]).toFixed(1)).join(' ')}</td>`)
+  row('Share of page area with any ink per plate, % (C M Y K; Ghostscript inkcov, not ink amount)', r => `<td>${['C', 'M', 'Y', 'K'].map(c => (100 * r.inkcov[c]).toFixed(1)).join(' ')}</td>`)
 const plates = names.map(n => `<h3>${n}</h3><div class="pl">${['Cyan', 'Magenta', 'Yellow', 'Black'].map(c => `<figure><img src="g0-black-prep/${n}-${c}.png" alt="${n} ${c} plate"><figcaption>${c}</figcaption></figure>`).join('')}</div>`).join('\n')
 fs.writeFileSync(path.join(root, 'demos/g0-black-prep.html'), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G0.black prep</title>
@@ -199,7 +211,7 @@ figure{margin:0}figure img{width:100%;border:1px solid #ccc;background:#fff}figc
 <body><p><a href="index.html">&larr; all demos</a></p>
 <h1>G0.black prep: where black text lands on the plates</h1>
 <p class="w"><b>Assumed grid and press.</b> A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body (GG-007). The CMYK conversion uses Ghostscript's default profile, not the printer's ICC profile (not received yet). The photo is synthetic, drawn in canvas. <b>G0.black is not recorded</b>: it needs Amal's check of a physical proof.</p>
-<p>One test page set the export way (flow() lines drawn absolutely), printed by Chromium, then run through four Ghostscript routes and separated with <code>tiffsep</code> at ${DPI} dpi. ${result.ghostscript}, ${result.date.slice(0, 16).replace('T', ' ')} UTC. Chromium writes black as RGB: ${Object.entries(result.chromiumBlack).map(([k, v]) => `${k} &times;${v}`).join(', ')}.</p>
+<p>One test page set the export way (flow() lines drawn absolutely), printed by Chromium, then run through four Ghostscript routes and separated with <code>tiffsep</code> at ${DPI} dpi. ${result.ghostscript}, ${result.date.slice(0, 16).replace('T', ' ')} UTC. Black operators in Chromium's PDF after Ghostscript rewrote it uncompressed (not Chromium's own bytes):${Object.entries(result.chromiumBlack).map(([k, v]) => `${k} &times;${v}`).join(', ')}.</p>
 <table>${table}</table>
 <p class="p">__RECOMMENDATION__</p>
 <h2>Plates (top of the page, each plate in its ink colour)</h2>

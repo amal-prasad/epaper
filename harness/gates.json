@@ -152,7 +152,7 @@
       "id": "G0.headline",
       "phase": 0,
       "status": "active",
-      "title": "Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch headline fonts (fonts.json launch:true, role headline), real Janshakti headlines, percent",
+      "title": "Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent",
       "run": "npm --prefix spike run spike -- --headline-gate",
       "metricFile": "spike/out/headline.json",
       "metricKey": "pct",
@@ -177,7 +177,7 @@
     {
       "id": "G0.black",
       "phase": 0,
-      "status": "pending",
+      "status": "active",
       "title": "Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)",
       "metricFile": "harness/results/G0.black.json",
       "metricKey": "kOnly",

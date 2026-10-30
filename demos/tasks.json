@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-30",
+    "task": "Phase 0 done",
+    "page": "phase0-done.html",
+    "summary": "Every Phase 0 gate passes. GO: Pretext is the live engine. flow.png, the export route with the reviewer's conditions, what moves to Phase 1, links to every Phase 0 demo, and the commit, merge and tag commands."
+  },
+  {
+    "date": "2026-10-30",
     "task": "G0.black prep: black text on the plates (E2)",
     "page": "g0-black-prep.html",
     "summary": "Test page through four Ghostscript routes, tiffsep plates. Plain CMYK puts black text on all four plates; rewriting neutral RGB to K keeps text, rules and tints on K and colour intact; BlackText also blackens colour text and panels. Photo reaches 296% total ink with the default profile. Not recorded: needs Amal's print check."

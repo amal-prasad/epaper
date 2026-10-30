@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phase 0 done</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+table{border-collapse:collapse;background:#fff;margin:8px 0 16px;width:100%}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}
+.s{font-weight:600;font-size:12px;padding:2px 8px;border-radius:10px;color:#fff;background:#1a7f37}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}pre{background:#fff;border:1px solid #ddd;padding:12px;overflow-x:auto;font-size:13px}
+img{max-width:100%;border:1px solid #ccc}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>Phase 0 done: every gate passes</h1>
+<p class="w"><b>Assumed grid.</b> A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body (GG-007). Rerun the gates on the printer's real grid when the spec sheet arrives.</p>
+<p>Decision: <b>GO, Pretext is the live engine</b> (<code>docs/PHASE0_DECISION.md</code>, D-034). Final run: <code>npm run harness -- --phase 0 --done</code>, 2026-10-30, printed "Phase 0: every gate passes". <code>npm test</code>: 89 passed, 0 failed.</p>
+<table><tr><th>Gate</th><th>Status</th><th>Result</th><th>Need</th></tr>
+<tr><td>G0.parity: body line breaks vs browser, 127 real paragraphs</td><td><span class="s">PASS</span></td><td>99.7% (3546/3556), 0 longer than browser</td><td>&ge; 95</td></tr>
+<tr><td>G0.guard: brand name and licence checks</td><td><span class="s">PASS</span></td><td>0 failing</td><td>0</td></tr>
+<tr><td>G0.flow: flow() contract and own tests</td><td><span class="s">PASS</span></td><td>22</td><td>&ge; 17</td></tr>
+<tr><td>G0.speed: flow() on a full A3 page</td><td><span class="s">PASS</span></td><td>4.1 ms median</td><td>&le; 30</td></tr>
+<tr><td>G0.pdfpos: PDF matches flow()</td><td><span class="s">PASS</span></td><td>left 0.009 pt; right p95 0.010, worst 0.051 pt (raster); fonts embedded and subset</td><td>&le; 0.1</td></tr>
+<tr><td>G0.headline: bold 18-36 px, 200 real headlines, 4 fonts</td><td><span class="s">PASS</span></td><td>12796/12800, 0 longer</td><td>&ge; 99.5</td></tr>
+<tr><td>G0.black: text and rules on K only</td><td><span class="s">PASS</span></td><td>1 (Amal: separations and CorelDRAW check of rewrite.pdf and gray.pdf)</td><td>1</td></tr></table>
+
+<h2>flow() on a realistic page (task 6)</h2>
+<p>Left: flow() lines drawn absolutely, 4 columns, a photo and a boxed quote. Right: the same text in plain CSS columns. Rebuild: <code>node scripts/flow-png.mjs</code>.</p>
+<img src="phase0-done/flow.png" alt="flow() page next to CSS columns">
+<h3>Justified</h3>
+<p>The same flow() lines justified the export way: word spacing only, no letter-spacing (D-006), last line ragged. On the right, CSS <code>text-align: justify</code>. Same 200 lines, so justifying does not change the breaks. Word spaces: median 1.67&times;, worst 6.14&times;, 61 of 199 lines over 2&times;. These are the wide gaps the justify experiment (D-030) targets. Rebuild: <code>node scripts/flow-png.mjs --justify</code>.</p>
+<img src="phase0-done/flow-justified.png" alt="justified flow() page next to justified CSS columns">
+
+<h2>Carried into Phase 1</h2>
+<ul><li>Export module, with the reviewer's six conditions (rule 16):
+<ol><li>rewrite content streams with a real PDF tool;</li>
+<li>fail on Ghostscript warnings and on leftover neutrals;</li>
+<li>check every export's plates for K only and tone;</li>
+<li>map tints through the printer's K curve, and keep white out of the rewrite;</li>
+<li>set photo quality explicitly;</li>
+<li>output PDF/X with bleed.</li></ol>
+Plus a physical proof (G2.proof).</li>
+<li>Printer questions: ICC profile, ink limit, overprint or knockout, trim and grid.</li>
+<li>Paragraph breaks in flow() (GG-016, visible above: the text runs as one block), justification (D-030), and the flow-dead-gaps branch.</li>
+<li>Open gate gaps: <a href="gate-gaps.html">gate-gaps.html</a>. The phase-end audit added GG-028 to GG-039 and proposed statuses for GG-001 to GG-027, left for Amal.</li></ul>
+
+<h2>All Phase 0 demos</h2>
+<table><tr><th>Page</th><th>What it shows</th></tr>
+<tr><td><a href="task5-flow.html">task5-flow</a></td><td>flow(): columns, photos, minimum gap 4/6/8 em</td></tr>
+<tr><td><a href="flow-dead-gaps.html">flow-dead-gaps</a></td><td>Space left empty beside photos (other branch)</td></tr>
+<tr><td><a href="gate-review.html">gate-review</a></td><td>Measured proposals for justify, PDF positions, speed</td></tr>
+<tr><td><a href="gate-decisions.html">gate-decisions</a></td><td>G0.speed and G0.pdfpos added; the ष्ट outlier; cheap justify before and after; first font coverage</td></tr>
+<tr><td><a href="gate-batch-headline-raster.html">gate-batch-headline-raster</a></td><td>Raster right edges with negative controls; G0.headline activated</td></tr>
+<tr><td><a href="font-coverage-headlines.html">font-coverage-headlines</a></td><td>Coverage rerun with 200 headlines: nothing missing</td></tr>
+<tr><td><a href="g0-black-prep.html">g0-black-prep</a></td><td>Four colour routes, ink plates, tone checks, reviewer verdict</td></tr>
+<tr><td><a href="gate-gaps.html">gate-gaps</a></td><td>Every risk no gate checks yet</td></tr></table>
+
+<h2>Commands for Amal</h2>
+<p>Run in your own terminal on branch <code>gate-review</code>. Your <code>.gitignore</code> and <code>.graphifyignore</code> changes and <code>scratch/</code> are left out.</p>
+<pre>git add harness/gates.json harness/judges.lock.json harness/results/G0.black.json harness/results/tests.json \
+  spike/run.mjs spike/samples/janshakti-live.txt spike/clean-samples.mjs spike/out/report.json spike/out/report.md \
+  scripts/black-spike.mjs scripts/flow-png.mjs docs/DECISIONS.md docs/GATE_GAPS.md docs/PHASE0_DECISION.md docs/proposals \
+  demos/g0-black-prep.html demos/g0-black-prep demos/phase0-done.html demos/phase0-done demos/tasks.json demos/index.html demos/gate-gaps.html
+git commit -m "Phase 0 done: clean samples, Noto 700 headlines, G0.black active, decision and audits (D-033, D-034)" \
+  -m "Site UI text stripped from the samples (spike/clean-samples.mjs); G0.headline also covers Noto Sans and Serif Devanagari 700; G0.black switched to active on Amal's check of the plates. docs/PHASE0_DECISION.md: GO, Pretext live engine, export route and the reviewer's conditions. Phase-end audit rows GG-028..GG-039, plus GG-040. flow.png (scripts/flow-png.mjs), K-plate check proposal, tone checks in the black spike." \
+  -m "Co-Authored-By: Claude Opus 5.5 &lt;noreply@anthropic.com&gt;"
+npm test &amp;&amp; npm run harness -- --phase 0 --done
+
+git checkout main
+git merge --no-ff gate-review -m "Merge gate-review: Phase 0 complete"
+npm test &amp;&amp; npm run harness -- --phase 0 --done
+git tag -a phase-0-done -m "Phase 0: every gate passes (D-034)"
+git push origin main --tags</pre>
+<p>The <code>flow-dead-gaps</code> branch is not in this merge. Decide separately whether to merge or drop it.</p>
+</body></html>
