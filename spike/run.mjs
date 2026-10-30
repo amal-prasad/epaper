@@ -1,7 +1,9 @@
 // Phase 0 spike runner: builds, serves, drives Chromium, writes out/report.md + out/report.json
 //
-// Gate run (what G0.parity uses; writes out/report.*):
-//   node run.mjs                       launch fonts (launch:true in fonts.json), body sizes 12/14 px, weight 400
+// Gate runs:
+//   node run.mjs                       G0.parity, writes out/report.*: launch body fonts (launch:true, role text/text-serif), body sizes 12/14 px, weight 400
+//   node run.mjs --headline-gate       G0.headline, writes out/headline.*: launch headline fonts (launch:true, role headline), weight 700,
+//                                      18/24/30/36 px, 1-4 column widths of the assumed A3 grid, the real headlines in headlines/*.txt
 // Screening runs (write out/report-screen.* unless --out <name> is given, so they never overwrite the gate report):
 //   node run.mjs --all                 every installed font in fonts.json
 //   node run.mjs --fonts "Halant,Hind"
@@ -46,8 +48,13 @@ const sampleFiles = fs.readdirSync(path.join(root, 'samples')).filter(f => f.end
 const parasOf = f => fs.readFileSync(path.join(root, 'samples', f), 'utf8').split(/\n\s*\n/)
   .map(s => s.replace(/\s+/g, ' ').trim()).filter(s => s.length > 40)
 const byFile = Object.fromEntries(sampleFiles.map(f => [f, parasOf(f).length]))
-const paras = sampleFiles.flatMap(parasOf)
-const inventedParagraphs = sampleFiles.filter(f => INVENTED.has(f)).reduce((a, f) => a + byFile[f], 0)
+const headlineGate = flag('--headline-gate')
+// headline gate: one real headline per line in headlines/*.txt, instead of the body paragraphs
+const headlineFiles = headlineGate ? fs.readdirSync(path.join(root, 'headlines')).filter(f => f.endsWith('.txt')).sort() : []
+const headlines = headlineFiles.flatMap(f => fs.readFileSync(path.join(root, 'headlines', f), 'utf8').split('\n').map(s => s.replace(/\s+/g, ' ').trim()).filter(Boolean))
+if (headlineGate) Object.assign(byFile, Object.fromEntries(headlineFiles.map(f => [`headlines/${f}`, null])))
+const paras = headlineGate ? headlines : sampleFiles.flatMap(parasOf)
+const inventedParagraphs = headlineGate ? 0 : sampleFiles.filter(f => INVENTED.has(f)).reduce((a, f) => a + byFile[f], 0)
 const realParagraphs = paras.length - inventedParagraphs
 if (!paras.length) { console.error('No paragraphs in spike/samples/*.txt (blank line between paragraphs, each > 40 characters).'); process.exit(1) }
 
@@ -60,7 +67,8 @@ const roles = list('--roles') || (headline && !val('--fonts') && !flag('--all') 
 let chosen
 if (val('--fonts')) { const want = list('--fonts'); chosen = cfg.filter(f => want.includes(f.name)); const unknown = want.filter(w => !cfg.some(f => f.name === w)); if (unknown.length) console.warn(`Not in fonts.json: ${unknown.join(', ')}`) }
 else if (flag('--all') || roles) chosen = cfg
-else chosen = cfg.filter(f => f.launch)
+else if (headlineGate) chosen = cfg.filter(f => f.launch && f.role === 'headline')
+else chosen = cfg.filter(f => f.launch && ['text', 'text-serif'].includes(f.role))   // display/handwritten launch fonts: no gate yet (GG-022)
 if (roles) chosen = chosen.filter(f => roles.includes(f.role))
 const skipped = chosen.filter(f => !installed.has(f.name)).map(f => f.name)
 chosen = chosen.filter(f => installed.has(f.name))
@@ -70,15 +78,18 @@ const FONTS = chosen.map(f => f.name)
 const hasWeight = (font, w) => (cfg.find(f => f.name === font)?.weights || [400]).includes(w)
 
 const quick = flag('--quick')
-const lhFor = size => Math.round(size * (size >= 20 ? 1.2 : 1.5))
+const lhFor = size => Math.round(size * (size >= 18 && headlineGate || size >= 20 ? 1.2 : 1.5))
 const nums = n => list(n)?.map(Number).filter(x => Number.isFinite(x) && x > 0)
-const SIZES = (nums('--sizes') || (headline ? [20, 28, 36, 48] : quick ? [14] : [12, 14])).map(size => ({ size, lh: lhFor(size) }))
-const WIDTHS = nums('--widths') || (headline ? [140, 240, 360, 480] : quick ? [110, 180] : [90, 110, 140, 180, 240])   // CSS px; 90 = 6-col, 240 = 2-col
-const WEIGHTS = nums('--weights') || (headline ? [700] : [400])
-const OBST = headline ? [] : quick ? [{ obsW: 70, obsH: 60, gap: 8 }] : [{ obsW: 70, obsH: 60, gap: 8 }, { obsW: 100, obsH: 90, gap: 8 }]
-const HALANT_SIZES = headline ? [28] : [12, 14], HALANT_WIDTHS = headline ? [140, 240, 360] : [60, 80, 110, 140, 180, 240]
+// Assumed grid until the printer's spec sheet arrives (GG-007): A3 297 mm wide, 12 mm margins, 5 columns, 4 mm gutter.
+const mmPx = mm => mm * 96 / 25.4, gridCol = (297 - 2 * 12 - 4 * 4) / 5
+const GRID_WIDTHS = [1, 2, 3, 4].map(n => +mmPx(n * gridCol + (n - 1) * 4).toFixed(2))   // 194.27 / 403.65 / 613.04 / 822.43 px
+const SIZES = (nums('--sizes') || (headlineGate ? [18, 24, 30, 36] : headline ? [20, 28, 36, 48] : quick ? [14] : [12, 14])).map(size => ({ size, lh: lhFor(size) }))
+const WIDTHS = nums('--widths') || (headlineGate ? GRID_WIDTHS : headline ? [140, 240, 360, 480] : quick ? [110, 180] : [90, 110, 140, 180, 240])   // CSS px; 90 = 6-col, 240 = 2-col
+const WEIGHTS = nums('--weights') || (headline || headlineGate ? [700] : [400])
+const OBST = headline || headlineGate ? [] : quick ? [{ obsW: 70, obsH: 60, gap: 8 }] : [{ obsW: 70, obsH: 60, gap: 8 }, { obsW: 100, obsH: 90, gap: 8 }]
+const HALANT_SIZES = headline || headlineGate ? [28] : [12, 14], HALANT_WIDTHS = headline || headlineGate ? [140, 240, 360] : [60, 80, 110, 140, 180, 240]
 const screening = ['--all', '--fonts', '--roles', '--quick', '--headline', '--sizes', '--widths', '--weights'].some(flag)
-const OUT = val('--out') || (screening ? 'report-screen' : 'report')
+const OUT = val('--out') || (screening ? 'report-screen' : headlineGate ? 'headline' : 'report')
 const mode = screening ? 'screen' : 'gate'
 
 // ---- halant / conjunct stress words (synthetic, not news copy)
@@ -172,7 +183,8 @@ const longerThanDom = sum.over
 const scope = mode === 'gate' && launchRows.length ? 'launch fonts' : 'tested fonts'
 const desc = `${SIZES.map(s => s.size).join('/')} px, weight ${WEIGHTS.join('/')}, widths ${WIDTHS.join('/')} px${quick ? ', quick' : ''}`
 
-let md = `# Phase 0 spike report (${mode === 'gate' ? 'GATE run' : 'screening run, not the gate'})\n\n- Paragraphs tested: ${paras.length} (${realParagraphs} real, ${inventedParagraphs} invented)\n- Fonts tested: ${perFont.length} at ${desc}\n`
+let md = `# Phase 0 spike report (${mode === 'gate' ? (headlineGate ? 'GATE run, G0.headline' : 'GATE run') : 'screening run, not the gate'})\n\n- ${headlineGate ? 'Headlines' : 'Paragraphs'} tested: ${paras.length} (${realParagraphs} real, ${inventedParagraphs} invented)\n- Fonts tested: ${perFont.length} at ${desc}\n`
+if (headlineGate) md += `- Widths are 1-4 columns of an ASSUMED grid (A3, 12 mm margins, 5 columns, 4 mm gutter; GG-007) until the printer's spec sheet arrives\n`
 md += `- Line-break match vs real browser DOM, ${scope}: **${sum.ok}/${sum.tot} (${pct}%)**${mode === 'gate' ? '  <- gate metric' : ''}\n`
 md += `- Lines where Pretext fits MORE than the browser (would overflow in print), ${scope}: **${longerThanDom}**${mode === 'gate' ? '  <- must be 0' : ''}; lines where it breaks earlier (harmless): ${sum.under}\n`
 md += `- Same, all tested fonts: ${sumAll.ok}/${sumAll.tot} (${pctAll}%), ${sumAll.over} over\n`
@@ -193,5 +205,6 @@ for (const r of rows.filter(r => r.fails.length)) for (const f of r.fails)
   md += `\n- ${r.test} / ${r.font} ${r.weight} / ${r.size}px / w=${r.width}${r.obs ? ' / ' + r.obs : ''} / para ${f.para}: line ${f.firstDiff} (${f.dir === 'under' ? 'early break' : f.dir})\n  - DOM: \`${f.domAt}\`\n  - Pretext: \`${f.preAt}\`\n`
 fs.writeFileSync(path.join(out, `${OUT}.md`), md)
 fs.writeFileSync(path.join(out, `${OUT}.json`), JSON.stringify({ mode, pct, pctAll, longerThanDom, earlyBreaks: sum.under, scope, paragraphs: paras.length, realParagraphs, inventedParagraphs, samples: byFile,
+  realHeadlines: headlineGate ? headlines.length : 0,
   fonts: FONTS, sizes: SIZES.map(s => s.size), weights: WEIGHTS, widths: WIDTHS, quick, skippedCombos, perFont, perf, rows }, null, 2))
 console.log(md.split('## Results')[0]); console.log(`Full report: ${path.join(out, OUT + '.md')}`)

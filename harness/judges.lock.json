@@ -1,27 +1,30 @@
 {
  "_readme": "Written by `npm run approve`. Do not edit by hand.",
  "approvedBy": "bened",
- "approvedAt": "2026-10-29T06:02:08.809Z",
+ "approvedAt": "2026-10-30T07:16:06.182Z",
  "exact": {
   "harness/run.mjs": "e8de19e81bb91906",
   "harness/run-tests.mjs": "7f22c5293de02b36",
-  "harness/judges.mjs": "391caed1939bdab2",
+  "harness/judges.mjs": "aea3d6dc4804942a",
   "harness/tools/approve-judges.mjs": "71f8b684da581aeb",
   "harness/tools/record-result.mjs": "e1b16b60fb8e2361",
   "harness/ux/ux-lint.mjs": "7480011ee55d1ff2",
   "harness/ux/routes.json": "9b6eb0b9392a1ac6",
-  "spike/run.mjs": "8ccce38542b70a27",
+  "spike/run.mjs": "b0a26ebbafb7c9fc",
   "spike/src/main.js": "e0a4a93300d77026",
+  "scripts/measure-export.mjs": "ea33a0762023ea15",
+  "spike/samples/janshakti-live.txt": "7b60ce4a1f3b2858",
+  "spike/headlines/janshakti-headlines.txt": "a1cfeda11fa8f864",
   ".claude/agents/reviewer.md": "527a838a907486de",
   ".claude/commands/gate.md": "b4d867cd9527c36a",
   ".claude/commands/task.md": "b295914bf9d1a4a6",
   ".claude/hooks/protect-gates.mjs": "5dd7b98e8df384a1",
   ".claude/hooks/stop-check.mjs": "2c8062590cc5ac0f",
   ".claude/settings.json": "9b9aa073530dbe80",
-  "package.json#scripts": "65781a61e883ce35",
+  "package.json#scripts": "322e5e08884cb36e",
   "spike/package.json#scripts": "98f9c7be86bca505",
-  "spike/fonts.json#launch": "51d2a4b8c8e15bbb",
-  "CLAUDE.md#Rules": "144300f0f665c45a"
+  "spike/fonts.json#launch": "e5fcd34980cd57e0",
+  "CLAUDE.md#Rules": "b1bcd2670feeee72"
  },
  "gates": {
   "gates": [
@@ -29,7 +32,7 @@
     "id": "G0.parity",
     "phase": 0,
     "status": "active",
-    "title": "Line-break parity vs real DOM on real Hindi copy, launch fonts (fonts.json launch:true), percent",
+    "title": "Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent",
     "run": "npm --prefix spike run spike",
     "metricFile": "spike/out/report.json",
     "metricKey": "pct",
@@ -89,15 +92,108 @@
     ]
    },
    {
+    "id": "G0.speed",
+    "phase": 0,
+    "status": "active",
+    "title": "flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium",
+    "run": "node scripts/measure-export.mjs",
+    "metricFile": "spike/out/export.json",
+    "metricKey": "speedMedianMs",
+    "op": "<=",
+    "threshold": 30,
+    "also": [
+     {
+      "key": "speedLines",
+      "op": ">=",
+      "threshold": 400,
+      "why": "a broken flow() that places nothing must not pass by being fast"
+     }
+    ]
+   },
+   {
+    "id": "G0.pdfpos",
+    "phase": 0,
+    "status": "active",
+    "title": "Exported PDF matches flow(): max left-edge error in pt (lines whose first glyph reads back), plus baseline, justified right edge and font embedding",
+    "run": "node scripts/measure-export.mjs",
+    "metricFile": "spike/out/export.json",
+    "metricKey": "pdfMaxLeftPt",
+    "op": "<=",
+    "threshold": 0.1,
+    "also": [
+     {
+      "key": "pdfBaselineSpreadPt",
+      "op": "<=",
+      "threshold": 0.1,
+      "why": "every line's PDF baseline sits the same distance below its flow() line top"
+     },
+     {
+      "key": "pdfRightP95Pt",
+      "op": "<=",
+      "threshold": 0.1,
+      "why": "justified right edges at the 95th percentile, measured by raster: rightmost ink of each line in the rendered PDF vs where its last word's ink should end (pdf.js text widths misreport conjuncts such as ष्ट); see pdfRightMaxPt for the worst line"
+     },
+     {
+      "key": "pdfRightMaxPt",
+      "op": "<=",
+      "threshold": 0.1,
+      "why": "worst justified line, by raster: one line shifted 0.3 pt or drawn short passes the 95th percentile but not this (negative control, D-031); 0.054 pt on 2026-10-30"
+     },
+     {
+      "key": "pdfFontsNotEmbedded",
+      "op": "<=",
+      "threshold": 0,
+      "why": "a missing font prints in a substitute or fails at the printer"
+     },
+     {
+      "key": "pdfFontsNotSubset",
+      "op": "<=",
+      "threshold": 0
+     },
+     {
+      "key": "pdfFonts",
+      "op": ">=",
+      "threshold": 2,
+      "why": "guard: a PDF with no fonts found must not pass the embedding checks"
+     },
+     {
+      "key": "pdfMissingLines",
+      "op": "<=",
+      "threshold": 0,
+      "why": "guard: every flow() line must be found in the PDF"
+     },
+     {
+      "key": "pdfLeftCheckedPct",
+      "op": ">=",
+      "threshold": 90,
+      "why": "guard: the left-edge check must cover most lines (97.4% on 2026-10-29)"
+     },
+     {
+      "key": "pdfRightCheckedPct",
+      "op": ">=",
+      "threshold": 95,
+      "why": "guard: the raster right-edge check must cover nearly every justified line (100% on 2026-10-30)"
+     }
+    ]
+   },
+   {
     "id": "G0.headline",
     "phase": 0,
-    "status": "pending",
-    "title": "Line-break parity on bold headline sizes (weight 700, 18-36 px), headline fonts, percent",
+    "status": "active",
+    "title": "Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch headline fonts (fonts.json launch:true, role headline), real Janshakti headlines, percent",
+    "run": "npm --prefix spike run spike -- --headline-gate",
     "metricFile": "spike/out/headline.json",
     "metricKey": "pct",
     "op": ">=",
     "threshold": 99.5,
+    "slow": true,
     "also": [
+     {
+      "key": "realHeadlines",
+      "op": ">=",
+      "threshold": 100,
+      "why": "measure on 100+ real Janshakti headlines (spike/headlines/), not invented text"
+     },
      {
       "key": "longerThanDom",
       "op": "<=",

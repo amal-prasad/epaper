@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2026-10-30",
+    "task": "Judge batch: raster right edges and headline parity",
+    "page": "gate-batch-headline-raster.html",
+    "summary": "G0.pdfpos right edges by raster on every justified line (p95 0.010 pt, worst 0.054 pt; worst line now gated). G0.headline active: Khand and Eczar bold, 200 real headlines, 99.95%, 0 overflows. Gate copy and measuring script locked. Waiting for approval."
+  },
+  {
+    "date": "2026-10-29",
+    "task": "Gate review decisions: G0.speed, G0.pdfpos, justify, font coverage",
+    "page": "gate-decisions.html",
+    "summary": "Two gates added (speed 5.2 ms, PDF positions 0.009 pt). The 5 pt PDF outlier is a pdf.js artefact, shown by raster. Cheaper justify (spaces 0.8-1.33x, glyphs 98-102%) before and after. No character of the real copy is missing from the launch fonts."
+  },
+  {
+    "date": "2026-10-29",
+    "task": "Gate-gap process",
+    "page": "gate-gaps.html",
+    "summary": "docs/GATE_GAPS.md lists every risk no gate checks yet, each with the failure it causes on a real issue and how to measure it. Seeded with 16 rows from the gate review. Proposals only."
+  },
+  {
+    "date": "2026-10-29",
+    "task": "Gate review: justify, PDF positions, speed",
+    "page": "gate-review.html",
+    "summary": "Measured on real copy and proposed thresholds for three Phase 0 gates: justified word spacing, PDF line positions and font embedding, flow() speed on a full A3 page. No gate changed."
+  },
+  {
+    "date": "2026-10-29",
+    "task": "flow-dead-gaps",
+    "page": "flow-dead-gaps.html",
+    "summary": "flow() now reports the space it leaves empty beside photos (red hatched): too narrow to take text, or the smaller side of a split line. Text placement is unchanged. Code is on branch phase0-black."
+  },
+  {
+    "date": "2026-10-28",
+    "task": "Phase 0 task 5: flow()",
+    "page": "task5-flow.html",
+    "summary": "Text flows through columns and around photos. A gap beside a photo narrower than the minimum takes no text; the pages compare a minimum of 4, 6 (chosen) and 8 em."
+  }
+]

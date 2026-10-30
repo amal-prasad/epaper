@@ -11,6 +11,7 @@
   "samples": {
     "janshakti-live.txt": 127
   },
+  "realHeadlines": 0,
   "fonts": [
     "Noto Sans Devanagari",
     "Noto Serif Devanagari"
@@ -58,8 +59,8 @@
   "perf": {
     "frames": 2000,
     "linesPerFrame": 850,
-    "totalMs": 859.3,
-    "msPerFrame": 0.43
+    "totalMs": 549.3,
+    "msPerFrame": 0.275
   },
   "rows": [
     {

@@ -4,7 +4,7 @@
       "id": "G0.parity",
       "phase": 0,
       "status": "active",
-      "title": "Line-break parity vs real DOM on real Hindi copy, launch fonts (fonts.json launch:true), percent",
+      "title": "Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent",
       "run": "npm --prefix spike run spike",
       "metricFile": "spike/out/report.json",
       "metricKey": "pct",
@@ -64,15 +64,108 @@
       ]
     },
     {
+      "id": "G0.speed",
+      "phase": 0,
+      "status": "active",
+      "title": "flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium",
+      "run": "node scripts/measure-export.mjs",
+      "metricFile": "spike/out/export.json",
+      "metricKey": "speedMedianMs",
+      "op": "<=",
+      "threshold": 30,
+      "also": [
+        {
+          "key": "speedLines",
+          "op": ">=",
+          "threshold": 400,
+          "why": "a broken flow() that places nothing must not pass by being fast"
+        }
+      ]
+    },
+    {
+      "id": "G0.pdfpos",
+      "phase": 0,
+      "status": "active",
+      "title": "Exported PDF matches flow(): max left-edge error in pt (lines whose first glyph reads back), plus baseline, justified right edge and font embedding",
+      "run": "node scripts/measure-export.mjs",
+      "metricFile": "spike/out/export.json",
+      "metricKey": "pdfMaxLeftPt",
+      "op": "<=",
+      "threshold": 0.1,
+      "also": [
+        {
+          "key": "pdfBaselineSpreadPt",
+          "op": "<=",
+          "threshold": 0.1,
+          "why": "every line's PDF baseline sits the same distance below its flow() line top"
+        },
+        {
+          "key": "pdfRightP95Pt",
+          "op": "<=",
+          "threshold": 0.1,
+          "why": "justified right edges at the 95th percentile, measured by raster: rightmost ink of each line in the rendered PDF vs where its last word's ink should end (pdf.js text widths misreport conjuncts such as ष्ट); see pdfRightMaxPt for the worst line"
+        },
+        {
+          "key": "pdfRightMaxPt",
+          "op": "<=",
+          "threshold": 0.1,
+          "why": "worst justified line, by raster: one line shifted 0.3 pt or drawn short passes the 95th percentile but not this (negative control, D-031); 0.054 pt on 2026-10-30"
+        },
+        {
+          "key": "pdfFontsNotEmbedded",
+          "op": "<=",
+          "threshold": 0,
+          "why": "a missing font prints in a substitute or fails at the printer"
+        },
+        {
+          "key": "pdfFontsNotSubset",
+          "op": "<=",
+          "threshold": 0
+        },
+        {
+          "key": "pdfFonts",
+          "op": ">=",
+          "threshold": 2,
+          "why": "guard: a PDF with no fonts found must not pass the embedding checks"
+        },
+        {
+          "key": "pdfMissingLines",
+          "op": "<=",
+          "threshold": 0,
+          "why": "guard: every flow() line must be found in the PDF"
+        },
+        {
+          "key": "pdfLeftCheckedPct",
+          "op": ">=",
+          "threshold": 90,
+          "why": "guard: the left-edge check must cover most lines (97.4% on 2026-10-29)"
+        },
+        {
+          "key": "pdfRightCheckedPct",
+          "op": ">=",
+          "threshold": 95,
+          "why": "guard: the raster right-edge check must cover nearly every justified line (100% on 2026-10-30)"
+        }
+      ]
+    },
+    {
       "id": "G0.headline",
       "phase": 0,
-      "status": "pending",
-      "title": "Line-break parity on bold headline sizes (weight 700, 18-36 px), headline fonts, percent",
+      "status": "active",
+      "title": "Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch headline fonts (fonts.json launch:true, role headline), real Janshakti headlines, percent",
+      "run": "npm --prefix spike run spike -- --headline-gate",
       "metricFile": "spike/out/headline.json",
       "metricKey": "pct",
       "op": ">=",
       "threshold": 99.5,
+      "slow": true,
       "also": [
+        {
+          "key": "realHeadlines",
+          "op": ">=",
+          "threshold": 100,
+          "why": "measure on 100+ real Janshakti headlines (spike/headlines/), not invented text"
+        },
         {
           "key": "longerThanDom",
           "op": "<=",

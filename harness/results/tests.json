@@ -1,15 +1,24 @@
 {
- "passed": 57,
+ "passed": 89,
  "failed": 0,
- "skipped": 12,
+ "skipped": 0,
  "todo": 0,
  "cancelled": 0,
- "flowPassed": 0,
- "flowSkipped": 12,
+ "flowPassed": 22,
+ "flowSkipped": 0,
  "files": {
+  "harness/test/hooks.lock.test.mjs": {
+   "tests": 4,
+   "pass": 4,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
   "harness/test/hooks.test.mjs": {
-   "tests": 18,
-   "pass": 18,
+   "tests": 24,
+   "pass": 24,
    "fail": 0,
    "skipped": 0,
    "todo": 0,
@@ -27,9 +36,18 @@
   },
   "packages/engine/test/conservation.test.js": {
    "tests": 12,
-   "pass": 0,
+   "pass": 12,
    "fail": 0,
-   "skipped": 12,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/engine/test/flow.cases.test.js": {
+   "tests": 10,
+   "pass": 10,
+   "fail": 0,
+   "skipped": 0,
    "todo": 0,
    "cancelled": 0,
    "exit": 0

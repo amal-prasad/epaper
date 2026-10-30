@@ -1,5 +1,5 @@
 {
-  "_readme": "launch=true fonts decide the Phase 0 gate: keep it to the BODY fonts you would ship. role: text | text-serif | headline | display | handwritten. weights = the weights this font really has (of 400/700); runs skip weights a font lacks instead of testing a fake bold. All are Google Fonts under the SIL OFL (checked against google-font-metadata 6.0.8, 2026-10-28); confirm each LICENSE in public/fonts/licenses/ before shipping. Add a font = add a row, then: node add-fonts.mjs \"Name\"",
+  "_readme": "launch=true fonts decide the Phase 0 gates: body roles (text, text-serif) go to G0.parity, role headline to G0.headline; keep it to the fonts you would ship. role: text | text-serif | headline | display | handwritten. weights = the weights this font really has (of 400/700); runs skip weights a font lacks instead of testing a fake bold. All are Google Fonts under the SIL OFL (checked against google-font-metadata 6.0.8, 2026-10-28); confirm each LICENSE in public/fonts/licenses/ before shipping. Add a font = add a row, then: node add-fonts.mjs \"Name\"",
   "fonts": [
     { "name": "Noto Sans Devanagari", "pkg": "noto-sans-devanagari", "role": "text", "weights": [400,700], "launch": true },
     { "name": "Noto Serif Devanagari", "pkg": "noto-serif-devanagari", "role": "text-serif", "weights": [400,700], "launch": true },
@@ -40,8 +40,8 @@
     { "name": "Vesper Libre", "pkg": "vesper-libre", "role": "text-serif", "weights": [400,700] },
     { "name": "Akshar", "pkg": "akshar", "role": "headline", "weights": [400,700] },
     { "name": "Arya", "pkg": "arya", "role": "headline", "weights": [400,700] },
-    { "name": "Eczar", "pkg": "eczar", "role": "headline", "weights": [400,700] },
-    { "name": "Khand", "pkg": "khand", "role": "headline", "weights": [400,700] },
+    { "name": "Eczar", "pkg": "eczar", "role": "headline", "weights": [400,700], "launch": true },
+    { "name": "Khand", "pkg": "khand", "role": "headline", "weights": [400,700], "launch": true },
     { "name": "Matangi", "pkg": "matangi", "role": "headline", "weights": [400,700] },
     { "name": "Palanquin Dark", "pkg": "palanquin-dark", "role": "headline", "weights": [400,700] },
     { "name": "Poppins", "pkg": "poppins", "role": "headline", "weights": [400,700] },
