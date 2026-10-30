@@ -1,6 +1,18 @@
 [
   {
     "date": "2026-10-30",
+    "task": "G0.black prep: black text on the plates (E2)",
+    "page": "g0-black-prep.html",
+    "summary": "Test page through four Ghostscript routes, tiffsep plates. Plain CMYK puts black text on all four plates; rewriting neutral RGB to K keeps text, rules and tints on K and colour intact; BlackText also blackens colour text and panels. Photo reaches 296% total ink with the default profile. Not recorded: needs Amal's print check."
+  },
+  {
+    "date": "2026-10-30",
+    "task": "Font coverage rerun with real headlines",
+    "page": "font-coverage-headlines.html",
+    "summary": "127 paragraphs plus 200 headlines, 112 distinct characters: none missing from Noto Sans, Noto Serif Devanagari, Khand or Eczar at 400 and 700. Of common news characters not yet in the copy, only ½ falls back in the Noto fonts."
+  },
+  {
+    "date": "2026-10-30",
     "task": "Judge batch: raster right edges and headline parity",
     "page": "gate-batch-headline-raster.html",
     "summary": "G0.pdfpos right edges by raster on every justified line (p95 0.010 pt, worst 0.054 pt; worst line now gated). G0.headline active: Khand and Eczar bold, 200 real headlines, 99.95%, 0 overflows. Gate copy and measuring script locked. Waiting for approval."
