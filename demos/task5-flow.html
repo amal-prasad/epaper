@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phase 0 task 5: flow() minimum gap, 4 vs 6 vs 8 em</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;color:#222;background:#f4f4f4}a{color:#05c}
+.row{display:flex;gap:16px;align-items:flex-start;overflow-x:auto}figure{margin:0;flex:1 1 0;min-width:280px}
+figure img{width:100%;border:1px solid #ccc;background:#fff}figcaption{font-size:13px;margin-bottom:6px}b{display:block}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p><h1>Phase 0 task 5: flow() minimum gap, 4 vs 6 vs 8 em</h1><p>Text set around a photo inside column 2 and a photo across columns 4-5. At 4 em text squeezes into the narrow strip in column 5; at 6 em (chosen) that strip stays empty; at 8 em the gap beside the column 2 photo stays empty too.</p>
+<p>Generated 2026-10-29 from <code>scripts/preview.mjs</code> (A3, 5 columns, real Hindi copy). Click an image for full size.</p>
+<div class="row"><figure><figcaption><b>min gap 1</b>4 em min gap (48 px): 438 lines, 19540 chars left over, 1 dead gaps, 148.8 ms</figcaption><a href="task5-flow/1.jpg"><img src="task5-flow/1.jpg" alt="min gap 1"></a></figure><figure><figcaption><b>min gap 2</b>6 em min gap (72 px), flow.js default: 416 lines, 19749 chars left over, 2 dead gaps, 18.8 ms</figcaption><a href="task5-flow/2.jpg"><img src="task5-flow/2.jpg" alt="min gap 2"></a></figure><figure><figcaption><b>min gap 3</b>8 em min gap (96 px): 399 lines, 20054 chars left over, 3 dead gaps, 12.1 ms</figcaption><a href="task5-flow/3.jpg"><img src="task5-flow/3.jpg" alt="min gap 3"></a></figure></div>
+</body></html>
