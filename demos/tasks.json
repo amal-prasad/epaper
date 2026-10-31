@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-31",
+    "task": "Phase 1: wrap modes and shaped objects",
+    "page": "wrap-modes.html",
+    "summary": "Objects wrap as none, box, shape or jump, with an offset per side and their own minimum gap. Round insets, rotated boxes and cut-outs are sliced per line, and text can set inside a notch. Before and after pages for each mode. The editor's snapping is not built."
+  },
+  {
+    "date": "2026-10-31",
     "task": "Phase 1: document-type preset",
     "page": "phase1-preset.html",
     "summary": "Page size, grid, page-count rule, export profile and asset packs are data on the document, and the engine holds no sizes. The newspaper preset's sizes are assumed until the printer's sheet arrives; what the printer has not told us is left empty."

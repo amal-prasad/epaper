@@ -2,6 +2,7 @@
 //   { schemaVersion, id, orgId, preset, stories: Story[], pages: [{ id, orgId, no, frames: Frame[], objects: PageObject[] }] }
 // Field lists are in docs/PRODUCT_PROMPT.md section 4, except as decided in D-041. The preset is described in preset.js.
 import { assertPreset } from './preset.js'
+import { assertWrap } from './wrap.js'
 
 export const SCHEMA_VERSION = 1
 
@@ -21,8 +22,6 @@ export function migrate(doc, migrations = MIGRATIONS, target = SCHEMA_VERSION) {
   return out
 }
 
-const WRAP_MODES = ['none', 'box', 'shape', 'jump']     // D-035
-
 // Throws on a document that breaks the model's rules. For loading and for tests; ops keep these rules themselves.
 export function assertDoc(doc) {
   const needOrg = (record, what) => { if (!record.orgId) throw new Error(`${what} ${record.id} has no orgId`) }
@@ -40,7 +39,7 @@ export function assertDoc(doc) {
     }
     for (const object of page.objects) {
       needOrg(object, 'object')
-      if (!WRAP_MODES.includes(object.wrap?.mode)) throw new Error(`object ${object.id} has unknown wrap mode ${object.wrap?.mode}`)
+      assertWrap(object.wrap)
     }
   }
 }

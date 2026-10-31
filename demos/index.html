@@ -7,7 +7,7 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 .warn{background:#fff3cd;border:1px solid #e0b100;padding:8px 12px}</style></head>
 <body><h1>Studio demos</h1>
 <p class="warn">Gate numbers use an ASSUMED grid (A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body) until the printer's spec sheet arrives (GG-007).</p>
-<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-10-31 03:38 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
+<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-10-31 10:14 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
 
 <h2>Gates</h2>
 <table><tr><th>Gate</th><th>Phase</th><th>Status</th><th>What it checks</th><th>Result</th></tr>
@@ -39,9 +39,10 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 <tr><td>G4.a11y</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Serious axe violations on editor routes (count)</td><td class="d"></td></tr>
 <tr><td>GX.dragms</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Drag re-layout ms per frame, 3-column story</td><td class="d"></td></tr>
 </table>
-<p><a href="gate-gaps.html"><b>41 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
+<p><a href="gate-gaps.html"><b>43 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
 <h2>Tasks</h2>
 <table><tr><th>Date</th><th>Task</th><th>What changed</th></tr>
+<tr><td>2026-10-31</td><td><a href="wrap-modes.html">Phase 1: wrap modes and shaped objects</a></td><td>Objects wrap as none, box, shape or jump, with an offset per side and their own minimum gap. Round insets, rotated boxes and cut-outs are sliced per line, and text can set inside a notch. Before and after pages for each mode. The editor's snapping is not built.</td></tr>
 <tr><td>2026-10-31</td><td><a href="phase1-preset.html">Phase 1: document-type preset</a></td><td>Page size, grid, page-count rule, export profile and asset packs are data on the document, and the engine holds no sizes. The newspaper preset's sizes are assumed until the printer's sheet arrives; what the printer has not told us is left empty.</td></tr>
 <tr><td>2026-10-31</td><td><a href="phase1-doc-model.html">Phase 1: document model, ops and undo</a></td><td>An issue is plain data that changes only through ops, each with its undo as data. placeStory, setObjectGeometry and removeBlock pass the undo fuzz, and four inverses broken on purpose all make it fail. No screen uses this yet.</td></tr>
 <tr><td>2026-10-31</td><td><a href="gg042-pdfpos.html">G0.pdfpos left-edge false alarm (GG-042)</a></td><td>After D-037 the gate flags one line 8.3 pt off. The rendered PDF shows its ink starts exactly on the flow() edge; pdf.js extracted no text for the first conjunct व्य, so the check measured from the second व. Options (a) and (b) for Amal.</td></tr>

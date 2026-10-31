@@ -1,6 +1,6 @@
 // Every change to a document is an op: { type, args }. apply(doc, op) returns { doc, inverse }; the inverse is itself an op,
 // as plain data, so the log can be stored as JSON and replayed. Ops never mutate their input.
-// Keep this file free of imports: the mutation check in ops.test.js loads its source from a data URL.
+import { assertWrap } from './wrap.js'
 
 const fail = message => { throw new Error(message) }
 
@@ -82,6 +82,16 @@ const OPS = {
     })
     const before = page.objects.filter(o => saved.has(o.id)).map(snapshot)
     return { doc: withPage(doc, { ...page, objects }), inverse: { type: 'restoreGeometry', args: { pageId, geometries: before } } }
+  },
+
+  setWrap(doc, { objectId, wrap }) {
+    assertWrap(wrap)
+    const page = pageOfObject(doc, objectId)
+    const old = page.objects.find(o => o.id === objectId)
+    return {
+      doc: withPage(doc, { ...page, objects: page.objects.map(o => (o.id === objectId ? { ...o, wrap } : o)) }),
+      inverse: { type: 'setWrap', args: { objectId, wrap: old.wrap } },
+    }
   },
 
   // A block is a page object for now. Children go with their parent.

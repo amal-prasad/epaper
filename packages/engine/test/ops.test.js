@@ -57,6 +57,15 @@ const GENS = {
     const all = objects(doc)
     return all.length ? { objectId: pick(r, all).id } : null
   },
+  setWrap(r, doc) {
+    const all = objects(doc)
+    if (!all.length) return null
+    const mode = pick(r, ['none', 'box', 'shape', 'jump'])
+    const wrap = { mode, offset: { top: int(r, 0, 3), right: int(r, 0, 3), bottom: int(r, 0, 3), left: int(r, 0, 3) } }
+    if (mode === 'shape') wrap.polygon = [[0, 0], [1, r()], [r(), 1]]
+    if (r() < 0.3) wrap.minGap = 1 + r() * 5
+    return { objectId: pick(r, all).id, wrap }
+  },
 }
 const NAMES = Object.keys(GENS)
 
@@ -71,7 +80,13 @@ const fuzzOps = applyFn => NAMES.map(name => ({
   },
 }))
 
-test('fuzzUndo passes over placeStory, setObjectGeometry and removeBlock', () => {
+// The real ops.js source with one piece replaced, loaded from a data URL; relative imports must be made absolute to work there.
+const loadMutant = (from, to) => {
+  const src = OPS_SOURCE.replace(from, to).replace(/from '\.\//g, `from '${new URL('../src/', import.meta.url).href}`)
+  return import('data:text/javascript;base64,' + Buffer.from(src).toString('base64'))
+}
+
+test('fuzzUndo passes over placeStory, setObjectGeometry, removeBlock and setWrap', () => {
   const seen = new Set()
   const ops = fuzzOps(apply).map(o => ({ ...o, apply(doc, args) { seen.add(o.name); return o.apply(doc, args) } }))
   fuzzUndo({ makeDoc, ops })
@@ -83,18 +98,19 @@ const MUTANTS = [
   { name: 'placeStory inverse forgets the story that was there', from: 'storyId: frame.storyId ?? null', to: 'storyId: null' },
   { name: 'setObjectGeometry inverse leaves child objects where they moved', from: 'geometries: family.map(snapshot)', to: 'geometries: family.slice(0, 1).map(snapshot)' },
   { name: 'removeBlock inverse puts objects back at the wrong place', from: 'splice(index, 0, entry)', to: 'splice(0, 0, entry)' },
-  { name: 'removeBlock inverse drops all but one removed object', from: 'entries: removed }', to: 'entries: removed.slice(0, 1) }' },
+  // The dropped objects are gone, so undoing an earlier op on one of them fails before the final comparison.
+  { name: 'removeBlock inverse drops all but one removed object', from: 'entries: removed }', to: 'entries: removed.slice(0, 1) }', expect: /\[fuzz seed \d+\] no object / },
+  { name: 'setWrap inverse keeps the new wrap', from: 'args: { objectId, wrap: old.wrap }', to: 'args: { objectId, wrap }' },
 ]
 
 for (const m of MUTANTS) {
   test(`mutation check, fuzz fails when: ${m.name}`, async () => {
     assert.equal(OPS_SOURCE.split(m.from).length, 2, `mutation target must appear exactly once in ops.js: ${m.from}`)
-    const url = 'data:text/javascript;base64,' + Buffer.from(OPS_SOURCE.replace(m.from, m.to)).toString('base64')
-    const mutated = await import(url)
+    const mutated = await loadMutant(m.from, m.to)
     let message = null
     try { fuzzUndo({ makeDoc, ops: fuzzOps(mutated.apply) }) } catch (e) { message = e.message }
     assert.ok(message, `fuzz passed on a broken inverse: ${m.name}`)
-    assert.match(message, /\[fuzz seed \d+\] undoing every op did not restore the starting document/)
+    assert.match(message, m.expect ?? /\[fuzz seed \d+\] undoing every op did not restore the starting document/)
     console.log(`MUTANT CAUGHT  ${m.name}\n  ${m.from}  ->  ${m.to}\n  ${message.split('\n')[0]}`)
   })
 }
@@ -109,7 +125,7 @@ test('an op does not mutate its input, and a mutating op fails the fuzz', async 
   }
   const from = 'const next = { ...frame }', to = 'const next = frame'
   assert.equal(OPS_SOURCE.split(from).length, 2, `mutation target must appear exactly once in ops.js: ${from}`)
-  const mutated = await import('data:text/javascript;base64,' + Buffer.from(OPS_SOURCE.replace(from, to)).toString('base64'))
+  const mutated = await loadMutant(from, to)
   assert.throws(() => fuzzUndo({ makeDoc, ops: fuzzOps(mutated.apply) }), /fuzz seed/)
 })
 
@@ -254,6 +270,7 @@ test('doc: every record carries orgId', () => {
 test('doc: wrap mode is none, box, shape or jump (D-035); contour is refused', () => {
   for (const mode of ['none', 'box', 'shape', 'jump']) {
     const doc = makeDoc(); doc.pages[0].objects[0].wrap.mode = mode
+    if (mode === 'shape') doc.pages[0].objects[0].wrap.polygon = [[0, 0], [1, 0], [0, 1]]
     assert.doesNotThrow(() => assertDoc(doc), mode)
   }
   const doc = makeDoc(); doc.pages[0].objects[0].wrap.mode = 'contour'
