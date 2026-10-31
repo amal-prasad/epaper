@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G0.pdfpos left edge</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+figure{margin:0 0 18px}img{max-width:100%;border:1px solid #ccc;background:#fff}figcaption{font-size:14px}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}.p{background:#eef6ff;border-left:4px solid #05c;padding:8px 12px}
+table{border-collapse:collapse;background:#fff}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>G0.pdfpos left edges: pdf.js text vs raster (GG-042)</h1>
+<p class="w">Assumed grid: A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body (GG-007).</p>
+<p>Each strip is one line from the printed PDF, rendered at 12 px per pt. Three marks:</p>
+<ul>
+<li><b style="color:#d00">Red:</b> where flow() put the line's left edge.</li>
+<li><b style="color:#05c">Blue:</b> where pdf.js's first text item starts. That is what the old check measured.</li>
+<li><b style="color:#0a0">Green:</b> where the new raster check finds the line's ink starting. It compares that with where the first word's ink should start, drawn at 50x in Chromium.</li>
+</ul>
+<figure><img src="gg042/line-407.png" alt="line 407"><figcaption>Line 407: <span lang="hi">पालन करना होगा। सार्वजनिक पेयजल</span><br>
+old check (pdf.js text): <b>-0.005 pt</b>, first item <span lang="hi">पा</span> at -0.01 pt; <b>new check (raster): -0.006 pt</b></figcaption></figure>
+<figure><img src="gg042/line-408.png" alt="line 408"><figcaption>Line 408: <span lang="hi">व्यवस्था के लिए निजी स्रोत भी हो सकेंगे</span><br>
+old check (pdf.js text): <b>8.293 pt</b>, first item <span lang="hi">वस्</span> at 8.29 pt; <b>new check (raster): -0.005 pt</b></figcaption></figure>
+<figure><img src="gg042/line-409.png" alt="line 409"><figcaption>Line 409: <span lang="hi">अधिग्रहित आदेश के अनुसार, शासकीय</span><br>
+old check (pdf.js text): <b>-0.005 pt</b>, first item <span lang="hi">अ</span> at -0.01 pt; <b>new check (raster): 0.000 pt</b></figcaption></figure>
+<p>On line 408 the ink starts on the red mark, the same as on its neighbours. pdf.js has no text item for the first conjunct (व्य), so its first item is "वस्", about 8 pt further in, and the old check took it because it also starts with व. The raster check reads the ink itself, so it does not depend on what pdf.js extracts.</p>
+<p class="p"><b>Mutation check (part of the gate):</b> every run prints the page a second time with one line drawn 8 pt to the right. The raster check must read that line as 8 pt off, within 0.1 pt, and every other line within 0.1 pt; otherwise the gate fails. On 2026-10-31 it read 7.991 pt.</p>
+<p>Rebuild: <code>node scripts/gg042-visual.mjs</code>.</p>
+</body></html>

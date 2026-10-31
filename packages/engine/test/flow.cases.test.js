@@ -63,7 +63,7 @@ test('empty frames: one too short for a line is skipped, one after the story end
 
 test('beside a tall obstacle a word is not split when it fits the frame, but a word too long for the frame is', () => {
   const frame = { id: 'a', x: 0, y: 0, w: 220, h: 400 }
-  const wall = { x: 0, y: 0, w: 150, h: 5000, margin: 4 }       // leaves a 66px gap: 9 fake letters
+  const wall = { x: 0, y: 0, w: 176, h: 5000, margin: 4 }       // leaves a 40px gap, below the 3 em (42px) minimum (D-037)
   const long10 = 'कखगघचछजझटठ'                                      // 70px: too wide for the gap, fits the frame
   const s1 = `अब तक ${long10} बस`
   const r1 = run(s1, [frame, { id: 'b', x: 240, y: 0, w: 220, h: 400 }], [wall])
@@ -112,7 +112,7 @@ test('long Hindi compound word beside a tall obstacle breaks only between graphe
 })
 
 test('a word too long for the frame is not split into a gap below the minimum: it lands intact in the next frame or in the remainder', () => {
-  const wall = { x: 0, y: 0, w: 150, h: 5000, margin: 4 }              // leaves a 66px gap, below MIN_GAP
+  const wall = { x: 0, y: 0, w: 176, h: 5000, margin: 4 }              // leaves a 40px gap, below MIN_GAP (D-037)
   const word = 'क'.repeat(40)                                          // 280px: wider than the 220px frame
   const s = `अब ${word} बस`
   const r1 = run(s, [{ id: 'a', x: 0, y: 0, w: 220, h: 400 }], [wall])
@@ -122,4 +122,49 @@ test('a word too long for the frame is not split into a gap below the minimum: i
   assert.equal(inFrame(r2, 'a').length, 0, 'text was set in a gap below the minimum')
   assert.ok(inFrame(r2, 'b').some(l => l.text.trim() === word), 'the long word was split')
   assert.equal(r2.remainder.trim(), '')
+})
+
+// D-037: a line split by an obstacle uses every gap of at least the minimum, left to right; lines bounded by an
+// obstacle are flush with the frame edge away from it (align 'left' on its left side, 'right' on its right side).
+test('photo in the middle of a wide column: text on both sides, left part first, aligned away from the photo', () => {
+  const photo = { x: 100, y: 63, w: 80, h: 84, margin: 6, shape: 'contour' }    // left gap 94, right gap 114: both above 3 em (42px)
+  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 4000 }], [photo])
+  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin && l.y + LH > photo.y - photo.margin)
+  const left = beside.filter(l => l.x === 0), right = beside.filter(l => l.x === photo.x + photo.w + photo.margin)
+  assert.ok(left.length > 0 && right.length > 0, 'text was not set on both sides')
+  assert.equal(left.length + right.length, beside.length)
+  for (const l of left) { assert.equal(l.w, photo.x - photo.margin); assert.equal(l.align, 'left') }
+  for (const l of right) { assert.equal(l.w, 300 - l.x); assert.equal(l.align, 'right') }
+  for (const l of left) assert.ok(r.lines.indexOf(l) + 1 === r.lines.indexOf(right.find(x => x.y === l.y)), 'the right part of a split line does not follow its left part')
+})
+
+test('lines not touching an obstacle carry no align (they stay justified)', () => {
+  const photo = { x: 0, y: 84, w: 300, h: 105, margin: 6 }    // full width: lines above and below only
+  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 600 }], [photo])
+  assert.ok(r.lines.length > 0)
+  for (const l of r.lines) assert.equal(l.align, undefined)
+})
+
+test('a photo against the frame edge: lines beside it are aligned away from it', () => {
+  const photo = { x: 0, y: 0, w: 120, h: 84, margin: 6, shape: 'contour' }      // left edge of the frame: text only on its right
+  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 600 }], [photo])
+  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin)
+  assert.ok(beside.length > 0)
+  for (const l of beside) assert.equal(l.align, 'right')
+})
+
+test('a plain rectangle (box) in the middle of a wide column: text on both sides, lines stay justified (no align)', () => {
+  const photo = { x: 100, y: 63, w: 80, h: 84, margin: 6 }
+  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 4000 }], [photo])
+  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin && l.y + LH > photo.y - photo.margin)
+  assert.ok(beside.some(l => l.x === 0) && beside.some(l => l.x === photo.x + photo.w + photo.margin), 'text was not set on both sides')
+  for (const l of r.lines) assert.equal(l.align, undefined)
+})
+
+test('shape: box given explicitly behaves like the default', () => {
+  const photo = { x: 0, y: 0, w: 120, h: 84, margin: 6, shape: 'box' }
+  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 600 }], [photo])
+  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin)
+  assert.ok(beside.length > 0)
+  for (const l of beside) assert.equal(l.align, undefined)
 })

@@ -20,3 +20,4 @@ harness/results/G1.ux.json
 # never commit an unlock, or local Claude settings
 .claude/ALLOW_PROTECTED_EDITS
 .claude/settings.local.json
+graphify-out/

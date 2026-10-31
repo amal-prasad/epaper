@@ -17,6 +17,26 @@ This phase builds an operator tool, not a self-serve product. Self-serve work is
 
 - **Kruti Dev / Chanakya to Unicode** on paste with preview and undo; tested on real copy.
 - **Templates:** three weekly templates as JSON (front page lead + secondary, inner news page, ads/greetings page), each with the PRGI imprint block (printer, place of printing, editor, publisher, place of publication; see the Press and Registration of Periodicals Act, 2023, s.3). No template editor.
+Each task added on 2026-10-31 carries a tag:
+- *free-to-build*: needs nothing from outside;
+- *export-dependent*: needs the export module;
+- *printer-dependent*: needs the printer's spec sheet or a physical proof.
+
+- **Document-type preset (D-039)** *(free-to-build)*:
+  - A document type is data: `newspaper` now, `magazine` later. It sets page size, grid (columns, gutter, margins, baseline), the page-count rule, the export profile and the asset packs.
+  - None of these is a constant anywhere in the engine. Templates, the auto-pager and the export module read them from the document's preset.
+  - Gate G1.nodims (`node scripts/check-page-dims.mjs`): any hardcoded page size or paper name in `packages/engine/src` fails it. Today: 0.
+  - Out of scope until Phase 3: spreads, saddle-stitch page rules, magazine templates, covers.
+- **Newspaper preset values** *(printer-dependent)*: fill in the newspaper preset with the printer's real trim, margins, columns, gutter, bleed, ICC profile and ink limit. Until then it carries the assumed A3 grid (GG-007), marked as assumed.
+- **Export profile in the preset** *(export-dependent)*: the export module takes its colour route, PDF/X version, bleed and crop marks from the preset's export profile. This covers the reviewer's six conditions (D-034).
+- **Wrap modes and shaped objects (D-035, D-036)** *(free-to-build)*:
+  - `wrap.mode` none, box, shape (polygon stored on the object) or jump, with offsets per side.
+  - A polygon is sliced into one obstacle per line band, as in `scripts/flow-shapes.mjs`, using the shape's own extent inside the line.
+  - A split line sets text in every gap of at least the object's minimum gap (default 3 em, set per object).
+  - Short lines beside an object are not justified.
+  - The editor offers snapping to column edges.
+  - Tests are written first. They cover each mode and each preset shape (box, round, rotated, cut-out): no line inside the polygon plus its offset, and no empty band at or above the minimum gap. This is the gate proposed in GG-041.
+  - `flow.cases.test.js` pins the old rule (D-020, D-022), so changing it is a judge change for Amal to approve.
 - **Fit meters:** `fit(story, frame)` returns fill %, overflow lines, underfill lines; must equal what the renderer draws (G1.fitdrift).
 - **Auto-page v0:** `autopage({ stories, template, locks })` returns one layout per page plus a list of changes the editor can accept or undo; deterministic; locked placements never move; every action is an op. Priority to slots; fit by trimming columns or photo size before overflow; overflow creates a jump line.
 - **Minimal Guided toolbar for the operator:** move block to another column, resize, swap photo, send overflow to the next page. Keyboard equivalents. Not the full Guided design.

@@ -86,7 +86,7 @@
       "id": "G0.pdfpos",
       "phase": 0,
       "status": "active",
-      "title": "Exported PDF matches flow(): max left-edge error in pt (lines whose first glyph reads back), plus baseline, justified right edge and font embedding",
+      "title": "Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check",
       "run": "node scripts/measure-export.mjs",
       "metricFile": "spike/out/export.json",
       "metricKey": "pdfMaxLeftPt",
@@ -137,8 +137,14 @@
         {
           "key": "pdfLeftCheckedPct",
           "op": ">=",
-          "threshold": 90,
-          "why": "guard: the left-edge check must cover most lines (97.4% on 2026-10-29)"
+          "threshold": 95,
+          "why": "guard: the raster left-edge check must cover nearly every line (100% on 2026-10-31)"
+        },
+        {
+          "key": "pdfLeftMutantCaught",
+          "op": ">=",
+          "threshold": 1,
+          "why": "mutation check: the page printed again with one line drawn 8 pt right must read as that line 8 pt off (within 0.1 pt) and every other line within 0.1 pt; a left-edge measure that cannot see a shift fails the gate (7.991 pt read on 2026-10-31)"
         },
         {
           "key": "pdfRightCheckedPct",
@@ -193,6 +199,25 @@
       "metricKey": "pct",
       "op": ">=",
       "threshold": 70
+    },
+    {
+      "id": "G1.nodims",
+      "phase": 1,
+      "status": "active",
+      "title": "Engine source with a hardcoded page size or paper name (page size, grid, page-count rule, export profile and asset packs come from the document-type preset, D-039), count",
+      "run": "node scripts/check-page-dims.mjs",
+      "metricFile": "spike/out/nodims.json",
+      "metricKey": "hits",
+      "op": "<=",
+      "threshold": 0,
+      "also": [
+        {
+          "key": "files",
+          "op": ">=",
+          "threshold": 1,
+          "why": "guard: an empty or moved engine folder must not pass by having nothing to scan"
+        }
+      ]
     },
     {
       "id": "G1.fitdrift",

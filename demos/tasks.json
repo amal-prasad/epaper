@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-10-31",
+    "task": "G0.pdfpos left-edge false alarm (GG-042)",
+    "page": "gg042-pdfpos.html",
+    "summary": "After D-037 the gate flags one line 8.3 pt off. The rendered PDF shows its ink starts exactly on the flow() edge; pdf.js extracted no text for the first conjunct व्य, so the check measured from the second व. Options (a) and (b) for Amal."
+  },
+  {
+    "date": "2026-10-31",
+    "task": "flow(): text on every side of a shape, aligned away from it (D-037)",
+    "page": "flow-shapes.html",
+    "summary": "Engine change: gaps of 3 em or more beside a shape take text on both sides; lines beside a shape are flush left (shape on the right) or flush right (shape on the left), not justified. Before/after for five shapes: 5-32 more lines per page."
+  },
+  {
     "date": "2026-10-30",
     "task": "Phase 0 done",
     "page": "phase0-done.html",

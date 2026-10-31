@@ -1,10 +1,10 @@
 {
- "passed": 89,
+ "passed": 94,
  "failed": 0,
  "skipped": 0,
  "todo": 0,
  "cancelled": 0,
- "flowPassed": 22,
+ "flowPassed": 27,
  "flowSkipped": 0,
  "files": {
   "harness/test/hooks.lock.test.mjs": {
@@ -44,8 +44,8 @@
    "exit": 0
   },
   "packages/engine/test/flow.cases.test.js": {
-   "tests": 10,
-   "pass": 10,
+   "tests": 15,
+   "pass": 15,
    "fail": 0,
    "skipped": 0,
    "todo": 0,

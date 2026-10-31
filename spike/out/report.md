@@ -5,7 +5,7 @@
 - Line-break match vs real browser DOM, launch fonts: **3546/3556 (99.7%)**  <- gate metric
 - Lines where Pretext fits MORE than the browser (would overflow in print), launch fonts: **0**  <- must be 0; lines where it breaks earlier (harmless): 10
 - Same, all tested fonts: 3546/3556 (99.7%), 0 over
-- Drag simulation (2000 obstacle re-layouts, 841 lines each): 0.196 ms/frame
+- Drag simulation (2000 obstacle re-layouts, 841 lines each): 0.137 ms/frame
 
 ## Verdict rule (per font)
 - real copy >= 99.5%, halant checks clean and 0 overflows: PASS, Pretext as live engine for that font
