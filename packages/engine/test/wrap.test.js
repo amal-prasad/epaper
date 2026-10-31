@@ -223,5 +223,8 @@ test('setWrap: refuses a bad wrap; the document check refuses one too', () => {
   const { doc: out, inverse } = apply(doc, { type: 'setWrap', args: { objectId: 'o', wrap: { mode: 'jump', offset: ZERO } } })
   assert.equal(out.pages[0].objects[0].wrap.mode, 'jump')
   assert.deepEqual(apply(out, JSON.parse(JSON.stringify(inverse))).doc, doc)
-  assert.throws(() => assertDoc({ ...doc, preset: { bad: true } }))
+  const preset = { id: 'p', assumed: [], assetPacks: [], page: { w: 100, h: 100 }, margins: { top: 1, right: 1, bottom: 1, left: 1 }, grid: { cols: 1, gutter: 0, baseline: 1 }, pageCount: { multipleOf: 1 }, exportProfile: {} }
+  assert.doesNotThrow(() => assertDoc({ ...doc, preset }))
+  const badWrap = { ...SHAPES.box, orgId: 'o', wrap: { mode: 'shape' } }
+  assert.throws(() => assertDoc({ ...doc, preset, pages: [{ ...doc.pages[0], objects: [badWrap] }] }), /bad wrap/)
 })
