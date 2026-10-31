@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-31",
+    "task": "Phase 1: document model, ops and undo",
+    "page": "phase1-doc-model.html",
+    "summary": "An issue is plain data that changes only through ops, each with its undo as data. placeStory, setObjectGeometry and removeBlock pass the undo fuzz, and four inverses broken on purpose all make it fail. No screen uses this yet."
+  },
+  {
+    "date": "2026-10-31",
     "task": "G0.pdfpos left-edge false alarm (GG-042)",
     "page": "gg042-pdfpos.html",
     "summary": "After D-037 the gate flags one line 8.3 pt off. The rendered PDF shows its ink starts exactly on the flow() edge; pdf.js extracted no text for the first conjunct व्य, so the check measured from the second व. Options (a) and (b) for Amal."

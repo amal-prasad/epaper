@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document model and ops</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+.p{background:#eef6ff;border-left:4px solid #05c;padding:8px 12px}code{font-size:13px}
+table{border-collapse:collapse;background:#fff;width:100%}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>Document model, ops and undo (Phase 1 step 1)</h1>
+<p>An issue is now plain data, and it changes only through ops. Every op returns its own undo as data, so the log can be saved and replayed. No screen uses this yet.</p>
+<h2>What changed</h2>
+<table>
+<tr><th>Piece</th><th>What it does</th></tr>
+<tr><td><code>packages/engine/src/doc.js</code></td><td><code>schemaVersion</code>, migrations, and a check of the document's rules: <code>orgId</code> on every record, wrap mode none, box, shape or jump, and a story in at most one chain of frames</td></tr>
+<tr><td><code>packages/engine/src/ops.js</code></td><td><code>apply(doc, op)</code> returning <code>{ doc, inverse }</code>; op log with undo, redo and replay</td></tr>
+<tr><td><code>placeStory</code></td><td>Puts a story in a frame, replaces one or clears it. Refuses a story that is already placed</td></tr>
+<tr><td><code>setObjectGeometry</code></td><td>Moves or resizes an object. Its children move and scale with it. Refuses a size of 0 or a value that is not a number</td></tr>
+<tr><td><code>removeBlock</code></td><td>Removes an object and its children. Undo puts each back at its exact place in the order</td></tr>
+</table>
+<h2>Mutation check: the fuzz must fail on a broken inverse</h2>
+<p>Each row breaks the real <code>ops.js</code> source on purpose. The fuzz has to fail, or the test does. Run it with <code>node --test packages/engine/test/ops.test.js</code>.</p>
+<table>
+<tr><th>Broken on purpose</th><th>Source change</th><th>Fuzz result</th></tr>
+<tr><td>placeStory inverse forgets the story that was there</td><td><code>storyId: frame.storyId ?? null</code> &rarr; <code>storyId: null</code></td><td rowspan="4"><code>[fuzz seed 1] undoing every op did not restore the starting document</code>, on all four</td></tr>
+<tr><td>setObjectGeometry inverse leaves children where they moved</td><td><code>family.map(snapshot)</code> &rarr; <code>family.slice(0, 1).map(snapshot)</code></td></tr>
+<tr><td>removeBlock inverse puts objects back in the wrong place</td><td><code>splice(index, 0, entry)</code> &rarr; <code>splice(0, 0, entry)</code></td></tr>
+<tr><td>removeBlock inverse drops all but one removed object</td><td><code>entries: removed</code> &rarr; <code>entries: removed.slice(0, 1)</code></td></tr>
+<tr><td>An op changes its input document</td><td><code>{ ...frame }</code> &rarr; <code>frame</code></td><td>Fuzz fails with a seed</td></tr>
+</table>
+<h2>Checks</h2>
+<table>
+<tr><th>Command</th><th>Result</th></tr>
+<tr><td><code>node --test packages/engine/test/ops.test.js</code></td><td>22 pass, 0 fail</td></tr>
+<tr><td><code>npm test</code></td><td>116 passed, 0 failed</td></tr>
+<tr><td><code>npm run harness -- --phase 1 --fast</code></td><td>G1.nodims 0 hits. The other six gates are pending, so Phase 1 is not done</td></tr>
+</table>
+<p class="p">Decisions are in D-041. New risks: GG-043 (hook false positive), GG-044 (a parent's rotation is not passed to its children), GG-045 (no check when a document loads).</p>
+</body></html>
