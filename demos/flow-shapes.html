@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>flow() around shapes</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1360px;color:#222;background:#f4f4f4}a{color:#05c}
+.g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}@media(max-width:900px){.g{grid-template-columns:1fr}}figure{margin:0}img{width:100%;border:1px solid #ccc;background:#fff}
+figcaption{font-size:13px;color:#666}.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>flow() around photos that are not plain boxes</h1>
+<p class="w">The page is 4 columns, 640 &times; 760 px at 12 px, not the A3 grid. flow() takes rectangles, so each shape is sliced into one rectangle per line of text: its widest point inside that line, plus an 8 px margin.</p>
+<p>Each row shows one shape twice. Left, <b>before</b>: the Phase 0 engine (commit e797b6d). Text takes only the wider side of a split line, gaps under 6 em stay empty, and every line is justified. Right, <b>after</b>: today's <code>packages/engine/src/flow.js</code> (D-037).</p>
+<ul>
+<li><b>Gaps.</b> Every gap of at least 3 em takes text, left to right.</li>
+<li><b>Alignment applies only to shaped objects</b> (round, rotated, free-form). A line with the shape on its right is flush left (<code>align: 'left'</code>); with the shape on its left, flush right (<code>align: 'right'</code>). Lines beside plain rectangles stay justified.</li>
+<li><b>Other lines</b> stay justified the export way (word spacing only, D-006).</li></ul>
+<p>Still open: each line clears the shape's widest point inside it, so the top and bottom of the round photo leave small wedges. A finer outline is later work.</p>
+<h2>across-gutter</h2><div class="g"><figure><img src="flow-shapes/across-gutter-before.jpg" alt="across-gutter before"><figcaption>before: 152 lines set</figcaption></figure><figure><img src="flow-shapes/across-gutter-after.jpg" alt="across-gutter after"><figcaption>after: 184 lines set</figcaption></figure></div>
+<h2>two-and-half</h2><div class="g"><figure><img src="flow-shapes/two-and-half-before.jpg" alt="two-and-half before"><figcaption>before: 133 lines set</figcaption></figure><figure><img src="flow-shapes/two-and-half-after.jpg" alt="two-and-half after"><figcaption>after: 150 lines set</figcaption></figure></div>
+<h2>round</h2><div class="g"><figure><img src="flow-shapes/round-before.jpg" alt="round before"><figcaption>before: 156 lines set</figcaption></figure><figure><img src="flow-shapes/round-after.jpg" alt="round after"><figcaption>after: 170 lines set</figcaption></figure></div>
+<h2>diagonal</h2><div class="g"><figure><img src="flow-shapes/diagonal-before.jpg" alt="diagonal before"><figcaption>before: 152 lines set</figcaption></figure><figure><img src="flow-shapes/diagonal-after.jpg" alt="diagonal after"><figcaption>after: 163 lines set</figcaption></figure></div>
+<h2>freeform</h2><div class="g"><figure><img src="flow-shapes/freeform-before.jpg" alt="freeform before"><figcaption>before: 164 lines set</figcaption></figure><figure><img src="flow-shapes/freeform-after.jpg" alt="freeform after"><figcaption>after: 169 lines set</figcaption></figure></div>
+<p>Rebuild: <code>node scripts/flow-shapes.mjs</code>.</p>
+</body></html>

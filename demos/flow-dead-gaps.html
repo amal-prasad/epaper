@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>flow-dead-gaps: space left empty beside photos</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;color:#222;background:#f4f4f4}a{color:#05c}
+.row{display:flex;gap:16px;align-items:flex-start;overflow-x:auto}figure{margin:0;flex:1 1 0;min-width:280px}
+figure img{width:100%;border:1px solid #ccc;background:#fff}figcaption{font-size:13px;margin-bottom:6px}b{display:block}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p><h1>flow-dead-gaps: space left empty beside photos</h1><p>Same page, same text placement. The red hatched boxes are what flow() now reports as deadGaps, for the editor's preflight warning: smaller-side (left of the column 2 photo) and below-min-gap (the strip in column 5).</p>
+<p>Generated 2026-10-29 from <code>scripts/preview.mjs</code> (A3, 5 columns, real Hindi copy). Click an image for full size.</p>
+<div class="row"><figure><figcaption><b>before (6 em, not shown)</b>6 em min gap (72 px), flow.js default: 416 lines, 19749 chars left over, 2 dead gaps, 152.7 ms</figcaption><a href="flow-dead-gaps/1.jpg"><img src="flow-dead-gaps/1.jpg" alt="before (6 em, not shown)"></a></figure><figure><figcaption><b>after (6 em, deadGaps in red)</b>6 em min gap (72 px), flow.js default: 416 lines, 19749 chars left over, 2 dead gaps, 67.6 ms</figcaption><a href="flow-dead-gaps/2.jpg"><img src="flow-dead-gaps/2.jpg" alt="after (6 em, deadGaps in red)"></a></figure></div>
+</body></html>

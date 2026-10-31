@@ -2,10 +2,10 @@
 
 - Paragraphs tested: 127 (127 real, 0 invented)
 - Fonts tested: 2 at 12/14 px, weight 400, widths 90/110/140/180/240 px
-- Line-break match vs real browser DOM, launch fonts: **3547/3556 (99.7%)**  <- gate metric
-- Lines where Pretext fits MORE than the browser (would overflow in print), launch fonts: **0**  <- must be 0; lines where it breaks earlier (harmless): 9
-- Same, all tested fonts: 3547/3556 (99.7%), 0 over
-- Drag simulation (2000 obstacle re-layouts, 850 lines each): 0.43 ms/frame
+- Line-break match vs real browser DOM, launch fonts: **3546/3556 (99.7%)**  <- gate metric
+- Lines where Pretext fits MORE than the browser (would overflow in print), launch fonts: **0**  <- must be 0; lines where it breaks earlier (harmless): 10
+- Same, all tested fonts: 3546/3556 (99.7%), 0 over
+- Drag simulation (2000 obstacle re-layouts, 841 lines each): 0.139 ms/frame
 
 ## Verdict rule (per font)
 - real copy >= 99.5%, halant checks clean and 0 overflows: PASS, Pretext as live engine for that font
@@ -16,7 +16,7 @@
 
 | font | role | launch | real copy match | overflows | early breaks | halant break match | halant widths agree | verdict |
 |---|---|---|---|---|---|---|---|---|
-| Noto Serif Devanagari | text-serif | yes | 99.8% | 0 | 3 | 100% | 66/66 | PASS |
+| Noto Serif Devanagari | text-serif | yes | 99.8% | 0 | 4 | 100% | 66/66 | PASS |
 | Noto Sans Devanagari | text | yes | 99.7% | 0 | 6 | 100% | 66/66 | PASS |
 
 ## Results
@@ -43,7 +43,7 @@
 | column | Noto Serif Devanagari | 400 | 12 | 180 | - | 127/127 | 0 | 0 | 0 |
 | column | Noto Serif Devanagari | 400 | 12 | 240 | - | 127/127 | 0 | 0 | 0 |
 | column | Noto Serif Devanagari | 400 | 14 | 90 | - | 127/127 | 0 | 0 | 0 |
-| column | Noto Serif Devanagari | 400 | 14 | 110 | - | 127/127 | 0 | 0 | 0 |
+| column | Noto Serif Devanagari | 400 | 14 | 110 | - | 126/127 | 0 | 1 | 1 |
 | column | Noto Serif Devanagari | 400 | 14 | 140 | - | 125/127 | 0 | 2 | 0 |
 | column | Noto Serif Devanagari | 400 | 14 | 180 | - | 126/127 | 0 | 1 | 1 |
 | column | Noto Serif Devanagari | 400 | 14 | 240 | - | 127/127 | 0 | 0 | 0 |
@@ -54,7 +54,7 @@
 
 ## Sample failures
 
-- column / Noto Sans Devanagari 400 / 12px / w=90 / para 57: line 1 (early break)
+- column / Noto Sans Devanagari 400 / 12px / w=90 / para 57: line 0 (early break)
   - DOM: `इंदौर में मंगलवार, 27`
   - Pretext: `इंदौर में मंगलवार,`
 
@@ -77,6 +77,10 @@
 - obstacle / Noto Sans Devanagari 400 / 14px / w=240 / 70x60 / para 59: line 0 (early break)
   - DOM: `जनसुनवाई में एक अन्य महिला ने`
   - Pretext: `जनसुनवाई में एक अन्य महिला`
+
+- column / Noto Serif Devanagari 400 / 14px / w=110 / para 99: line 0 (early break)
+  - DOM: `टाटा समूह में नेतृत्व और`
+  - Pretext: `टाटा समूह में नेतृत्व`
 
 - column / Noto Serif Devanagari 400 / 14px / w=140 / para 83: line 0 (early break)
   - DOM: `घटना के बाद पुलिस और राहत`

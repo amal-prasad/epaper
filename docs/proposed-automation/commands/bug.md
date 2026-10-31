@@ -7,7 +7,7 @@ Symptom: $ARGUMENTS
 Follow CLAUDE.md rule 11 exactly.
 
 1. Reproduce. Find the exact input; if there is none, ask for it.
-2. Write a failing test with that exact input. Show it failing. Add the input to `harness/corpus` or `spike/samples`.
+2. Write a failing test with that exact input. Show it failing. Add the input to `harness/corpus` or `spike/samples`. Answer "which gate should have caught this?" If none, add a `docs/GATE_GAPS.md` row (source "bug") and run `node scripts/gate-gaps.mjs`.
 3. Find the cause by logging or bisecting. Do not guess. State the cause in one sentence.
 4. Fix the cause, in the shared function that all callers use, not at one call site.
 5. Run `npm test` and `npm run harness -- --phase <current phase> --fast`; paste the real output. Never loosen a gate or test (rule 12); if one looks wrong, stop and show the evidence.

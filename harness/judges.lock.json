@@ -1,27 +1,30 @@
 {
  "_readme": "Written by `npm run approve`. Do not edit by hand.",
  "approvedBy": "bened",
- "approvedAt": "2026-10-29T06:02:08.809Z",
+ "approvedAt": "2026-10-31T03:07:29.371Z",
  "exact": {
   "harness/run.mjs": "e8de19e81bb91906",
   "harness/run-tests.mjs": "7f22c5293de02b36",
-  "harness/judges.mjs": "391caed1939bdab2",
+  "harness/judges.mjs": "aea3d6dc4804942a",
   "harness/tools/approve-judges.mjs": "71f8b684da581aeb",
   "harness/tools/record-result.mjs": "e1b16b60fb8e2361",
   "harness/ux/ux-lint.mjs": "7480011ee55d1ff2",
   "harness/ux/routes.json": "9b6eb0b9392a1ac6",
-  "spike/run.mjs": "8ccce38542b70a27",
+  "spike/run.mjs": "1d26d3be18aad4e9",
   "spike/src/main.js": "e0a4a93300d77026",
+  "scripts/measure-export.mjs": "c9931fa7a41c311d",
+  "spike/samples/janshakti-live.txt": "03a1c52544b6ec8e",
+  "spike/headlines/janshakti-headlines.txt": "a1cfeda11fa8f864",
   ".claude/agents/reviewer.md": "527a838a907486de",
   ".claude/commands/gate.md": "b4d867cd9527c36a",
   ".claude/commands/task.md": "b295914bf9d1a4a6",
   ".claude/hooks/protect-gates.mjs": "5dd7b98e8df384a1",
   ".claude/hooks/stop-check.mjs": "2c8062590cc5ac0f",
   ".claude/settings.json": "9b9aa073530dbe80",
-  "package.json#scripts": "65781a61e883ce35",
+  "package.json#scripts": "322e5e08884cb36e",
   "spike/package.json#scripts": "98f9c7be86bca505",
-  "spike/fonts.json#launch": "51d2a4b8c8e15bbb",
-  "CLAUDE.md#Rules": "144300f0f665c45a"
+  "spike/fonts.json#launch": "e5fcd34980cd57e0",
+  "CLAUDE.md#Rules": "b1bcd2670feeee72"
  },
  "gates": {
   "gates": [
@@ -29,7 +32,7 @@
     "id": "G0.parity",
     "phase": 0,
     "status": "active",
-    "title": "Line-break parity vs real DOM on real Hindi copy, launch fonts (fonts.json launch:true), percent",
+    "title": "Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent",
     "run": "npm --prefix spike run spike",
     "metricFile": "spike/out/report.json",
     "metricKey": "pct",
@@ -89,15 +92,114 @@
     ]
    },
    {
+    "id": "G0.speed",
+    "phase": 0,
+    "status": "active",
+    "title": "flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium",
+    "run": "node scripts/measure-export.mjs",
+    "metricFile": "spike/out/export.json",
+    "metricKey": "speedMedianMs",
+    "op": "<=",
+    "threshold": 30,
+    "also": [
+     {
+      "key": "speedLines",
+      "op": ">=",
+      "threshold": 400,
+      "why": "a broken flow() that places nothing must not pass by being fast"
+     }
+    ]
+   },
+   {
+    "id": "G0.pdfpos",
+    "phase": 0,
+    "status": "active",
+    "title": "Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check",
+    "run": "node scripts/measure-export.mjs",
+    "metricFile": "spike/out/export.json",
+    "metricKey": "pdfMaxLeftPt",
+    "op": "<=",
+    "threshold": 0.1,
+    "also": [
+     {
+      "key": "pdfBaselineSpreadPt",
+      "op": "<=",
+      "threshold": 0.1,
+      "why": "every line's PDF baseline sits the same distance below its flow() line top"
+     },
+     {
+      "key": "pdfRightP95Pt",
+      "op": "<=",
+      "threshold": 0.1,
+      "why": "justified right edges at the 95th percentile, measured by raster: rightmost ink of each line in the rendered PDF vs where its last word's ink should end (pdf.js text widths misreport conjuncts such as ष्ट); see pdfRightMaxPt for the worst line"
+     },
+     {
+      "key": "pdfRightMaxPt",
+      "op": "<=",
+      "threshold": 0.1,
+      "why": "worst justified line, by raster: one line shifted 0.3 pt or drawn short passes the 95th percentile but not this (negative control, D-031); 0.054 pt on 2026-10-30"
+     },
+     {
+      "key": "pdfFontsNotEmbedded",
+      "op": "<=",
+      "threshold": 0,
+      "why": "a missing font prints in a substitute or fails at the printer"
+     },
+     {
+      "key": "pdfFontsNotSubset",
+      "op": "<=",
+      "threshold": 0
+     },
+     {
+      "key": "pdfFonts",
+      "op": ">=",
+      "threshold": 2,
+      "why": "guard: a PDF with no fonts found must not pass the embedding checks"
+     },
+     {
+      "key": "pdfMissingLines",
+      "op": "<=",
+      "threshold": 0,
+      "why": "guard: every flow() line must be found in the PDF"
+     },
+     {
+      "key": "pdfLeftCheckedPct",
+      "op": ">=",
+      "threshold": 95,
+      "why": "guard: the raster left-edge check must cover nearly every line (100% on 2026-10-31)"
+     },
+     {
+      "key": "pdfLeftMutantCaught",
+      "op": ">=",
+      "threshold": 1,
+      "why": "mutation check: the page printed again with one line drawn 8 pt right must read as that line 8 pt off (within 0.1 pt) and every other line within 0.1 pt; a left-edge measure that cannot see a shift fails the gate (7.991 pt read on 2026-10-31)"
+     },
+     {
+      "key": "pdfRightCheckedPct",
+      "op": ">=",
+      "threshold": 95,
+      "why": "guard: the raster right-edge check must cover nearly every justified line (100% on 2026-10-30)"
+     }
+    ]
+   },
+   {
     "id": "G0.headline",
     "phase": 0,
-    "status": "pending",
-    "title": "Line-break parity on bold headline sizes (weight 700, 18-36 px), headline fonts, percent",
+    "status": "active",
+    "title": "Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent",
+    "run": "npm --prefix spike run spike -- --headline-gate",
     "metricFile": "spike/out/headline.json",
     "metricKey": "pct",
     "op": ">=",
     "threshold": 99.5,
+    "slow": true,
     "also": [
+     {
+      "key": "realHeadlines",
+      "op": ">=",
+      "threshold": 100,
+      "why": "measure on 100+ real Janshakti headlines (spike/headlines/), not invented text"
+     },
      {
       "key": "longerThanDom",
       "op": "<=",
@@ -109,7 +211,7 @@
    {
     "id": "G0.black",
     "phase": 0,
-    "status": "pending",
+    "status": "active",
     "title": "Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)",
     "metricFile": "harness/results/G0.black.json",
     "metricKey": "kOnly",
@@ -125,6 +227,25 @@
     "metricKey": "pct",
     "op": ">=",
     "threshold": 70
+   },
+   {
+    "id": "G1.nodims",
+    "phase": 1,
+    "status": "active",
+    "title": "Engine source with a hardcoded page size or paper name (page size, grid, page-count rule, export profile and asset packs come from the document-type preset, D-039), count",
+    "run": "node scripts/check-page-dims.mjs",
+    "metricFile": "spike/out/nodims.json",
+    "metricKey": "hits",
+    "op": "<=",
+    "threshold": 0,
+    "also": [
+     {
+      "key": "files",
+      "op": ">=",
+      "threshold": 1,
+      "why": "guard: an empty or moved engine folder must not pass by having nothing to scan"
+     }
+    ]
    },
    {
     "id": "G1.fitdrift",
@@ -731,7 +852,7 @@
    "})",
    "test('beside a tall obstacle a word is not split when it fits the frame, but a word too long for the frame is', () => {",
    "  const frame = { id: 'a', x: 0, y: 0, w: 220, h: 400 }",
-   "  const wall = { x: 0, y: 0, w: 150, h: 5000, margin: 4 }       // leaves a 66px gap: 9 fake letters",
+   "  const wall = { x: 0, y: 0, w: 176, h: 5000, margin: 4 }       // leaves a 40px gap, below the 3 em (42px) minimum (D-037)",
    "  const long10 = 'कखगघचछजझटठ'                                      // 70px: too wide for the gap, fits the frame",
    "  const s1 = `अब तक ${long10} बस`",
    "  const r1 = run(s1, [frame, { id: 'b', x: 240, y: 0, w: 220, h: 400 }], [wall])",
@@ -775,7 +896,7 @@
    "  }",
    "})",
    "test('a word too long for the frame is not split into a gap below the minimum: it lands intact in the next frame or in the remainder', () => {",
-   "  const wall = { x: 0, y: 0, w: 150, h: 5000, margin: 4 }              // leaves a 66px gap, below MIN_GAP",
+   "  const wall = { x: 0, y: 0, w: 176, h: 5000, margin: 4 }              // leaves a 40px gap, below MIN_GAP (D-037)",
    "  const word = 'क'.repeat(40)                                          // 280px: wider than the 220px frame",
    "  const s = `अब ${word} बस`",
    "  const r1 = run(s, [{ id: 'a', x: 0, y: 0, w: 220, h: 400 }], [wall])",
@@ -785,6 +906,46 @@
    "  assert.equal(inFrame(r2, 'a').length, 0, 'text was set in a gap below the minimum')",
    "  assert.ok(inFrame(r2, 'b').some(l => l.text.trim() === word), 'the long word was split')",
    "  assert.equal(r2.remainder.trim(), '')",
+   "})",
+   "// D-037: a line split by an obstacle uses every gap of at least the minimum, left to right; lines bounded by an",
+   "// obstacle are flush with the frame edge away from it (align 'left' on its left side, 'right' on its right side).",
+   "test('photo in the middle of a wide column: text on both sides, left part first, aligned away from the photo', () => {",
+   "  const photo = { x: 100, y: 63, w: 80, h: 84, margin: 6, shape: 'contour' }    // left gap 94, right gap 114: both above 3 em (42px)",
+   "  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 4000 }], [photo])",
+   "  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin && l.y + LH > photo.y - photo.margin)",
+   "  const left = beside.filter(l => l.x === 0), right = beside.filter(l => l.x === photo.x + photo.w + photo.margin)",
+   "  assert.ok(left.length > 0 && right.length > 0, 'text was not set on both sides')",
+   "  assert.equal(left.length + right.length, beside.length)",
+   "  for (const l of left) { assert.equal(l.w, photo.x - photo.margin); assert.equal(l.align, 'left') }",
+   "  for (const l of right) { assert.equal(l.w, 300 - l.x); assert.equal(l.align, 'right') }",
+   "  for (const l of left) assert.ok(r.lines.indexOf(l) + 1 === r.lines.indexOf(right.find(x => x.y === l.y)), 'the right part of a split line does not follow its left part')",
+   "})",
+   "test('lines not touching an obstacle carry no align (they stay justified)', () => {",
+   "  const photo = { x: 0, y: 84, w: 300, h: 105, margin: 6 }    // full width: lines above and below only",
+   "  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 600 }], [photo])",
+   "  assert.ok(r.lines.length > 0)",
+   "  for (const l of r.lines) assert.equal(l.align, undefined)",
+   "})",
+   "test('a photo against the frame edge: lines beside it are aligned away from it', () => {",
+   "  const photo = { x: 0, y: 0, w: 120, h: 84, margin: 6, shape: 'contour' }      // left edge of the frame: text only on its right",
+   "  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 600 }], [photo])",
+   "  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin)",
+   "  assert.ok(beside.length > 0)",
+   "  for (const l of beside) assert.equal(l.align, 'right')",
+   "})",
+   "test('a plain rectangle (box) in the middle of a wide column: text on both sides, lines stay justified (no align)', () => {",
+   "  const photo = { x: 100, y: 63, w: 80, h: 84, margin: 6 }",
+   "  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 4000 }], [photo])",
+   "  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin && l.y + LH > photo.y - photo.margin)",
+   "  assert.ok(beside.some(l => l.x === 0) && beside.some(l => l.x === photo.x + photo.w + photo.margin), 'text was not set on both sides')",
+   "  for (const l of r.lines) assert.equal(l.align, undefined)",
+   "})",
+   "test('shape: box given explicitly behaves like the default', () => {",
+   "  const photo = { x: 0, y: 0, w: 120, h: 84, margin: 6, shape: 'box' }",
+   "  const r = run(story, [{ id: 'a', x: 0, y: 0, w: 300, h: 600 }], [photo])",
+   "  const beside = r.lines.filter(l => l.y < photo.y + photo.h + photo.margin)",
+   "  assert.ok(beside.length > 0)",
+   "  for (const l of beside) assert.equal(l.align, undefined)",
    "})"
   ],
   "packages/engine/test/guardrails.test.js": [

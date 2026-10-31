@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Headline gate and raster edges</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+table{border-collapse:collapse;background:#fff;margin:8px 0 16px}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}.p{background:#eef6ff;border-left:4px solid #05c;padding:8px 12px}
+.hi{font-family:"Nirmala UI","Noto Sans Devanagari",sans-serif}</style></head>
+<body><p><a href="index.html">&larr; all demos</a> · earlier: <a href="gate-decisions.html">gate decisions</a></p>
+<h1>Judge batch for approval: raster right edges (G0.pdfpos) and headline parity (G0.headline)</h1>
+<p class="w"><b>Assumed grid.</b> The printer's grid is not known yet. Every number here uses A3 (297 &times; 420 mm), 12 mm margins, 5 columns, 4 mm gutter and 9 pt (12 px) body (GG-007).</p>
+<p class="p">Waiting for Amal: <code>npm run approve</code>. Until then <code>npm test</code> fails on the judges lock, and the results below are not trusted.</p>
+
+<h2>1. G0.pdfpos: right edges are now measured by raster</h2>
+<p>Before, the right edge came from pdf.js text widths. Those widths are wrong for some conjuncts: the one 5.264 pt outlier (ष्ट) was a pdf.js error. They could also be checked on only 81.7% of lines. Now the script renders the PDF with pdf.js at 20 px per pt and finds the rightmost ink of every justified line. It compares that with where the line's last word should end, using the same font drawn at 50&times; size in Chromium.</p>
+<table><tr><th>Check, all 415 justified lines</th><th>Before (pdf.js text widths)</th><th>Now (raster)</th></tr>
+<tr><td>Lines checked</td><td>81.7%</td><td><b>100%</b></td></tr>
+<tr><td>95th percentile error</td><td>0.009 pt</td><td><b>0.010 pt</b> (gate: &le; 0.1)</td></tr>
+<tr><td>Worst line</td><td>5.264 pt (pdf.js artefact)</td><td><b>0.054 pt</b></td></tr></table>
+<p>Two measuring mistakes were found and fixed along the way. Neither one was a problem in the PDF:</p>
+<table><tr><th>First attempt</th><th>What went wrong</th><th>Fix</th></tr>
+<tr><td>Expected ink from canvas <code>actualBoundingBoxRight</code>: every line looked 0.9 pt short</td><td>At 12 px Chromium rounds ink bounds to whole pixels (it reported a 1.4 px overhang where the outline has 0.3 px). At large sizes it is loose on curves (ी, ं).</td><td>Draw the last word at 50&times; size and scan the pixels.</td></tr>
+<tr><td>Two lines off by 0.22 and 0.29 pt</td><td>pdf.js placed both glyph runs within 0.008 pt. The extra ink came from the matras and descenders of the lines above and below, which reach into a line's box at 1.25 leading.</td><td>Scan only the core band, from 0.75 em above the baseline down to it, in both the PDF and the reference.</td></tr></table>
+<p><b>Does the measure catch a fault?</b> To find out, the export was broken on purpose in a copy of the script:</p>
+<table><tr><th>Broken on purpose</th><th>Right edge p95</th><th>Worst line</th><th>Gate</th></tr>
+<tr><td>None (real export)</td><td>0.010 pt</td><td>0.054 pt</td><td>PASS</td></tr>
+<tr><td>Every word space 0.05 px too wide</td><td>0.306 pt</td><td>0.343 pt</td><td>FAIL (caught)</td></tr>
+<tr><td>One line shifted right 0.3 pt</td><td>0.010 pt</td><td>0.295 pt</td><td>PASS: one bad line is missed (GG-018)</td></tr>
+<tr><td>One line drawn 15 pt short</td><td>0.010 pt</td><td>8 pt (no ink found counts as 8)</td><td>PASS: one bad line is missed (GG-018)</td></tr></table>
+<p>The gate's right-edge coverage guard goes from &ge; 75% to &ge; 95% of lines (tighter). <b>Added at Amal's request:</b> the worst line is gated too (&le; 0.1 pt; 0.054 now), so both bad-line cases above now fail.</p>
+<h2>Also in this batch (Amal's additions, D-032)</h2>
+<table><tr><th>Change</th><th>Check</th></tr>
+<tr><td><code>harness/judges.mjs</code> locks <code>scripts/measure-export.mjs</code>, <code>spike/samples/*.txt</code> and <code>spike/headlines/*.txt</code></td><td>Changing the gate copy or the measuring script now fails <code>npm test</code> until approved</td></tr>
+<tr><td>Body gate takes launch fonts with role text or text-serif only</td><td>G0.parity still 99.7. Display and handwritten launch fonts are logged as untested (GG-022)</td></tr>
+<tr><td><code>spike/fetch-janshakti-headlines.mjs</code> rebuilds the headline set</td><td>Rerun gave the identical 200 headlines and sources file</td></tr>
+<tr><td>Hook block of a doc write logged as a false positive (GG-023)</td><td>Standing rule: a hook block means stop and ask Amal</td></tr></table>
+
+<h2>2. G0.headline: activated</h2>
+<table><tr><th>Item</th><th>Value</th></tr>
+<tr><td>Fonts</td><td>Khand, Eczar (now <code>launch: true</code>, role headline, in <code>spike/fonts.json</code>). Rozha One is display and has no bold, so it is not tested.</td></tr>
+<tr><td>Copy</td><td>200 real headlines, the og:title of the first 200 story pages in janshaktiujala.in's sitemap (<code>spike/headlines/</code>, sources listed)</td></tr>
+<tr><td>Set</td><td>Weight 700; 18/24/30/36 px; 1&ndash;4 columns = 194.27/403.65/613.04/822.43 px; leading 1.2</td></tr>
+<tr><td>Result</td><td><b>6397/6400 lines match the browser (99.95%, shown as 100)</b>. 0 lines fit more than the browser. 3 break earlier (harmless).</td></tr>
+<tr><td>Per font</td><td>Khand 100%, Eczar 99.9%; halant widths 66/66 for both</td></tr></table>
+<p>Each of the 3 early breaks is on a line with Latin digits. Pretext moves the last word to the next line where the browser keeps it. Once that word is a number (741); twice it is the word after a number:</p>
+<table class="hi"><tr><th>Font, size, width</th><th>Browser line</th><th>Pretext line</th></tr>
+<tr><td>Eczar 24 px, 2 col</td><td>भोपाल मंडल ने छह महीने में जारी किए 741</td><td>भोपाल मंडल ने छह महीने में जारी किए</td></tr>
+<tr><td>Eczar 30 px, 1 col</td><td>लक्ष्य: 2047 तक</td><td>लक्ष्य: 2047</td></tr>
+<tr><td>Khand 30 px, 1 col</td><td>ने 1.24 लाख पदों पर</td><td>ने 1.24 लाख पदों</td></tr></table>
+<p>The body gate G0.parity now takes only the launch fonts with role text or text-serif, so adding the headline fonts to the launch list does not change it. It still reads 99.7%.</p>
+
+<h2>Harness, 2026-10-30, before approval</h2>
+<table><tr><th>Gate</th><th>Result</th></tr>
+<tr><td>G0.parity</td><td>PASS 99.7 (&ge; 95)</td></tr>
+<tr><td>G0.speed</td><td>PASS 11.9 ms (&le; 30)</td></tr>
+<tr><td>G0.pdfpos</td><td>PASS 0.009 pt left edge; right p95 0.010 pt by raster</td></tr>
+<tr><td>G0.headline</td><td>PASS 100 (&ge; 99.5), 200 real headlines</td></tr>
+<tr><td>G0.guard, G0.flow</td><td>FAIL only because of the judges lock (88 tests pass, 1 fails)</td></tr>
+<tr><td>G0.black</td><td>PENDING: needs your print check</td></tr></table>
+</body></html>

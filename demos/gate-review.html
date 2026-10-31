@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gate review</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+table{border-collapse:collapse;background:#fff;margin:8px 0 16px}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3}
+.p{background:#eef6ff;border-left:4px solid #05c;padding:8px 12px}.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}
+.lines{display:flex;flex-wrap:wrap;gap:12px}.lines img{width:420px;max-width:100%;border:1px solid #ccc;background:#fff}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>Gate review: three proposed Phase 0 gates</h1>
+<p>Measured 2026-10-29 with <code>node scripts/gate-review.mjs</code>: real flow.js in headless Chromium, real font (Noto Sans Devanagari),
+127 real Janshakti paragraphs. Proposal only: no gate files changed. Column widths are assumed (A3, 12 mm margins, 4 mm gutter);
+no real Janshakti grid is written down yet.</p>
+
+<h2>1. G0.justify: word-space stretch when justified (no hyphenation)</h2>
+<p>Ratio = word space after justifying / normal word space, for every line except a paragraph's last.</p>
+<table><tr><th>Columns</th><th>Body</th><th>Column</th><th>Lines</th><th>Median</th><th>95th pct</th><th>99th pct</th><th>Worst</th><th>&gt;2x</th><th>&gt;3x</th><th>&gt;4x</th></tr>
+<tr><td>4</td><td>9 pt</td><td>65.3 mm</td><td>628</td><td>1.48</td><td>2.54</td><td>3.28</td><td>3.61</td><td>115</td><td>8</td><td>0</td></tr>
+<tr><td>5</td><td>9 pt</td><td>51.4 mm</td><td>828</td><td>1.64</td><td>2.94</td><td>3.88</td><td>5.67</td><td>231</td><td>39</td><td>6</td></tr>
+<tr><td>6</td><td>9 pt</td><td>42.2 mm</td><td>1040</td><td>1.78</td><td>4.03</td><td>5.87</td><td>9.94</td><td>404</td><td>141</td><td>53</td></tr>
+<tr><td>4</td><td>10 pt</td><td>65.3 mm</td><td>706</td><td>1.5</td><td>2.64</td><td>3.34</td><td>3.95</td><td>142</td><td>20</td><td>0</td></tr>
+<tr><td>5</td><td>10 pt</td><td>51.4 mm</td><td>927</td><td>1.65</td><td>3.19</td><td>4.44</td><td>6.52</td><td>305</td><td>66</td><td>14</td></tr>
+<tr><td>6</td><td>10 pt</td><td>42.2 mm</td><td>1165</td><td>1.82</td><td>4.09</td><td>6.11</td><td>11.54</td><td>491</td><td>203</td><td>67</td></tr></table>
+<p class="p"><b>Proposed:</b> on the reference grid (A3, 5 columns, 9 pt) 95th percentile &le; 3.0 and worst line &le; 6.0 (today 2.94 and 5.67).
+Why: it locks today's behaviour so nothing makes it worse, but these numbers are poor by print standards (above about 2x reads as gappy), so the gate should tighten once line breaking looks ahead instead of filling greedily.</p>
+<p class="w">At 6 columns (42 mm) justified text is not shippable: 95th percentile 4.03x, worst 9.94x. Narrow columns should default to ragged right.</p>
+<h3>The 5 worst lines at 5 columns, 9 pt</h3>
+<div class="lines"><figure style="margin:0"><img src="gate-review/justify-1.png" alt="जियोरेफरेंस्ड खसरे, कमजोर इंटरनेट"><figcaption>5.67x, 3 spaces</figcaption></figure><figure style="margin:0"><img src="gate-review/justify-2.png" alt="एस. जयशंकर पाकिस्तान में SCO"><figcaption>5.14x, 4 spaces</figcaption></figure><figure style="margin:0"><img src="gate-review/justify-3.png" alt="शीघ्र समाधान निकालने और राजस्व"><figcaption>4.65x, 4 spaces</figcaption></figure><figure style="margin:0"><img src="gate-review/justify-4.png" alt="विभाग और नगर निगम के संबंधित"><figcaption>4.20x, 5 spaces</figcaption></figure><figure style="margin:0"><img src="gate-review/justify-5.png" alt="उनके संतुलन, साहस, अनुशासन और"><figcaption>4.08x, 4 spaces</figcaption></figure></div>
+
+<h2>2. G0.pdfpos: PDF line positions and fonts</h2>
+<p>One A3 page (5 columns, headline, rule, 2 photos, 416 lines, justified) drawn the planned export way (absolute lines, <code>white-space: pre</code>, per-line <code>word-spacing</code>), printed by Chromium, read back with pdf.js.</p>
+<table><tr><th>Check</th><th>Result</th></tr>
+<tr><td>Lines found in the PDF</td><td>416 of 416</td></tr>
+<tr><td>Left edge vs flow() (lines where the first glyph reads back)</td><td>max 0.009 pt over 405 lines</td></tr>
+<tr><td>Baseline: spread of (PDF baseline - flow() line top)</td><td>0 pt (offset 7.695 pt, the same on every line)</td></tr>
+<tr><td>Right edge of justified lines</td><td>95th pct 0.009 pt, worst 5.264 pt over 339 of 415 lines</td></tr>
+<tr><td>Fonts embedded</td><td>4 font files for 4 font descriptors</td></tr>
+<tr><td>Fonts subset</td><td>4 of 4 (AAAAAA+NotoSansDevanagari-Bold, BAAAAA+NotoSansDevanagari-Bold, CAAAAA+NotoSansDevanagari-Regular, DAAAAA+NotoSansDevanagari-Regular)</td></tr>
+<tr><td>Text that reads back from the PDF exactly</td><td>21 of 416 lines</td></tr></table>
+<p class="p"><b>Proposed:</b> every checkable line within 0.1 pt of flow() on the left edge and baseline, justified right edges within 0.1 pt at the 95th percentile, and every font embedded and subset.
+Why: the measured error is 0.01 pt, so 0.1 pt (0.035 mm, far below press registration) only fails on a real bug; the one 5 pt right-edge outlier ends in the conjunct ष्ट and looks like a pdf.js zero-width item (seen on ष्ठ in the headline), not confirmed.</p>
+<p class="w">Text read back from the PDF is broken on 395 of 416 lines (Chromium maps many Devanagari glyphs to nothing): search, copy-paste and screen readers on the PDF will not work. The e-paper must not take its text from the PDF.</p>
+<p><a href="gate-review/page.jpg">The printed test page</a></p>
+
+<h2>3. G0.speed: flow() on a full A3 page</h2>
+<table><tr><th>Runs</th><th>Median</th><th>95th pct</th><th>Fastest</th><th>Slowest</th><th>Lines set</th></tr>
+<tr><td>20 after 5 warm-up</td><td>8.4 ms</td><td>12.6 ms</td><td>7.2 ms</td><td>12.6 ms</td><td>416</td></tr></table>
+<p class="p"><b>Proposed:</b> median &le; 30 ms for the full page on Amal's laptop. Why: this run gave 8.4 ms and three runs on 2026-10-29 gave medians of 8.4, 12.2 and 19.6 ms, so 30 ms (1.5x the slowest) absorbs machine noise but still catches an algorithmic slowdown; dragging re-flows one story (budget 8 ms per frame), not the whole page.</p>
+</body></html>

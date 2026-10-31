@@ -41,6 +41,9 @@ function exactJudges(root) {
     'harness/tools/approve-judges.mjs', 'harness/tools/record-result.mjs',
     'harness/ux/ux-lint.mjs', 'harness/ux/routes.json',
     'spike/run.mjs', 'spike/src/main.js',
+    // what G0.speed / G0.pdfpos measure with, and the real copy G0.parity / G0.headline / G0.pdfpos read
+    'scripts/measure-export.mjs',
+    ...walk(root, 'spike/samples', /\.txt$/), ...walk(root, 'spike/headlines', /\.txt$/),
     ...walk(root, '.claude', /\.(json|mjs|js|md)$/).filter(f => !f.endsWith('settings.local.json')),
   ]
   const out = Object.fromEntries(files.map(f => [f, read(root, f)]))

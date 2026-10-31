@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gate decisions</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1150px;color:#222;background:#f4f4f4}a{color:#05c}
+table{border-collapse:collapse;background:#fff;margin:8px 0 16px}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3}
+th.g{border-left:2px solid #ccc}td:nth-child(5),td:nth-child(10),td:nth-child(15){border-left:2px solid #ccc}
+.p{background:#eef6ff;border-left:4px solid #05c;padding:8px 12px}.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}
+.lines{display:flex;flex-wrap:wrap;gap:12px}.lines img{width:420px;max-width:100%;border:1px solid #ccc;background:#fff}img.big{max-width:100%;border:1px solid #ccc}</style></head>
+<body><p><a href="index.html">&larr; all demos</a> · proposals were on <a href="gate-review.html">gate review</a></p>
+<h1>Gate review decisions</h1>
+<p>Amal's decisions of 2026-10-29, carried out. Real copy: 127 Janshakti paragraphs, Noto Sans Devanagari, headless Chromium. Grid assumed (A3, 12 mm margins, 4 mm gutter; GG-007).</p>
+
+<h2>1. G0.speed added: median &le; 30 ms</h2>
+<p>Gate run (<code>node scripts/measure-export.mjs</code>, 2026-10-29 12:02 UTC): median <b>5.2 ms</b>, 95th pct 6.6 ms, 20 runs, 416 lines set.
+Guard added: at least 400 lines placed, so a flow() that places nothing cannot pass by being fast.</p>
+
+<h2>2. G0.pdfpos: the 5.264 pt outlier is not real; gate added</h2>
+<p>The outlier line <i>संबंधित विभागों की अधिसूचनाओं से स्पष्ट</i> read back from the PDF 5.26 pt short of the column's right edge (the gate-review page wrongly said "past"). Rasterised from the same PDF with pdf.js at 4x:</p>
+<table><tr><th>Check over all 415 justified lines</th><th>Result</th></tr>
+<tr><td>Ink right edge minus flow() right edge, raster</td><td>min -1.335 pt, median -0.217 pt, max 0.033 pt</td></tr>
+<tr><td>The outlier line, raster</td><td>-0.217 pt (the median: normal side bearing)</td></tr>
+<tr><td>Text right edge in the DOM before printing</td><td>0.001 to 0.009 pt from flow()'s edge; outlier 0.002 pt</td></tr></table>
+<p><figure style="margin:0"><img src="gate-decisions/outlier-raster.png" alt="outlier raster"><figcaption>The outlier line (blue box) rasterised from the PDF; red = flow() right edge. Its ink ends where its neighbours' does.</figcaption></figure></p>
+<p>No line's ink passes the edge (worst +0.033 pt), so there is no bug to fix: the 5 pt was pdf.js giving the conjunct ष्ट a wrong width in text extraction. The lines that end furthest inside (about 1.3 pt) all end in । , whose glyph has a wide right side bearing.</p>
+<table><tr><th>G0.pdfpos check (gate run)</th><th>Result</th><th>Need</th></tr>
+<tr><td>Left edge, lines whose first glyph reads back</td><td>max 0.009 pt over 97.4% of lines</td><td>&le; 0.1 pt; at least 90% checked</td></tr>
+<tr><td>Baseline spread (PDF baseline minus flow() line top)</td><td>0 pt (offset 7.695 pt on every line)</td><td>&le; 0.1 pt</td></tr>
+<tr><td>Justified right edge, 95th pct</td><td>0.009 pt over 81.7% of justified lines; worst 5.264 pt (the pdf.js artefact above, reported only)</td><td>&le; 0.1 pt; at least 75% checked</td></tr>
+<tr><td>Fonts</td><td>4 fonts, 0 not embedded, 0 not subset</td><td>all embedded and subset; at least 2 found</td></tr>
+<tr><td>Lines missing from the PDF</td><td>0 of 416</td><td>0</td></tr></table>
+<p class="w">The 95th percentile cannot catch one bad line: a single real 5 pt overshoot would pass. And the gate checks this measurement script's renderer, because no export module exists yet. Both are in <a href="gate-gaps.html">gate gaps</a> (GG-018, GG-019).</p>
+
+<h2>3. Justify, cheap first (no gate; judge by eye)</h2>
+<p>Lines are re-broken greedily over words. A line fits if its words plus its spaces at 0.8x fit the column; the spare width is then shared by the spaces.
+"+ glyphs" also lets a line fit with words at 98% width, and scales a line's glyphs between 98% and 102% to bring its spaces inside 0.8-1.33x before stretching them further. No letter-spacing.
+Check of the breaker: at 1.0x it reproduces 96.8% of flow()'s lines on the reference grid (all grids: 99.6%, 96.8%, 98.6%, 98.4%, 97.2%, 97.1%).</p>
+<p class="w">Adopting this means changing how flow() breaks lines (it fits at 1.0x today), and export must draw glyph scaling (here CSS <code>transform: scaleX</code>). That is a task to plan, not done here.</p>
+<table><tr><th>Columns</th><th>Body</th><th>Column</th><th></th><th>Lines</th><th>Median</th><th>95th</th><th>99th</th><th>Worst</th><th>&gt;1.33x</th><th>&gt;2x</th><th>&gt;3x</th><th>&gt;4x</th></tr>
+<tr style="border-top:2px solid #999"><td>4</td><td>9 pt</td><td>65.3 mm</td><td>before: flow() today</td><td>755</td><td>1.48</td><td>2.54</td><td>3.28</td><td>3.61</td><td>409</td><td>115</td><td>8</td><td>0</td></tr>
+<tr><td></td><td></td><td></td><td>spaces 0.8-1.33x</td><td>740</td><td>1.25</td><td>2.34</td><td>3.1</td><td>3.61</td><td>259</td><td>64</td><td>7</td><td>0</td></tr>
+<tr><td></td><td></td><td></td><td>+ glyphs 98-102%</td><td>729</td><td>1.07</td><td>1.89</td><td>2.24</td><td>3.46</td><td>133</td><td>22</td><td>2</td><td>0</td></tr>
+<tr style="border-top:2px solid #999"><td>5</td><td>9 pt</td><td>51.4 mm</td><td>before: flow() today</td><td>955</td><td>1.64</td><td>2.94</td><td>3.88</td><td>5.67</td><td>590</td><td>231</td><td>39</td><td>6</td></tr>
+<tr><td></td><td></td><td></td><td>spaces 0.8-1.33x</td><td>933</td><td>1.38</td><td>2.87</td><td>3.96</td><td>7.09</td><td>434</td><td>166</td><td>34</td><td>6</td></tr>
+<tr><td></td><td></td><td></td><td>+ glyphs 98-102%</td><td>911</td><td>1.22</td><td>2.54</td><td>3.73</td><td>6.82</td><td>255</td><td>83</td><td>21</td><td>5</td></tr>
+<tr style="border-top:2px solid #999"><td>6</td><td>9 pt</td><td>42.2 mm</td><td>before: flow() today</td><td>1167</td><td>1.78</td><td>4.03</td><td>5.87</td><td>9.94</td><td>784</td><td>404</td><td>141</td><td>53</td></tr>
+<tr><td></td><td></td><td></td><td>spaces 0.8-1.33x</td><td>1136</td><td>1.53</td><td>3.5</td><td>5.13</td><td>8.26</td><td>609</td><td>292</td><td>91</td><td>27</td></tr>
+<tr><td></td><td></td><td></td><td>+ glyphs 98-102%</td><td>1115</td><td>1.32</td><td>2.92</td><td>4.25</td><td>7.67</td><td>415</td><td>176</td><td>41</td><td>13</td></tr>
+<tr style="border-top:2px solid #999"><td>4</td><td>10 pt</td><td>65.3 mm</td><td>before: flow() today</td><td>833</td><td>1.5</td><td>2.64</td><td>3.34</td><td>3.95</td><td>446</td><td>142</td><td>20</td><td>0</td></tr>
+<tr><td></td><td></td><td></td><td>spaces 0.8-1.33x</td><td>814</td><td>1.28</td><td>2.45</td><td>3.17</td><td>4.88</td><td>313</td><td>89</td><td>14</td><td>1</td></tr>
+<tr><td></td><td></td><td></td><td>+ glyphs 98-102%</td><td>798</td><td>1.11</td><td>2</td><td>2.88</td><td>4.69</td><td>159</td><td>32</td><td>3</td><td>1</td></tr>
+<tr style="border-top:2px solid #999"><td>5</td><td>10 pt</td><td>51.4 mm</td><td>before: flow() today</td><td>1054</td><td>1.65</td><td>3.19</td><td>4.44</td><td>6.52</td><td>678</td><td>305</td><td>66</td><td>14</td></tr>
+<tr><td></td><td></td><td></td><td>spaces 0.8-1.33x</td><td>1040</td><td>1.43</td><td>3.14</td><td>4.64</td><td>6.52</td><td>518</td><td>223</td><td>57</td><td>13</td></tr>
+<tr><td></td><td></td><td></td><td>+ glyphs 98-102%</td><td>1025</td><td>1.27</td><td>2.74</td><td>4.45</td><td>5.85</td><td>307</td><td>126</td><td>30</td><td>11</td></tr>
+<tr style="border-top:2px solid #999"><td>6</td><td>10 pt</td><td>42.2 mm</td><td>before: flow() today</td><td>1292</td><td>1.82</td><td>4.09</td><td>6.11</td><td>11.54</td><td>897</td><td>491</td><td>203</td><td>67</td></tr>
+<tr><td></td><td></td><td></td><td>spaces 0.8-1.33x</td><td>1269</td><td>1.64</td><td>3.97</td><td>5.71</td><td>11.54</td><td>765</td><td>394</td><td>152</td><td>56</td></tr>
+<tr><td></td><td></td><td></td><td>+ glyphs 98-102%</td><td>1248</td><td>1.35</td><td>3.57</td><td>5.39</td><td>10.85</td><td>570</td><td>267</td><td>103</td><td>35</td></tr></table>
+<p>Lines = all lines set (compression fits more per line). Ratios count every line except a paragraph's last. With glyphs, 421 of 784 lines on the reference grid are scaled.</p>
+<h3>Reference grid (5 columns, 9 pt): the 5 worst lines before</h3>
+<div class="lines"><figure style="margin:0"><img src="gate-decisions/justify-before-1.png" alt="जियोरेफरेंस्ड खसरे, कमजोर इंटरनेट"><figcaption>5.67x, 3 spaces</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-before-2.png" alt="एस. जयशंकर पाकिस्तान में SCO"><figcaption>5.14x, 4 spaces</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-before-3.png" alt="शीघ्र समाधान निकालने और राजस्व"><figcaption>4.65x, 4 spaces</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-before-4.png" alt="विभाग और नगर निगम के संबंधित"><figcaption>4.20x, 5 spaces</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-before-5.png" alt="उनके संतुलन, साहस, अनुशासन और"><figcaption>4.08x, 4 spaces</figcaption></figure></div>
+<h3>The 5 worst lines after (spaces 0.8-1.33x + glyphs 98-102%)</h3>
+<div class="lines"><figure style="margin:0"><img src="gate-decisions/justify-after-1.png" alt="सीमांकन, राजस्व न्यायालयों और"><figcaption>6.82x, 3 spaces, glyphs 102.0%</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-after-2.png" alt="पहलगाम आतंकी हमले के बाद"><figcaption>6.00x, 4 spaces, glyphs 102.0%</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-after-3.png" alt="समितियों को सिटी गैस डिस्ट्रीब्यूशन"><figcaption>4.52x, 4 spaces, glyphs 102.0%</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-after-4.png" alt="शीघ्र समाधान निकालने और राजस्व"><figcaption>4.43x, 4 spaces, glyphs 102.0%</figcaption></figure><figure style="margin:0"><img src="gate-decisions/justify-after-5.png" alt="वास्तविक भौगोलिक स्थिति में अंतर,"><figcaption>4.24x, 4 spaces, glyphs 102.0%</figcaption></figure></div>
+<h3>Whole paragraphs, set three ways</h3>
+<p>The 3 paragraphs that hold the worst lines before.</p>
+<img class="big" src="gate-decisions/justify-columns.png" alt="paragraphs before and after">
+
+<h2>4. Font coverage of real copy</h2>
+<p><code>node scripts/font-coverage.mjs</code>: every one of the 92 distinct characters in 36272 characters of copy, against each launch font and weight.
+A character counts only if a face's <code>unicode-range</code> includes it and that served .woff2 has it in its cmap.</p>
+<table><tr><th>Font</th><th>Weight</th><th>Missing</th><th>Characters</th></tr><tr><td>Noto Sans Devanagari</td><td>400</td><td>0</td><td>-</td></tr><tr><td>Noto Sans Devanagari</td><td>700</td><td>0</td><td>-</td></tr><tr><td>Noto Serif Devanagari</td><td>400</td><td>0</td><td>-</td></tr><tr><td>Noto Serif Devanagari</td><td>700</td><td>0</td><td>-</td></tr></table>
+<p class="p">No character in today's copy falls back. The copy is narrow (92 characters: no ₹, curly double quotes, dashes, %, ZWJ/ZWNJ or nukta forms).
+Checked separately with 50 common news characters added (₹ “ ” — – … % • ° × ½ | ॐ ऑ ॉ ॰ ऍ ॅ nukta letters ॥ । Devanagari digits ZWJ ZWNJ € @ # &amp; * / : ? ! " ' + = &lt; &gt; [ ] _): only <b>½</b> is missing (in the Latin face's range, not in its cmap; Chromium falls back). Same result for the headline fonts Khand, Eczar, Rozha One and Kalam on the real copy: 0 missing.</p>
+</body></html>

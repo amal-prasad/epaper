@@ -4,7 +4,7 @@
       "id": "G0.parity",
       "phase": 0,
       "status": "active",
-      "title": "Line-break parity vs real DOM on real Hindi copy, launch fonts (fonts.json launch:true), percent",
+      "title": "Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent",
       "run": "npm --prefix spike run spike",
       "metricFile": "spike/out/report.json",
       "metricKey": "pct",
@@ -64,15 +64,114 @@
       ]
     },
     {
+      "id": "G0.speed",
+      "phase": 0,
+      "status": "active",
+      "title": "flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium",
+      "run": "node scripts/measure-export.mjs",
+      "metricFile": "spike/out/export.json",
+      "metricKey": "speedMedianMs",
+      "op": "<=",
+      "threshold": 30,
+      "also": [
+        {
+          "key": "speedLines",
+          "op": ">=",
+          "threshold": 400,
+          "why": "a broken flow() that places nothing must not pass by being fast"
+        }
+      ]
+    },
+    {
+      "id": "G0.pdfpos",
+      "phase": 0,
+      "status": "active",
+      "title": "Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check",
+      "run": "node scripts/measure-export.mjs",
+      "metricFile": "spike/out/export.json",
+      "metricKey": "pdfMaxLeftPt",
+      "op": "<=",
+      "threshold": 0.1,
+      "also": [
+        {
+          "key": "pdfBaselineSpreadPt",
+          "op": "<=",
+          "threshold": 0.1,
+          "why": "every line's PDF baseline sits the same distance below its flow() line top"
+        },
+        {
+          "key": "pdfRightP95Pt",
+          "op": "<=",
+          "threshold": 0.1,
+          "why": "justified right edges at the 95th percentile, measured by raster: rightmost ink of each line in the rendered PDF vs where its last word's ink should end (pdf.js text widths misreport conjuncts such as ष्ट); see pdfRightMaxPt for the worst line"
+        },
+        {
+          "key": "pdfRightMaxPt",
+          "op": "<=",
+          "threshold": 0.1,
+          "why": "worst justified line, by raster: one line shifted 0.3 pt or drawn short passes the 95th percentile but not this (negative control, D-031); 0.054 pt on 2026-10-30"
+        },
+        {
+          "key": "pdfFontsNotEmbedded",
+          "op": "<=",
+          "threshold": 0,
+          "why": "a missing font prints in a substitute or fails at the printer"
+        },
+        {
+          "key": "pdfFontsNotSubset",
+          "op": "<=",
+          "threshold": 0
+        },
+        {
+          "key": "pdfFonts",
+          "op": ">=",
+          "threshold": 2,
+          "why": "guard: a PDF with no fonts found must not pass the embedding checks"
+        },
+        {
+          "key": "pdfMissingLines",
+          "op": "<=",
+          "threshold": 0,
+          "why": "guard: every flow() line must be found in the PDF"
+        },
+        {
+          "key": "pdfLeftCheckedPct",
+          "op": ">=",
+          "threshold": 95,
+          "why": "guard: the raster left-edge check must cover nearly every line (100% on 2026-10-31)"
+        },
+        {
+          "key": "pdfLeftMutantCaught",
+          "op": ">=",
+          "threshold": 1,
+          "why": "mutation check: the page printed again with one line drawn 8 pt right must read as that line 8 pt off (within 0.1 pt) and every other line within 0.1 pt; a left-edge measure that cannot see a shift fails the gate (7.991 pt read on 2026-10-31)"
+        },
+        {
+          "key": "pdfRightCheckedPct",
+          "op": ">=",
+          "threshold": 95,
+          "why": "guard: the raster right-edge check must cover nearly every justified line (100% on 2026-10-30)"
+        }
+      ]
+    },
+    {
       "id": "G0.headline",
       "phase": 0,
-      "status": "pending",
-      "title": "Line-break parity on bold headline sizes (weight 700, 18-36 px), headline fonts, percent",
+      "status": "active",
+      "title": "Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent",
+      "run": "npm --prefix spike run spike -- --headline-gate",
       "metricFile": "spike/out/headline.json",
       "metricKey": "pct",
       "op": ">=",
       "threshold": 99.5,
+      "slow": true,
       "also": [
+        {
+          "key": "realHeadlines",
+          "op": ">=",
+          "threshold": 100,
+          "why": "measure on 100+ real Janshakti headlines (spike/headlines/), not invented text"
+        },
         {
           "key": "longerThanDom",
           "op": "<=",
@@ -84,7 +183,7 @@
     {
       "id": "G0.black",
       "phase": 0,
-      "status": "pending",
+      "status": "active",
       "title": "Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)",
       "metricFile": "harness/results/G0.black.json",
       "metricKey": "kOnly",
@@ -100,6 +199,25 @@
       "metricKey": "pct",
       "op": ">=",
       "threshold": 70
+    },
+    {
+      "id": "G1.nodims",
+      "phase": 1,
+      "status": "active",
+      "title": "Engine source with a hardcoded page size or paper name (page size, grid, page-count rule, export profile and asset packs come from the document-type preset, D-039), count",
+      "run": "node scripts/check-page-dims.mjs",
+      "metricFile": "spike/out/nodims.json",
+      "metricKey": "hits",
+      "op": "<=",
+      "threshold": 0,
+      "also": [
+        {
+          "key": "files",
+          "op": ">=",
+          "threshold": 1,
+          "why": "guard: an empty or moved engine folder must not pass by having nothing to scan"
+        }
+      ]
     },
     {
       "id": "G1.fitdrift",

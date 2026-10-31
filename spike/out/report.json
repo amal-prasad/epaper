@@ -3,7 +3,7 @@
   "pct": 99.7,
   "pctAll": 99.7,
   "longerThanDom": 0,
-  "earlyBreaks": 9,
+  "earlyBreaks": 10,
   "scope": "launch fonts",
   "paragraphs": 127,
   "realParagraphs": 127,
@@ -11,6 +11,7 @@
   "samples": {
     "janshakti-live.txt": 127
   },
+  "realHeadlines": 0,
   "fonts": [
     "Noto Sans Devanagari",
     "Noto Serif Devanagari"
@@ -38,7 +39,7 @@
       "launch": true,
       "real": 99.8,
       "over": 0,
-      "under": 3,
+      "under": 4,
       "halantBreaks": 100,
       "halantWidths": "66/66",
       "verdict": "PASS"
@@ -57,9 +58,9 @@
   ],
   "perf": {
     "frames": 2000,
-    "linesPerFrame": 850,
-    "totalMs": 859.3,
-    "msPerFrame": 0.43
+    "linesPerFrame": 841,
+    "totalMs": 277,
+    "msPerFrame": 0.139
   },
   "rows": [
     {
@@ -78,7 +79,7 @@
         {
           "para": 57,
           "dir": "under",
-          "firstDiff": 1,
+          "firstDiff": 0,
           "domAt": "इंदौर में मंगलवार, 27",
           "preAt": "इंदौर में मंगलवार,"
         },
@@ -414,13 +415,21 @@
       "weight": 400,
       "size": 14,
       "width": 110,
-      "ok": 127,
+      "ok": 126,
       "tot": 127,
       "over": 0,
-      "under": 0,
+      "under": 1,
       "other": 0,
-      "heightMiss": 0,
-      "fails": [],
+      "heightMiss": 1,
+      "fails": [
+        {
+          "para": 99,
+          "dir": "under",
+          "firstDiff": 0,
+          "domAt": "टाटा समूह में नेतृत्व और",
+          "preAt": "टाटा समूह में नेतृत्व"
+        }
+      ],
       "overs": []
     },
     {
