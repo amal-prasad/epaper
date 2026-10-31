@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-31",
+    "task": "G1.nodims mutation check (GG-049)",
+    "page": "nodims-check.html",
+    "summary": "Planted page sizes in a copy of the engine source. Standard sizes and paper names are caught and now pinned by a test; custom sizes, numbers with a unit and decimals are missed. The fix is a judge change, proposed in GG-049."
+  },
+  {
+    "date": "2026-10-31",
     "task": "Phase 1: wrap modes and shaped objects",
     "page": "wrap-modes.html",
     "summary": "Objects wrap as none, box, shape or jump, with an offset per side and their own minimum gap. Round insets, rotated boxes and cut-outs are sliced per line, and text can set inside a notch. Before and after pages for each mode. The editor's snapping is not built."
