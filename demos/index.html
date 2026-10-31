@@ -7,14 +7,14 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 .warn{background:#fff3cd;border:1px solid #e0b100;padding:8px 12px}</style></head>
 <body><h1>Studio demos</h1>
 <p class="warn">Gate numbers use an ASSUMED grid (A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body) until the printer's spec sheet arrives (GG-007).</p>
-<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-10-31 03:35 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
+<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-10-31 03:38 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
 
 <h2>Gates</h2>
 <table><tr><th>Gate</th><th>Phase</th><th>Status</th><th>What it checks</th><th>Result</th></tr>
 <tr><td>G0.parity</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.guard</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Repo guardrail tests failing (brand name, licences)</td><td class="d">0 (need &lt;= 0)</td></tr>
 <tr><td>G0.flow</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped</td><td class="d">27 (need &gt;= 17)</td></tr>
-<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">3.8 (need &lt;= 30)</td></tr>
+<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">3.5 (need &lt;= 30)</td></tr>
 <tr><td>G0.pdfpos</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check</td><td class="d">0.009 (need &lt;= 0.1)</td></tr>
 <tr><td>G0.headline</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.black</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)</td><td class="d">1 (need &gt;= 1)</td></tr>
@@ -39,9 +39,10 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 <tr><td>G4.a11y</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Serious axe violations on editor routes (count)</td><td class="d"></td></tr>
 <tr><td>GX.dragms</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Drag re-layout ms per frame, 3-column story</td><td class="d"></td></tr>
 </table>
-<p><a href="gate-gaps.html"><b>40 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
+<p><a href="gate-gaps.html"><b>41 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
 <h2>Tasks</h2>
 <table><tr><th>Date</th><th>Task</th><th>What changed</th></tr>
+<tr><td>2026-10-31</td><td><a href="phase1-preset.html">Phase 1: document-type preset</a></td><td>Page size, grid, page-count rule, export profile and asset packs are data on the document, and the engine holds no sizes. The newspaper preset's sizes are assumed until the printer's sheet arrives; what the printer has not told us is left empty.</td></tr>
 <tr><td>2026-10-31</td><td><a href="phase1-doc-model.html">Phase 1: document model, ops and undo</a></td><td>An issue is plain data that changes only through ops, each with its undo as data. placeStory, setObjectGeometry and removeBlock pass the undo fuzz, and four inverses broken on purpose all make it fail. No screen uses this yet.</td></tr>
 <tr><td>2026-10-31</td><td><a href="gg042-pdfpos.html">G0.pdfpos left-edge false alarm (GG-042)</a></td><td>After D-037 the gate flags one line 8.3 pt off. The rendered PDF shows its ink starts exactly on the flow() edge; pdf.js extracted no text for the first conjunct व्य, so the check measured from the second व. Options (a) and (b) for Amal.</td></tr>
 <tr><td>2026-10-31</td><td><a href="flow-shapes.html">flow(): text on every side of a shape, aligned away from it (D-037)</a></td><td>Engine change: gaps of 3 em or more beside a shape take text on both sides; lines beside a shape are flush left (shape on the right) or flush right (shape on the left), not justified. Before/after for five shapes: 5-32 more lines per page.</td></tr>

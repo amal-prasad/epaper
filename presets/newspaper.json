@@ -1,0 +1,18 @@
+{
+  "id": "newspaper",
+  "name": "Newspaper",
+  "assumed": ["page", "margins", "grid", "pageCount"],
+  "page": { "w": 297, "h": 420 },
+  "margins": { "top": 12, "right": 12, "bottom": 12, "left": 12 },
+  "grid": { "cols": 5, "gutter": 4, "baseline": 4.2 },
+  "pageCount": { "multipleOf": 4 },
+  "exportProfile": {
+    "colourRoute": "neutral-rgb-to-k-cmyk",
+    "pdfx": null,
+    "bleed": null,
+    "cropMarks": null,
+    "iccProfile": null,
+    "inkLimit": null
+  },
+  "assetPacks": []
+}

@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-31",
+    "task": "Phase 1: document-type preset",
+    "page": "phase1-preset.html",
+    "summary": "Page size, grid, page-count rule, export profile and asset packs are data on the document, and the engine holds no sizes. The newspaper preset's sizes are assumed until the printer's sheet arrives; what the printer has not told us is left empty."
+  },
+  {
+    "date": "2026-10-31",
     "task": "Phase 1: document model, ops and undo",
     "page": "phase1-doc-model.html",
     "summary": "An issue is plain data that changes only through ops, each with its undo as data. placeStory, setObjectGeometry and removeBlock pass the undo fuzz, and four inverses broken on purpose all make it fail. No screen uses this yet."

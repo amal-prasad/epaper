@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document-type preset</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}code{font-size:13px}
+table{border-collapse:collapse;background:#fff;width:100%}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>Document-type preset (D-039, D-042)</h1>
+<p>Page size, grid, page-count rule, export profile and asset packs are now data on the document. The engine holds no sizes, so a magazine or the printer's real grid needs a new file, not new engine code.</p>
+<p class="w">Every size below is assumed until the printer's spec sheet arrives (GG-007). The preset lists these fields under <code>assumed</code>.</p>
+<h2>What the newspaper preset says</h2>
+<table>
+<tr><th>Field</th><th>Value</th><th>Status</th></tr>
+<tr><td>Page</td><td>297 &times; 420 mm</td><td>Assumed</td></tr>
+<tr><td>Margins</td><td>12 mm each side</td><td>Assumed</td></tr>
+<tr><td>Grid</td><td>5 columns, 4 mm gutter, 4.2 mm baseline</td><td>Assumed</td></tr>
+<tr><td>Page count</td><td>Multiples of 4</td><td>Assumed, with no source</td></tr>
+<tr><td>Colour route</td><td>Neutral RGB rewritten to K-only CMYK</td><td>Decided (D-034)</td></tr>
+<tr><td>PDF/X version, bleed, crop marks, ICC profile, ink limit</td><td>Empty</td><td>Not known yet, so not guessed</td></tr>
+<tr><td>Asset packs</td><td>None</td><td>No packs exist yet</td></tr>
+</table>
+<h2>Columns worked out from the preset</h2>
+<table>
+<tr><th>Column</th><th>Left edge</th><th>Width</th><th>Top</th><th>Height</th></tr>
+<tr><td>1</td><td>12 mm</td><td>51.4 mm</td><td>12 mm</td><td>396 mm</td></tr>
+<tr><td>2</td><td>67.4 mm</td><td>51.4 mm</td><td>12 mm</td><td>396 mm</td></tr>
+<tr><td>3</td><td>122.8 mm</td><td>51.4 mm</td><td>12 mm</td><td>396 mm</td></tr>
+<tr><td>4</td><td>178.2 mm</td><td>51.4 mm</td><td>12 mm</td><td>396 mm</td></tr>
+<tr><td>5</td><td>233.6 mm</td><td>51.4 mm</td><td>12 mm</td><td>396 mm</td></tr>
+</table>
+<h2>Checks</h2>
+<table>
+<tr><th>Command</th><th>Result</th></tr>
+<tr><td><code>node --test packages/engine/test/preset.test.js</code></td><td>7 pass, 0 fail. Includes a made-up document type with other sizes, and 16 kinds of bad preset refused</td></tr>
+<tr><td><code>npm test</code></td><td>123 passed, 0 failed</td></tr>
+<tr><td><code>npm run harness -- --phase 1 --fast</code></td><td>G1.nodims 0 hits. The other six gates are pending, so Phase 1 is not done</td></tr>
+</table>
+<p>New risk: GG-046, nothing yet stops a press export from a preset with assumed or empty values.</p>
+</body></html>

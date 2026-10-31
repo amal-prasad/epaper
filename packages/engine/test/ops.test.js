@@ -10,6 +10,7 @@ const OPS_SOURCE = fs.readFileSync(new URL('../src/ops.js', import.meta.url), 'u
 const json = v => JSON.parse(JSON.stringify(v))     // the op log is stored as JSON, so inverses must survive it
 
 const orgId = 'org1'
+const PRESET = { id: 'test', assumed: [], assetPacks: [], page: { w: 100, h: 150 }, margins: { top: 5, right: 5, bottom: 5, left: 5 }, grid: { cols: 2, gutter: 2, baseline: 3 }, pageCount: { multipleOf: 2 }, exportProfile: { bleed: null } }
 const object = (id, x, y, w, h, extra = {}) => ({ id, orgId, kind: 'photo', x, y, w, h, z: 0, wrap: { mode: 'box', offset: { top: 1, right: 1, bottom: 1, left: 1 } }, style: {}, ...extra })
 
 function makeDoc(r = rng(1)) {
@@ -29,7 +30,7 @@ function makeDoc(r = rng(1)) {
   })
   pages[0].frames[0].storyId = 's1'
   pages[1].frames[2].storyId = 's2'
-  return { schemaVersion: SCHEMA_VERSION, id: 'issue1', orgId, stories, pages }
+  return { schemaVersion: SCHEMA_VERSION, id: 'issue1', orgId, preset: PRESET, stories, pages }
 }
 
 const frames = doc => doc.pages.flatMap(p => p.frames)

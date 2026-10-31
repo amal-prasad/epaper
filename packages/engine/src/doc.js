@@ -1,6 +1,7 @@
 // The document (one issue) as plain JSON. Geometry in millimetres from the top-left of the trim box.
-//   { schemaVersion, id, orgId, stories: Story[], pages: [{ id, orgId, no, frames: Frame[], objects: PageObject[] }] }
-// Field lists are in docs/PRODUCT_PROMPT.md section 4, except as decided in D-041.
+//   { schemaVersion, id, orgId, preset, stories: Story[], pages: [{ id, orgId, no, frames: Frame[], objects: PageObject[] }] }
+// Field lists are in docs/PRODUCT_PROMPT.md section 4, except as decided in D-041. The preset is described in preset.js.
+import { assertPreset } from './preset.js'
 
 export const SCHEMA_VERSION = 1
 
@@ -26,6 +27,7 @@ const WRAP_MODES = ['none', 'box', 'shape', 'jump']     // D-035
 export function assertDoc(doc) {
   const needOrg = (record, what) => { if (!record.orgId) throw new Error(`${what} ${record.id} has no orgId`) }
   needOrg(doc, 'document')
+  assertPreset(doc.preset)
   doc.stories.forEach(s => needOrg(s, 'story'))
   const placed = new Set()
   for (const page of doc.pages) {
