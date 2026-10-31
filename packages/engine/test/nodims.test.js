@@ -30,12 +30,28 @@ const CAUGHT = {
   'page width in CSS px': 'const w = 1122.52',
   'another paper name': "const paper = 'tabloid'",
   'a listed size inside a sum': 'const w = 148 * 2',
+  'custom size as w and h': 'const page = { w: 330, h: 483 }',
+  'custom size, h first': 'const box = { h: 578, w: 380 }',
+  'custom size as width and height': 'const box = { width: 330, height: 483 }',
+  'number with a unit in a CSS string': "const s = '@page{size:297mm 420mm}'",
+  'decimal form': 'const w = 297.0',
+  'a named page dimension': 'const pageWidth = 330',
+  'a named trim size': 'const TRIM_H = 483',
+  'the size in a preset file': `const w = ${JSON.parse(fs.readFileSync(path.join(root, 'presets/newspaper.json'), 'utf8')).page.w}`,
+}
+
+const ALLOWED = {
+  'a size named only in a comment': '// the page is A3, 297 by 420',
+  'w and h from variables': 'const box = { w: width, h: height }',
+  'reading a page size from the preset': 'const w = preset.page.w',
+  'a page number': 'const no = page.no + 1',
+  'a small number unrelated to page size': 'const LIMIT = 72',
 }
 
 test('G1.nodims counts a hardcoded page size', async t => {
   try {
     for (const [name, source] of Object.entries(CAUGHT)) await t.test(name, () => assert.ok(hitsFor(source) >= 1, source))
-    await t.test('a size named only in a comment does not count', () => assert.equal(hitsFor('// the page is A3, 297 by 420'), 0))
+    for (const [name, source] of Object.entries(ALLOWED)) await t.test(`does not count: ${name}`, () => assert.equal(hitsFor(source), 0, source))
     await t.test('the real engine source has none', () => assert.equal(run(), 0))
   } finally { run() }   // leaves the metric file describing the real engine
 })

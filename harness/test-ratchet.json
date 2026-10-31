@@ -17,6 +17,10 @@
    "tests": 12,
    "skipped": 0
   },
+  "packages/engine/test/fit.test.js": {
+   "tests": 9,
+   "skipped": 0
+  },
   "packages/engine/test/flow.cases.test.js": {
    "tests": 15,
    "skipped": 0
@@ -29,12 +33,20 @@
    "tests": 23,
    "skipped": 0
   },
+  "packages/engine/test/nodims.test.js": {
+   "tests": 21,
+   "skipped": 0
+  },
   "packages/engine/test/ops.test.js": {
    "tests": 23,
    "skipped": 0
   },
   "packages/engine/test/preset.test.js": {
    "tests": 7,
+   "skipped": 0
+  },
+  "packages/engine/test/templates.test.js": {
+   "tests": 47,
    "skipped": 0
   },
   "packages/engine/test/wrap.test.js": {

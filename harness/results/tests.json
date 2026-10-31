@@ -1,5 +1,5 @@
 {
- "passed": 161,
+ "passed": 238,
  "failed": 0,
  "skipped": 0,
  "todo": 0,
@@ -43,6 +43,15 @@
    "cancelled": 0,
    "exit": 0
   },
+  "packages/engine/test/fit.test.js": {
+   "tests": 9,
+   "pass": 9,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
   "packages/engine/test/flow.cases.test.js": {
    "tests": 15,
    "pass": 15,
@@ -70,6 +79,15 @@
    "cancelled": 0,
    "exit": 0
   },
+  "packages/engine/test/nodims.test.js": {
+   "tests": 21,
+   "pass": 21,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
   "packages/engine/test/ops.test.js": {
    "tests": 23,
    "pass": 23,
@@ -82,6 +100,15 @@
   "packages/engine/test/preset.test.js": {
    "tests": 7,
    "pass": 7,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/engine/test/templates.test.js": {
+   "tests": 47,
+   "pass": 47,
    "fail": 0,
    "skipped": 0,
    "todo": 0,

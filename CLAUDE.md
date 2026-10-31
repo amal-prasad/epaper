@@ -40,6 +40,7 @@ Phase 1 — operator tool and first produced issues. See `docs/phases/phase1-aut
 15. One small task per commit (about an hour of work), committed only when green. Never commit with a failing test. Never push; Amal pushes.
 16. Anything that changes print output (export, colour, fonts, bleed) is reviewed by the `reviewer` agent (a fresh session that did not write it), and gets a physical proof from the printer before a phase is called done.
 17. Every task ends with a demo page Amal can open in a browser: `demos/<task-name>.html`, self-contained (inline CSS, images in `demos/<task-name>/`), listed in `demos/tasks.json` and linked from `demos/index.html` (`npm run demos`). Layout work shows before/after page previews side by side (`node scripts/demo-layout.mjs`); print work shows the ink plates side by side; non-visual work shows a short plain-words table of what changed and which checks passed. Open each page in Chromium and confirm it renders with no console errors. A task is not done until its demo page exists and is linked.
+18. Whenever you need to ask Amal something, or need proof from him (a result or a check only he can do), make him a quiz: multiple-choice questions with the question tool, each one understandable on its own. Do not ask in prose. Log answers that decide something in `docs/DECISIONS.md`. A quiz answer does not replace `npm run approve` or `npm run record`, and a number he gives in one is still labelled as his, not as something you ran (rule 7).
 
 <!-- claude-code-harness -->
 ## Claude Code harness (in `.claude/` and `harness/`)

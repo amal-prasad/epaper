@@ -222,12 +222,20 @@
     {
       "id": "G1.fitdrift",
       "phase": 1,
-      "status": "pending",
-      "title": "Frames where fit meter differs from render, percent",
-      "metricFile": "harness/results/G1.fitdrift.json",
+      "status": "active",
+      "title": "Frames where fit meter differs from render, percent (real copy and fonts in Chromium: lines drawn absolutely, plus the browser's own reflow where there is no obstacle; includes self-checks)",
+      "run": "node scripts/measure-fit.mjs",
+      "metricFile": "spike/out/fitdrift.json",
       "metricKey": "pct",
       "op": "<=",
-      "threshold": 2
+      "threshold": 2,
+      "also": [
+        { "key": "cases", "op": ">=", "threshold": 200, "why": "the percent means little on a handful of cases" },
+        { "key": "reflowChecked", "op": ">=", "threshold": 150, "why": "the browser's own line breaker must actually be compared" },
+        { "key": "overflowCases", "op": ">=", "threshold": 30, "why": "overflow must be exercised" },
+        { "key": "underfillCases", "op": ">=", "threshold": 30, "why": "underfill must be exercised" },
+        { "key": "mutantCaught", "op": ">=", "threshold": 1, "why": "a meter lying by one line, and one measuring with the wrong font, must both read as drift" }
+      ]
     },
     {
       "id": "G1.golden",
@@ -377,7 +385,7 @@
       "id": "G2.proof",
       "phase": 1,
       "status": "pending",
-      "title": "Printer accepted a real proof (1 = yes)",
+      "title": "Printer accepted a digital proof, and a real Janshakti issue printed from our PDF came out clean, black text checked on paper (1 = both; hand-recorded)",
       "metricFile": "harness/results/G2.proof.json",
       "metricKey": "accepted",
       "op": ">=",

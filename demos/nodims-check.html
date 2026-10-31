@@ -5,21 +5,21 @@
 table{border-collapse:collapse;background:#fff;width:100%}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}</style></head>
 <body><p><a href="index.html">&larr; all demos</a></p>
 <h1>Can G1.nodims actually fail?</h1>
-<p>A count of 0 means something only if the gate can catch a violation. Each row plants one line in a copy of the engine source and runs the gate's script on it.</p>
+<p>A count of 0 means something only if the gate can catch a violation. Each row plants one line in a copy of the engine source and runs the gate's script on it. All of this is now a permanent test: <code>packages/engine/test/nodims.test.js</code>.</p>
 <table>
-<tr><th>Planted line</th><th>Hits</th><th>Result</th></tr>
-<tr><td><code>{ w: 297, h: 420 }</code></td><td>1</td><td>Caught</td></tr>
-<tr><td><code>'A3'</code></td><td>1</td><td>Caught</td></tr>
-<tr><td><code>841.89</code> (pt)</td><td>1</td><td>Caught</td></tr>
-<tr><td><code>1122.52</code> (CSS px)</td><td>1</td><td>Caught</td></tr>
-<tr><td><code>'tabloid'</code></td><td>1</td><td>Caught</td></tr>
-<tr><td><code>148 * 2</code></td><td>1</td><td>Caught</td></tr>
-<tr><td><code>// the page is A3, 297 by 420</code></td><td>0</td><td>Correct: comments may name sizes</td></tr>
-<tr><td><code>{ w: 330, h: 483 }</code></td><td>0</td><td><b>Missed:</b> size not on the list</td></tr>
-<tr><td><code>{ w: 380, h: 578 }</code></td><td>0</td><td><b>Missed:</b> size not on the list</td></tr>
-<tr><td><code>'@page{size:297mm 420mm}'</code></td><td>0</td><td><b>Missed:</b> number with a unit</td></tr>
-<tr><td><code>297.0</code></td><td>0</td><td><b>Missed:</b> decimal form</td></tr>
+<tr><th>Planted line</th><th>Before</th><th>Now</th></tr>
+<tr><td><code>{ w: 297, h: 420 }</code>, <code>'A3'</code>, <code>841.89</code>, <code>1122.52</code>, <code>'tabloid'</code>, <code>148 * 2</code></td><td>Caught</td><td>Caught</td></tr>
+<tr><td><code>{ w: 330, h: 483 }</code>, <code>{ h: 578, w: 380 }</code>, <code>{ width: 330, height: 483 }</code></td><td><b>Missed</b></td><td>Caught</td></tr>
+<tr><td><code>'@page{size:297mm 420mm}'</code></td><td><b>Missed</b></td><td>Caught</td></tr>
+<tr><td><code>297.0</code></td><td><b>Missed</b></td><td>Caught</td></tr>
+<tr><td><code>pageWidth = 330</code>, <code>TRIM_H = 483</code></td><td><b>Missed</b></td><td>Caught</td></tr>
+<tr><td>Any size in <code>presets/*.json</code></td><td>Only if on the list</td><td>Caught, so the printer's real trim is covered once it is in the preset</td></tr>
 </table>
-<p class="w">The gate works for standard sizes but cannot see a custom one, and the printer's real trim may well be custom. The fix changes a judge, so it is a proposal for Amal: GG-049. The real engine source has 0 hits.</p>
-<p>The caught rows, the comment row and the real engine source are now a permanent test: <code>packages/engine/test/nodims.test.js</code>. Run it with <code>npm test</code>.</p>
+<h2>Must not count</h2>
+<table>
+<tr><th>Line</th><th>Now</th></tr>
+<tr><td><code>// the page is A3, 297 by 420</code></td><td>Not counted</td></tr>
+<tr><td><code>{ w: width, h: height }</code>, <code>preset.page.w</code>, <code>page.no + 1</code>, <code>LIMIT = 72</code></td><td>Not counted</td></tr>
+</table>
+<p class="w">Still gets through: a size built up by arithmetic from unlisted numbers under a neutral name, such as <code>const a = 165 * 2</code>. It is a pattern check, not a parser. The real engine source has 0 hits.</p>
 </body></html>
