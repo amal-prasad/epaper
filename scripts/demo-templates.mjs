@@ -35,7 +35,7 @@ window.draw = (name, filled) => {
     if (!filled) { page.append(el(box(o) + 'border:2px dashed #6a8caf;background:#eef3f8;font:400 20px sans-serif;color:#456;padding:8px', LABEL[role])); continue }
     if (role === 'photo') page.append(el(box(o) + 'background:linear-gradient(135deg,#6a8caf,#c9a46b 60%,#5d7a4a)'))
     if (role === 'ad') page.append(el(box(o) + 'border:2px solid #222;display:flex;align-items:center;justify-content:center;font:400 28px "Noto Sans Devanagari";color:#444', LABEL.ad))
-    if (role === 'masthead') page.append(el(box(o) + 'border-bottom:4px solid #111;font:400 86px/1.3 "Khand";text-align:center', 'जनशक्ति उजाला'))
+    if (role === 'masthead') page.append(el(box(o) + 'border-bottom:4px solid #111;font:700 86px/1.3 "Khand";text-align:center', 'जनशक्ति उजाला'))
     if (role === 'imprint') page.append(el(box(o) + 'border-top:1px solid #111;padding-top:4px;font:12px/16px "Noto Sans Devanagari";color:#b42318', 'मुद्रक: ' + IMPRINT.printer + ' · मुद्रण स्थल: ' + IMPRINT.placeOfPrinting + ' · संपादक: ' + IMPRINT.editor + ' · प्रकाशक: ' + IMPRINT.publisher + ' · प्रकाशन स्थल: ' + IMPRINT.placeOfPublication))
   }
   for (const f of frames) {
@@ -43,7 +43,7 @@ window.draw = (name, filled) => {
     const story = STORIES[next++]
     const headH = HEAD_LINES[f.priority] * PRESET.grid.baseline, gap = 2
     const body = { ...f, y: f.y + headH, h: f.h - headH - gap }
-    page.append(el('left:' + f.x * PX + 'px;top:' + f.y * PX + 'px;width:' + f.w * PX + 'px;height:' + headH * PX + 'px;overflow:hidden;font:400 ' + HEAD_PX[f.priority] + 'px/1.15 "Khand"', story.headline))
+    page.append(el('left:' + f.x * PX + 'px;top:' + f.y * PX + 'px;width:' + f.w * PX + 'px;height:' + headH * PX + 'px;overflow:hidden;font:700 ' + HEAD_PX[f.priority] + 'px/1.15 "Khand"', story.headline))
     const columns = frameColumns(body).map(c => ({ ...c, x: c.x * PX, y: c.y * PX, w: c.w * PX, h: Math.floor(c.h * PX / LH) * LH }))
     const text = story.body.join(' ')
     const opts = { font: BODY + 'px "Noto Sans Devanagari"', lineHeight: LH }, set = flow(text, columns, [], opts), meter = fit(text, columns, [], opts)
@@ -59,7 +59,7 @@ window.draw = (name, filled) => {
   return rows
 }
 window.size = pagePx
-window.ready = Promise.all([document.fonts.load('12px "Noto Sans Devanagari"', 'क'), document.fonts.load('400 28px "Noto Sans Devanagari"', 'क'), document.fonts.load('400 34px "Khand"', 'क')])
+window.ready = Promise.all([document.fonts.load('12px "Noto Sans Devanagari"', 'क'), document.fonts.load('400 28px "Noto Sans Devanagari"', 'क'), document.fonts.load('700 34px "Khand"', 'क')])
 `
 const bundle = await esbuild.build({ stdin: { contents: code, resolveDir: root, loader: 'js' }, bundle: true, format: 'esm', write: false })
 const work = path.join(root, 'spike/out'), html = path.join(work, 'demo-templates.html'), dir = path.join(root, 'demos/templates')
@@ -91,7 +91,7 @@ fs.writeFileSync(path.join(root, 'demos/templates.html'), `<!doctype html>
 figcaption{font-size:13px;color:#666}.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}table{border-collapse:collapse;background:#fff;width:100%;margin-bottom:24px}td,th{text-align:left;padding:4px 10px;border-bottom:1px solid #e3e3e3}</style></head>
 <body><p><a href="index.html">&larr; all demos</a></p>
 <h1>Weekly templates (D-049)</h1>
-<p class="w">The grid is assumed (A3, 5 columns, GG-007) and the imprint holds placeholders, shown in red. Body is Noto Sans 400 until Amal decides on Halant (D-048). Masthead and headlines are Khand 400: weight 700 is not approved (D-050). Each slot holds a different real story from Janshakti's site, uncut, in fetch order. No auto-pager exists yet, so nothing matches story length to slot. Paragraphs are joined, and headlines sit in a fixed band, because how a story maps to a frame is not settled.</p>
+<p class="w">The grid is assumed (A3, 5 columns, GG-007) and the imprint holds placeholders, shown in red. Body is Noto Sans 400. Masthead and headlines are Khand 700 (D-051). Each slot holds a different real story from Janshakti's site, uncut, in fetch order. No auto-pager exists yet, so nothing matches story length to slot. Paragraphs are joined, and headlines sit in a fixed band, because how a story maps to a frame is not settled.</p>
 <p><b>Over</b> counts lines of text that did not fit, at the frame's column width. <b>Under</b> counts empty line places left in the frame after the story ends. A short last line counts as used, so Under never counts part of a line, and it is 0 whenever anything is over. It counts body lines only: the headline band, photos and the space between slots are not in it.</p>
 ${figs}
 <p>Rebuild: <code>node scripts/demo-templates.mjs</code>.</p>
