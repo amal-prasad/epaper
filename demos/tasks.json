@@ -1,6 +1,18 @@
 [
   {
     "date": "2026-10-31",
+    "task": "Phase 1: fit meters",
+    "page": "fit-meters.html",
+    "summary": "fit() gives fill %, overflow lines and underfill lines. In Chromium on real copy it differs from what the browser draws on 0 of 228 cases, and a meter given the wrong font differs on 68.4%."
+  },
+  {
+    "date": "2026-10-31",
+    "task": "G2.proof wording and the quiz rule (D-044, D-045)",
+    "page": "proof-and-quiz.html",
+    "summary": "G2.proof now needs a digital proof and a clean printed Janshakti issue. New rule 18: Claude asks Amal by quiz. Both await npm run approve."
+  },
+  {
+    "date": "2026-10-31",
     "task": "G1.nodims mutation check (GG-049)",
     "page": "nodims-check.html",
     "summary": "Planted page sizes in a copy of the engine source. Standard sizes and paper names are caught and now pinned by a test; custom sizes, numbers with a unit and decimals are missed. The fix is a judge change, proposed in GG-049."

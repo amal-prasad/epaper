@@ -24,6 +24,8 @@ jobs:
         run: cd spike && npm ci --no-audit --no-fund && node add-fonts.mjs
       - name: Phase 0 gates (parity on real copy, guardrails, flow)
         run: npm run harness -- --phase 0
+      - name: Phase 1 gates (pending gates do not fail this; slow gates are skipped)
+        run: npm run harness -- --phase 1 --fast
       - name: Keep the parity report
         if: always()
         uses: actions/upload-artifact@v4

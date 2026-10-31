@@ -30,31 +30,57 @@ function gaps(x0, x1, y, lh, obstacles) {
 // line stays flush with the edge away from the shape; renderers do not justify it). Absent on lines no contour touches,
 // including lines beside plain boxes, which stay justified.
 export function flow(story, frames, obstacles = [], { font, lineHeight }) {
-  const size = parseFloat(/([\d.]+)px/.exec(font)?.[1])
-  if (!(size > 0)) throw new Error(`flow(): font "${font}" has no px size`)
   const p = prepareWithSegments(story, font)
   let cursor = { segmentIndex: 0, graphemeIndex: 0 }
   const lines = []
-  for (const f of frames) {
-    for (const y of lineTops(f, lineHeight)) {
-      // An obstacle splitting the line leaves several gaps: every gap of at least the minimum takes text, left to right (D-037).
-      for (const [x0, x1, cutLeft, cutRight, minGapEm] of gaps(f.x, f.x + f.w, y, lineHeight, obstacles)) {
-        const w = x1 - x0
-        if (w <= EPS || w < Math.min(minGapEm * size, f.w) - EPS) continue
-        // Pretext breaks a word that does not fit at a grapheme cluster boundary.
-        const line = layoutNextLine(p, w, cursor)
-        if (!line) return { lines, remainder: '' }
-        if (line.width > w + EPS) continue                               // not even one grapheme fits: try the next gap
-        const l = { frameId: f.id, x: x0, y, w, text: line.text }
-        if (cutRight && !cutLeft) l.align = 'left'
-        else if (cutLeft && !cutRight) l.align = 'right'
-        else if (cutLeft && cutRight) l.align = 'left'                   // between two obstacles: read from the left edge
-        lines.push(l)
-        cursor = line.end
-      }
-    }
+  for (const { frame: f, y, x0, x1, cutLeft, cutRight } of lineSlots(frames, obstacles, font, lineHeight)) {
+    const w = x1 - x0
+    // Pretext breaks a word that does not fit at a grapheme cluster boundary.
+    const line = layoutNextLine(p, w, cursor)
+    if (!line) return { lines, remainder: '' }
+    if (line.width > w + EPS) continue                               // not even one grapheme fits: try the next gap
+    const l = { frameId: f.id, x: x0, y, w, text: line.text }
+    if (cutRight && !cutLeft) l.align = 'left'
+    else if (cutLeft && !cutRight) l.align = 'right'
+    else if (cutLeft && cutRight) l.align = 'left'                   // between two obstacles: read from the left edge
+    lines.push(l)
+    cursor = line.end
   }
   let remainder = ''
   for (let line; (line = layoutNextLine(p, Infinity, cursor)); cursor = line.end) remainder += line.text
   return { lines, remainder }
+}
+
+// Every place a line of text can go, in reading order. An obstacle splitting the line leaves several gaps: every gap of at
+// least the minimum takes text, left to right (D-037).
+function lineSlots(frames, obstacles, font, lineHeight) {
+  const size = parseFloat(/([\d.]+)px/.exec(font)?.[1])
+  if (!(size > 0)) throw new Error(`flow(): font "${font}" has no px size`)
+  const slots = []
+  for (const frame of frames) for (const y of lineTops(frame, lineHeight))
+    for (const [x0, x1, cutLeft, cutRight, minGapEm] of gaps(frame.x, frame.x + frame.w, y, lineHeight, obstacles)) {
+      const w = x1 - x0
+      if (w <= EPS || w < Math.min(minGapEm * size, frame.w) - EPS) continue
+      slots.push({ frame, y, x0, x1, cutLeft, cutRight })
+    }
+  return slots
+}
+
+// fit(text, frames, obstacles, { font, lineHeight }) -> { fillPct, lines, capacity, overflowLines, underfillLines }
+//   lines: lines flow() sets. capacity: places a line can go. overflowLines: lines of leftover text, at the width of the last
+//   frame. underfillLines: empty places. fillPct: (lines + overflowLines) / capacity, one decimal; above 100 means overflow;
+//   Infinity when text has nowhere to go. A chain's frames are passed in reading order, the same as to flow().
+// ponytail: takes plain text, like flow(); templates will decide how headline and paragraphs become frames and text.
+export function fit(text, frames, obstacles = [], { font, lineHeight }) {
+  const { lines, remainder } = flow(text, frames, obstacles, { font, lineHeight })
+  const capacity = lineSlots(frames, obstacles, font, lineHeight).length
+  let overflowLines = 0
+  if (remainder.trim()) {
+    const p = prepareWithSegments(remainder, font), width = frames.at(-1)?.w ?? Infinity
+    let cursor = { segmentIndex: 0, graphemeIndex: 0 }
+    for (let line; (line = layoutNextLine(p, width, cursor)); cursor = line.end) overflowLines++
+  }
+  const needed = lines.length + overflowLines
+  const fillPct = needed === 0 ? 0 : capacity ? Math.round(needed / capacity * 1000) / 10 : Infinity
+  return { fillPct, lines: lines.length, capacity, overflowLines, underfillLines: overflowLines ? 0 : capacity - lines.length }
 }

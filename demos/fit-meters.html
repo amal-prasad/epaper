@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fit meters</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}code{font-size:13px}
+table{border-collapse:collapse;background:#fff;width:100%}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>Fit meters (D-046)</h1>
+<p>The engine can now say how well a story fills its frames, before anyone lays out the page. No screen shows this yet.</p>
+<table>
+<tr><th>Story in a 5-line frame</th><th>Fill</th><th>Lines set</th><th>Over</th><th>Under</th></tr>
+<tr><td>Exactly 5 lines</td><td>100%</td><td>5</td><td>0</td><td>0</td></tr>
+<tr><td>2 lines</td><td>40%</td><td>2</td><td>0</td><td>3</td></tr>
+<tr><td>8 lines</td><td>160%</td><td>5</td><td>3</td><td>0</td></tr>
+</table>
+<h2>Does it match what a browser draws?</h2>
+<p>Real Hindi copy, Noto Sans and Noto Serif, headless Chromium, on the assumed A3 column widths. Run it with <code>node scripts/measure-fit.mjs</code>.</p>
+<table>
+<tr><th>Check</th><th>Result</th></tr>
+<tr><td>Cases where the meter differs from the browser</td><td><b>0 of 228</b> (60 overflow, 165 underfill)</td></tr>
+<tr><td>Browser's own line breaker gives the same line count (no photo)</td><td>Checked on 192 cases, all in the 0 above</td></tr>
+<tr><td>Meter made to lie by one line</td><td>Read as a difference on every case</td></tr>
+<tr><td>Meter measuring with the wrong font</td><td>Differs on 68.4% of cases, so the check can fail</td></tr>
+</table>
+<p class="w">Not covered yet (GG-052): headlines, shaped wraps and stories threaded across frames. The column widths are assumed until the printer's sheet arrives.</p>
+</body></html>
