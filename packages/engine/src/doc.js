@@ -3,6 +3,7 @@
 // Field lists are in docs/PRODUCT_PROMPT.md section 4, except as decided in D-041. The preset is described in preset.js.
 import { assertPreset } from './preset.js'
 import { assertWrap } from './wrap.js'
+import { assertImprint } from './templates.js'
 
 export const SCHEMA_VERSION = 1
 
@@ -27,6 +28,7 @@ export function assertDoc(doc) {
   const needOrg = (record, what) => { if (!record.orgId) throw new Error(`${what} ${record.id} has no orgId`) }
   needOrg(doc, 'document')
   assertPreset(doc.preset)
+  if (doc.imprint !== undefined) assertImprint(doc.imprint)
   doc.stories.forEach(s => needOrg(s, 'story'))
   const placed = new Set()
   for (const page of doc.pages) {

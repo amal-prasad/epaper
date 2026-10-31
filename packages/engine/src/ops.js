@@ -1,6 +1,7 @@
 // Every change to a document is an op: { type, args }. apply(doc, op) returns { doc, inverse }; the inverse is itself an op,
 // as plain data, so the log can be stored as JSON and replayed. Ops never mutate their input.
 import { assertWrap } from './wrap.js'
+import { buildPage } from './templates.js'
 
 const fail = message => { throw new Error(message) }
 
@@ -82,6 +83,22 @@ const OPS = {
     })
     const before = page.objects.filter(o => saved.has(o.id)).map(snapshot)
     return { doc: withPage(doc, { ...page, objects }), inverse: { type: 'restoreGeometry', args: { pageId, geometries: before } } }
+  },
+
+  // Replaces what is on the page with the template's empty slots, laid out from the document's preset.
+  applyTemplate(doc, { pageId, template }) {
+    const old = pageById(doc, pageId)
+    const built = buildPage(template, doc.preset, { pageId, orgId: doc.orgId })
+    return {
+      doc: withPage(doc, { ...old, ...built, templateId: template.id }),
+      inverse: { type: 'restorePage', args: { pageId, page: old } },
+    }
+  },
+
+  // Inverse of applyTemplate (and of itself).
+  restorePage(doc, { pageId, page }) {
+    const before = pageById(doc, pageId)
+    return { doc: withPage(doc, page), inverse: { type: 'restorePage', args: { pageId, page: before } } }
   },
 
   setWrap(doc, { objectId, wrap }) {

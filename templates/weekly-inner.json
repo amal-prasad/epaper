@@ -1,0 +1,16 @@
+{
+  "id": "weekly-inner",
+  "name": "Inner news page",
+  "columns": 5,
+  "rows": 60,
+  "slots": [
+    { "id": "top-photo", "kind": "photo", "col": 0, "span": 2, "row": 0, "rows": 12 },
+    { "id": "top", "kind": "story", "priority": 1, "col": 2, "span": 3, "row": 0, "rows": 24 },
+    { "id": "top-left", "kind": "story", "priority": 2, "col": 0, "span": 2, "row": 12, "rows": 12 },
+    { "id": "middle", "kind": "story", "priority": 2, "col": 0, "span": 3, "row": 24, "rows": 17 },
+    { "id": "side", "kind": "story", "priority": 3, "col": 3, "span": 2, "row": 24, "rows": 17 },
+    { "id": "bottom-a", "kind": "story", "priority": 3, "col": 0, "span": 2, "row": 41, "rows": 16 },
+    { "id": "bottom-b", "kind": "story", "priority": 3, "col": 2, "span": 3, "row": 41, "rows": 16 },
+    { "id": "imprint", "kind": "imprint", "col": 0, "span": 5, "row": 57, "rows": 3 }
+  ]
+}

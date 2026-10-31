@@ -7,20 +7,20 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 .warn{background:#fff3cd;border:1px solid #e0b100;padding:8px 12px}</style></head>
 <body><h1>Studio demos</h1>
 <p class="warn">Gate numbers use an ASSUMED grid (A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body) until the printer's spec sheet arrives (GG-007).</p>
-<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-10-31 10:57 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
+<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-10-31 11:54 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
 
 <h2>Gates</h2>
 <table><tr><th>Gate</th><th>Phase</th><th>Status</th><th>What it checks</th><th>Result</th></tr>
 <tr><td>G0.parity</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.guard</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Repo guardrail tests failing (brand name, licences)</td><td class="d">0 (need &lt;= 0)</td></tr>
 <tr><td>G0.flow</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped</td><td class="d">27 (need &gt;= 17)</td></tr>
-<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">3.5 (need &lt;= 30)</td></tr>
+<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">7 (need &lt;= 30)</td></tr>
 <tr><td>G0.pdfpos</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check</td><td class="d">0.009 (need &lt;= 0.1)</td></tr>
 <tr><td>G0.headline</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.black</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)</td><td class="d">1 (need &gt;= 1)</td></tr>
 <tr><td>G1.fillrate</td><td>3</td><td><span class="s PENDING">PENDING</span></td><td>Stories auto-placed with no manual fix on 20-issue replay, percent</td><td class="d"></td></tr>
 <tr><td>G1.nodims</td><td>1</td><td><span class="s PASS">PASS</span></td><td>Engine source with a hardcoded page size or paper name (page size, grid, page-count rule, export profile and asset packs come from the document-type preset, D-039), count</td><td class="d">0 (need &lt;= 0)</td></tr>
-<tr><td>G1.fitdrift</td><td>1</td><td><span class="s PENDING">PENDING</span></td><td>Frames where fit meter differs from render, percent</td><td class="d"></td></tr>
+<tr><td>G1.fitdrift</td><td>1</td><td><span class="s PASS">PASS</span></td><td>Frames where fit meter differs from render, percent (real copy and fonts in Chromium: lines drawn absolutely, plus the browser's own reflow where there is no obstacle; includes self-checks)</td><td class="d">0 (need &lt;= 2)</td></tr>
 <tr><td>G1.golden</td><td>1</td><td><span class="s PENDING">PENDING</span></td><td>Golden pages with pixel diff over threshold (count)</td><td class="d"></td></tr>
 <tr><td>G1.autoplaced</td><td>1</td><td><span class="s PENDING">PENDING</span></td><td>Stories placed with no manual move, percent, median of last 4 produced issues (Janshakti included; hand-recorded)</td><td class="d"></td></tr>
 <tr><td>G1.time</td><td>3</td><td><span class="s PENDING">PENDING</span></td><td>Minutes to build one real weekly (hand-measured)</td><td class="d"></td></tr>
@@ -39,9 +39,10 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 <tr><td>G4.a11y</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Serious axe violations on editor routes (count)</td><td class="d"></td></tr>
 <tr><td>GX.dragms</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Drag re-layout ms per frame, 3-column story</td><td class="d"></td></tr>
 </table>
-<p><a href="gate-gaps.html"><b>47 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
+<p><a href="gate-gaps.html"><b>54 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
 <h2>Tasks</h2>
 <table><tr><th>Date</th><th>Task</th><th>What changed</th></tr>
+<tr><td>2026-10-31</td><td><a href="templates.html">Phase 1: weekly templates</a></td><td>Front, inner and ads pages as JSON in grid units, built from the document's preset, each with the imprint block (placeholders for now). Empty slots beside the page filled with real copy. Grid assumed; body in Noto until Halant is decided.</td></tr>
 <tr><td>2026-10-31</td><td><a href="fit-meters.html">Phase 1: fit meters</a></td><td>fit() gives fill %, overflow lines and underfill lines. In Chromium on real copy it differs from what the browser draws on 0 of 228 cases, and a meter given the wrong font differs on 68.4%.</td></tr>
 <tr><td>2026-10-31</td><td><a href="proof-and-quiz.html">G2.proof wording and the quiz rule (D-044, D-045)</a></td><td>G2.proof now needs a digital proof and a clean printed Janshakti issue. New rule 18: Claude asks Amal by quiz. Both await npm run approve.</td></tr>
 <tr><td>2026-10-31</td><td><a href="nodims-check.html">G1.nodims mutation check (GG-049)</a></td><td>Planted page sizes in a copy of the engine source. Standard sizes and paper names are caught and now pinned by a test; custom sizes, numbers with a unit and decimals are missed. The fix is a judge change, proposed in GG-049.</td></tr>

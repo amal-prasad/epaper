@@ -1,0 +1,12 @@
+{
+  "id": "janshakti",
+  "name": "Janshakti Ujala",
+  "imprint": {
+    "printer": "[मुद्रक का नाम]",
+    "placeOfPrinting": "[मुद्रण स्थल]",
+    "editor": "[संपादक का नाम]",
+    "publisher": "[प्रकाशक का नाम]",
+    "placeOfPublication": "[प्रकाशन स्थल]",
+    "assumed": ["printer", "placeOfPrinting", "editor", "publisher", "placeOfPublication"]
+  }
+}

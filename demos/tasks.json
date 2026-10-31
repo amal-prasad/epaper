@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-31",
+    "task": "Phase 1: weekly templates",
+    "page": "templates.html",
+    "summary": "Front, inner and ads pages as JSON in grid units, built from the document's preset, each with the imprint block (placeholders for now). Empty slots beside the page filled with real copy. Grid assumed; body in Noto until Halant is decided."
+  },
+  {
+    "date": "2026-10-31",
     "task": "Phase 1: fit meters",
     "page": "fit-meters.html",
     "summary": "fit() gives fill %, overflow lines and underfill lines. In Chromium on real copy it differs from what the browser draws on 0 of 228 cases, and a meter given the wrong font differs on 68.4%."

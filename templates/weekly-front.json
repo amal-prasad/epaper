@@ -1,0 +1,15 @@
+{
+  "id": "weekly-front",
+  "name": "Front page: lead and secondary",
+  "columns": 5,
+  "rows": 60,
+  "slots": [
+    { "id": "masthead", "kind": "masthead", "col": 0, "span": 5, "row": 0, "rows": 7 },
+    { "id": "lead-photo", "kind": "photo", "col": 0, "span": 3, "row": 7, "rows": 15 },
+    { "id": "lead", "kind": "story", "priority": 1, "col": 0, "span": 3, "row": 22, "rows": 20 },
+    { "id": "secondary", "kind": "story", "priority": 2, "col": 3, "span": 2, "row": 7, "rows": 35 },
+    { "id": "third", "kind": "story", "priority": 3, "col": 0, "span": 2, "row": 42, "rows": 15 },
+    { "id": "fourth", "kind": "story", "priority": 3, "col": 2, "span": 3, "row": 42, "rows": 15 },
+    { "id": "imprint", "kind": "imprint", "col": 0, "span": 5, "row": 57, "rows": 3 }
+  ]
+}

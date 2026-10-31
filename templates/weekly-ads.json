@@ -1,0 +1,15 @@
+{
+  "id": "weekly-ads",
+  "name": "Ads and greetings page",
+  "columns": 5,
+  "rows": 60,
+  "slots": [
+    { "id": "story", "kind": "story", "priority": 2, "col": 0, "span": 2, "row": 0, "rows": 25 },
+    { "id": "ad-top", "kind": "ad", "col": 2, "span": 3, "row": 0, "rows": 25 },
+    { "id": "ad-a", "kind": "ad", "col": 0, "span": 2, "row": 25, "rows": 16 },
+    { "id": "ad-b", "kind": "ad", "col": 2, "span": 3, "row": 25, "rows": 16 },
+    { "id": "ad-c", "kind": "ad", "col": 0, "span": 3, "row": 41, "rows": 16 },
+    { "id": "ad-d", "kind": "ad", "col": 3, "span": 2, "row": 41, "rows": 16 },
+    { "id": "imprint", "kind": "imprint", "col": 0, "span": 5, "row": 57, "rows": 3 }
+  ]
+}
