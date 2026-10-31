@@ -6,7 +6,7 @@ Read `docs/PRODUCT_PROMPT.md` for the full brief. This file is the short version
 Hindi page-layout Studio: build a printable newspaper / school magazine from the publisher's own stories, publish the same layout as an e-paper. First customer: Janshakti Ujala (Indore weekly). Working name "Studio" (not "Patrika").
 
 ## Current phase
-Phase 0 — engine spike, trimmed by the plan review. See `docs/phases/phase0-engine.md`.
+Phase 1 — operator tool and first produced issues. See `docs/phases/phase1-autopage.md`.
 
 ## Commands
 - `npm run harness` — run every active gate, print a table, exit 1 on failure

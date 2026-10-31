@@ -28,6 +28,18 @@
   "packages/engine/test/invariants.test.js": {
    "tests": 23,
    "skipped": 0
+  },
+  "packages/engine/test/ops.test.js": {
+   "tests": 23,
+   "skipped": 0
+  },
+  "packages/engine/test/preset.test.js": {
+   "tests": 7,
+   "skipped": 0
+  },
+  "packages/engine/test/wrap.test.js": {
+   "tests": 37,
+   "skipped": 0
   }
  }
 }
