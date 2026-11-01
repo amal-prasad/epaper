@@ -3,7 +3,7 @@
     "date": "2026-10-31",
     "task": "CI failing on Linux: cause and fix (D-053)",
     "page": "ci-linux.html",
-    "summary": "A Windows-only test skipped on Linux, and the ratchet read that as a test switched off. The test now runs on every OS. Approved; the CI logs confirm the cause, and the next CI run is the real proof."
+    "summary": "A Windows-only test skipped on Linux, and the ratchet read that as a test switched off; fixed, and npm test now passes on real Linux. CI then found PDF right edges 0.322 pt off on Linux. Proposed fix awaits approval and a CI run."
   },
   {
     "date": "2026-10-31",

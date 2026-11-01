@@ -1,7 +1,7 @@
 {
  "_readme": "Written by `npm run approve`. Do not edit by hand.",
  "approvedBy": "bened",
- "approvedAt": "2026-11-01T07:05:30.562Z",
+ "approvedAt": "2026-11-01T07:40:29.467Z",
  "exact": {
   "harness/run.mjs": "e8de19e81bb91906",
   "harness/run-tests.mjs": "7f22c5293de02b36",
@@ -12,7 +12,7 @@
   "harness/ux/routes.json": "9b6eb0b9392a1ac6",
   "spike/run.mjs": "1d26d3be18aad4e9",
   "spike/src/main.js": "e0a4a93300d77026",
-  "scripts/measure-export.mjs": "c9931fa7a41c311d",
+  "scripts/measure-export.mjs": "a5c494a4bcbf91d0",
   "spike/samples/janshakti-live.txt": "03a1c52544b6ec8e",
   "spike/headlines/janshakti-headlines.txt": "a1cfeda11fa8f864",
   ".claude/agents/reviewer.md": "527a838a907486de",

@@ -15,5 +15,7 @@ table{border-collapse:collapse;background:#fff;width:100%}td,th{text-align:left;
 <tr><td>Hook copy without the filesystem's case correction, as on Linux</td><td>Passes</td></tr>
 <tr><td>Same copy, with the hook's lower-casing also removed</td><td>Fails, so the test can catch this fault</td></tr>
 </table>
+<h2>Next failure: PDF right edges on Linux (D-055)</h2>
+<p>With that fixed, run #15 passed <code>npm test</code> on real Linux (238 passed) and reached <code>G0.pdfpos</code>, which read 0.322 pt where Windows reads 0.010 pt (limit 0.1 pt). The likely reason is Linux font hinting, so the gate now starts Chromium with <code>--font-render-hinting=none</code>. <b>This is a hypothesis until a CI run passes.</b> On Windows the numbers do not change: right edge 0.010 pt, worst 0.051 pt, left 0.009 pt.</p>
 <p>The ratchet and thresholds are not touched, and no skip or todo is added. New proposals: GG-062 (no test skipped by platform) and GG-063 (CI on main must be green). GG-061 logs a hook false positive.</p>
 </body></html>

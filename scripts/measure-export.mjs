@@ -100,7 +100,8 @@ fs.writeFileSync(pagePath, `<!doctype html><html lang="hi"><head><meta charset="
 <style>@page{size:297mm 420mm;margin:0}html,body{margin:0}</style></head><body>
 <script type="module">${bundle.outputFiles[0].text.replace(/<\/script/gi, '<\\/script')}</script></body></html>`)
 
-const browser = await chromium.launch(), bp = await browser.newPage({ viewport: { width: 1400, height: 1000 } }), errors = []
+// Linux Chromium hints fonts by default, which changes glyph advances on screen but not in the PDF (D-055). Export needs the same flag.
+const browser = await chromium.launch({ args: ['--font-render-hinting=none'] }), bp =await browser.newPage({ viewport: { width: 1400, height: 1000 } }), errors = []
 bp.on('pageerror', e => errors.push(e.message)); bp.on('console', m => m.type() === 'error' && errors.push(m.text()))
 await bp.goto(pathToFileURL(pagePath).href); await bp.waitForFunction(() => window.ready); await bp.evaluate(() => window.ready)
 
