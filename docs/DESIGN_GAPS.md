@@ -4,6 +4,8 @@ Add an entry before building anything the mockups do not cover. Format: `- [ ] G
 
 Order set by the plan review (`docs/PLAN_REVIEW.md` §8). Design before Phase 1 ends:
 
+- [ ] P1-T Templates follow Janshakti's printed pages (6 columns, kicker, byline, inset photos, folio, print line on the last page), where the Main board drew 5 columns (D-058) — the printed pages are what the customer knows; the mockup should be brought into line — Amal
+- [ ] P1-C Background removal for cut-outs — Amal may add it, so a photo can become a free-form image, for example beside the masthead. Per D-035 it runs at upload, outside the engine, and stores a transparent image plus an outline polygon. Not designed: the tool or library, its licence and cost, the operator's edge check before accepting, and print quality at the edges — Amal
 - [ ] P1-1 Proof link page (G9 reduced): read-only page images, tap to comment, approve, no account — can an owner approve an issue on a phone? — Amal
 - [ ] P1-2 Export and preflight checklist (G5 reduced): for the operator first, then the printer sheet — does the printer accept the first file without a call? — Amal
 - [ ] P1-3 Paste-and-clean story intake (G3 reduced): Kruti Dev preview, source and licence pick — can a week's copy be cleaned in under 15 minutes? — Amal

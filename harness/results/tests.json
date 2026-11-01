@@ -1,5 +1,5 @@
 {
- "passed": 238,
+ "passed": 372,
  "failed": 0,
  "skipped": 0,
  "todo": 0,
@@ -70,6 +70,15 @@
    "cancelled": 0,
    "exit": 0
   },
+  "packages/engine/test/headline.test.js": {
+   "tests": 11,
+   "pass": 11,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
   "packages/engine/test/invariants.test.js": {
    "tests": 23,
    "pass": 23,
@@ -107,8 +116,8 @@
    "exit": 0
   },
   "packages/engine/test/templates.test.js": {
-   "tests": 47,
-   "pass": 47,
+   "tests": 170,
+   "pass": 170,
    "fail": 0,
    "skipped": 0,
    "todo": 0,

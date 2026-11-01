@@ -1,0 +1,15 @@
+{
+  "id": "inner-cutout",
+  "name": "Inner: tall cut-out figure in the lead, side rail, section band",
+  "columns": 6,
+  "rows": 60,
+  "slots": [
+    { "id": "folio", "kind": "folio", "col": 0, "span": 6, "row": 0, "rows": 2 },
+    { "id": "rail", "kind": "story", "priority": 3, "textCols": 1, "col": 0, "span": 1, "row": 2, "rows": 30, "head": {"kicker": 2, "headline": 8, "byline": 1}, "boxed": true },
+    { "id": "lead", "kind": "story", "priority": 1, "textCols": 2, "col": 1, "span": 5, "row": 2, "rows": 30, "head": {"kicker": 2, "headline": 7, "byline": 1}, "inset": {"side": "left", "width": 0.3, "rows": 26, "caption": 0, "shape": "cutout"} },
+    { "id": "section", "kind": "section", "col": 0, "span": 6, "row": 32, "rows": 2 },
+    { "id": "third-a", "kind": "story", "priority": 2, "textCols": 1, "col": 0, "span": 2, "row": 34, "rows": 26, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "right", "width": 0.5, "rows": 9, "caption": 1} },
+    { "id": "third-b", "kind": "story", "priority": 2, "textCols": 1, "col": 2, "span": 2, "row": 34, "rows": 26, "head": {"kicker": 2, "headline": 5, "byline": 1}, "boxed": true },
+    { "id": "third-c", "kind": "story", "priority": 3, "textCols": 1, "col": 4, "span": 2, "row": 34, "rows": 26, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "left", "width": 0.45, "rows": 8, "caption": 0} }
+  ]
+}

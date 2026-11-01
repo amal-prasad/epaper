@@ -1,16 +1,15 @@
 {
   "id": "weekly-inner",
-  "name": "Inner news page",
-  "columns": 5,
+  "name": "Inner: full-width story, two halves, three thirds, photos on different sides",
+  "columns": 6,
   "rows": 60,
   "slots": [
-    { "id": "top-photo", "kind": "photo", "col": 0, "span": 2, "row": 0, "rows": 12 },
-    { "id": "top", "kind": "story", "priority": 1, "col": 2, "span": 3, "row": 0, "rows": 24 },
-    { "id": "top-left", "kind": "story", "priority": 2, "col": 0, "span": 2, "row": 12, "rows": 12 },
-    { "id": "middle", "kind": "story", "priority": 2, "col": 0, "span": 3, "row": 24, "rows": 17 },
-    { "id": "side", "kind": "story", "priority": 3, "col": 3, "span": 2, "row": 24, "rows": 17 },
-    { "id": "bottom-a", "kind": "story", "priority": 3, "col": 0, "span": 2, "row": 41, "rows": 16 },
-    { "id": "bottom-b", "kind": "story", "priority": 3, "col": 2, "span": 3, "row": 41, "rows": 16 },
-    { "id": "imprint", "kind": "imprint", "col": 0, "span": 5, "row": 57, "rows": 3 }
+    { "id": "folio", "kind": "folio", "col": 0, "span": 6, "row": 0, "rows": 2 },
+    { "id": "top", "kind": "story", "priority": 1, "textCols": 2, "col": 0, "span": 6, "row": 2, "rows": 20, "head": {"kicker": 2, "headline": 7, "byline": 1}, "inset": {"side": "right", "width": 0.33, "rows": 12, "caption": 1} },
+    { "id": "half-a", "kind": "story", "priority": 2, "textCols": 1, "col": 0, "span": 3, "row": 22, "rows": 19, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "left", "width": 0.5, "rows": 9, "caption": 1} },
+    { "id": "half-b", "kind": "story", "priority": 2, "textCols": 1, "col": 3, "span": 3, "row": 22, "rows": 19, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "right", "width": 0.42, "rows": 10, "caption": 0, "shape": "round"} },
+    { "id": "third-a", "kind": "story", "priority": 3, "textCols": 1, "col": 0, "span": 2, "row": 41, "rows": 19, "head": {"kicker": 2, "headline": 5, "byline": 1} },
+    { "id": "third-b", "kind": "story", "priority": 3, "textCols": 1, "col": 2, "span": 2, "row": 41, "rows": 19, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "left", "width": 0.5, "rows": 8, "caption": 1} },
+    { "id": "third-c", "kind": "story", "priority": 3, "textCols": 1, "col": 4, "span": 2, "row": 41, "rows": 19, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "right", "width": 0.5, "rows": 10, "caption": 0, "shape": "cutout"} }
   ]
 }

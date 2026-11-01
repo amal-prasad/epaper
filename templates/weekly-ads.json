@@ -1,15 +1,22 @@
 {
   "id": "weekly-ads",
-  "name": "Ads and greetings page",
-  "columns": 5,
+  "name": "Ads: 13 ads in several sizes",
+  "columns": 6,
   "rows": 60,
   "slots": [
-    { "id": "story", "kind": "story", "priority": 2, "col": 0, "span": 2, "row": 0, "rows": 25 },
-    { "id": "ad-top", "kind": "ad", "col": 2, "span": 3, "row": 0, "rows": 25 },
-    { "id": "ad-a", "kind": "ad", "col": 0, "span": 2, "row": 25, "rows": 16 },
-    { "id": "ad-b", "kind": "ad", "col": 2, "span": 3, "row": 25, "rows": 16 },
-    { "id": "ad-c", "kind": "ad", "col": 0, "span": 3, "row": 41, "rows": 16 },
-    { "id": "ad-d", "kind": "ad", "col": 3, "span": 2, "row": 41, "rows": 16 },
-    { "id": "imprint", "kind": "imprint", "col": 0, "span": 5, "row": 57, "rows": 3 }
+    { "id": "folio", "kind": "folio", "col": 0, "span": 6, "row": 0, "rows": 2 },
+    { "id": "ad-1", "kind": "ad", "col": 0, "span": 1, "row": 2, "rows": 12 },
+    { "id": "ad-2", "kind": "ad", "col": 1, "span": 1, "row": 2, "rows": 12 },
+    { "id": "ad-3", "kind": "ad", "col": 2, "span": 2, "row": 2, "rows": 12 },
+    { "id": "ad-4", "kind": "ad", "col": 4, "span": 2, "row": 2, "rows": 12 },
+    { "id": "ad-5", "kind": "ad", "col": 0, "span": 3, "row": 14, "rows": 6 },
+    { "id": "ad-6", "kind": "ad", "col": 3, "span": 3, "row": 14, "rows": 6 },
+    { "id": "ad-7", "kind": "ad", "col": 0, "span": 3, "row": 20, "rows": 12 },
+    { "id": "ad-8", "kind": "ad", "col": 3, "span": 3, "row": 20, "rows": 12 },
+    { "id": "ad-9", "kind": "ad", "col": 0, "span": 3, "row": 32, "rows": 12 },
+    { "id": "ad-10", "kind": "ad", "col": 3, "span": 3, "row": 32, "rows": 12 },
+    { "id": "ad-11", "kind": "ad", "col": 0, "span": 2, "row": 44, "rows": 16 },
+    { "id": "ad-12", "kind": "ad", "col": 2, "span": 2, "row": 44, "rows": 16 },
+    { "id": "ad-13", "kind": "ad", "col": 4, "span": 2, "row": 44, "rows": 16 }
   ]
 }

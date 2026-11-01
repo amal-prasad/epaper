@@ -1,0 +1,15 @@
+{
+  "id": "inner-hero",
+  "name": "Inner: big photo across the top with the section name on it",
+  "columns": 6,
+  "rows": 60,
+  "slots": [
+    { "id": "folio", "kind": "folio", "col": 0, "span": 6, "row": 0, "rows": 2 },
+    { "id": "hero", "kind": "hero", "col": 0, "span": 6, "row": 2, "rows": 18, "label": true },
+    { "id": "top", "kind": "story", "priority": 1, "textCols": 3, "col": 0, "span": 4, "row": 20, "rows": 20, "head": {"kicker": 2, "headline": 7, "byline": 1} },
+    { "id": "side", "kind": "story", "priority": 2, "textCols": 1, "col": 4, "span": 2, "row": 20, "rows": 20, "head": {"kicker": 2, "headline": 5, "byline": 1}, "boxed": true },
+    { "id": "third-a", "kind": "story", "priority": 3, "textCols": 1, "col": 0, "span": 2, "row": 40, "rows": 20, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "left", "width": 0.5, "rows": 8, "caption": 1} },
+    { "id": "third-b", "kind": "story", "priority": 3, "textCols": 1, "col": 2, "span": 2, "row": 40, "rows": 20, "head": {"kicker": 2, "headline": 5, "byline": 1} },
+    { "id": "third-c", "kind": "story", "priority": 3, "textCols": 1, "col": 4, "span": 2, "row": 40, "rows": 20, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "right", "width": 0.45, "rows": 9, "caption": 0, "shape": "round"} }
+  ]
+}

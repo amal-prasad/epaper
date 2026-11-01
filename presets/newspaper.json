@@ -4,7 +4,8 @@
   "assumed": ["page", "margins", "grid", "pageCount"],
   "page": { "w": 297, "h": 420 },
   "margins": { "top": 12, "right": 12, "bottom": 12, "left": 12 },
-  "grid": { "cols": 5, "gutter": 4, "baseline": 4.2 },
+  "grid": { "cols": 6, "gutter": 4, "baseline": 4.2 },
+  "headline": { "family": "Khand", "weight": 700, "sizes": { "1": [40, 36, 32, 28], "2": [28, 26, 24, 22], "3": [24, 22, 20, 18] } },
   "pageCount": { "multipleOf": 4 },
   "exportProfile": {
     "colourRoute": "neutral-rgb-to-k-cmyk",

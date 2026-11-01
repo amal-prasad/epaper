@@ -1,0 +1,16 @@
+{
+  "id": "front-rail",
+  "name": "Front: cut-out and masthead, a side rail, lead with a photo in the middle of its text",
+  "columns": 6,
+  "rows": 60,
+  "slots": [
+    { "id": "cutout", "kind": "cutout", "col": 0, "span": 1, "row": 0, "rows": 8 },
+    { "id": "masthead", "kind": "masthead", "col": 1, "span": 5, "row": 0, "rows": 8 },
+    { "id": "strip", "kind": "strip", "col": 0, "span": 6, "row": 8, "rows": 2 },
+    { "id": "rail", "kind": "story", "priority": 3, "textCols": 1, "col": 0, "span": 1, "row": 10, "rows": 50, "head": {"kicker": 2, "headline": 8, "byline": 1}, "boxed": true },
+    { "id": "lead", "kind": "story", "priority": 1, "textCols": 3, "col": 1, "span": 5, "row": 10, "rows": 28, "head": {"kicker": 2, "headline": 7, "byline": 1}, "inset": {"side": "center", "width": 0.4, "rows": 14, "caption": 1, "place": "middle"} },
+    { "id": "below", "kind": "story", "priority": 2, "textCols": 2, "col": 1, "span": 3, "row": 38, "rows": 22, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "left", "width": 0.3, "rows": 12, "caption": 0, "shape": "cutout"} },
+    { "id": "quote", "kind": "quote", "col": 4, "span": 2, "row": 38, "rows": 6 },
+    { "id": "side", "kind": "story", "priority": 3, "textCols": 1, "col": 4, "span": 2, "row": 44, "rows": 16, "head": {"kicker": 2, "headline": 5, "byline": 1} }
+  ]
+}

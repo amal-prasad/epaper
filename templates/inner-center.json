@@ -1,0 +1,14 @@
+{
+  "id": "inner-center",
+  "name": "Inner: photo in the middle of the lead with text on both sides, quote, narrow rail",
+  "columns": 6,
+  "rows": 60,
+  "slots": [
+    { "id": "folio", "kind": "folio", "col": 0, "span": 6, "row": 0, "rows": 2 },
+    { "id": "top", "kind": "story", "priority": 1, "textCols": 3, "col": 0, "span": 6, "row": 2, "rows": 30, "head": {"kicker": 2, "headline": 7, "byline": 1}, "inset": {"side": "center", "width": 0.36, "rows": 12, "caption": 1, "place": "middle"} },
+    { "id": "below", "kind": "story", "priority": 2, "textCols": 2, "col": 0, "span": 3, "row": 32, "rows": 28, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "right", "width": 0.5, "rows": 10, "caption": 1} },
+    { "id": "rail", "kind": "story", "priority": 3, "textCols": 1, "col": 3, "span": 1, "row": 32, "rows": 28, "head": {"kicker": 2, "headline": 8, "byline": 1}, "boxed": true },
+    { "id": "quote", "kind": "quote", "col": 4, "span": 2, "row": 32, "rows": 6 },
+    { "id": "side", "kind": "story", "priority": 3, "textCols": 1, "col": 4, "span": 2, "row": 38, "rows": 22, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "left", "width": 0.45, "rows": 9, "caption": 0, "shape": "round"} }
+  ]
+}

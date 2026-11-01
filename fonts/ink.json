@@ -1,0 +1,72 @@
+{
+ "Noto Sans Devanagari": {
+  "400": {
+   "top": 0.9,
+   "bottom": 0.338,
+   "ascent": 0.9,
+   "descent": 0.412
+  },
+  "700": {
+   "top": 0.9,
+   "bottom": 0.362,
+   "ascent": 0.9,
+   "descent": 0.412
+  }
+ },
+ "Noto Serif Devanagari": {
+  "400": {
+   "top": 0.912,
+   "bottom": 0.325,
+   "ascent": 0.925,
+   "descent": 0.625
+  },
+  "700": {
+   "top": 0.912,
+   "bottom": 0.325,
+   "ascent": 0.925,
+   "descent": 0.625
+  }
+ },
+ "Halant": {
+  "400": {
+   "top": 1.012,
+   "bottom": 0.325,
+   "ascent": 1.087,
+   "descent": 0.487
+  },
+  "700": {
+   "top": 1.063,
+   "bottom": 0.412,
+   "ascent": 1.087,
+   "descent": 0.487
+  }
+ },
+ "Eczar": {
+  "400": {
+   "top": 1.012,
+   "bottom": 0.35,
+   "ascent": 1.137,
+   "descent": 0.637
+  },
+  "700": {
+   "top": 1.113,
+   "bottom": 0.45,
+   "ascent": 1.137,
+   "descent": 0.637
+  }
+ },
+ "Khand": {
+  "400": {
+   "top": 0.975,
+   "bottom": 0.287,
+   "ascent": 1.05,
+   "descent": 0.475
+  },
+  "700": {
+   "top": 1.012,
+   "bottom": 0.35,
+   "ascent": 1.05,
+   "descent": 0.475
+  }
+ }
+}

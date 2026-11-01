@@ -2,11 +2,16 @@
   "id": "janshakti",
   "name": "Janshakti Ujala",
   "imprint": {
-    "printer": "[मुद्रक का नाम]",
+    "owner": "[स्वामी का नाम]",
+    "printer": "[मुद्रक का नाम और पता]",
     "placeOfPrinting": "[मुद्रण स्थल]",
-    "editor": "[संपादक का नाम]",
     "publisher": "[प्रकाशक का नाम]",
-    "placeOfPublication": "[प्रकाशन स्थल]",
-    "assumed": ["printer", "placeOfPrinting", "editor", "publisher", "placeOfPublication"]
+    "placeOfPublication": "[प्रकाशन स्थल और पता]",
+    "editor": "[संपादक का नाम]",
+    "registrationNo": "[पीआरजीआई संख्या]",
+    "mobile": "[मोबाइल]",
+    "email": "[ईमेल]",
+    "jurisdiction": "[न्याय क्षेत्र]",
+    "assumed": ["owner", "printer", "placeOfPrinting", "publisher", "placeOfPublication", "editor", "registrationNo", "mobile", "email", "jurisdiction"]
   }
 }

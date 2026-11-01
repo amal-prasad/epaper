@@ -21,3 +21,6 @@ harness/results/G1.ux.json
 .claude/ALLOW_PROTECTED_EDITS
 .claude/settings.local.json
 graphify-out/
+
+# Reference papers shared for layout study only (rule 4): never commit them
+dainik-bhaskar-*.pdf

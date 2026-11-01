@@ -1,0 +1,18 @@
+{
+  "id": "front-hero",
+  "name": "Front: cut-out beside the masthead, big photo across most of the page, side stories",
+  "columns": 6,
+  "rows": 60,
+  "slots": [
+    { "id": "cutout", "kind": "cutout", "col": 0, "span": 1, "row": 0, "rows": 8 },
+    { "id": "masthead", "kind": "masthead", "col": 1, "span": 4, "row": 0, "rows": 8 },
+    { "id": "ear-right", "kind": "ear", "col": 5, "span": 1, "row": 0, "rows": 8 },
+    { "id": "strip", "kind": "strip", "col": 0, "span": 6, "row": 8, "rows": 2 },
+    { "id": "hero", "kind": "hero", "col": 0, "span": 4, "row": 10, "rows": 20, "label": true },
+    { "id": "side-a", "kind": "story", "priority": 2, "textCols": 1, "col": 4, "span": 2, "row": 10, "rows": 20, "head": {"kicker": 2, "headline": 5, "byline": 1} },
+    { "id": "lead", "kind": "story", "priority": 1, "textCols": 3, "col": 0, "span": 4, "row": 30, "rows": 16, "head": {"kicker": 2, "headline": 7, "byline": 1} },
+    { "id": "side-b", "kind": "story", "priority": 3, "textCols": 1, "col": 4, "span": 2, "row": 30, "rows": 16, "head": {"kicker": 2, "headline": 5, "byline": 1}, "boxed": true },
+    { "id": "foot-a", "kind": "story", "priority": 2, "textCols": 1, "col": 0, "span": 3, "row": 46, "rows": 14, "head": {"kicker": 2, "headline": 5, "byline": 1}, "inset": {"side": "right", "width": 0.4, "rows": 7, "caption": 0} },
+    { "id": "foot-b", "kind": "story", "priority": 3, "textCols": 2, "col": 3, "span": 3, "row": 46, "rows": 14, "head": {"kicker": 2, "headline": 5, "byline": 1} }
+  ]
+}
