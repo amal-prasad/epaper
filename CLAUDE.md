@@ -51,6 +51,7 @@ Phase 1 — operator tool and first produced issues. See `docs/phases/phase1-aut
 - Hand-measured results are recorded only by Amal: `npm run record -- <gate> <key>=<n> --by <name>`.
 - Hook `stop-check.mjs`: Claude cannot finish while `npm test` fails (two attempts, then it must explain).
 - If a hook or the lock blocks you, do not look for a workaround. Tell Amal what you wanted to change and why.
+- CI: after each push, Claude checks the result itself and reports it, unasked; Amal should not have to look. Amal pushes, so check when he says he pushed and at the start of a session. Read `https://api.github.com/repos/amal-prasad/epaper/actions/runs?per_page=3` (status, conclusion, commit) and `.../runs/<id>/jobs` (steps). If a run is still going, wait for it. A run counts as green only on the current commit with no step skipped. If it is red, name the failed step; logs need sign-in, so ask Amal for those lines by quiz (rule 18).
 
 ## Plugins in this project
 - superpowers, caveman and ponytail are on. When a plugin skill or workflow disagrees with CLAUDE.md, `/task`, `/bug` or the hooks, CLAUDE.md and the hooks win.
