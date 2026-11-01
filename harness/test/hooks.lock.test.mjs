@@ -16,13 +16,13 @@ const allowed = (r, why) => assert.equal(r.status, 0, `${why}\n${r.stderr}`)
 const FILE = 'packages/x/test/a.test.js'
 const APPROVED = "test('approved', () => assert.ok(1))", MINE = "test('mine', () => assert.ok(2))"
 // A throwaway project with one test file; `lock` is written verbatim (string), as JSON (object), or not at all (null).
-function project(lock) {
+function project(lock, nodeArgs = []) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'studio-extra-'))
   fs.mkdirSync(path.join(tmp, 'harness')); fs.mkdirSync(path.join(tmp, 'packages/x/test'), { recursive: true })
   if (lock !== null) fs.writeFileSync(path.join(tmp, 'harness/judges.lock.json'), typeof lock === 'string' ? lock : JSON.stringify(lock))
   fs.writeFileSync(path.join(tmp, FILE), [APPROVED, MINE].join('\n') + '\n')
   const env = { ...process.env, CLAUDE_PROJECT_DIR: tmp }; delete env.STUDIO_ALLOW_PROTECTED
-  return (tool_name, tool_input) => spawnSync(process.execPath, [hook], { input: JSON.stringify({ tool_name, tool_input, cwd: tmp }), encoding: 'utf8', env })
+  return (tool_name, tool_input) => spawnSync(process.execPath, [...nodeArgs, hook], { input: JSON.stringify({ tool_name, tool_input, cwd: tmp }), encoding: 'utf8', env })
 }
 const LOCK = { appendOnly: { [FILE]: [APPROVED] } }
 
@@ -35,8 +35,11 @@ for (const [name, lock] of [['missing', null], ['invalid JSON', '{ "appendOnly":
   })
 }
 
-test('Windows: a backslash path with different casing is still treated as a test', { skip: process.platform !== 'win32' && 'Windows only' }, () => {
-  const pre = project(LOCK)
+// The hook is told it is on Windows, so its Windows path rules are tested on every OS. A test that does not run on Linux
+// counts as switched off against a baseline recorded on Windows, which failed CI from b9f33f8 on (D-053).
+const AS_WINDOWS = ['--import', "data:text/javascript,Object.defineProperty(process,'platform',{value:'win32'})"]
+test('Windows: a backslash path with different casing is still treated as a test', () => {
+  const pre = project(LOCK, AS_WINDOWS)
   blocked(pre('Edit', { file_path: 'Packages\\X\\Test\\A.test.js', old_string: "test('approved'", new_string: "test.only('approved'" }), 'relative')
   blocked(pre('Edit', { file_path: 'PACKAGES\\x\\TEST\\a.TEST.JS', old_string: "test('approved'", new_string: "test.only('approved'" }), 'upper case')
   allowed(pre('Edit', { file_path: 'Packages\\X\\Test\\A.test.js', old_string: 'assert.ok(1)', new_string: 'assert.ok(5)' }), 'plain change')

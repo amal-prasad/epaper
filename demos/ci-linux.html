@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CI on Linux</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222;background:#f4f4f4}a{color:#05c}
+.w{background:#fff3cd;border-left:4px solid #e0b100;padding:8px 12px}code{font-size:13px}
+table{border-collapse:collapse;background:#fff;width:100%}td,th{text-align:left;padding:5px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top}</style></head>
+<body><p><a href="index.html">&larr; all demos</a></p>
+<h1>Why CI failed, and the fix (D-053)</h1>
+<p>A hook test only ran on Windows. On Linux it skipped, and the ratchet, recorded on Windows with no skips, counted that as a test switched off. So <code>npm test</code> failed in about 15 seconds and every later step was skipped.</p>
+<p class="w">Approved by Amal. Summaries of the CI logs confirm this cause and the same count as the simulation: 237 passed, 1 failed, 1 skipped (D-054). The real proof is the next CI run. Earlier failed runs had a different cause, now gone: <code>G0.flow</code> failed because <code>flow.js</code> did not exist yet.</p>
+<table>
+<tr><th>Check</th><th>Result</th></tr>
+<tr><td>Clean clone on Windows, Node 24 and Node 22</td><td>Passes both times, so not missing files or the Node version</td></tr>
+<tr><td>Clean clone, platform reported as Linux, before the fix</td><td><code>FAIL ratchet: 1 skipped/todo, was 0. Tests were switched off.</code> Reproduced</td></tr>
+<tr><td>Same, after the fix</td><td>4 tests, 4 pass, 0 skipped</td></tr>
+<tr><td>Hook copy without the filesystem's case correction, as on Linux</td><td>Passes</td></tr>
+<tr><td>Same copy, with the hook's lower-casing also removed</td><td>Fails, so the test can catch this fault</td></tr>
+</table>
+<p>The ratchet and thresholds are not touched, and no skip or todo is added. New proposals: GG-062 (no test skipped by platform) and GG-063 (CI on main must be green). GG-061 logs a hook false positive.</p>
+</body></html>

@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-10-31",
+    "task": "CI failing on Linux: cause and fix (D-053)",
+    "page": "ci-linux.html",
+    "summary": "A Windows-only test skipped on Linux, and the ratchet read that as a test switched off. The test now runs on every OS. Approved; the CI logs confirm the cause, and the next CI run is the real proof."
+  },
+  {
+    "date": "2026-10-31",
     "task": "Phase 1: weekly templates",
     "page": "templates.html",
     "summary": "Front, inner and ads pages as JSON in grid units, built from the document's preset, each with the imprint block (placeholders for now). Empty slots beside the page filled with real copy. Grid assumed; body in Noto until Halant is decided."
