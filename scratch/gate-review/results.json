@@ -1,0 +1,167 @@
+{
+ "date": "2026-10-29T07:27:53.314Z",
+ "paragraphs": 127,
+ "justify": [
+  {
+   "cols": 4,
+   "px": 12,
+   "pt": 9,
+   "colMm": 65.3,
+   "lines": 628,
+   "noSpace": 0,
+   "median": 1.48,
+   "p95": 2.54,
+   "p99": 3.28,
+   "max": 3.61,
+   "over2": 115,
+   "over3": 8,
+   "over4": 0
+  },
+  {
+   "cols": 5,
+   "px": 12,
+   "pt": 9,
+   "colMm": 51.4,
+   "lines": 828,
+   "noSpace": 0,
+   "median": 1.64,
+   "p95": 2.94,
+   "p99": 3.88,
+   "max": 5.67,
+   "over2": 231,
+   "over3": 39,
+   "over4": 6
+  },
+  {
+   "cols": 6,
+   "px": 12,
+   "pt": 9,
+   "colMm": 42.2,
+   "lines": 1040,
+   "noSpace": 0,
+   "median": 1.78,
+   "p95": 4.03,
+   "p99": 5.87,
+   "max": 9.94,
+   "over2": 404,
+   "over3": 141,
+   "over4": 53
+  },
+  {
+   "cols": 4,
+   "px": 13.33,
+   "pt": 10,
+   "colMm": 65.3,
+   "lines": 706,
+   "noSpace": 0,
+   "median": 1.5,
+   "p95": 2.64,
+   "p99": 3.34,
+   "max": 3.95,
+   "over2": 142,
+   "over3": 20,
+   "over4": 0
+  },
+  {
+   "cols": 5,
+   "px": 13.33,
+   "pt": 10,
+   "colMm": 51.4,
+   "lines": 927,
+   "noSpace": 0,
+   "median": 1.65,
+   "p95": 3.19,
+   "p99": 4.44,
+   "max": 6.52,
+   "over2": 305,
+   "over3": 66,
+   "over4": 14
+  },
+  {
+   "cols": 6,
+   "px": 13.33,
+   "pt": 10,
+   "colMm": 42.2,
+   "lines": 1165,
+   "noSpace": 0,
+   "median": 1.82,
+   "p95": 4.09,
+   "p99": 6.11,
+   "max": 11.54,
+   "over2": 491,
+   "over3": 203,
+   "over4": 67
+  }
+ ],
+ "worst": [
+  {
+   "ratio": 5.67,
+   "n": 3,
+   "text": "जियोरेफरेंस्ड खसरे, कमजोर इंटरनेट"
+  },
+  {
+   "ratio": 5.14,
+   "n": 4,
+   "text": "एस. जयशंकर पाकिस्तान में SCO"
+  },
+  {
+   "ratio": 4.65,
+   "n": 4,
+   "text": "शीघ्र समाधान निकालने और राजस्व"
+  },
+  {
+   "ratio": 4.2,
+   "n": 5,
+   "text": "विभाग और नगर निगम के संबंधित"
+  },
+  {
+   "ratio": 4.08,
+   "n": 4,
+   "text": "उनके संतुलन, साहस, अनुशासन और"
+  }
+ ],
+ "speed": {
+  "runs": 20,
+  "warmup": 5,
+  "median": 8.4,
+  "p95": 12.6,
+  "min": 7.2,
+  "max": 12.6,
+  "lines": 416,
+  "chars": 16396
+ },
+ "pdf": {
+  "lines": 416,
+  "found": 416,
+  "textSame": 21,
+  "leftChecked": 405,
+  "maxAbsDx": 0.009,
+  "baselineOffset": 7.695,
+  "dySpread": 0,
+  "rightChecked": 339,
+  "justifiedLines": 415,
+  "maxAbsRightJustified": 5.264,
+  "p95AbsRightJustified": 0.009,
+  "fonts": [
+   "AAAAAA+NotoSansDevanagari-Bold",
+   "BAAAAA+NotoSansDevanagari-Bold",
+   "CAAAAA+NotoSansDevanagari-Regular",
+   "DAAAAA+NotoSansDevanagari-Regular"
+  ],
+  "subset": 4,
+  "descriptors": 4,
+  "fontFiles": 4,
+  "rightOutliers": [
+   [
+    -5.26,
+    "संबंधित विभागों की अधिसूचनाओं से स्पष्ट"
+   ]
+  ],
+  "textMismatch": [
+   "ऊर्जा और स्वास्थ्य विभाग में बंपर पद, भर्ती",
+   "की उम्मीदों को मिली नई रफ्तार लिंक कॉपी",
+   "करें अ मध्य प्रदेश में सरकारी नौकरी की तैयारी"
+  ],
+  "missing": []
+ }
+}

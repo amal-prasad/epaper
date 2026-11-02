@@ -1,0 +1,67 @@
+{
+ "date": "2026-10-29T11:59:17.231Z",
+ "characters": 142,
+ "copyChars": 36272,
+ "results": [
+  {
+   "family": "Noto Sans Devanagari",
+   "weight": 400,
+   "files": 2,
+   "missing": [
+    {
+     "cp": "U+00BD",
+     "ch": "½",
+     "count": 0,
+     "context": "(not in copy)",
+     "reason": "in unicode-range, not in cmap",
+     "browser": "falls back"
+    }
+   ]
+  },
+  {
+   "family": "Noto Sans Devanagari",
+   "weight": 700,
+   "files": 2,
+   "missing": [
+    {
+     "cp": "U+00BD",
+     "ch": "½",
+     "count": 0,
+     "context": "(not in copy)",
+     "reason": "in unicode-range, not in cmap",
+     "browser": "falls back"
+    }
+   ]
+  },
+  {
+   "family": "Noto Serif Devanagari",
+   "weight": 400,
+   "files": 2,
+   "missing": [
+    {
+     "cp": "U+00BD",
+     "ch": "½",
+     "count": 0,
+     "context": "(not in copy)",
+     "reason": "in unicode-range, not in cmap",
+     "browser": "falls back"
+    }
+   ]
+  },
+  {
+   "family": "Noto Serif Devanagari",
+   "weight": 700,
+   "files": 2,
+   "missing": [
+    {
+     "cp": "U+00BD",
+     "ch": "½",
+     "count": 0,
+     "context": "(not in copy)",
+     "reason": "in unicode-range, not in cmap",
+     "browser": "falls back"
+    }
+   ]
+  }
+ ]
+}

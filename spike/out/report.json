@@ -59,8 +59,8 @@
   "perf": {
     "frames": 2000,
     "linesPerFrame": 841,
-    "totalMs": 277,
-    "msPerFrame": 0.139
+    "totalMs": 644.7,
+    "msPerFrame": 0.322
   },
   "rows": [
     {
