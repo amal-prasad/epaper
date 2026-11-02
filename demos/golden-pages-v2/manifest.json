@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate",
+  "note": "Unapproved synthetic candidates. Human review is required before these can be baselines.",
+  "provenance": {
+    "raster": "screen-96dpi",
+    "chromium": "156.0.8078.4",
+    "platform": "win32-x64",
+    "node": "v24.13.0",
+    "canvas": "0.1.100",
+    "playwright": "1.64.1",
+    "fonts": {
+      "fonts/ink.json": "c7560d9107217a36c349bac1390e6cf235897fd538abde4563d4fe6069876e07",
+      "spike/public/fonts.css": "21297bd8b950f45d8b28188758cda8c49ca1af38086eed029f8ec19b5ae70723",
+      "spike/public/fonts/khand-devanagari-400-normal.woff2": "43962f280e4f8d57e489ac746e9c106a214ad7cc55c9435017900ba4fb7bc151",
+      "spike/public/fonts/khand-devanagari-700-normal.woff2": "9f76f085f7e9fccf899ca89b544f3dc07fae26433bd203cd19587ab5bc8faf7d",
+      "spike/public/fonts/khand-latin-400-normal.woff2": "39de0f4fa30c3f88aadb38b6555062f7722fd0ed435827f5e5104e1c21f7305e",
+      "spike/public/fonts/khand-latin-700-normal.woff2": "acfffb5e6398edc14e5f40cb7ba3e3d2dda250ec3c57ca6b373e44ac4a7c28ed",
+      "spike/public/fonts/noto-sans-devanagari-devanagari-400-normal.woff2": "f86f14cbd1004f5795689ee9cc70d5d87d915f5135b30283525c1c7b8f0eb192",
+      "spike/public/fonts/noto-sans-devanagari-devanagari-700-normal.woff2": "6a68069c959d7f3c02f4062dd9be85327448b5d753e95455b1c0320f37f68fc1",
+      "spike/public/fonts/noto-sans-devanagari-latin-400-normal.woff2": "1ea6a2f05ad1e2218d23fc9a788bcbce03c1a83e33eeb7078354ebe5f5e8d4e7",
+      "spike/public/fonts/noto-sans-devanagari-latin-700-normal.woff2": "9a66b62e21bcffd97e49f8cfc3630a08e70c3295e1f41f13214847281efbc252",
+      "spike/public/fonts/noto-serif-devanagari-devanagari-400-normal.woff2": "e64b3b73131abb4074d4b22453bffe54fe8973fa0ea98a32504570df647b2a0a",
+      "spike/public/fonts/noto-serif-devanagari-devanagari-700-normal.woff2": "1d1f58114673c792115c90ac21bf211da08fe7f76154c1582ce2d0c7d5b38407",
+      "spike/public/fonts/noto-serif-devanagari-latin-400-normal.woff2": "78c02fc7054ec7a51ed4c016677b06c3431c2a675d85a511cab96c8579a1bc61",
+      "spike/public/fonts/noto-serif-devanagari-latin-700-normal.woff2": "5deb7e04a8e9e77f0d76239a933b4c9648835d49e0ee92a42ca06945d7aebae4"
+    },
+    "launchArgs": [
+      "--font-render-hinting=none"
+    ]
+  },
+  "source": {
+    "generator": "ca0df11e9a794f20c54e60e5773de0a2af8df4a127fd04a95c612d4b55779c6d",
+    "renderer": "d94eb31095bc45a2282af7049bef55454d1a5716c411839c0877db49c6fb86c4",
+    "browserRenderer": "c47aa575d291b0fa14180d3cbc68d7bc8aeffb430cce09bf5eaa964e6ffbf7e8"
+  },
+  "pages": [
+    {
+      "id": "01-weekly-front",
+      "templateId": "weekly-front",
+      "templateHash": "51e38bcaa7beaea089e8bc5c66196a5914d26e83a63065ee0cad1399130500ab",
+      "features": "Front: full-width lead with a photo, two half-width stories",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "01-weekly-front.png",
+      "imageHash": "26d852781a84ac66a1cff005d9fe5f552be8d6ddccc11078e2c45f2eb5ce365d",
+      "fixture": "01-weekly-front.json",
+      "fixtureHash": "103c82390ae068be8b9b464bdc2da4bab9a4d1027d03cc88e3be2c87a0f7d90b",
+      "pdf": "01-weekly-front.pdf",
+      "lines": 27,
+      "density": [
+        {
+          "slot": "lead",
+          "lines": 11,
+          "columns": 2,
+          "frameBottomMm": 251.40000000000003,
+          "lastLineBottomMm": 247.70416666666668
+        },
+        {
+          "slot": "left",
+          "lines": 8,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 329.41666666666663
+        },
+        {
+          "slot": "right",
+          "lines": 8,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 324.3895833333333
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "02-front-hero",
+      "templateId": "front-hero",
+      "templateHash": "03e47bef74e96901046c3dfd68b3ec7bbedb3e06f459fdffe024bbbd98060fcf",
+      "features": "Front: cut-out beside the masthead, big photo across most of the page, side stories",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "02-front-hero.png",
+      "imageHash": "cb6ae004dc4da1f910914bee2f61a8a05388237996660360c70cd9e8561e5c55",
+      "fixture": "02-front-hero.json",
+      "fixtureHash": "f97d3d8684d2754ec523238ec6f58c184d1c213d4a486e9684e4372879feb0bb",
+      "pdf": "02-front-hero.pdf",
+      "lines": 17,
+      "density": [
+        {
+          "slot": "side-a",
+          "lines": 4,
+          "columns": 1,
+          "frameBottomMm": 205.20000000000002,
+          "lastLineBottomMm": 128.70833333333334
+        },
+        {
+          "slot": "lead",
+          "lines": 6,
+          "columns": 3,
+          "frameBottomMm": 310.20000000000005,
+          "lastLineBottomMm": 281.56249999999994
+        },
+        {
+          "slot": "side-b",
+          "lines": 2,
+          "columns": 1,
+          "frameBottomMm": 310.20000000000005,
+          "lastLineBottomMm": 253.05416666666667
+        },
+        {
+          "slot": "foot-a",
+          "lines": 2,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 358.05416666666673
+        },
+        {
+          "slot": "foot-b",
+          "lines": 3,
+          "columns": 2,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 363.08125
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "03-front-rail",
+      "templateId": "front-rail",
+      "templateHash": "c4604dc0cac00c5218b3016346f9bd24594d2b3be5369c95290d1beea4aa8e32",
+      "features": "Front: cut-out and masthead, a side rail, lead with a photo in the middle of its text",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "03-front-rail.png",
+      "imageHash": "71e3d5d4695335f24f962a06e43243420f2bb4129bee3daf588dbde63fafe74e",
+      "fixture": "03-front-rail.json",
+      "fixtureHash": "8fc290d9a49ca3d2f6703fdfb20bafee20de367955d050545778090ae88602a3",
+      "pdf": "03-front-rail.pdf",
+      "lines": 49,
+      "density": [
+        {
+          "slot": "rail",
+          "lines": 12,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 181.52499999999998
+        },
+        {
+          "slot": "lead",
+          "lines": 17,
+          "columns": 3,
+          "frameBottomMm": 255.60000000000002,
+          "lastLineBottomMm": 202.4604166666667
+        },
+        {
+          "slot": "below",
+          "lines": 18,
+          "columns": 2,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 363.77916666666664
+        },
+        {
+          "slot": "side",
+          "lines": 2,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 345.45416666666665
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "04-weekly-inner",
+      "templateId": "weekly-inner",
+      "templateHash": "f886b798c51a58b20a4219ae52de31d50096017ba7f3073e8279e0f78f112409",
+      "features": "Inner: full-width story, two halves, three thirds, photos on different sides",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "04-weekly-inner.png",
+      "imageHash": "885d7eb1544245907ac7e12895580b59a0168707edfb2c36c5053b012cae058b",
+      "fixture": "04-weekly-inner.json",
+      "fixtureHash": "c8d86fd9b985ca69484c3dd2d74bb2433215a8d92d5b10e1ca294ea0df40fc3b",
+      "pdf": "04-weekly-inner.pdf",
+      "lines": 117,
+      "density": [
+        {
+          "slot": "top",
+          "lines": 30,
+          "columns": 2,
+          "frameBottomMm": 150.60000000000002,
+          "lastLineBottomMm": 147.03333333333333
+        },
+        {
+          "slot": "half-a",
+          "lines": 16,
+          "columns": 1,
+          "frameBottomMm": 276.6,
+          "lastLineBottomMm": 268.8333333333333
+        },
+        {
+          "slot": "half-b",
+          "lines": 18,
+          "columns": 1,
+          "frameBottomMm": 276.6,
+          "lastLineBottomMm": 268.8333333333333
+        },
+        {
+          "slot": "third-a",
+          "lines": 18,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 404.8875
+        },
+        {
+          "slot": "third-b",
+          "lines": 16,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 394.83333333333326
+        },
+        {
+          "slot": "third-c",
+          "lines": 19,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 394.83333333333326
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "05-inner-center",
+      "templateId": "inner-center",
+      "templateHash": "803ab65262e930edfe43c8016bc9d7c8048a89b008a0112853efa3386949c01f",
+      "features": "Inner: photo in the middle of the lead with text on both sides, quote, narrow rail",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "05-inner-center.png",
+      "imageHash": "e8d8a05ba4b2d772d1953775d9425ddb8bd28ca0112f9bcc7c8684497200e7b1",
+      "fixture": "05-inner-center.json",
+      "fixtureHash": "58e43bac5b68489467abe5f28ba980cafab003c7de84365a92b20bbacf3db5b5",
+      "pdf": "05-inner-center.pdf",
+      "lines": 41,
+      "density": [
+        {
+          "slot": "top",
+          "lines": 18,
+          "columns": 3,
+          "frameBottomMm": 217.8,
+          "lastLineBottomMm": 157.0875
+        },
+        {
+          "slot": "below",
+          "lines": 12,
+          "columns": 2,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 315.925
+        },
+        {
+          "slot": "rail",
+          "lines": 4,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 288.30833333333334
+        },
+        {
+          "slot": "side",
+          "lines": 7,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 328.58958333333334
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "06-inner-cutout",
+      "templateId": "inner-cutout",
+      "templateHash": "8d84778d3c1be1119b7e12c63fc09b390f0cd1ae143a1a7180c6186a525192fc",
+      "features": "Inner: tall cut-out figure in the lead, side rail, section band",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "06-inner-cutout.png",
+      "imageHash": "e116c74a17e84856b343efdf40396dc5b8e7094d48ce23830cf1942d407edc91",
+      "fixture": "06-inner-cutout.json",
+      "fixtureHash": "e86c200e3c1189114f738be6d868ecddaa6b16cd55338368ebd5ddc8e7b3a019",
+      "pdf": "06-inner-cutout.pdf",
+      "lines": 63,
+      "density": [
+        {
+          "slot": "rail",
+          "lines": 4,
+          "columns": 1,
+          "frameBottomMm": 217.8,
+          "lastLineBottomMm": 90.90833333333335
+        },
+        {
+          "slot": "lead",
+          "lines": 32,
+          "columns": 2,
+          "frameBottomMm": 217.8,
+          "lastLineBottomMm": 182.2229166666667
+        },
+        {
+          "slot": "third-a",
+          "lines": 11,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 323.49791666666664
+        },
+        {
+          "slot": "third-b",
+          "lines": 6,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 298.3625
+        },
+        {
+          "slot": "third-c",
+          "lines": 10,
+          "columns": 1,
+          "frameBottomMm": 406.8,
+          "lastLineBottomMm": 318.47083333333336
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "07-inner-halfad",
+      "templateId": "inner-halfad",
+      "templateHash": "89bdaa2c52ad1a6e5aacc5038146fb473a14b41a73b15cd43627bff7d5b29b62",
+      "features": "Inner: news above a half-page ad",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "07-inner-halfad.png",
+      "imageHash": "5eae7dd9eb71bacab542f8c2b63bdd063ff75ddf394e3eca98c716032cc669d8",
+      "fixture": "07-inner-halfad.json",
+      "fixtureHash": "a73611fc5c2253c60dc888c9864010e971cef21d8293ef77a42b92fa2fff6f9a",
+      "pdf": "07-inner-halfad.pdf",
+      "lines": 13,
+      "density": [
+        {
+          "slot": "top",
+          "lines": 8,
+          "columns": 3,
+          "frameBottomMm": 138,
+          "lastLineBottomMm": 106.81666666666668
+        },
+        {
+          "slot": "left",
+          "lines": 3,
+          "columns": 3,
+          "frameBottomMm": 217.8,
+          "lastLineBottomMm": 190.88125000000002
+        },
+        {
+          "slot": "right",
+          "lines": 2,
+          "columns": 1,
+          "frameBottomMm": 217.8,
+          "lastLineBottomMm": 185.8541666666667
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "08-inner-hero",
+      "templateId": "inner-hero",
+      "templateHash": "de8f4aec3b4748a0e6662fcb4b5e78f6b8c61c515aa7c7aab80f851994bd5ed4",
+      "features": "Inner: big photo across the top with the section name on it",
+      "size": {
+        "w": 250,
+        "h": 380
+      },
+      "image": "08-inner-hero.png",
+      "imageHash": "25a339c5bcfd28cf9825459aba91ba37e19494d22b98fa82c31038276e90416e",
+      "fixture": "08-inner-hero.json",
+      "fixtureHash": "bbc5468bc4f6b733c4e70e3d2e36fe2bf7420f0b0431e3583adf980f431da862",
+      "pdf": "08-inner-hero.pdf",
+      "lines": 24,
+      "density": [
+        {
+          "slot": "top",
+          "lines": 7,
+          "columns": 3,
+          "frameBottomMm": 243.00000000000006,
+          "lastLineBottomMm": 206.78958333333335
+        },
+        {
+          "slot": "side",
+          "lines": 3,
+          "columns": 1,
+          "frameBottomMm": 243.00000000000006,
+          "lastLineBottomMm": 178.28125000000003
+        },
+        {
+          "slot": "third-a",
+          "lines": 6,
+          "columns": 1,
+          "frameBottomMm": 364.8,
+          "lastLineBottomMm": 310.96250000000003
+        },
+        {
+          "slot": "third-b",
+          "lines": 3,
+          "columns": 1,
+          "frameBottomMm": 364.8,
+          "lastLineBottomMm": 295.88125
+        },
+        {
+          "slot": "third-c",
+          "lines": 5,
+          "columns": 1,
+          "frameBottomMm": 364.8,
+          "lastLineBottomMm": 305.9354166666667
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "09-weekly-back",
+      "templateId": "weekly-back",
+      "templateHash": "0be7ae29653825a3dc44bb7ca8986a36e0a68c7e6ff6088ecab199861c232702",
+      "features": "Last page: full-width story, halves, thirds, print line",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "09-weekly-back.png",
+      "imageHash": "29d503856e32a6da3883deb10cd9776acc377d19eb8edc19e141fa09b5809f60",
+      "fixture": "09-weekly-back.json",
+      "fixtureHash": "b3cb50a9a7202ec41c841e7ba571c3cb3ecad17d4d722bc61737bed2d0fda4e4",
+      "pdf": "09-weekly-back.pdf",
+      "lines": 102,
+      "density": [
+        {
+          "slot": "top",
+          "lines": 25,
+          "columns": 2,
+          "frameBottomMm": 138,
+          "lastLineBottomMm": 136.97916666666666
+        },
+        {
+          "slot": "half-a",
+          "lines": 14,
+          "columns": 1,
+          "frameBottomMm": 255.60000000000002,
+          "lastLineBottomMm": 246.17916666666667
+        },
+        {
+          "slot": "half-b",
+          "lines": 14,
+          "columns": 1,
+          "frameBottomMm": 255.60000000000002,
+          "lastLineBottomMm": 246.17916666666667
+        },
+        {
+          "slot": "third-a",
+          "lines": 18,
+          "columns": 1,
+          "frameBottomMm": 377.40000000000003,
+          "lastLineBottomMm": 368.80625000000003
+        },
+        {
+          "slot": "third-b",
+          "lines": 15,
+          "columns": 1,
+          "frameBottomMm": 377.40000000000003,
+          "lastLineBottomMm": 368.80625000000003
+        },
+        {
+          "slot": "third-c",
+          "lines": 16,
+          "columns": 1,
+          "frameBottomMm": 377.40000000000003,
+          "lastLineBottomMm": 373.8333333333333
+        }
+      ],
+      "repeatRenderChangedPixels": 0
+    },
+    {
+      "id": "10-ads-classified",
+      "templateId": "ads-classified",
+      "templateHash": "aab76b180bf0c16fd5f473163da5f1f4b4cacef6c4eefac34aaea14be6b067f9",
+      "features": "Ads: section band, one large ad, many small classified ads",
+      "size": {
+        "w": 297,
+        "h": 420
+      },
+      "image": "10-ads-classified.png",
+      "imageHash": "5158b688ae033b0a1d4fe5877333cfb37500abf3ae693cc7506fc67f5441f3a2",
+      "fixture": "10-ads-classified.json",
+      "fixtureHash": "aab244070941596d4d326519b80396293e1a0630d579d2ccaf61e8ee90eabb84",
+      "pdf": "10-ads-classified.pdf",
+      "lines": 0,
+      "density": [],
+      "repeatRenderChangedPixels": 0
+    }
+  ],
+  "controls": [
+    {
+      "name": "omitted-headline",
+      "expected": "rejected",
+      "ok": false,
+      "changedPixels": 5829,
+      "width": 1123,
+      "height": 1588,
+      "bounds": {
+        "x": 43,
+        "y": 127,
+        "w": 290,
+        "h": 48
+      },
+      "image": "control-omitted-headline.png",
+      "diff": "control-omitted-headline-diff.png"
+    },
+    {
+      "name": "moved-frame",
+      "expected": "rejected",
+      "ok": false,
+      "changedPixels": 81682,
+      "width": 1123,
+      "height": 1588,
+      "bounds": {
+        "x": 45,
+        "y": 253,
+        "w": 1037,
+        "h": 300
+      },
+      "image": "control-moved-frame.png",
+      "diff": "control-moved-frame-diff.png"
+    },
+    {
+      "name": "changed-body-font",
+      "expected": "rejected",
+      "ok": false,
+      "changedPixels": 90222,
+      "width": 1123,
+      "height": 1588,
+      "bounds": {
+        "x": 44,
+        "y": 253,
+        "w": 1034,
+        "h": 301
+      },
+      "image": "control-changed-body-font.png",
+      "diff": "control-changed-body-font-diff.png"
+    }
+  ]
+}
