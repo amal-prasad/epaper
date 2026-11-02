@@ -1,0 +1,13 @@
+
+> harness
+> node harness/run.mjs --phase 1
+
+G1.nodims      P1  PASS     Engine source with a hardcoded page size or paper name (page size, grid, page-count rule, export profile and asset packs come from the document-type preset, D-039), count  0 (need <= 0)
+G1.fitdrift    P1  PASS     Frames where fit meter differs from render, percent (real copy and fonts in Chromium: lines drawn absolutely, plus the browser's own reflow where there is no obstacle; includes self-checks)  0 (need <= 2)
+G1.golden      P1  PENDING  Golden pages with pixel diff over threshold (count)  -
+G1.autoplaced  P1  PENDING  Stories placed with no manual move, percent, median of last 4 produced issues (Janshakti included; hand-recorded)  -
+B.minutes.w8   P1  PENDING  Founder minutes per produced 8-page issue, median of last 4 produced issues, by end of week 8 (hand-recorded)  -
+G2.pdfx        P1  PASS     PDF/X validation errors (count)  0 (need <= 0)
+G2.proof       P1  PASS     Printer accepted a digital proof, and a real Janshakti issue printed from our PDF came out clean, black text checked on paper (1 = both; hand-recorded)  1 (need >= 1)
+
+Phase 1: no active gate fails, but 3 gate(s) are pending or skipped, so this is NOT done.

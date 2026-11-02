@@ -1,0 +1,29 @@
+
+> test
+> node harness/run-tests.mjs
+
+ok    harness/test/hooks.lock.test.mjs                     4 pass
+ok    harness/test/hooks.test.mjs                          24 pass
+ok    harness/test/judges.test.mjs                         13 pass
+ok    packages/engine/test/autopage.test.js                11 pass
+ok    packages/engine/test/conservation.test.js            12 pass
+ok    packages/engine/test/fit.test.js                     9 pass
+ok    packages/engine/test/flow.cases.test.js              15 pass
+ok    packages/engine/test/guardrails.test.js              3 pass
+ok    packages/engine/test/headline.test.js                11 pass
+ok    packages/engine/test/invariants.test.js              23 pass
+ok    packages/engine/test/nodims.test.js                  21 pass
+ok    packages/engine/test/ops.test.js                     23 pass
+ok    packages/engine/test/preset.test.js                  7 pass
+ok    packages/engine/test/templates.test.js               170 pass
+ok    packages/engine/test/wrap.test.js                    37 pass
+ok    packages/export/test/colour.test.js                  5 pass
+ok    packages/export/test/export.test.js                  6 pass
+ok    packages/export/test/golden.test.js                  5 pass
+ok    packages/export/test/render.test.js                  12 pass
+ok    packages/export/test/settings.test.js                23 pass
+ok    packages/production/test/cli.test.js                 2 pass
+ok    packages/production/test/ledger.test.js              8 pass
+ok    packages/production/test/store.test.js               3 pass
+
+447 passed, 0 failed  ->  harness/results/tests.json

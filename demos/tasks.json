@@ -1,5 +1,35 @@
 [
   {
+    "date": "2026-11-02",
+    "task": "Phase 1 golden-page candidates",
+    "page": "golden-pages.html",
+    "summary": "Ten deterministic template candidates with repeated rendering and deliberate defect checks. Human baseline review is still required; the gate remains pending."
+  },
+  {
+    "date": "2026-11-02",
+    "task": "Auto-page v0: reversible placement proposals",
+    "page": "autopage.html",
+    "summary": "Priority-based placement into fitting empty slots, preserved locks, explicit overflow and reversible operations. Before/after synthetic previews; real production measurements remain required."
+  },
+  {
+    "date": "2026-11-02",
+    "task": "Local production measurement log",
+    "page": "production-log.html",
+    "summary": "Validated local issue records and last-four production summaries for placement and elapsed time. Synthetic examples never qualify as gate evidence; only the operator records real results."
+  },
+  {
+    "date": "2026-11-02",
+    "task": "Colour and mono export integration",
+    "page": "converted-export.html",
+    "summary": "Reuses the black-spike colour and Gray routes with structured PDF rewriting, final plate checks, output reports and atomic version directories. Two-page samples and C/M/Y/K plates; independent PDF/X certification pending."
+  },
+  {
+    "date": "2026-11-02",
+    "task": "Export settings and intermediate PDF rendering",
+    "page": "press-export.html",
+    "summary": "Editable output profiles and two page sizes through the existing Hindi flow engine. Screen and actual PDF rasters side by side; intermediate RGB only. CMYK/PDF-X integration remains separate."
+  },
+  {
     "date": "2026-11-01",
     "task": "Paper sizes research (D-062)",
     "page": "paper-sizes.html",

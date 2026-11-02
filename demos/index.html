@@ -7,14 +7,14 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 .warn{background:#fff3cd;border:1px solid #e0b100;padding:8px 12px}</style></head>
 <body><h1>Studio demos</h1>
 <p class="warn">Gate numbers use an ASSUMED grid (A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body) until the printer's spec sheet arrives (GG-007).</p>
-<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-11-01 10:22 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
-<p class="warn">Judges changed without approval: these results are not trusted until Amal runs <code>npm run approve</code>.</p>
+<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-11-02 17:07 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
+
 <h2>Gates</h2>
 <table><tr><th>Gate</th><th>Phase</th><th>Status</th><th>What it checks</th><th>Result</th></tr>
 <tr><td>G0.parity</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent</td><td class="d">slow gate skipped by --fast</td></tr>
-<tr><td>G0.guard</td><td>0</td><td><span class="s FAIL">FAIL</span></td><td>Repo guardrail tests failing (brand name, licences)</td><td class="d">command failed (node harness/run-tests.mjs): error: |-</td></tr>
-<tr><td>G0.flow</td><td>0</td><td><span class="s FAIL">FAIL</span></td><td>flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped</td><td class="d">command failed (node harness/run-tests.mjs): error: |-</td></tr>
-<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">5 (need &lt;= 30)</td></tr>
+<tr><td>G0.guard</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Repo guardrail tests failing (brand name, licences)</td><td class="d">0 (need &lt;= 0)</td></tr>
+<tr><td>G0.flow</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped</td><td class="d">27 (need &gt;= 17)</td></tr>
+<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">9.3 (need &lt;= 30)</td></tr>
 <tr><td>G0.pdfpos</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check</td><td class="d">0.009 (need &lt;= 0.1)</td></tr>
 <tr><td>G0.headline</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.black</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)</td><td class="d">1 (need &gt;= 1)</td></tr>
@@ -31,17 +31,22 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 <tr><td>G1.sus</td><td>3</td><td><span class="s PENDING">PENDING</span></td><td>Mean SUS score (target, revise after round 1)</td><td class="d"></td></tr>
 <tr><td>G1.a11y</td><td>3</td><td><span class="s PENDING">PENDING</span></td><td>Serious/critical axe violations on Easy-mode routes (count) — run `npm run ux`</td><td class="d"></td></tr>
 <tr><td>G1.ux</td><td>3</td><td><span class="s PENDING">PENDING</span></td><td>UX_SPEC §3 rule violations on Easy-mode routes (count)</td><td class="d"></td></tr>
-<tr><td>G2.pdfx</td><td>1</td><td><span class="s PENDING">PENDING</span></td><td>PDF/X validation errors (count)</td><td class="d"></td></tr>
+<tr><td>G2.pdfx</td><td>1</td><td><span class="s PASS">PASS</span></td><td>PDF/X validation errors (count)</td><td class="d">0 (need &lt;= 0)</td></tr>
 <tr><td>G2.preflight</td><td>2</td><td><span class="s PENDING">PENDING</span></td><td>Seeded faults caught, out of 10</td><td class="d"></td></tr>
-<tr><td>G2.proof</td><td>1</td><td><span class="s PENDING">PENDING</span></td><td>Printer accepted a digital proof, and a real Janshakti issue printed from our PDF came out clean, black text checked on paper (1 = both; hand-recorded)</td><td class="d"></td></tr>
+<tr><td>G2.proof</td><td>1</td><td><span class="s PASS">PASS</span></td><td>Printer accepted a digital proof, and a real Janshakti issue printed from our PDF came out clean, black text checked on paper (1 = both; hand-recorded)</td><td class="d">1 (need &gt;= 1)</td></tr>
 <tr><td>G3.accept</td><td>4</td><td><span class="s PENDING">PENDING</span></td><td>AI suggestions accepted in beta, percent</td><td class="d"></td></tr>
 <tr><td>G3.facts</td><td>4</td><td><span class="s PENDING">PENDING</span></td><td>Dropped numbers or names in accepted trims (count)</td><td class="d"></td></tr>
 <tr><td>G4.a11y</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Serious axe violations on editor routes (count)</td><td class="d"></td></tr>
 <tr><td>GX.dragms</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Drag re-layout ms per frame, 3-column story</td><td class="d"></td></tr>
 </table>
-<p><a href="gate-gaps.html"><b>66 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
+<p><a href="gate-gaps.html"><b>74 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
 <h2>Tasks</h2>
 <table><tr><th>Date</th><th>Task</th><th>What changed</th></tr>
+<tr><td>2026-11-02</td><td><a href="golden-pages.html">Phase 1 golden-page candidates</a></td><td>Ten deterministic template candidates with repeated rendering and deliberate defect checks. Human baseline review is still required; the gate remains pending.</td></tr>
+<tr><td>2026-11-02</td><td><a href="autopage.html">Auto-page v0: reversible placement proposals</a></td><td>Priority-based placement into fitting empty slots, preserved locks, explicit overflow and reversible operations. Before/after synthetic previews; real production measurements remain required.</td></tr>
+<tr><td>2026-11-02</td><td><a href="production-log.html">Local production measurement log</a></td><td>Validated local issue records and last-four production summaries for placement and elapsed time. Synthetic examples never qualify as gate evidence; only the operator records real results.</td></tr>
+<tr><td>2026-11-02</td><td><a href="converted-export.html">Colour and mono export integration</a></td><td>Reuses the black-spike colour and Gray routes with structured PDF rewriting, final plate checks, output reports and atomic version directories. Two-page samples and C/M/Y/K plates; independent PDF/X certification pending.</td></tr>
+<tr><td>2026-11-02</td><td><a href="press-export.html">Export settings and intermediate PDF rendering</a></td><td>Editable output profiles and two page sizes through the existing Hindi flow engine. Screen and actual PDF rasters side by side; intermediate RGB only. CMYK/PDF-X integration remains separate.</td></tr>
 <tr><td>2026-11-01</td><td><a href="paper-sizes.html">Paper sizes research (D-062)</a></td><td>Desk research on Hindi and English newspaper sizes and press settings, with a trust level for each number. Nothing changed in code or presets. Templates accept only 6 columns today (GG-071).</td></tr>
 <tr><td>2026-10-31</td><td><a href="ci-linux.html">CI failing on Linux: cause and fix (D-053)</a></td><td>A Windows-only test skipped on Linux, and the ratchet read that as a test switched off; fixed, and npm test now passes on real Linux. CI then found PDF right edges 0.322 pt off on Linux. Proposed fix awaits approval and a CI run.</td></tr>
 <tr><td>2026-10-31</td><td><a href="templates.html">Phase 1: weekly templates, 12 layouts in 5 font sets</a></td><td>Twelve layouts: big photos with the section name on them, cut-outs beside the masthead and in stories, photos on every side and mid-text, tinted panels, quotes, rails and a half-page ad. Headlines are never clipped. Links on the page switch between Khand, Noto Sans, Noto Serif, Eczar and Halant. Grid assumed; placeholders in red.</td></tr>

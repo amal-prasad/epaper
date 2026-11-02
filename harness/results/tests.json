@@ -1,5 +1,5 @@
 {
- "passed": 372,
+ "passed": 447,
  "failed": 0,
  "skipped": 0,
  "todo": 0,
@@ -28,6 +28,15 @@
   "harness/test/judges.test.mjs": {
    "tests": 13,
    "pass": 13,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/engine/test/autopage.test.js": {
+   "tests": 11,
+   "pass": 11,
    "fail": 0,
    "skipped": 0,
    "todo": 0,
@@ -127,6 +136,78 @@
   "packages/engine/test/wrap.test.js": {
    "tests": 37,
    "pass": 37,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/export/test/colour.test.js": {
+   "tests": 5,
+   "pass": 5,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/export/test/export.test.js": {
+   "tests": 6,
+   "pass": 6,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/export/test/golden.test.js": {
+   "tests": 5,
+   "pass": 5,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/export/test/render.test.js": {
+   "tests": 12,
+   "pass": 12,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/export/test/settings.test.js": {
+   "tests": 23,
+   "pass": 23,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/production/test/cli.test.js": {
+   "tests": 2,
+   "pass": 2,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/production/test/ledger.test.js": {
+   "tests": 8,
+   "pass": 8,
+   "fail": 0,
+   "skipped": 0,
+   "todo": 0,
+   "cancelled": 0,
+   "exit": 0
+  },
+  "packages/production/test/store.test.js": {
+   "tests": 3,
+   "pass": 3,
    "fail": 0,
    "skipped": 0,
    "todo": 0,
