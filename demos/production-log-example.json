@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "kind": "synthetic",
+  "issues": [
+    {
+      "id": "SYNTHETIC-1",
+      "kind": "synthetic",
+      "publication": "Janshakti workflow example",
+      "operator": "Synthetic operator",
+      "measurementNote": "Invented fixture; never a real measurement",
+      "producedAt": "2026-10-10T05:30:00.000Z",
+      "copyReceivedAt": "2026-10-10T08:00:00+05:30",
+      "pressSentAt": "2026-10-10T05:30:00.000Z",
+      "pageCount": 8,
+      "pageSize": {
+        "widthMm": 297,
+        "heightMm": 420,
+        "basis": "Assumed development preset, not printer confirmed"
+      },
+      "paid": false,
+      "steps": [
+        {
+          "name": "Copy preparation",
+          "minutes": 20
+        },
+        {
+          "name": "Layout",
+          "minutes": 130
+        },
+        {
+          "name": "Export and dispatch",
+          "minutes": 20
+        }
+      ],
+      "storyCount": 5,
+      "stories": [
+        {
+          "id": "story-1",
+          "initialPlacement": "auto",
+          "manualMoves": 1
+        },
+        {
+          "id": "story-2",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-3",
+          "initialPlacement": "manual",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-4",
+          "initialPlacement": "manual",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-5",
+          "initialPlacement": "manual",
+          "manualMoves": 0
+        }
+      ]
+    },
+    {
+      "id": "SYNTHETIC-2",
+      "kind": "synthetic",
+      "publication": "Example pilot weekly",
+      "operator": "Synthetic operator",
+      "measurementNote": "Invented fixture; never a real measurement",
+      "producedAt": "2026-10-11T05:10:00.000Z",
+      "copyReceivedAt": "2026-10-11T08:00:00+05:30",
+      "pressSentAt": "2026-10-11T05:10:00.000Z",
+      "pageCount": 8,
+      "pageSize": {
+        "widthMm": 297,
+        "heightMm": 420,
+        "basis": "Assumed development preset, not printer confirmed"
+      },
+      "paid": false,
+      "steps": [
+        {
+          "name": "Copy preparation",
+          "minutes": 20
+        },
+        {
+          "name": "Layout",
+          "minutes": 110
+        },
+        {
+          "name": "Export and dispatch",
+          "minutes": 20
+        }
+      ],
+      "storyCount": 5,
+      "stories": [
+        {
+          "id": "story-1",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-2",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-3",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-4",
+          "initialPlacement": "manual",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-5",
+          "initialPlacement": "manual",
+          "manualMoves": 0
+        }
+      ]
+    },
+    {
+      "id": "SYNTHETIC-3",
+      "kind": "synthetic",
+      "publication": "Janshakti workflow example",
+      "operator": "Synthetic operator",
+      "measurementNote": "Invented fixture; never a real measurement",
+      "producedAt": "2026-10-12T04:50:00.000Z",
+      "copyReceivedAt": "2026-10-12T08:00:00+05:30",
+      "pressSentAt": "2026-10-12T04:50:00.000Z",
+      "pageCount": 8,
+      "pageSize": {
+        "widthMm": 297,
+        "heightMm": 420,
+        "basis": "Assumed development preset, not printer confirmed"
+      },
+      "paid": true,
+      "steps": [
+        {
+          "name": "Copy preparation",
+          "minutes": 20
+        },
+        {
+          "name": "Layout",
+          "minutes": 90
+        },
+        {
+          "name": "Export and dispatch",
+          "minutes": 20
+        }
+      ],
+      "storyCount": 5,
+      "stories": [
+        {
+          "id": "story-1",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-2",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-3",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-4",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-5",
+          "initialPlacement": "manual",
+          "manualMoves": 0
+        }
+      ]
+    },
+    {
+      "id": "SYNTHETIC-4",
+      "kind": "synthetic",
+      "publication": "Example pilot weekly",
+      "operator": "Synthetic operator",
+      "measurementNote": "Invented fixture; never a real measurement",
+      "producedAt": "2026-10-13T04:30:00.000Z",
+      "copyReceivedAt": "2026-10-13T08:00:00+05:30",
+      "pressSentAt": "2026-10-13T04:30:00.000Z",
+      "pageCount": 8,
+      "pageSize": {
+        "widthMm": 297,
+        "heightMm": 420,
+        "basis": "Assumed development preset, not printer confirmed"
+      },
+      "paid": true,
+      "steps": [
+        {
+          "name": "Copy preparation",
+          "minutes": 20
+        },
+        {
+          "name": "Layout",
+          "minutes": 70
+        },
+        {
+          "name": "Export and dispatch",
+          "minutes": 20
+        }
+      ],
+      "storyCount": 5,
+      "stories": [
+        {
+          "id": "story-1",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-2",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-3",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-4",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        },
+        {
+          "id": "story-5",
+          "initialPlacement": "auto",
+          "manualMoves": 0
+        }
+      ]
+    }
+  ]
+}
