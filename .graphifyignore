@@ -5,6 +5,7 @@ harness/results/
 fonts/
 graphify-out/
 node_modules/
+.local/
 spike/samples/
 spike/headlines/
 docs/

@@ -1,4 +1,7 @@
 node_modules
+.local/export-python/
+# Uncompressed plate scratch files from development export runs.
+demos/converted-export/runs/**/*.tif
 .next
 dist
 spike/public/bundle.js

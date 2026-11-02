@@ -364,7 +364,7 @@
     {
       "id": "G2.pdfx",
       "phase": 1,
-      "status": "pending",
+      "status": "active",
       "title": "PDF/X validation errors (count)",
       "metricFile": "harness/results/G2.pdfx.json",
       "metricKey": "errors",
@@ -384,7 +384,7 @@
     {
       "id": "G2.proof",
       "phase": 1,
-      "status": "pending",
+      "status": "active",
       "title": "Printer accepted a digital proof, and a real Janshakti issue printed from our PDF came out clean, black text checked on paper (1 = both; hand-recorded)",
       "metricFile": "harness/results/G2.proof.json",
       "metricKey": "accepted",

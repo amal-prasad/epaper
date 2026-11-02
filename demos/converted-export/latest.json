@@ -1,0 +1,12 @@
+[
+  {
+    "mode": "colour",
+    "folder": "runs/2026-11-02T10-13-53-981Z/colour",
+    "outputSha256": "d5a82fabaa1258e7f86a4ce25cb6256ae86c1664fb1260b0a7c0cebe78e376ae"
+  },
+  {
+    "mode": "mono",
+    "folder": "runs/2026-11-02T10-13-53-981Z/mono",
+    "outputSha256": "8f43d3531ee231b464a91a598841d7ee04264e8509cdacd6e193fb9b5c8a6630"
+  }
+]

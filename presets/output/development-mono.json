@@ -1,0 +1,15 @@
+{
+  "id": "development-mono",
+  "pageMode": "mono",
+  "colourRoute": "gray",
+  "pdfx": "PDF/X-3:2002",
+  "bleed": 0,
+  "cropMarks": false,
+  "iccProfile": null,
+  "inkLimit": 240,
+  "overprint": false,
+  "neutralCurve": [[0, 0], [1, 1]],
+  "imageDpi": 300,
+  "minImageDpi": 150,
+  "assumed": ["pdfx", "bleed", "cropMarks", "inkLimit", "overprint", "neutralCurve", "iccProfile"]
+}
