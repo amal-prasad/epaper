@@ -27,3 +27,6 @@ graphify-out/
 
 # Reference papers shared for layout study only (rule 4): never commit them
 dainik-bhaskar-*.pdf
+
+# Chromium GPU diagnostics from local runs
+debug.log

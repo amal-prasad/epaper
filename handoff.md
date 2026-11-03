@@ -1,5 +1,14 @@
 # Claude Code handoff — 2026-11-02
 
+## Update 2026-11-03 (D-072) — supersedes the conflicting lines below
+
+- **Questions:** in Claude Code, use the AskUserQuestion quiz tool (CLAUDE.md rule 18). "A/B/C directly in chat" was a Codex-only workaround.
+- **Pushed:** Amal pushed `phase1-templates-v2`. CI run 41683897058 on da65e93 is **red**: `npm test` step, 419 passed and 8 failed. Export tests (`colour`, `export`, `golden`, `render`) stop after one test on CI. The cause is unconfirmed, tracked as GG-080. Likely CI lacks Chromium (installed only after `npm test`), Ghostscript and pikepdf.
+- **Golden:** Amal reviewed all ten v2 candidates and reports them correct. Reviewed baseline is at `harness/golden/baseline-2026-11-03/` (D-073); a fresh render matches it with 0 changed pixels on all ten pages. Still to do: G1.golden runner, Amal's gate approval. The baseline is Windows-only, so CI needs its own reviewed Linux baseline.
+- **Timing (GG-079):** resolved. Keep both: elapsed copy-to-press is suggested for B.minutes.w8, and active founder minutes are reported separately.
+- **Leftovers:** spike timing churn discarded; `debug.log` is gitignored.
+- Amal reports `npm test` and the Phase 1 harness passed locally.
+
 ## Read first
 
 Read CLAUDE.md, this handoff, docs/DECISIONS.md D-064 through D-071, docs/phases/phase1-autopage.md and docs/RUNBOOK.md. The approved PLAN_REVIEW.md overrides the older product prompt. Use graphify query before raw code exploration; the graph was refreshed after implementation.
