@@ -15,6 +15,6 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d9e1
 <table><tr><th>Check</th><th>Result</th></tr>
 <tr><td>Engine layout unit test</td><td>9 passed: body lines equal flow(); overflow does not throw; last line not justified; empty slot kept; headlines from layoutHeadline; photos, rules and shape outlines passed through; missing ink fails loudly; no mutation</td></tr>
 <tr><td><code>node scripts/smoke-studio.mjs</code></td><td>SMOKE PASS: 40 lines drawn, 0 wider than their box, 0 console errors</td></tr>
-<tr><td>Side by side</td><td>Same line breaks as export on every story. The shaped photo is clipped to its outline as in export.</td></tr></table>
+<tr><td>Side by side</td><td>Compared by eye with the export golden: the line breaks look the same on every story, and the shaped photo is clipped to its outline as in export. This is not a measured check; GG-082 proposes the real one, a per-frame line count that must equal export's report.</td></tr></table>
 <p>Not yet: fit marks, page strip, selection (T3); undo and redo controls (T4). The page baselines use ink metrics from <code>fonts/ink.json</code>; export measures ink per line, so a fraction of a pixel of vertical difference is possible (GG-082).</p>
 </main></body></html>

@@ -20,7 +20,7 @@ export default function Marks({ layout, marks, scale, selected, onSelect, headli
           border: L.dashed ? '2px dashed var(--info)' : 'none',
           background: L.hatch ? 'repeating-linear-gradient(135deg, rgba(28,111,214,0.12) 0 6px, rgba(28,111,214,0) 6px 12px)' : 'transparent' }} />}
         {mark.state !== 'ok' && (
-          <span data-mark={mark.state} style={{ position: 'absolute', left: '50%', bottom: mark.state === 'over' ? -14 : 6, transform: 'translateX(-50%)',
+          <span data-mark={mark.state} style={{ position: 'absolute', left: '50%', bottom: mark.state === 'unfilled' ? 6 : -14, transform: 'translateX(-50%)',
             whiteSpace: 'nowrap', padding: '1px 12px', borderRadius: 999, background: L.pillBg, color: L.pillFg, fontSize: 15, lineHeight: '23px',
             fontWeight: 600, boxShadow: 'var(--shadow-1)', pointerEvents: 'none', zIndex: 2 }}>
             <span aria-hidden="true">{L.icon} </span>{words}

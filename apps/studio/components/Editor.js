@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { pageLayout } from '@studio/engine/src/layout.js'
-import { pageMarks } from '@studio/engine/src/marks.js'
+import { pageMarks, issueProblems } from '@studio/engine/src/marks.js'
 import { startHistory, run, undo, redo } from '@studio/engine/src/ops.js'
 import { markWords, markTitle, nextProblem, pageStatus, describeOp } from '@studio/ui'
 import PageView from './PageView.js'
@@ -30,7 +30,8 @@ export default function Editor({ doc: initial, inks }) {
 
   useEffect(() => {
     let live = true
-    Promise.all(fontsOf(initial).map(f => document.fonts.load(f, SAMPLE)))
+    // As export: a face that does not load is fatal, or the engine would measure a fallback font and break lines unlike print.
+    Promise.all(fontsOf(initial).map(async f => { if (!(await document.fonts.load(f, SAMPLE)).length) throw new Error(`फ़ॉन्ट नहीं मिला: ${f}`) }))
       .then(() => live && setReady(true)).catch(e => live && setError(e.message))
     return () => { live = false }
   }, [initial])
@@ -54,7 +55,7 @@ export default function Editor({ doc: initial, inks }) {
 
   const marksByPage = useMemo(() => ready ? Object.fromEntries(doc.pages.map(p => [p.id, pageMarks(doc, p.id)])) : null, [ready, doc])
   const layout = useMemo(() => ready ? pageLayout(doc, pageId, { inks }) : null, [ready, doc, pageId, inks])
-  const problems = useMemo(() => marksByPage ? doc.pages.flatMap(p => marksByPage[p.id].filter(m => m.state !== 'ok').map(m => ({ pageId: p.id, ...m }))) : [], [marksByPage, doc])
+  const problems = useMemo(() => ready ? issueProblems(doc) : [], [ready, doc])
   const page = doc.pages.find(p => p.id === pageId)
   const headlineOf = id => doc.stories.find(s => s.id === id)?.headline ?? id
   const mark = selected && marksByPage?.[pageId].find(m => m.frameId === selected)
