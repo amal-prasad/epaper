@@ -133,3 +133,8 @@ Moved out of `CLAUDE.md` so that file stays short. Append only; never rewrite a 
 - D-083 (2026-11-07): Amal answered the first-slice quiz.
   - (1) He does not want the work split by hour estimates, in his words: "dont look at the time, build it ... always test what you build though, and commit after each task". The slice is built as T1 (fit marks core), T2 (app scaffold and page render), T3 (marks overlay, page strip, selection, "जाँच (N)"), and T4 (undo/redo controls). Each task is tested and committed on its own.
   - (2) The editor marks a slot "N पंक्तियाँ खाली" whenever it has any empty line: `underfillLines > 0`, with no threshold.
+
+- D-084 (2026-11-07): Amal answered the end-of-slice quiz after editor slices T1–T4 (commits 440280e, fba8c0f, 96949d3, f8f3cce, 2d63adf).
+  - (1) Next comes the help button "मदद चाहिए?" (`data-ux="help"`). After that, Claude changes `harness/ux/routes.json` to lint the editor route (baseUrl http://localhost:3210, `/issue/sample`), and Amal reviews and approves it with `npm run approve`.
+  - (2) `apps/studio` moves to TypeScript, as D-008 says; the engine and packages stay JavaScript.
+  - (3) The next slice saves every change to the local store, shows a save status, and adds the help button (GG-084). The fix options come after it.
