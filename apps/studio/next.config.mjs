@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 
 export default {
-  transpilePackages: ['@studio/engine'],
+  transpilePackages: ['@studio/engine', '@studio/ui'],
   turbopack: { root },
   outputFileTracingRoot: root,
   devIndicators: false,

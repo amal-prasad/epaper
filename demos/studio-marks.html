@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Editor fit marks</title>
+<style>body{margin:0;background:#f7f8f6;color:#1d2b36;font:16px/1.6 "Noto Sans Devanagari",system-ui,sans-serif}main{max-width:1200px;margin:0 auto;padding:24px 16px}
+figure{margin:0;background:#fff;border:1px solid #d9e1e5;border-radius:12px;padding:8px}figure img{width:100%;height:auto;display:block}figcaption{font-size:14px;color:#475661;padding-top:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d9e1e5;margin:8px 0 24px}th,td{text-align:left;padding:8px 10px;border-top:1px solid #d9e1e5;vertical-align:top}th{background:#eef2f3}code{font-size:14px}</style></head>
+<body><main>
+<h1>T3: fit marks, page strip, selection and the "जाँच (N)" button (editor slice 3 of 4)</h1>
+<p>The editor now shows every slot's state in words, with an icon as well as colour: "N पंक्तियाँ ज़्यादा" (red), "N पंक्तियाँ खाली" (blue dashed), "खाली जगह" (hatched). There are no percentages. The single primary button "जाँच (N)" walks the problem queue across pages; the N key does the same. Each page in the strip shows its number with ! or ✓, and its words are in the label and tooltip. Clicking a slot, on the page or in the left list, selects it; the right panel says what is wrong, and the selection is announced to screen readers. Wording and queue logic live in the new tested package <code>packages/ui</code>.</p>
+<figure><img src="studio-editor/marks.png" alt="Editor with fit marks, page strip and the first problem selected after pressing जाँच"><figcaption>After pressing "जाँच": the first problem is selected (sample issue, page 1)</figcaption></figure>
+<h2>Checks</h2>
+<table><tr><th>Check</th><th>Result</th></tr>
+<tr><td>UI state unit test (packages/ui)</td><td>7 passed: Hindi words with counts and singular forms; titles; unknown state throws; queue order across pages, wrap, start; page status has icon and words</td></tr>
+<tr><td><code>node scripts/smoke-studio.mjs</code></td><td>SMOKE PASS: 40 lines, 0 wider than box, 0 console errors; 1 primary button; 3 marks; 0 percentage texts; axe serious/critical 0; check queue selected and announced "पृष्ठ 1, नगर में नई पहल 1: 20 पंक्तियाँ खाली"</td></tr></table>
+<p>Not yet: undo and redo (T4); fix options (next slice); help button and save status (G20); <code>npm run ux</code> on this route needs <code>harness/ux/routes.json</code> to list it, which is Amal's change.</p>
+</main></body></html>

@@ -1,7 +1,10 @@
 // Smoke check for the Studio app: starts it, opens the sample issue in Chromium, and fails on console errors, no rendered
 // lines, or any line wider than the box the engine gave it. Writes a screenshot. Run: node scripts/smoke-studio.mjs [out.png]
 import { spawn } from 'node:child_process'
+import { createRequire } from 'node:module'
 import { chromium } from 'playwright'
+
+const require = createRequire(import.meta.url)
 
 const url = 'http://localhost:3210/issue/sample'
 const out = process.argv[2] ?? 'demos/studio-editor/page.png'
@@ -29,12 +32,29 @@ try {
     return { text: el.textContent, natural: r.getBoundingClientRect().width, box: el.getBoundingClientRect().width, hasBox: !!el.style.width }
   }))
   const wide = lines.filter(l => l.hasBox && l.natural > l.box + 0.5)
+  // UX_SPEC §3 rules the lint checks, run here until the editor route is in harness/ux/routes.json.
+  const primaries = await page.locator('[data-ux="primary"]:visible').count()
+  const marks = await page.locator('[data-mark]').count()
+  const percent = (await page.locator('body').innerText()).match(/\d+\s*%/g) ?? []
+  await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') })
+  const axe = await page.evaluate(async () => (await window.axe.run(document, { resultTypes: ['violations'] })).violations
+    .filter(v => ['serious', 'critical'].includes(v.impact)).map(v => `${v.id}: ${v.nodes.length}`))
+  // The check queue: the primary button selects the first problem and announces it.
+  let queue = 'no problems'
+  if (await page.locator('[data-ux="primary"]', { hasText: 'जाँच' }).count()) {
+    await page.click('[data-ux="primary"]')
+    const pressed = await page.locator('main [aria-pressed="true"]').count()
+    const said = await page.locator('[aria-live="polite"]').first().innerText()
+    queue = pressed === 1 && said ? `ok: ${said}` : `FAILED (pressed ${pressed}, said "${said}")`
+  }
   await page.screenshot({ path: out, fullPage: true })
   await browser.close()
   console.log(`lines drawn: ${lines.length}; wider than box: ${wide.length}; console errors: ${errors.length}`)
+  console.log(`primary buttons: ${primaries}; marks: ${marks}; percent text: ${percent.length}; axe serious/critical: ${axe.length}; check queue: ${queue}`)
   for (const e of errors) console.log('  error:', e)
   for (const w of wide.slice(0, 5)) console.log('  wide:', w.text)
-  failed = !lines.length || wide.length > 0 || errors.length > 0
+  for (const a of axe) console.log('  axe:', a)
+  failed = !lines.length || wide.length > 0 || errors.length > 0 || primaries !== 1 || percent.length > 0 || axe.length > 0 || queue.startsWith('FAILED')
 } catch (e) { console.error(e.message); failed = true } finally { stop() }
 console.log(failed ? 'SMOKE FAIL' : 'SMOKE PASS')
 process.exitCode = failed ? 1 : 0

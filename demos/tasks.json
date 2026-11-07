@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-11-07",
+    "task": "Editor slice T3: fit marks, page strip, selection, check queue",
+    "page": "studio-marks.html",
+    "summary": "Marks in words with icons (no percentages), page strip with status, slot selection, the single primary button जाँच (N) walking problems across pages; axe clean."
+  },
+  {
+    "date": "2026-11-07",
     "task": "Editor slice T2: Studio app draws page 1",
     "page": "studio-editor.html",
     "summary": "Next.js app apps/studio opens data/issues/sample.json and draws page 1 from engine pageLayout() lines; same breaks as the export golden; smoke check passes."

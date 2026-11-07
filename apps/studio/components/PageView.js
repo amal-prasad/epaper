@@ -23,11 +23,12 @@ function BodyLine({ frame, line, ink }) {
   )
 }
 
+// children: an overlay in screen px (page px × scale), drawn unscaled so marks and labels keep readable sizes.
 export default function PageView({ layout, inks, scale, children }) {
   const PX = 96 / 25.4, W = layout.w * PX, H = layout.h * PX
   const inkOf = font => { const [family, weight] = familyWeight(font); return inks[family][weight] }
   return (
-    <div style={{ width: W * scale, height: H * scale, flexShrink: 0 }}>
+    <div style={{ position: 'relative', width: W * scale, height: H * scale, flexShrink: 0 }}>
       <div role="img" aria-label="पृष्ठ का लेआउट" style={{ position: 'relative', width: W, height: H, transform: `scale(${scale})`, transformOrigin: '0 0',
         background: 'var(--paper)', color: 'var(--paper-ink)', boxShadow: 'var(--shadow-3), 0 0 0 1px rgba(0,0,0,0.04)', borderRadius: 3 }}>
         {layout.boxes.map(b => <div key={b.id} style={{ position: 'absolute', left: b.x, top: b.y, width: b.w, height: b.h, background: b.background, zIndex: b.z }} />)}
@@ -39,8 +40,8 @@ export default function PageView({ layout, inks, scale, children }) {
             font: l.font, lineHeight: `${m.fontBoundingBoxAscent + m.fontBoundingBoxDescent}px`, color: l.colour, zIndex: l.z }}>{line.text}</div>
         }))}
         {layout.frames.map(f => f.lines.map((line, i) => <BodyLine key={`${f.id}-${i}`} frame={f} line={line} ink={inkOf(f.font)} />))}
-        {children}
       </div>
+      {children}
     </div>
   )
 }

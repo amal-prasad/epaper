@@ -32,7 +32,7 @@ export function pageLayout(doc, pageId, { inks }) {
   }
   const frames = page.frames.map(frame => {
     const f = px(frame), s = { family: 'Noto Sans Devanagari', weight: 400, fontSize: 12, lineHeight: 18, ...frame.style }
-    const out = { id: f.id, storyId: frame.storyId ?? null, x: f.x, y: f.y, w: f.w, h: f.h, z: f.z ?? 0, font: fontOf(s),
+    const out = { id: f.id, storyId: frame.storyId ?? null, x: f.x, y: f.y, w: f.w, h: f.h, z: f.z ?? 0, cols: frame.cols ?? 1, font: fontOf(s),
       lineHeight: s.lineHeight, colour: s.colour ?? '#000000', lines: [] }
     if (frame.storyId == null) return out
     const story = doc.stories.find(st => st.id === frame.storyId)
