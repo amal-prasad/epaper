@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fit marks core</title>
+<style>body{margin:0;background:#f7f8f6;color:#1d2b36;font:16px/1.6 "Noto Sans Devanagari",system-ui,sans-serif}main{max-width:900px;margin:0 auto;padding:24px 16px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d9e1e5;margin:8px 0 24px}th,td{text-align:left;padding:8px 10px;border-top:1px solid #d9e1e5;vertical-align:top}th{background:#eef2f3}code{font-size:14px}</style></head>
+<body><main>
+<h1>T1: fit marks core (editor slice 1 of 4)</h1>
+<p>New engine module <code>packages/engine/src/marks.js</code>. For each slot it reports whether text is left over or lines are empty, as line counts only, with no percentages (D-080). Any empty line counts (D-083). It uses the same <code>measure()</code> as auto-page and export, so the editor, auto-page and the "जाँच" queue agree.</p>
+<table><tr><th>State</th><th>When</th><th>Editor shows (T3)</th></tr>
+<tr><td>over</td><td>fit() reports overflow lines</td><td>red mark "N पंक्तियाँ ज़्यादा"</td></tr>
+<tr><td>empty</td><td>no overflow and at least one spare line</td><td>blue mark "N पंक्तियाँ खाली"</td></tr>
+<tr><td>ok</td><td>exactly full</td><td>✓</td></tr>
+<tr><td>unfilled</td><td>no story in the slot</td><td>"खाली जगह"</td></tr></table>
+<table><tr><th>Check</th><th>Result</th></tr>
+<tr><td>marks unit test (packages/engine)</td><td>5 passed: states and counts equal fit(); a single spare line is marked; no percent field; issueProblems keeps page order and does not mutate the document; an unknown page throws</td></tr></table>
+</main></body></html>

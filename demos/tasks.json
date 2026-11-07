@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-11-07",
+    "task": "Editor slice T1: fit marks core",
+    "page": "fit-marks.html",
+    "summary": "pageMarks and issueProblems in the engine: each slot is over, empty, ok or unfilled, with line counts, using the same measure as auto-page. No percentages."
+  },
+  {
+    "date": "2026-11-07",
     "task": "UI v2 spec written down",
     "page": "ui-v2-spec.html",
     "summary": "The ui/ boards (v6 Home, v5 Editor) are described in docs/design/ui-v2.md: behaviour, data needs, Phase 1 scope, 17 conflicts with UX_SPEC (G17-G22) and proposals. No app code."

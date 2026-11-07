@@ -127,3 +127,9 @@ Moved out of `CLAUDE.md` so that file stays short. Append only; never rewrite a 
   - Framework: asked to choose between a local Vite app, Next.js and plain JS, Amal answered, in his words, "why dont we build the main app itself". Claude reads this as building the real product on the D-008 stack (npm workspaces, Next.js, Supabase), not a throwaway local tool. The exact Next.js version is to be pinned at scaffold time.
   - First slice (quiz): the editor canvas with fit marks. It opens an issue, draws a page with the real engine, shows the over and empty line marks and the page strip, lets the operator select a slot, and has undo/redo wired.
   - The CLAUDE.md "Current phase" text still says Phase 2. Changing it is a change to the rules file, which only Amal can make.
+
+- D-082 (2026-11-07): Amal confirmed Claude's reading of D-081, in his words: "i meant the real product, testing and everything is already set up". The app is the real product on the D-008 stack, and it uses the existing test setup (`npm test`, the harness, `npm run ux`).
+
+- D-083 (2026-11-07): Amal answered the first-slice quiz.
+  - (1) He does not want the work split by hour estimates, in his words: "dont look at the time, build it ... always test what you build though, and commit after each task". The slice is built as T1 (fit marks core), T2 (app scaffold and page render), T3 (marks overlay, page strip, selection, "जाँच (N)"), and T4 (undo/redo controls). Each task is tested and committed on its own.
+  - (2) The editor marks a slot "N पंक्तियाँ खाली" whenever it has any empty line: `underfillLines > 0`, with no threshold.

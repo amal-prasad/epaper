@@ -24,7 +24,8 @@ function unique(records, what) {
   return ids
 }
 
-function measure(story, page, frame) {
+// Exported so the editor's fit marks (marks.js) measure a slot exactly as auto-page and export do.
+export function measure(story, page, frame) {
   // These defaults, px conversion and object selection match render-browser.js. Sizes are pixels, document boxes are mm.
   const style = { family: 'Noto Sans Devanagari', weight: 400, fontSize: 12, lineHeight: 18, ...frame.style }
   if (!(Number.isFinite(style.fontSize) && style.fontSize > 0 && Number.isFinite(style.lineHeight) && style.lineHeight > 0))
