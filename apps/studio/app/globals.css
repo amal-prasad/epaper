@@ -1,0 +1,22 @@
+/* Tokens from the UI v2 boards, theme धुंध (docs/design/ui-v2.md §1). */
+:root {
+  --page: linear-gradient(180deg, #4d6878 0px, #6f8998 90px, #a3b8c1 220px, #c9d7da 420px, #dde7e6 680px, #ecf1ef 1000px);
+  --surface: #fbfcfc; --glass: rgba(255,255,255,0.62); --glass-line: rgba(255,255,255,0.78); --glass-hi: rgba(255,255,255,0.92);
+  --surface-sunk: rgba(29,43,54,0.06); --paper: #ffffff; --paper-ink: #1a1a1a;
+  --ink: #1d2b36; --ink-muted: #475661; --line: rgba(29,43,54,0.10); --line-strong: #7f919c;
+  --primary: #1f3240; --on-primary: #ffffff; --select: #2f6f95; --focus: #1d2b36;
+  --danger: #d92d20; --danger-text: #b42318; --danger-soft: #fde7e4;
+  --info: #1c6fd6; --info-text: #175cb3; --info-soft: #e1edfc;
+  --success: #1f8a4c; --success-text: #17703d; --success-soft: #dff3e6;
+  --shadow-1: 0 1px 2px rgba(31,50,64,0.06), 0 4px 14px rgba(31,50,64,0.05);
+  --shadow-2: 0 20px 44px -18px rgba(31,50,64,0.22);
+  --shadow-3: 0 30px 60px -24px rgba(31,50,64,0.28);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: var(--page); background-color: #ecf1ef; color: var(--ink);
+  font: 18px/29px 'Noto Sans Devanagari', system-ui, sans-serif; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.glass { background: var(--glass); backdrop-filter: blur(24px) saturate(1.5); border: 1px solid var(--glass-line);
+  box-shadow: inset 0 1px 0 var(--glass-hi), var(--shadow-2); }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

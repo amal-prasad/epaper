@@ -6,10 +6,10 @@ import { fit, flow } from './flow.js'
 import { frameColumns } from './templates.js'
 import { wrapObstacles } from './wrap.js'
 
-const PX = 96 / 25.4
+export const PX = 96 / 25.4
 const compare = (a, b) => a < b ? -1 : a > b ? 1 : 0
 const priority = item => item.priority ?? 2
-const px = box => ({ ...box, x: box.x * PX, y: box.y * PX, w: box.w * PX, h: box.h * PX,
+export const px = box => ({ ...box, x: box.x * PX, y: box.y * PX, w: box.w * PX, h: box.h * PX,
   gutter: (box.gutter ?? 0) * PX, wrap: box.wrap && { ...box.wrap,
     offset: Object.fromEntries(Object.entries(box.wrap.offset ?? {}).map(([key, value]) => [key, value * PX])) } })
 const fail = message => { throw new Error(`autopage: ${message}`) }

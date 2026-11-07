@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-11-07",
+    "task": "Editor slice T2: Studio app draws page 1",
+    "page": "studio-editor.html",
+    "summary": "Next.js app apps/studio opens data/issues/sample.json and draws page 1 from engine pageLayout() lines; same breaks as the export golden; smoke check passes."
+  },
+  {
+    "date": "2026-11-07",
     "task": "Editor slice T1: fit marks core",
     "page": "fit-marks.html",
     "summary": "pageMarks and issueProblems in the engine: each slot is over, empty, ok or unfilled, with line counts, using the same measure as auto-page. No percentages."

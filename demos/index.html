@@ -7,14 +7,14 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 .warn{background:#fff3cd;border:1px solid #e0b100;padding:8px 12px}</style></head>
 <body><h1>Studio demos</h1>
 <p class="warn">Gate numbers use an ASSUMED grid (A3, 12 mm margins, 5 columns, 4 mm gutter, 9 pt body) until the printer's spec sheet arrives (GG-007).</p>
-<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-11-07 13:22 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
+<p class="d">Gates from <code>node harness/run.mjs --fast</code>, 2026-11-07 13:33 UTC. Rebuild with <code>npm run demos</code> (add <code>-- --full</code> to run the slow parity gate).</p>
 
 <h2>Gates</h2>
 <table><tr><th>Gate</th><th>Phase</th><th>Status</th><th>What it checks</th><th>Result</th></tr>
 <tr><td>G0.parity</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity vs real DOM on real Hindi copy, launch body fonts (fonts.json launch:true, role text/text-serif), percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.guard</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Repo guardrail tests failing (brand name, licences)</td><td class="d">0 (need &lt;= 0)</td></tr>
 <tr><td>G0.flow</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() tests passing: the 12 contract tests in conservation.test.js plus at least 5 of your own in flow*.test.js, none skipped</td><td class="d">27 (need &gt;= 17)</td></tr>
-<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">5.1 (need &lt;= 30)</td></tr>
+<tr><td>G0.speed</td><td>0</td><td><span class="s PASS">PASS</span></td><td>flow() on a full A3 page (5 columns, 2 photos, 416 lines of real copy), median ms over 20 runs after 5 warm-up, headless Chromium</td><td class="d">6.5 (need &lt;= 30)</td></tr>
 <tr><td>G0.pdfpos</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Exported PDF matches flow(): max left-edge error in pt over every line, by raster (GG-042), plus baseline, justified right edge, font embedding and a mutation check</td><td class="d">0.009 (need &lt;= 0.1)</td></tr>
 <tr><td>G0.headline</td><td>0</td><td><span class="s SKIP">SKIP</span></td><td>Line-break parity on bold headline sizes (weight 700, 18/24/30/36 px, 1-4 columns of the assumed A3 grid), launch fonts with role headline, text or text-serif (fonts.json launch:true; body fonts set subheads and kickers), real Janshakti headlines, percent</td><td class="d">slow gate skipped by --fast</td></tr>
 <tr><td>G0.black</td><td>0</td><td><span class="s PASS">PASS</span></td><td>Experiment E2: text and rules land on the K plate only in the chosen export route (1 = yes, hand-recorded)</td><td class="d">1 (need &gt;= 1)</td></tr>
@@ -39,9 +39,10 @@ table{border-collapse:collapse;width:100%;background:#fff}td,th{text-align:left;
 <tr><td>G4.a11y</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Serious axe violations on editor routes (count)</td><td class="d"></td></tr>
 <tr><td>GX.dragms</td><td>5</td><td><span class="s PENDING">PENDING</span></td><td>Drag re-layout ms per frame, 3-column story</td><td class="d"></td></tr>
 </table>
-<p><a href="gate-gaps.html"><b>72 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
+<p><a href="gate-gaps.html"><b>74 open gate gaps</b></a> <span class="d">(risks no gate checks yet, from <code>docs/GATE_GAPS.md</code>)</span></p>
 <h2>Tasks</h2>
 <table><tr><th>Date</th><th>Task</th><th>What changed</th></tr>
+<tr><td>2026-11-07</td><td><a href="studio-editor.html">Editor slice T2: Studio app draws page 1</a></td><td>Next.js app apps/studio opens data/issues/sample.json and draws page 1 from engine pageLayout() lines; same breaks as the export golden; smoke check passes.</td></tr>
 <tr><td>2026-11-07</td><td><a href="fit-marks.html">Editor slice T1: fit marks core</a></td><td>pageMarks and issueProblems in the engine: each slot is over, empty, ok or unfilled, with line counts, using the same measure as auto-page. No percentages.</td></tr>
 <tr><td>2026-11-07</td><td><a href="ui-v2-spec.html">UI v2 spec written down</a></td><td>The ui/ boards (v6 Home, v5 Editor) are described in docs/design/ui-v2.md: behaviour, data needs, Phase 1 scope, 17 conflicts with UX_SPEC (G17-G22) and proposals. No app code.</td></tr>
 <tr><td>2026-11-02</td><td><a href="golden-pages.html">Phase 1 golden-page candidates</a></td><td>Ten deterministic template candidates with repeated rendering and deliberate defect checks. Human baseline review is still required; the gate remains pending.</td></tr>

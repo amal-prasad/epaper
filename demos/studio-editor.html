@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Studio app scaffold</title>
+<style>body{margin:0;background:#f7f8f6;color:#1d2b36;font:16px/1.6 "Noto Sans Devanagari",system-ui,sans-serif}main{max-width:1200px;margin:0 auto;padding:24px 16px}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}figure{margin:0;background:#fff;border:1px solid #d9e1e5;border-radius:12px;padding:8px}
+figure img{width:100%;height:auto;display:block}figcaption{font-size:14px;color:#475661;padding-top:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d9e1e5;margin:8px 0 24px}th,td{text-align:left;padding:8px 10px;border-top:1px solid #d9e1e5;vertical-align:top}th{background:#eef2f3}code{font-size:14px}</style></head>
+<body><main>
+<h1>T2: Studio app opens an issue and draws page 1 (editor slice 2 of 4)</h1>
+<p>New Next.js app <code>apps/studio</code> (Next 16.4.5, React 19.3.1). Run it with <code>npm run dev -w @studio/app</code>, then open <code>http://localhost:3210</code>. It reads <code>data/issues/sample.json</code>, a four-page issue built by <code>scripts/sample-issue.mjs</code> from the reviewed golden pages. The engine's new <code>pageLayout()</code> sets every line, and the app only places those lines. Line breaks never come from CSS.</p>
+<div class="pair">
+<figure><img src="studio-editor/page.png" alt="Studio app, page 1 of the sample issue"><figcaption>Studio app (screen preview, 62%)</figcaption></figure>
+<figure><img src="studio-editor/export-golden.png" alt="Export golden render of the same page"><figcaption>Export render of the same page (golden baseline, 2026-11-03)</figcaption></figure>
+</div>
+<h2>Checks</h2>
+<table><tr><th>Check</th><th>Result</th></tr>
+<tr><td>Engine layout unit test</td><td>9 passed: body lines equal flow(); overflow does not throw; last line not justified; empty slot kept; headlines from layoutHeadline; photos, rules and shape outlines passed through; missing ink fails loudly; no mutation</td></tr>
+<tr><td><code>node scripts/smoke-studio.mjs</code></td><td>SMOKE PASS: 40 lines drawn, 0 wider than their box, 0 console errors</td></tr>
+<tr><td>Side by side</td><td>Same line breaks as export on every story. The shaped photo is clipped to its outline as in export.</td></tr></table>
+<p>Not yet: fit marks, page strip, selection (T3); undo and redo controls (T4). The page baselines use ink metrics from <code>fonts/ink.json</code>; export measures ink per line, so a fraction of a pixel of vertical difference is possible (GG-082).</p>
+</main></body></html>
