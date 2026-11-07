@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-11-07",
+    "task": "UI v2 spec written down",
+    "page": "ui-v2-spec.html",
+    "summary": "The ui/ boards (v6 Home, v5 Editor) are described in docs/design/ui-v2.md: behaviour, data needs, Phase 1 scope, 17 conflicts with UX_SPEC (G17-G22) and proposals. No app code."
+  },
+  {
     "date": "2026-11-02",
     "task": "Phase 1 golden-page candidates",
     "page": "golden-pages.html",

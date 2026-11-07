@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI v2 spec</title>
+<style>
+:root{--bg:#f7f8f6;--ink:#1d2b36;--muted:#475661;--line:#d9e1e5;--card:#fff}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans Devanagari",system-ui,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:24px 16px}
+h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;margin:32px 0 8px}
+p{color:var(--muted);margin:4px 0}
+.boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px}
+figure img{width:100%;height:auto;display:block;border-radius:6px}
+figcaption{font-size:14px;color:var(--muted);padding:6px 4px 0}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+th{background:#eef2f3;border-top:0}
+code{font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<h1>Studio UI v2: the boards written down</h1>
+<p>Source: <code>ui/Studio — UI UX v2.html</code> (D-079). The full write-up is <code>docs/design/ui-v2.md</code>. No app code was written. Every number on the boards is a mockup value.</p>
+
+<h2>The two boards</h2>
+<div class="boards">
+<figure><img src="ui-v2-spec/home.png" alt="v6 होम: अंक की स्थिति, नई खबरें, कुछ नया बनाएँ, टेम्पलेट"><figcaption>v6 होम: एक नज़र में, एक अगला कदम</figcaption></figure>
+<figure><img src="ui-v2-spec/editor.png" alt="v5 संपादक: पृष्ठ, खबर सूची, फिट ठीक करने के तरीके"><figcaption>v5 संपादक: ठीक करें, फिर प्रेस को भेजें</figcaption></figure>
+</div>
+
+<h2>What changed</h2>
+<table>
+<tr><th>File</th><th>Change</th></tr>
+<tr><td><code>docs/design/ui-v2.md</code></td><td>New. Look, Home and Editor behaviour, data each screen needs, Phase 1 scope map, 17 conflicts with UX_SPEC, and proposals.</td></tr>
+<tr><td><code>docs/DECISIONS.md</code></td><td>D-079 appended: <code>ui/</code> is the replacement spec from D-078.</td></tr>
+<tr><td><code>docs/DESIGN_GAPS.md</code></td><td>G17–G22 added (conflicts; UX_SPEC wins until Amal decides).</td></tr>
+</table>
+
+<h2>Conflicts that need Amal (UX_SPEC wins until then)</h2>
+<table>
+<tr><th>Gap</th><th>Board does</th><th>UX_SPEC says</th></tr>
+<tr><td>G17</td><td>प्रेस को भेजें works while 5 problems are open, says "छप गया", shows confetti, auto-publishes the e-paper</td><td>Run जाँच first; honest status; calm success; confirm before publishing</td></tr>
+<tr><td>G18</td><td>Trim is applied in one click</td><td>Each cut is reviewed (no silent change)</td></tr>
+<tr><td>G19</td><td>7-button icon-only toolbar; status shown by colour alone; drag-only</td><td>At most 5 buttons, each with a word; icon + word; button alternatives</td></tr>
+<tr><td>G20</td><td>No save status, no editor help, 5 s toast, स्लॉट/पृष्ठ/टेम्पलेट</td><td>Status always visible, same help button everywhere, 8 s toast, जगह/पन्ना/ढाँचा</td></tr>
+<tr><td>G21</td><td>Dark theme, glass blur, tilt, 450–800 ms springs</td><td>Light + A+ + high contrast; calm; motion 150–200 ms; low-end Android</td></tr>
+<tr><td>G22</td><td>Permanent right inspector; 5-item nav</td><td>Contextual toolbar; at most 4 top items plus the issue checklist</td></tr>
+</table>
+
+<h2>Checks</h2>
+<table>
+<tr><th>Check</th><th>Result</th></tr>
+<tr><td><code>npm test</code></td><td>447 passed, 0 failed (docs only; no code changed)</td></tr>
+</table>
+</main>
+</body>
+</html>
