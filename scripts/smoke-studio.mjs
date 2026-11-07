@@ -48,13 +48,30 @@ try {
     queue = pressed === 1 && said ? `ok: ${said}` : `FAILED (pressed ${pressed}, said "${said}")`
   }
   await page.screenshot({ path: out, fullPage: true })
+  // Undo path: empty the selected slot (an engine op), then Ctrl Z restores it and redo empties it again.
+  let undoCheck = 'skipped (nothing selected)'
+  const slot = page.locator('main button[aria-pressed="true"]')
+  if (await slot.count() === 1 && await page.locator('button', { hasText: 'स्लॉट खाली करें' }).count()) {
+    const before = await slot.getAttribute('aria-label')
+    await page.click('button:has-text("स्लॉट खाली करें")')
+    const emptied = await slot.getAttribute('aria-label'), toast = await page.locator('[role="status"]').innerText().catch(() => '')
+    await page.screenshot({ path: out.replace(/\.png$/, '-toast.png'), fullPage: true })
+    await page.keyboard.press('Control+z')
+    const restored = await slot.getAttribute('aria-label')
+    await page.click('button:has-text("फिर से")')
+    const redone = await slot.getAttribute('aria-label')
+    const ok = emptied.endsWith('खाली जगह') && toast.includes('खबर हटाई गई') && restored === before && redone === emptied
+    undoCheck = ok ? 'ok: emptied, toast, Ctrl Z restored, redo emptied' : `FAILED (${JSON.stringify({ before, emptied, toast, restored, redone })})`
+  }
+  console.log(`undo/redo: ${undoCheck}`)
+  if (undoCheck.startsWith('FAILED')) failed = true
   await browser.close()
   console.log(`lines drawn: ${lines.length}; wider than box: ${wide.length}; console errors: ${errors.length}`)
   console.log(`primary buttons: ${primaries}; marks: ${marks}; percent text: ${percent.length}; axe serious/critical: ${axe.length}; check queue: ${queue}`)
   for (const e of errors) console.log('  error:', e)
   for (const w of wide.slice(0, 5)) console.log('  wide:', w.text)
   for (const a of axe) console.log('  axe:', a)
-  failed = !lines.length || wide.length > 0 || errors.length > 0 || primaries !== 1 || percent.length > 0 || axe.length > 0 || queue.startsWith('FAILED')
+  failed = failed || !lines.length || wide.length > 0 || errors.length > 0 || primaries !== 1 || percent.length > 0 || axe.length > 0 || queue.startsWith('FAILED')
 } catch (e) { console.error(e.message); failed = true } finally { stop() }
 console.log(failed ? 'SMOKE FAIL' : 'SMOKE PASS')
 process.exitCode = failed ? 1 : 0

@@ -1,6 +1,12 @@
 [
   {
     "date": "2026-11-07",
+    "task": "Editor slice T4: undo and redo",
+    "page": "studio-undo.html",
+    "summary": "Editor changes run on the engine history; undo and redo buttons with words, Ctrl Z/Y, and an 8 s toast with वापस लाएँ. First change: empty a slot."
+  },
+  {
+    "date": "2026-11-07",
     "task": "Editor slice T3: fit marks, page strip, selection, check queue",
     "page": "studio-marks.html",
     "summary": "Marks in words with icons (no percentages), page strip with status, slot selection, the single primary button जाँच (N) walking problems across pages; axe clean."

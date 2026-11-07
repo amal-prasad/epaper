@@ -25,6 +25,16 @@ export function nextProblem(problems, current) {
   return problems[(i + 1) % problems.length]
 }
 
+// A change said as a sentence, for the undo toast and aria-live (rule 5: changes are listed).
+// ponytail: only placeStory has its own words; other ops get a generic sentence until the UI can make them.
+export function describeOp(op, doc) {
+  if (op.type === 'placeStory') {
+    if (op.args.storyId == null) return 'खबर हटाई गई'
+    return `"${doc.stories.find(s => s.id === op.args.storyId)?.headline ?? op.args.storyId}" रखी गई`
+  }
+  return 'बदलाव किया गया'
+}
+
 // For the page strip: an icon and words as well as colour (UX_SPEC §2.9).
 export function pageStatus(marks) {
   const count = marks.filter(m => m.state !== 'ok').length

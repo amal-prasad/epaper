@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { markWords, markTitle, nextProblem, pageStatus } from '../src/index.js'
+import { markWords, markTitle, nextProblem, pageStatus, describeOp } from '../src/index.js'
 
 const m = (state, overLines = 0, emptyLines = 0) => ({ frameId: 'f', storyId: 's', state, overLines, emptyLines })
 
@@ -40,6 +40,13 @@ test('from a slot that is not a problem the queue starts at the first problem', 
 
 test('no problems means nothing to go to', () => {
   assert.equal(nextProblem([], null), null)
+})
+
+test('every change is said in a plain sentence for the undo toast and screen readers', () => {
+  const doc = { stories: [{ id: 's1', headline: 'योग शिविर' }] }
+  assert.equal(describeOp({ type: 'placeStory', args: { frameId: 'f', storyId: null } }, doc), 'खबर हटाई गई')
+  assert.equal(describeOp({ type: 'placeStory', args: { frameId: 'f', storyId: 's1' } }, doc), '"योग शिविर" रखी गई')
+  assert.equal(describeOp({ type: 'setWrap', args: {} }, doc), 'बदलाव किया गया')
 })
 
 test('a page is "problem" when any slot is not ok, else "ok"; colour is never the only signal', () => {

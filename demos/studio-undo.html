@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Editor undo and redo</title>
+<style>body{margin:0;background:#f7f8f6;color:#1d2b36;font:16px/1.6 "Noto Sans Devanagari",system-ui,sans-serif}main{max-width:1200px;margin:0 auto;padding:24px 16px}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}figure{margin:0;background:#fff;border:1px solid #d9e1e5;border-radius:12px;padding:8px}figure img{width:100%;height:auto;display:block}figcaption{font-size:14px;color:#475661;padding-top:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d9e1e5;margin:8px 0 24px}th,td{text-align:left;padding:8px 10px;border-top:1px solid #d9e1e5;vertical-align:top}th{background:#eef2f3}code{font-size:14px}</style></head>
+<body><main>
+<h1>T4: undo and redo (editor slice 4 of 4)</h1>
+<p>Every change in the editor is an engine op on the engine's own history (<code>run</code>, <code>undo</code>, <code>redo</code> in <code>ops.js</code>). The first change the UI can make is "स्लॉट खाली करें", which takes a story out of a slot. It is undone with the "↶ वापस" button, Ctrl Z, or the toast's "वापस लाएँ" button, which stays for 8 seconds (UX_SPEC F6). It is redone with "↷ फिर से" or Ctrl Y. Every change is said as a sentence in the toast and to screen readers (rule 5).</p>
+<div class="pair">
+<figure><img src="studio-editor/undo.png" alt="Editor before the change, first problem selected"><figcaption>Before: slot 1 selected</figcaption></figure>
+<figure><img src="studio-editor/undo-toast.png" alt="Slot 1 emptied, toast says खबर हटाई गई with वापस लाएँ"><figcaption>After "स्लॉट खाली करें": the slot is hatched as "खाली जगह" and the toast offers "वापस लाएँ"</figcaption></figure>
+</div>
+<h2>Checks</h2>
+<table><tr><th>Check</th><th>Result</th></tr>
+<tr><td>UI state unit test (packages/ui)</td><td>8 passed, including describeOp sentences for the toast</td></tr>
+<tr><td><code>node scripts/smoke-studio.mjs</code></td><td>SMOKE PASS. Undo/redo: slot emptied, toast shown, Ctrl Z restored it exactly, redo emptied it again. 0 console errors, 1 primary button, axe serious/critical 0, no percentages</td></tr></table>
+<p>Not yet: saving to the local store, with a save status (G20). History lives in memory, so a reload loses changes. An emptied story has no "बिना जगह" list to come back from yet, except undo.</p>
+</main></body></html>

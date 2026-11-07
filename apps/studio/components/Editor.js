@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { pageLayout } from '@studio/engine/src/layout.js'
 import { pageMarks } from '@studio/engine/src/marks.js'
-import { markWords, markTitle, nextProblem, pageStatus } from '@studio/ui'
+import { startHistory, run, undo, redo } from '@studio/engine/src/ops.js'
+import { markWords, markTitle, nextProblem, pageStatus, describeOp } from '@studio/ui'
 import PageView from './PageView.js'
 import Marks from './Marks.js'
 
@@ -14,19 +15,42 @@ const fontsOf = doc => [...new Set(doc.pages.flatMap(p => [...p.frames, ...p.obj
 const chip = { over: ['var(--danger-soft)', 'var(--danger-text)', '⚠'], empty: ['var(--info-soft)', 'var(--info-text)', '◌'],
   unfilled: ['var(--info-soft)', 'var(--info-text)', '◌'], ok: ['var(--success-soft)', 'var(--success-text)', '✓'] }
 
-export default function Editor({ doc, inks }) {
+export default function Editor({ doc: initial, inks }) {
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(null)
-  const [pageId, setPageId] = useState(doc.pages[0].id)
+  // Every change is an engine op on this history, so undo and redo are the engine's (rule 1).
+  // ponytail: history lives in memory; saving to the local store is the next slice (G20 save status).
+  const [history, setHistory] = useState(() => startHistory(initial))
+  const doc = history.doc
+  const [pageId, setPageId] = useState(initial.pages[0].id)
   const [selected, setSelected] = useState(null) // frameId on the current page
   const [said, setSaid] = useState('')
+  const [toast, setToast] = useState(null)
+  const toastTimer = useRef(null)
 
   useEffect(() => {
     let live = true
-    Promise.all(fontsOf(doc).map(f => document.fonts.load(f, SAMPLE)))
+    Promise.all(fontsOf(initial).map(f => document.fonts.load(f, SAMPLE)))
       .then(() => live && setReady(true)).catch(e => live && setError(e.message))
     return () => { live = false }
-  }, [doc])
+  }, [initial])
+
+  const tell = text => {
+    setSaid(text); setToast(text)
+    clearTimeout(toastTimer.current)
+    toastTimer.current = setTimeout(() => setToast(null), 8000) // UX_SPEC F6: 8 s
+  }
+  const change = op => { setHistory(h => run(h, op)); tell(describeOp(op, doc)) }
+  const undoLast = () => {
+    const entry = history.undoStack.at(-1)
+    if (!entry) return
+    setHistory(undo); setToast(null); setSaid(`वापस लिया: ${describeOp(entry.op, doc)}`)
+  }
+  const redoLast = () => {
+    const entry = history.redoStack.at(-1)
+    if (!entry) return
+    setHistory(redo); setSaid(`फिर से किया: ${describeOp(entry.op, doc)}`)
+  }
 
   const marksByPage = useMemo(() => ready ? Object.fromEntries(doc.pages.map(p => [p.id, pageMarks(doc, p.id)])) : null, [ready, doc])
   const layout = useMemo(() => ready ? pageLayout(doc, pageId, { inks }) : null, [ready, doc, pageId, inks])
@@ -45,8 +69,11 @@ export default function Editor({ doc, inks }) {
   useEffect(() => {
     const key = e => {
       if (e.target.closest?.('input, textarea, [contenteditable]')) return
+      const mod = e.ctrlKey || e.metaKey, k = e.key.toLowerCase()
+      if (mod && k === 'z' && !e.shiftKey) { e.preventDefault(); undoLast(); return }
+      if (mod && (k === 'y' || (k === 'z' && e.shiftKey))) { e.preventDefault(); redoLast(); return }
       if (e.key === 'Escape') setSelected(null)
-      if ((e.key === 'n' || e.key === 'N') && !e.ctrlKey && !e.metaKey) goNext()
+      if (k === 'n' && !mod) goNext()
     }
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
@@ -61,6 +88,12 @@ export default function Editor({ doc, inks }) {
           <span style={{ fontSize: 16, color: 'var(--ink-muted)' }}>{doc.id}</span>
           <span style={{ fontWeight: 600 }}>पृष्ठ {page.no}</span>
         </span>
+        <div role="group" aria-label="बदलाव" style={{ display: 'flex', gap: 6 }}>
+          <button type="button" onClick={undoLast} disabled={!history.undoStack.length} title="पिछला बदलाव वापस लें (Ctrl Z)" style={quiet}>
+            <span aria-hidden="true">↶</span> वापस</button>
+          <button type="button" onClick={redoLast} disabled={!history.redoStack.length} title="फिर से करें (Ctrl Y)" style={quiet}>
+            <span aria-hidden="true">↷</span> फिर से</button>
+        </div>
         <span style={{ flex: 1 }} />
         {problems.length > 0
           ? <button type="button" data-ux="primary" onClick={goNext} title="अगली समस्या पर जाएँ (N)" style={primary}>
@@ -125,14 +158,28 @@ export default function Editor({ doc, inks }) {
                 </div>
                 {mark.state !== 'ok' && <div style={{ fontSize: 28, lineHeight: '34px', fontWeight: 300, color: chip[mark.state][1] }}>{markWords(mark)}</div>}
                 <p style={{ margin: 0, fontSize: 16, color: 'var(--ink-muted)' }}>ठीक करने के तरीके अगले चरण में आएँगे।</p>
+                {mark.storyId && <button type="button" onClick={() => change({ type: 'placeStory', args: { frameId: mark.frameId, storyId: null } })}
+                  style={{ ...quiet, alignSelf: 'flex-start' }}>स्लॉट खाली करें</button>}
               </>
             ) : <p style={{ margin: 0, color: 'var(--ink-muted)' }}>पृष्ठ पर कोई जगह चुनें, या <b>जाँच</b> दबाएँ।</p>}
           </aside>
         </div>
       )}
+
+      {toast && (
+        <div role="status" style={{ position: 'fixed', left: '50%', bottom: 28, transform: 'translateX(-50%)', zIndex: 50, display: 'flex', alignItems: 'center',
+          gap: 12, minHeight: 56, padding: '0 8px 0 20px', borderRadius: 999, background: 'var(--primary)', color: 'var(--on-primary)', boxShadow: 'var(--shadow-3)', whiteSpace: 'nowrap' }}>
+          <span>{toast}</span>
+          <button type="button" onClick={undoLast} style={{ minHeight: 42, padding: '0 16px', border: 0, borderRadius: 999, cursor: 'pointer',
+            background: 'rgba(255,255,255,0.14)', color: 'var(--on-primary)', fontSize: 17, fontWeight: 600 }}>वापस लाएँ</button>
+        </div>
+      )}
     </div>
   )
 }
+
+const quiet = { display: 'flex', alignItems: 'center', gap: 6, minHeight: 42, padding: '0 14px', border: 0, borderRadius: 999, cursor: 'pointer',
+  background: 'var(--surface)', color: 'var(--ink)', fontSize: 16, fontWeight: 600, boxShadow: 'inset 0 1px 0 var(--glass-hi), var(--shadow-1)' }
 
 const primary = { display: 'flex', alignItems: 'center', gap: 10, minHeight: 46, padding: '0 8px 0 20px', border: 0, borderRadius: 999, cursor: 'pointer',
   background: 'var(--primary)', color: 'var(--on-primary)', fontSize: 18, fontWeight: 600, boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), 0 10px 22px -10px rgba(31,50,64,0.5)' }
